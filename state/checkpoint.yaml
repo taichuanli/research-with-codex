@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: CORPUS_BUILT_ASE2025
+current_phase: CORPUS_AUDITED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -11,7 +11,8 @@ phase_catalog:
   - CORPUS_BUILD_ASE2025
   - CORPUS_BUILT_ASE2025
   - CORPUS_AUDIT
-  - DOMAIN_MAP
+  - CORPUS_AUDITED
+  - FIELD_MAPPING
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
   - IDEA_GENERATION
@@ -37,7 +38,28 @@ completed_items:
   - "CORPUS_BUILD_ASE2025: recorded titles, authors, venue/track, official detail URLs, all 246 official abstracts, source locators and access times, all official DOI/publisher, formal-paper, preprint, media, artifact, code, data, and unclassified-link fields, plus provisional title-and-abstract taxonomy assignments in corpus/ase2025-research-papers.jsonl."
   - "CORPUS_BUILD_ASE2025: validated 100% official-list coverage, unique IDs and official event IDs, JSON/JSONL parseability, title/author/raw-link equality with the official baseline, source-field conflicts, and title/title-plus-author/DOI duplicate checks; results are in corpus/ase2025-research-papers-dedup-audit.json and reports/ase2025-research-papers-corpus-build-report.json."
   - "CORPUS_BUILD_ASE2025: the official records listed three DOI targets, five publication targets, 54 preprints, eight Media Attached targets, and four File Attached targets. Targets were retained but not fetched; no artifact, code, or data links were explicitly labelled, and the four File Attached targets remain unclassified by their official labels. These are non-blocking for the official-list corpus inventory."
+  - "CORPUS_AUDIT: reconciled the four official baselines, four local corpora, four per-venue dedup audits, and four build reports. ICSE 2026, FSE 2026, ISSTA 2026, and ASE 2025 have 321, 211, 210, and 246 matched records respectively (988 total; 100% baseline coverage)."
+  - "CORPUS_AUDIT: generated corpus/cross-venue-research-paper-index.jsonl and reports/cross-venue-corpus-audit-report.json. The index retains venue, track, year, source records, and original JSONL path/line locators without modifying the four source corpora."
+  - "CORPUS_AUDIT: found no cross-venue exact normalized title-plus-author, shared DOI, shared external URL, title-variant, or formal/preprint double-count candidate, and no track-scope mismatch. Fourteen high-similarity author-roster pairs remain explicitly marked as candidates rather than duplicate findings."
 blockers: []
 human_decisions_pending: []
-next_phase: CORPUS_AUDIT
-last_updated: "2026-07-24T10:34:35Z"
+corpus_audit:
+  evidence:
+    claim_type: direct_evidence
+    source: "reports/cross-venue-corpus-audit-report.json"
+    source_locator: "per_venue, cross_venue_duplicate_audit, track_scope_audit, schema_and_classification_audit, links_and_follow_up, and phase_gate"
+    statement: "All 988 merged-index records parse, have unique paper IDs, and resolve through their stored JSONL path and line locator; each venue baseline and build-report count matches its local corpus."
+  conclusion:
+    claim_type: agent_inference
+    source: "reports/cross-venue-corpus-audit-report.json / phase_gate"
+    statement: "No corpus-integrity, scope, source-traceability, or cross-venue duplicate signal blocks entry to FIELD_MAPPING."
+  non_blocking_follow_up:
+    - claim_type: direct_evidence
+      source: "reports/cross-venue-corpus-audit-report.json / schema_and_classification_audit"
+      statement: "ICSE 2026 lacks three optional publication keys present in the other corpora; the merged index normalizes them to null or empty arrays."
+    - claim_type: direct_evidence
+      source: "reports/cross-venue-corpus-audit-report.json / links_and_follow_up"
+      statement: "396 official external targets are retained as not_fetched, 13 official link labels remain unclassified, and three ASE records retain UNCLASSIFIED_TITLE_AND_ABSTRACT for FIELD_MAPPING reconciliation."
+  human_decisions_pending: []
+next_phase: FIELD_MAPPING
+last_updated: "2026-07-24T11:31:56Z"

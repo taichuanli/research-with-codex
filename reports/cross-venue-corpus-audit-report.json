@@ -1,0 +1,1434 @@
+{
+  "schema_version": 1,
+  "phase": "CORPUS_AUDIT",
+  "claim_type": "direct_evidence",
+  "inputs": {
+    "config_path": "config/research_scope.yaml",
+    "checkpoint_path": "state/checkpoint.yaml",
+    "venues": [
+      {
+        "venue_id": "ICSE2026",
+        "corpus_path": "corpus/icse2026-research-track.jsonl",
+        "official_baseline_path": "corpus/icse2026-research-track-official-baseline.json",
+        "dedup_audit_path": "corpus/icse2026-research-track-dedup-audit.json",
+        "build_report_path": "reports/icse2026-corpus-build-report.json"
+      },
+      {
+        "venue_id": "FSE2026",
+        "corpus_path": "corpus/fse2026-research-papers.jsonl",
+        "official_baseline_path": "corpus/fse2026-research-papers-official-baseline.json",
+        "dedup_audit_path": "corpus/fse2026-research-papers-dedup-audit.json",
+        "build_report_path": "reports/fse2026-research-papers-corpus-build-report.json"
+      },
+      {
+        "venue_id": "ISSTA2026",
+        "corpus_path": "corpus/issta2026-research-papers.jsonl",
+        "official_baseline_path": "corpus/issta2026-research-papers-official-baseline.json",
+        "dedup_audit_path": "corpus/issta2026-research-papers-dedup-audit.json",
+        "build_report_path": "reports/issta2026-research-papers-corpus-build-report.json"
+      },
+      {
+        "venue_id": "ASE2025",
+        "corpus_path": "corpus/ase2025-research-papers.jsonl",
+        "official_baseline_path": "corpus/ase2025-research-papers-official-baseline.json",
+        "dedup_audit_path": "corpus/ase2025-research-papers-dedup-audit.json",
+        "build_report_path": "reports/ase2025-research-papers-corpus-build-report.json"
+      }
+    ]
+  },
+  "method": {
+    "claim_type": "direct_evidence",
+    "statement": "Read existing local official baselines, corpus JSONL records, and build reports. No official detail pages, PDFs, or third-party academic APIs were fetched during this audit."
+  },
+  "per_venue": {
+    "ICSE2026": {
+      "claim_type": "direct_evidence",
+      "official_accepted_count": 321,
+      "local_record_count": 321,
+      "coverage_percentage": 100,
+      "missing_official_event_records": [],
+      "local_records_not_in_official_baseline": [],
+      "title_mismatches": [],
+      "ordered_author_mismatches": [],
+      "missing_retained_official_links": [],
+      "duplicate_local_paper_ids": [],
+      "duplicate_local_official_event_ids": [],
+      "track_evidence": {
+        "expected_track": "Research Track",
+        "baseline_track": "Research Track",
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": [],
+        "interpretation": "Each local record is matched by official event ID to the venue-specific official accepted-paper baseline. This detects records sourced from an out-of-scope baseline; it does not infer alternate-track status from paper titles."
+      },
+      "field_completeness": {
+        "paper_id": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_event_id": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "title": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "authors": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "venue": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_program_source": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_detail_source": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "abstract": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_categories": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_assignment": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "inclusion_decision": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "access_and_verification": {
+          "present": 321,
+          "total": 321,
+          "percentage": 100,
+          "missing_paper_ids": []
+        }
+      },
+      "build_report_count_mismatches": [],
+      "build_report_counts": {
+        "official_accepted_count": 321,
+        "local_corpus_record_count": 321
+      },
+      "existing_dedup_audit": {
+        "path": "corpus/icse2026-research-track-dedup-audit.json",
+        "exact_normalized_title_duplicates": 0,
+        "normalized_title_and_author_duplicates": 0,
+        "doi_duplicates": 0,
+        "title_variant_candidates": 0,
+        "repeated_complete_author_lists_across_distinct_titles": 0
+      },
+      "record_schema_key_sets": [
+        "abstract|abstract_status|access_and_verification|authors|corpus_status|notes|official_event_id|paper_id|publication|source_records|title|venue"
+      ]
+    },
+    "FSE2026": {
+      "claim_type": "direct_evidence",
+      "official_accepted_count": 211,
+      "local_record_count": 211,
+      "coverage_percentage": 100,
+      "missing_official_event_records": [],
+      "local_records_not_in_official_baseline": [],
+      "title_mismatches": [],
+      "ordered_author_mismatches": [],
+      "missing_retained_official_links": [],
+      "duplicate_local_paper_ids": [],
+      "duplicate_local_official_event_ids": [],
+      "track_evidence": {
+        "expected_track": "Research Papers",
+        "baseline_track": "Research Papers",
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": [],
+        "interpretation": "Each local record is matched by official event ID to the venue-specific official accepted-paper baseline. This detects records sourced from an out-of-scope baseline; it does not infer alternate-track status from paper titles."
+      },
+      "field_completeness": {
+        "paper_id": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_event_id": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "title": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "authors": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "venue": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_program_source": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_detail_source": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "abstract": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_categories": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_assignment": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "inclusion_decision": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "access_and_verification": {
+          "present": 211,
+          "total": 211,
+          "percentage": 100,
+          "missing_paper_ids": []
+        }
+      },
+      "build_report_count_mismatches": [],
+      "build_report_counts": {
+        "official_accepted_count": 211,
+        "local_corpus_record_count": 211
+      },
+      "existing_dedup_audit": {
+        "path": "corpus/fse2026-research-papers-dedup-audit.json",
+        "exact_normalized_title_duplicates": 0,
+        "normalized_title_and_author_duplicates": 0,
+        "doi_duplicates": 0,
+        "title_variant_candidates": 0,
+        "repeated_complete_author_lists_across_distinct_titles": 0
+      },
+      "record_schema_key_sets": [
+        "abstract|abstract_status|access_and_verification|authors|corpus_status|notes|official_event_id|paper_id|publication|source_records|title|venue"
+      ]
+    },
+    "ISSTA2026": {
+      "claim_type": "direct_evidence",
+      "official_accepted_count": 210,
+      "local_record_count": 210,
+      "coverage_percentage": 100,
+      "missing_official_event_records": [],
+      "local_records_not_in_official_baseline": [],
+      "title_mismatches": [],
+      "ordered_author_mismatches": [],
+      "missing_retained_official_links": [],
+      "duplicate_local_paper_ids": [],
+      "duplicate_local_official_event_ids": [],
+      "track_evidence": {
+        "expected_track": "Research papers",
+        "baseline_track": "Research papers",
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": [],
+        "interpretation": "Each local record is matched by official event ID to the venue-specific official accepted-paper baseline. This detects records sourced from an out-of-scope baseline; it does not infer alternate-track status from paper titles."
+      },
+      "field_completeness": {
+        "paper_id": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_event_id": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "title": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "authors": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "venue": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_program_source": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_detail_source": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "abstract": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_categories": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_assignment": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "inclusion_decision": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "access_and_verification": {
+          "present": 210,
+          "total": 210,
+          "percentage": 100,
+          "missing_paper_ids": []
+        }
+      },
+      "build_report_count_mismatches": [],
+      "build_report_counts": {
+        "official_accepted_count": 210,
+        "local_corpus_record_count": 210
+      },
+      "existing_dedup_audit": {
+        "path": "corpus/issta2026-research-papers-dedup-audit.json",
+        "exact_normalized_title_duplicates": 0,
+        "normalized_title_and_author_duplicates": 0,
+        "doi_duplicates": 0,
+        "title_variant_candidates": 0,
+        "repeated_complete_author_lists_across_distinct_titles": 1
+      },
+      "record_schema_key_sets": [
+        "abstract|abstract_status|access_and_verification|authors|corpus_status|notes|official_event_id|paper_id|publication|source_records|title|venue"
+      ]
+    },
+    "ASE2025": {
+      "claim_type": "direct_evidence",
+      "official_accepted_count": 246,
+      "local_record_count": 246,
+      "coverage_percentage": 100,
+      "missing_official_event_records": [],
+      "local_records_not_in_official_baseline": [],
+      "title_mismatches": [],
+      "ordered_author_mismatches": [],
+      "missing_retained_official_links": [],
+      "duplicate_local_paper_ids": [],
+      "duplicate_local_official_event_ids": [],
+      "track_evidence": {
+        "expected_track": "Research Papers",
+        "baseline_track": "Research Papers",
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": [],
+        "interpretation": "Each local record is matched by official event ID to the venue-specific official accepted-paper baseline. This detects records sourced from an out-of-scope baseline; it does not infer alternate-track status from paper titles."
+      },
+      "field_completeness": {
+        "paper_id": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_event_id": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "title": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "authors": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "venue": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_program_source": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "official_detail_source": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "abstract": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_categories": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "taxonomy_assignment": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "inclusion_decision": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        },
+        "access_and_verification": {
+          "present": 246,
+          "total": 246,
+          "percentage": 100,
+          "missing_paper_ids": []
+        }
+      },
+      "build_report_count_mismatches": [],
+      "build_report_counts": {
+        "official_accepted_count": 246,
+        "local_corpus_record_count": 246
+      },
+      "existing_dedup_audit": {
+        "path": "corpus/ase2025-research-papers-dedup-audit.json",
+        "exact_normalized_title_duplicates": 0,
+        "normalized_title_and_author_duplicates": 0,
+        "doi_duplicates": 0,
+        "title_variant_candidates": 0,
+        "repeated_complete_author_lists_across_distinct_titles": 0
+      },
+      "record_schema_key_sets": [
+        "abstract|abstract_status|access_and_verification|authors|corpus_status|notes|official_event_id|paper_id|publication|source_records|title|venue"
+      ]
+    }
+  },
+  "total": {
+    "official_accepted_count": 988,
+    "local_record_count": 988,
+    "coverage_percentage": 100,
+    "unique_local_paper_id_count": 988,
+    "unique_local_event_id_count": 988
+  },
+  "cross_venue_duplicate_audit": {
+    "method": {
+      "claim_type": "direct_evidence",
+      "statement": "Compared normalized titles, ordered normalized author strings, DOI strings, retained official external URLs, and high-similarity author/title pairs. Candidate matches are not duplicate findings without a source establishing shared work identity."
+    },
+    "exact_normalized_title_groups_all_venues": [],
+    "exact_normalized_title_and_author_groups_all_venues": [],
+    "shared_doi_groups_all_venues": [],
+    "shared_external_url_groups_all_venues": [],
+    "cross_venue_exact_normalized_title_candidates": [],
+    "cross_venue_exact_normalized_title_and_author_candidates": [],
+    "cross_venue_shared_doi_candidates": [],
+    "cross_venue_shared_external_url_candidates": [],
+    "cross_venue_high_similarity_author_candidates": [
+      {
+        "paper_ids": [
+          "ASE2025_beyond-static-gui-agent-evolving-llm-based-gui-testing-via-dynamic-memor",
+          "ICSE2026_think-outside-the-box-automating-inter-app-functionality-testing-via-mem"
+        ],
+        "author_intersection": 8,
+        "author_union": 9,
+        "author_jaccard": 0.8888888888888888,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ASE2025_defects4log-benchmarking-llms-for-logging-code-defect-detection-and-reas",
+          "ICSE2026_llm4perf-large-language-models-are-effective-samplers-for-multi-objectiv"
+        ],
+        "author_intersection": 3,
+        "author_union": 3,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ASE2025_faster-runtime-verification-during-testing-via-feedback-guided-selective",
+          "ISSTA2026_a-closer-look-at-the-use-of-reinforcement-learning-for-speeding-up-runti"
+        ],
+        "author_intersection": 3,
+        "author_union": 3,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method",
+          "ICSE2026_smoke-and-mirrors-jailbreaking-llm-based-code-generation-via-implicit-ma"
+        ],
+        "author_intersection": 6,
+        "author_union": 7,
+        "author_jaccard": 0.8571428571428571,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+          "ICSE2026_on-the-robustness-of-fairness-practices-a-causal-framework-for-systemati"
+        ],
+        "author_intersection": 5,
+        "author_union": 6,
+        "author_jaccard": 0.8333333333333334,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_bash-commenter-leveraging-syntax-aware-preference-optimization-to-reinfo",
+          "ISSTA2026_bashcoder-r1-towards-robust-and-explainable-bash-script-generation-with-"
+        ],
+        "author_intersection": 8,
+        "author_union": 10,
+        "author_jaccard": 0.8,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_cross-refactoring-type-test-program-migration-for-refactoring-engines",
+          "ISSTA2026_testing-method-relocation-algorithms-via-template-based-systematic-struc"
+        ],
+        "author_intersection": 4,
+        "author_union": 5,
+        "author_jaccard": 0.8,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_decode-dynamic-exploration-for-constraint-guided-vulnerability-discovery",
+          "ICSE2026_an-empirical-study-on-static-application-security-testing-sast-tools-for"
+        ],
+        "author_intersection": 4,
+        "author_union": 4,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_revealing-regressions-a-comparative-study-of-state-capture-strategies-in",
+          "ISSTA2026_how-does-killing-surviving-mutants-help-detect-real-bugs-with-assertion-"
+        ],
+        "author_intersection": 3,
+        "author_union": 3,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_thought-is-all-you-need-smart-contract-vulnerability-detection-with-thou",
+          "ISSTA2026_beyond-the-surface-towards-feature-driven-fuzzing-on-the-chrome-browser"
+        ],
+        "author_intersection": 4,
+        "author_union": 4,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "FSE2026_visionscratch-llm-based-automated-feedback-generation-using-code-produce",
+          "ISSTA2026_scratchnet-a-multi-modal-benchmark-for-evaluating-and-advancing-llms-on-"
+        ],
+        "author_intersection": 4,
+        "author_union": 5,
+        "author_jaccard": 0.8,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud",
+          "ISSTA2026_names-are-all-you-need-effective-and-safe-regression-test-selection-for-"
+        ],
+        "author_intersection": 3,
+        "author_union": 3,
+        "author_jaccard": 1,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ICSE2026_intentfix-automated-logic-vulnerability-repair-via-llm-driven-intent-mod",
+          "ISSTA2026_asyncleakbench-a-curated-benchmark-of-asynchronous-resource-leaks-in-ope"
+        ],
+        "author_intersection": 4,
+        "author_union": 5,
+        "author_jaccard": 0.8,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      },
+      {
+        "paper_ids": [
+          "ICSE2026_sere-a-security-related-code-review-dataset-aligned-with-real-world-revi",
+          "ISSTA2026_empowering-lightweight-language-models-for-security-code-review-via-cont"
+        ],
+        "author_intersection": 4,
+        "author_union": 5,
+        "author_jaccard": 0.8,
+        "interpretation": "pending_review_not_a_duplicate_finding"
+      }
+    ],
+    "cross_venue_title_variant_candidates": [],
+    "co_listed_formal_and_preprint_on_one_local_record": {
+      "claim_type": "direct_evidence",
+      "paper_ids": [
+        "ASE2025_bridging-natural-language-and-formal-specification-automated-translation",
+        "ASE2025_lspfuzz-hunting-bugs-in-language-servers",
+        "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+        "FSE2026_a-grounded-theory-of-debugging-in-professional-software-engineering-prac",
+        "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+        "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+        "FSE2026_accessrefinery-fast-mining-concise-access-control-intents-on-public-clou",
+        "FSE2026_acme-automated-clause-mapping-engine-for-testing-emerging-database-syste",
+        "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+        "FSE2026_automated-detection-of-configuration-specific-security-vulnerabilities-v",
+        "FSE2026_bringing-managed-language-support-to-webassembly-with-external-library-l",
+        "FSE2026_characterizing-trust-boundary-vulnerabilities-in-tee-container-systems-a",
+        "FSE2026_crypformbench-benchmarking-formal-analysis-capability-of-large-language-",
+        "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+        "FSE2026_denoising-fault-localization-with-test-line-proximity",
+        "FSE2026_do-not-treat-code-as-natural-language-implications-for-repository-level-",
+        "FSE2026_evaluating-llm-based-regression-test-generation",
+        "FSE2026_failure-based-testing-for-deep-reinforcement-learning-agents",
+        "FSE2026_feature-slice-matching-for-precise-bug-detection",
+        "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+        "FSE2026_knowledge-graph-driven-data-synthesis-for-low-resource-software-developm",
+        "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "FSE2026_local-countering-surface-bias-in-code-evaluation-metrics",
+        "FSE2026_mitigating-prompt-induced-cognitive-biases-in-general-purpose-ai-for-sof",
+        "FSE2026_ocppuzz-specification-driven-fuzzing-of-charging-station-management-syst",
+        "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+        "FSE2026_reflair-detecting-responsive-layout-reflow-issues-using-multimodal-gener",
+        "FSE2026_smartrim-symbolic-execution-for-smart-contracts-powered-by-redundant-tra",
+        "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+        "FSE2026_the-interaction-of-complexity-and-provenance-in-code-review-decisions-ev",
+        "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+        "FSE2026_unics-multilingual-code-search-via-unified-pseudocode-and-contrastive-tr",
+        "ICSE2026_a-causal-perspective-on-measuring-explaining-and-mitigating-smells-in-ll",
+        "ICSE2026_cobblestone-a-divide-and-conquer-approach-for-automating-formal-verifica",
+        "ICSE2026_deft-maintaining-determinism-and-extracting-unit-tests-for-autonomous-dr",
+        "ICSE2026_efficient-strong-updates-for-path-sensitive-data-dependence-analysis",
+        "ICSE2026_exploring-and-improving-real-world-vulnerability-data-generation-via-pro",
+        "ICSE2026_gendetect-generalizing-reactive-detection-for-resilience-against-imitati",
+        "ICSE2026_imitation-game-reproducing-deep-learning-bugs-leveraging-an-intelligent-",
+        "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+        "ICSE2026_knowledge-matters-injecting-project-and-testing-knowledge-into-llm-based",
+        "ICSE2026_learning-from-software-failures-a-case-study-at-a-national-space-researc",
+        "ICSE2026_practitioner-views-on-mobile-app-accessibility-practices-and-challenges",
+        "ICSE2026_proofcoop-collaborative-automated-formal-verification",
+        "ICSE2026_reflections-on-the-reproducibility-of-commercial-llm-performance-in-empi",
+        "ICSE2026_whyflow-interrogative-debugger-for-sensemaking-taint-analysis",
+        "ICSE2026_women-s-career-paths-in-the-nordic-software-industry-a-narrative-analysi",
+        "ICSE2026_xrfix-exploring-performance-bug-repair-of-extended-reality-applications-"
+      ],
+      "interpretation": "one official acceptance record retains both targets; this is not a double count by itself"
+    },
+    "cross_venue_formal_preprint_double_count_candidates": []
+  },
+  "track_scope_audit": {
+    "claim_type": "direct_evidence",
+    "statement": "Track scope was checked against each venue-specific official accepted-paper baseline, exact record venue metadata, and inclusion-decision text; no track identity was inferred from titles.",
+    "suspect_records": {
+      "ICSE2026": {
+        "baseline_track_mismatch": [],
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": []
+      },
+      "FSE2026": {
+        "baseline_track_mismatch": [],
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": []
+      },
+      "ISSTA2026": {
+        "baseline_track_mismatch": [],
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": []
+      },
+      "ASE2025": {
+        "baseline_track_mismatch": [],
+        "record_venue_or_track_mismatches": [],
+        "decision_reason_track_mismatches": []
+      }
+    }
+  },
+  "schema_and_classification_audit": {
+    "claim_type": "direct_evidence",
+    "root_record_keys": {
+      "union": [
+        "abstract",
+        "abstract_status",
+        "access_and_verification",
+        "authors",
+        "corpus_status",
+        "notes",
+        "official_event_id",
+        "paper_id",
+        "publication",
+        "source_records",
+        "title",
+        "venue"
+      ],
+      "by_venue": {
+        "ICSE2026": [
+          "abstract",
+          "abstract_status",
+          "access_and_verification",
+          "authors",
+          "corpus_status",
+          "notes",
+          "official_event_id",
+          "paper_id",
+          "publication",
+          "source_records",
+          "title",
+          "venue"
+        ],
+        "FSE2026": [
+          "abstract",
+          "abstract_status",
+          "access_and_verification",
+          "authors",
+          "corpus_status",
+          "notes",
+          "official_event_id",
+          "paper_id",
+          "publication",
+          "source_records",
+          "title",
+          "venue"
+        ],
+        "ISSTA2026": [
+          "abstract",
+          "abstract_status",
+          "access_and_verification",
+          "authors",
+          "corpus_status",
+          "notes",
+          "official_event_id",
+          "paper_id",
+          "publication",
+          "source_records",
+          "title",
+          "venue"
+        ],
+        "ASE2025": [
+          "abstract",
+          "abstract_status",
+          "access_and_verification",
+          "authors",
+          "corpus_status",
+          "notes",
+          "official_event_id",
+          "paper_id",
+          "publication",
+          "source_records",
+          "title",
+          "venue"
+        ]
+      },
+      "missing_by_venue": {
+        "ICSE2026": [],
+        "FSE2026": [],
+        "ISSTA2026": [],
+        "ASE2025": []
+      }
+    },
+    "publication_keys": {
+      "union": [
+        "artifact_url",
+        "code_urls",
+        "data_urls",
+        "doi",
+        "media_url",
+        "officially_listed_links",
+        "paper_url",
+        "pdf_url",
+        "preprint_url",
+        "publisher_url",
+        "unclassified_official_link_urls"
+      ],
+      "by_venue": {
+        "ICSE2026": [
+          "artifact_url",
+          "code_urls",
+          "data_urls",
+          "doi",
+          "media_url",
+          "pdf_url",
+          "preprint_url",
+          "publisher_url"
+        ],
+        "FSE2026": [
+          "artifact_url",
+          "code_urls",
+          "data_urls",
+          "doi",
+          "media_url",
+          "officially_listed_links",
+          "paper_url",
+          "pdf_url",
+          "preprint_url",
+          "publisher_url",
+          "unclassified_official_link_urls"
+        ],
+        "ISSTA2026": [
+          "artifact_url",
+          "code_urls",
+          "data_urls",
+          "doi",
+          "media_url",
+          "officially_listed_links",
+          "paper_url",
+          "pdf_url",
+          "preprint_url",
+          "publisher_url",
+          "unclassified_official_link_urls"
+        ],
+        "ASE2025": [
+          "artifact_url",
+          "code_urls",
+          "data_urls",
+          "doi",
+          "media_url",
+          "officially_listed_links",
+          "paper_url",
+          "pdf_url",
+          "preprint_url",
+          "publisher_url",
+          "unclassified_official_link_urls"
+        ]
+      },
+      "missing_by_venue": {
+        "ICSE2026": [
+          "officially_listed_links",
+          "paper_url",
+          "unclassified_official_link_urls"
+        ],
+        "FSE2026": [],
+        "ISSTA2026": [],
+        "ASE2025": []
+      }
+    },
+    "corpus_status_keys": {
+      "union": [
+        "decision_reason",
+        "duplicate_of",
+        "inclusion_status",
+        "taxonomy_assignment",
+        "taxonomy_categories"
+      ],
+      "by_venue": {
+        "ICSE2026": [
+          "decision_reason",
+          "duplicate_of",
+          "inclusion_status",
+          "taxonomy_assignment",
+          "taxonomy_categories"
+        ],
+        "FSE2026": [
+          "decision_reason",
+          "duplicate_of",
+          "inclusion_status",
+          "taxonomy_assignment",
+          "taxonomy_categories"
+        ],
+        "ISSTA2026": [
+          "decision_reason",
+          "duplicate_of",
+          "inclusion_status",
+          "taxonomy_assignment",
+          "taxonomy_categories"
+        ],
+        "ASE2025": [
+          "decision_reason",
+          "duplicate_of",
+          "inclusion_status",
+          "taxonomy_assignment",
+          "taxonomy_categories"
+        ]
+      },
+      "missing_by_venue": {
+        "ICSE2026": [],
+        "FSE2026": [],
+        "ISSTA2026": [],
+        "ASE2025": []
+      }
+    },
+    "access_and_verification_keys": {
+      "union": [
+        "abstract",
+        "artifact_code_data",
+        "authors",
+        "official_detail",
+        "official_listing",
+        "preprint_or_paper_link",
+        "publication_link"
+      ],
+      "by_venue": {
+        "ICSE2026": [
+          "abstract",
+          "artifact_code_data",
+          "authors",
+          "official_detail",
+          "official_listing",
+          "preprint_or_paper_link",
+          "publication_link"
+        ],
+        "FSE2026": [
+          "abstract",
+          "artifact_code_data",
+          "authors",
+          "official_detail",
+          "official_listing",
+          "preprint_or_paper_link",
+          "publication_link"
+        ],
+        "ISSTA2026": [
+          "abstract",
+          "artifact_code_data",
+          "authors",
+          "official_detail",
+          "official_listing",
+          "preprint_or_paper_link",
+          "publication_link"
+        ],
+        "ASE2025": [
+          "abstract",
+          "artifact_code_data",
+          "authors",
+          "official_detail",
+          "official_listing",
+          "preprint_or_paper_link",
+          "publication_link"
+        ]
+      },
+      "missing_by_venue": {
+        "ICSE2026": [],
+        "FSE2026": [],
+        "ISSTA2026": [],
+        "ASE2025": []
+      }
+    },
+    "source_record_keys": {
+      "union": [
+        "access_status",
+        "accessed_at",
+        "source_locator",
+        "source_type",
+        "supports",
+        "url"
+      ],
+      "by_venue": {
+        "ICSE2026": [
+          "access_status",
+          "accessed_at",
+          "source_locator",
+          "source_type",
+          "supports",
+          "url"
+        ],
+        "FSE2026": [
+          "access_status",
+          "accessed_at",
+          "source_locator",
+          "source_type",
+          "supports",
+          "url"
+        ],
+        "ISSTA2026": [
+          "access_status",
+          "accessed_at",
+          "source_locator",
+          "source_type",
+          "supports",
+          "url"
+        ],
+        "ASE2025": [
+          "access_status",
+          "accessed_at",
+          "source_locator",
+          "source_type",
+          "supports",
+          "url"
+        ]
+      },
+      "missing_by_venue": {
+        "ICSE2026": [],
+        "FSE2026": [],
+        "ISSTA2026": [],
+        "ASE2025": []
+      }
+    },
+    "required_key_presence": {
+      "root": [
+        {
+          "key": "paper_id",
+          "missing_record_count": 0
+        },
+        {
+          "key": "official_event_id",
+          "missing_record_count": 0
+        },
+        {
+          "key": "title",
+          "missing_record_count": 0
+        },
+        {
+          "key": "authors",
+          "missing_record_count": 0
+        },
+        {
+          "key": "venue",
+          "missing_record_count": 0
+        },
+        {
+          "key": "publication",
+          "missing_record_count": 0
+        },
+        {
+          "key": "abstract",
+          "missing_record_count": 0
+        },
+        {
+          "key": "abstract_status",
+          "missing_record_count": 0
+        },
+        {
+          "key": "source_records",
+          "missing_record_count": 0
+        },
+        {
+          "key": "corpus_status",
+          "missing_record_count": 0
+        },
+        {
+          "key": "access_and_verification",
+          "missing_record_count": 0
+        },
+        {
+          "key": "notes",
+          "missing_record_count": 0
+        }
+      ],
+      "publication_union": [
+        {
+          "key": "doi",
+          "missing_record_count": 0
+        },
+        {
+          "key": "publisher_url",
+          "missing_record_count": 0
+        },
+        {
+          "key": "pdf_url",
+          "missing_record_count": 0
+        },
+        {
+          "key": "paper_url",
+          "missing_record_count": 321
+        },
+        {
+          "key": "preprint_url",
+          "missing_record_count": 0
+        },
+        {
+          "key": "artifact_url",
+          "missing_record_count": 0
+        },
+        {
+          "key": "code_urls",
+          "missing_record_count": 0
+        },
+        {
+          "key": "data_urls",
+          "missing_record_count": 0
+        },
+        {
+          "key": "media_url",
+          "missing_record_count": 0
+        },
+        {
+          "key": "officially_listed_links",
+          "missing_record_count": 321
+        },
+        {
+          "key": "unclassified_official_link_urls",
+          "missing_record_count": 321
+        }
+      ],
+      "access_and_verification": [
+        {
+          "key": "official_listing",
+          "missing_record_count": 0
+        },
+        {
+          "key": "authors",
+          "missing_record_count": 0
+        },
+        {
+          "key": "official_detail",
+          "missing_record_count": 0
+        },
+        {
+          "key": "publication_link",
+          "missing_record_count": 0
+        },
+        {
+          "key": "preprint_or_paper_link",
+          "missing_record_count": 0
+        },
+        {
+          "key": "artifact_code_data",
+          "missing_record_count": 0
+        },
+        {
+          "key": "abstract",
+          "missing_record_count": 0
+        }
+      ]
+    },
+    "enum_values": {
+      "inclusion_status": [
+        "included"
+      ],
+      "taxonomy_assignment_claim_type": [
+        "agent_inference"
+      ],
+      "taxonomy_categories": [
+        "AI_FOR_SOFTWARE_ENGINEERING",
+        "BUILD_RELEASE_OPERATIONS",
+        "EMPIRICAL_SOCIO_TECHNICAL_SE",
+        "MAINTENANCE_EVOLUTION_QUALITY",
+        "PROGRAM_ANALYSIS_SECURITY_PRIVACY",
+        "REQUIREMENTS_DESIGN_ARCHITECTURE",
+        "TESTING_VERIFICATION_DEBUGGING",
+        "UNCLASSIFIED_TITLE_AND_ABSTRACT"
+      ],
+      "categories_not_in_config_initial_taxonomy": [
+        "UNCLASSIFIED_TITLE_AND_ABSTRACT"
+      ],
+      "abstract_status": [
+        "verified_from_official_event_details"
+      ],
+      "source_type": [
+        "official_detail",
+        "official_program",
+        "official_program_link"
+      ],
+      "source_access_status": [
+        "accessed",
+        "not_fetched"
+      ],
+      "access_and_verification_values": {
+        "official_listing": [
+          "verified"
+        ],
+        "authors": [
+          "verified_from_official_listing"
+        ],
+        "official_detail": [
+          "verified"
+        ],
+        "publication_link": [
+          "listed_by_official_program_not_fetched",
+          "not_listed"
+        ],
+        "preprint_or_paper_link": [
+          "listed_by_official_program_not_fetched",
+          "not_listed"
+        ],
+        "artifact_code_data": [
+          "not_listed",
+          "official_links_listed_by_program_not_classified"
+        ],
+        "abstract": [
+          "verified_from_official_event_details"
+        ]
+      }
+    },
+    "unclassified_title_and_abstract_records": [
+      {
+        "paper_id": "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+        "title": "Improving NLSAT for Nonlinear Real Arithmetic",
+        "source_locator": "official event 42d58bec-87f0-454b-afed-e7ed96c013a4 / All Details / event description abstract"
+      },
+      {
+        "paper_id": "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+        "title": "Programmers’ Visual Attention on Function Call Graphs During Code Summarization",
+        "source_locator": "official event 9a773164-2d6e-490f-82b7-46dd178e64d2 / All Details / event description abstract"
+      },
+      {
+        "paper_id": "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies",
+        "title": "RELIA: Accelerating Analysis of Cloud Access Control Policies",
+        "source_locator": "official event 4a55753a-9fff-46a3-b562-5dbf0a74c9d9 / All Details / event description abstract"
+      }
+    ]
+  },
+  "links_and_follow_up": {
+    "claim_type": "direct_evidence",
+    "by_venue": {
+      "ICSE2026": {
+        "official_sources_accessed": 642,
+        "official_external_targets_not_fetched": 130,
+        "non_accessed_source_statuses": {},
+        "doi_present": 18,
+        "preprint_present": 112,
+        "artifact_present": 0,
+        "code_present": 0,
+        "data_present": 0,
+        "unclassified_official_link_count": 0
+      },
+      "FSE2026": {
+        "official_sources_accessed": 422,
+        "official_external_targets_not_fetched": 187,
+        "non_accessed_source_statuses": {},
+        "doi_present": 39,
+        "preprint_present": 124,
+        "artifact_present": 0,
+        "code_present": 0,
+        "data_present": 0,
+        "unclassified_official_link_count": 9
+      },
+      "ISSTA2026": {
+        "official_sources_accessed": 420,
+        "official_external_targets_not_fetched": 5,
+        "non_accessed_source_statuses": {},
+        "doi_present": 0,
+        "preprint_present": 4,
+        "artifact_present": 0,
+        "code_present": 0,
+        "data_present": 0,
+        "unclassified_official_link_count": 0
+      },
+      "ASE2025": {
+        "official_sources_accessed": 492,
+        "official_external_targets_not_fetched": 74,
+        "non_accessed_source_statuses": {},
+        "doi_present": 3,
+        "preprint_present": 54,
+        "artifact_present": 0,
+        "code_present": 0,
+        "data_present": 0,
+        "unclassified_official_link_count": 4
+      }
+    },
+    "inaccessible_or_unparsed_official_details": [],
+    "acceptable_now": {
+      "claim_type": "agent_inference",
+      "statement": "The 396 external targets marked not_fetched are acceptable for this inventory audit because every official listing and official detail source is accessed and the target URLs are retained; this stage prohibits bulk external retrieval.",
+      "supporting_evidence": {
+        "official_external_targets_not_fetched": 396,
+        "official_listing_and_detail_records": 1976
+      }
+    },
+    "requires_follow_up_in_later_deep_read_if_selected": {
+      "claim_type": "agent_inference",
+      "statement": "The listed official link labels have no controlled publication/artifact/code/data type. Resolve their semantics only for papers selected for later deep reading; do not infer types from the URL alone.",
+      "records": [
+        {
+          "paper_id": "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/185/Accelerating-Policy-Synthesis-in-Large-Scale-MDPs-via-Hierarchical-Adaptive-Refinemen",
+          "source_locator": "official event 466421ac-15d0-4f8a-9e35-19b79fd1ce3e / All Details"
+        },
+        {
+          "paper_id": "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/92/Active-Learning-of-Symbolic-Automata-for-Reactive-Programs-via-Dynamic-Symbolic-Mappe",
+          "source_locator": "official event 41c26308-95eb-449b-a46b-0e3032331fce / All Details"
+        },
+        {
+          "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/54/Evaluating-LLM-based-Regression-Test-Generation",
+          "source_locator": "official event 089f8d15-3c93-475e-ac0e-1869dd3d32c7 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/164/LinkAnchor-An-Autonomous-LLM-Based-Agent-for-Issue-to-Commit-Link-Recovery",
+          "source_locator": "official event 5ea7069c-41f3-406b-8e53-6dc98bc1dc78 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/4/PlayCoder-Making-LLM-Generated-GUI-Code-Playable",
+          "source_locator": "official event 811daa74-b3f0-4928-9620-301d841c7de8 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_property-refinement-in-linear-temporal-logic-formal-semantics-and-algori",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/50/Property-Refinement-in-Linear-Temporal-Logic-Formal-Semantics-and-Algorithms-for-Sof",
+          "source_locator": "official event 08fe3d67-d73e-4b42-9fab-4a0e58fe1254 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/162/Verifying-Structural-Robustness-of-Deep-Neural-Network",
+          "source_locator": "official event c392238a-6170-459e-a568-a0225612c4e7 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+          "venue_id": "FSE2026",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/59/VulInstruct-Teaching-LLMs-Root-Cause-Reasoning-for-Vulnerability-Detection-via-Secur",
+          "source_locator": "official event 36993e6e-ed1c-430e-885b-1140f5b6e740 / All Details"
+        },
+        {
+          "paper_id": "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+          "venue_id": "FSE2026",
+          "label": "Authorizer link",
+          "url": "https://scholar.google.com/citations?user=0cbAxZQAAAAJ&hl=en",
+          "source_locator": "official event 32f001e5-a1e9-4ff0-a4ec-98e0b72570e4 / Authorizer link link"
+        },
+        {
+          "paper_id": "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+          "venue_id": "ASE2025",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/10/Do-LLMs-Generate-Useful-Test-Oracles-An-Empirical-Study-with-an-Unbiased-Dataset",
+          "source_locator": "official event 6fd47d33-880d-49d9-bd80-90f66b26422e / All Details"
+        },
+        {
+          "paper_id": "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+          "venue_id": "ASE2025",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/166/RFCScope-Detecting-Logical-Ambiguities-in-Internet-Protocol-Specifications",
+          "source_locator": "official event 63a33bf8-6247-4042-85f4-3616fb896e72 / All Details"
+        },
+        {
+          "paper_id": "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+          "venue_id": "ASE2025",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/25/Speculative-Automated-Refactoring-of-Imperative-Deep-Learning-Programs-to-Graph-Execu",
+          "source_locator": "official event 3d148724-4d15-4242-b201-cc8646931b9b / All Details"
+        },
+        {
+          "paper_id": "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+          "venue_id": "ASE2025",
+          "label": "File Attached",
+          "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/168/What-s-DAT-Smell-Untangling-and-Weaving-the-Disjoint-Assertion-Tangle-Test-Smell",
+          "source_locator": "official event 2d45715c-e9d4-4322-81f7-cc0e2b40be97 / All Details"
+        }
+      ]
+    },
+    "requires_field_mapping_reconciliation": {
+      "claim_type": "agent_inference",
+      "statement": "These records retain official abstracts but have the provisional sentinel category UNCLASSIFIED_TITLE_AND_ABSTRACT. Reconcile them during FIELD_MAPPING before category-level conclusions.",
+      "records": [
+        {
+          "paper_id": "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+          "title": "Improving NLSAT for Nonlinear Real Arithmetic"
+        },
+        {
+          "paper_id": "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+          "title": "Programmers’ Visual Attention on Function Call Graphs During Code Summarization"
+        },
+        {
+          "paper_id": "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies",
+          "title": "RELIA: Accelerating Analysis of Cloud Access Control Policies"
+        }
+      ]
+    },
+    "blocking_issues": []
+  },
+  "phase_gate": {
+    "claim_type": "agent_inference",
+    "statement": "The audit found no corpus-integrity, scope, source-traceability, or cross-venue duplicate signal that blocks FIELD_MAPPING. The ICSE optional publication-field variance and three ASE provisional unclassified categories are explicitly preserved in the merged index and require non-blocking reconciliation during FIELD_MAPPING.",
+    "supporting_evidence": {
+      "blocking_signal_count": 0,
+      "missing_official_event_record_count": 0,
+      "local_record_not_in_baseline_count": 0,
+      "cross_venue_exact_title_and_author_candidate_count": 0,
+      "cross_venue_shared_doi_candidate_count": 0,
+      "cross_venue_formal_preprint_candidate_count": 0
+    },
+    "allowed_to_enter_field_mapping": true
+  },
+  "generated_files": {
+    "merged_index_path": "corpus/cross-venue-research-paper-index.jsonl",
+    "audit_report_path": "reports/cross-venue-corpus-audit-report.json"
+  }
+}
