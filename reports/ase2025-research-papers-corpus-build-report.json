@@ -1,0 +1,893 @@
+{
+  "venue_id": "ASE2025",
+  "scope": "ASE 2025 Research Papers only",
+  "claim_type": "direct_evidence",
+  "source_locator": "https://conf.researchr.org/track/ase-2025/ase-2025-papers / Accepted Papers tab",
+  "official_accepted_count": 246,
+  "local_corpus_record_count": 246,
+  "coverage": {
+    "numerator": 246,
+    "denominator": 246,
+    "percentage": 100
+  },
+  "coverage_validation": {
+    "method": "direct_evidence: compare each official accepted-paper event record with the locally generated corpus record; compare titles, ordered author strings, official link labels, and official DOI/pre-print fields without fetching external targets.",
+    "missing_official_event_records": [],
+    "local_records_not_in_official_baseline": [],
+    "title_mismatches": [],
+    "author_mismatches": [],
+    "duplicate_local_paper_ids": [],
+    "duplicate_local_official_event_ids": [],
+    "missing_official_links": [],
+    "source_conflicts": []
+  },
+  "fields": {
+    "title": 246,
+    "authors": 246,
+    "official_source": 246,
+    "official_detail_page": 246,
+    "doi_or_publisher_link": 3,
+    "paper_or_pdf_link": 5,
+    "preprint_link": 54,
+    "abstract": 246,
+    "artifact_or_media_link": 8,
+    "code_link": 0,
+    "data_link": 0,
+    "unclassified_official_link": 4
+  },
+  "unavailable_or_pending": {
+    "abstracts": [],
+    "official_detail_fetch_failures": [],
+    "papers": [
+      "ASE2025_my-productivity-is-boosted-but-demystifying-users-perception-on-ai-codin",
+      "ASE2025_a-large-scale-study-of-ai-based-binary-function-similarity-detection-tec",
+      "ASE2025_a-multi-modality-evaluation-of-the-reality-gap-in-autonomous-driving-sys",
+      "ASE2025_actaint-agent-based-taint-analysis-for-access-control-vulnerabilities-in",
+      "ASE2025_adapteval-a-benchmark-for-evaluating-large-language-models-on-code-snipp",
+      "ASE2025_adperf-investigating-and-testing-performance-in-autonomous-driving-syste",
+      "ASE2025_advancing-automated-ethical-profiling-in-se-a-zero-shot-evaluation-of-ll",
+      "ASE2025_advancing-binary-code-similarity-detection-via-context-content-fusion-an",
+      "ASE2025_agentic-specification-generator-for-move-programs",
+      "ASE2025_agents-in-the-sandbox-end-to-end-crash-bug-reproduction-for-minecraft",
+      "ASE2025_alertguardian-intelligent-alert-life-cycle-management-for-large-scale-cl",
+      "ASE2025_algernon-a-flag-guided-hybrid-fuzzer-for-unlocking-hidden-program-paths",
+      "ASE2025_aligncoder-aligning-retrieval-with-target-intent-for-repository-level-co",
+      "ASE2025_aligning-llms-to-fully-utilize-the-cross-file-context-in-repository-leve",
+      "ASE2025_altered-histories-in-version-control-system-repositories-evidence-from-t",
+      "ASE2025_ample-fine-grained-file-access-policies-for-server-applications",
+      "ASE2025_amur-fixing-multi-resource-leaks-guided-by-resource-flow-analysis",
+      "ASE2025_an-agent-based-evaluation-framework-for-complex-code-generation",
+      "ASE2025_an-empirical-study-of-knowledge-transfer-in-ai-pair-programming",
+      "ASE2025_an-empirical-study-of-python-library-migration-using-large-language-mode",
+      "ASE2025_an-llm-based-multi-agent-framework-for-agile-effort-estimation",
+      "ASE2025_appbds-llm-powered-description-synthesis-for-sensitive-behaviors-in-mobi",
+      "ASE2025_arg-testing-query-rewriters-via-abstract-rule-guided-fuzzing",
+      "ASE2025_argus-resilience-oriented-safety-assurance-framework-for-end-to-end-adss",
+      "ASE2025_autofid-adaptive-and-noise-aware-fidelity-measurement-for-quantum-progra",
+      "ASE2025_automated-combinatorial-test-generation-for-alloy",
+      "ASE2025_automated-detection-of-web-application-navigation-barriers-for-screen-re",
+      "ASE2025_automated-generation-of-issue-reproducing-tests-by-combining-llms-and-se",
+      "ASE2025_automated-inline-comment-smell-detection-and-repair-with-large-language-",
+      "ASE2025_automated-insertion-of-flushes-and-fences-for-persistency",
+      "ASE2025_automated-repair-of-ambiguous-problem-descriptions-for-llm-based-code-ge",
+      "ASE2025_automated-repair-of-openid-connect-programs",
+      "ASE2025_automatic-fixing-of-missing-dependency-errors",
+      "ASE2025_backdoors-in-code-summarizers-how-bad-is-it",
+      "ASE2025_bcfuzz-bytecode-driven-fuzzing-for-javascript-engines",
+      "ASE2025_belief-propagation-with-local-structure-and-its-applications-in-program-",
+      "ASE2025_better-safe-than-sorry-preventing-policy-violations-through-predictive-r",
+      "ASE2025_beyond-static-gui-agent-evolving-llm-based-gui-testing-via-dynamic-memor",
+      "ASE2025_binstruct-binary-structure-recovery-combining-static-analysis-and-semant",
+      "ASE2025_breaking-the-traffic-barrier-unveiling-multi-format-of-protocols-via-aut",
+      "ASE2025_can-mamba-be-better-an-experimental-evaluation-of-mamba-in-code-intellig",
+      "ASE2025_characterizing-and-repairing-color-related-accessibility-issues-in-andro",
+      "ASE2025_characterizing-multi-hunk-patches-divergence-proximity-and-llm-repair-ch",
+      "ASE2025_clarifying-semantics-of-in-context-examples-for-unit-test-generation",
+      "ASE2025_code-diting-automatic-evaluation-of-code-generation-without-references-o",
+      "ASE2025_coding-fuse-efficient-fusion-of-code-pre-trained-models-for-classificati",
+      "ASE2025_collaborlog-efficient-generalizable-log-anomaly-detection-via-large-smal",
+      "ASE2025_comprehend-imitate-and-then-update-unleashing-the-power-of-llms-in-test-",
+      "ASE2025_cotune-co-evolutionary-configuration-tuning",
+      "ASE2025_coverage-based-harmfulness-testing-for-llm-code-transformation",
+      "ASE2025_cross2oh-enabling-seamless-porting-of-c-c-software-libraries-to-openharm",
+      "ASE2025_cryptbara-dependency-guided-detection-of-python-cryptographic-api-misuse",
+      "ASE2025_debcovdiff-differential-testing-of-coverage-measurement-tools-on-real-wo",
+      "ASE2025_debun-detecting-bundled-javascript-libraries-on-web-using-property-order",
+      "ASE2025_deepexploitor-llm-enhanced-automated-exploitation-of-deeplink-attack-in-",
+      "ASE2025_defects4c-benchmarking-large-language-model-repair-capability-with-c-c-b",
+      "ASE2025_defects4log-benchmarking-llms-for-logging-code-defect-detection-and-reas",
+      "ASE2025_democratizing-the-cryptocurrency-ecosystem-by-just-in-time-transformatio",
+      "ASE2025_demystifying-cookie-sharing-risks-in-webview-based-mobile-app-in-app-eco",
+      "ASE2025_demystifying-cross-language-c-c-binaries-a-robust-software-component-ana",
+      "ASE2025_demystifying-openzeppelin-s-own-vulnerabilities-and-analyzing-their-prop",
+      "ASE2025_demystifying-the-evolution-of-neural-networks-with-bom-analysis-insights",
+      "ASE2025_destabilizing-neurons-to-generate-challenging-neural-network-verificatio",
+      "ASE2025_detecting-semantic-clones-of-unseen-functionality",
+      "ASE2025_detecting-various-defi-price-manipulations-with-llm-reasoning",
+      "ASE2025_diagnosing-performance-differences-in-model-checkers-via-runtime-guided-",
+      "ASE2025_difffix-incrementally-fixing-ast-diffs-via-context-and-type-information",
+      "ASE2025_diplomatist-what-do-cross-language-dependencies-reflect-software-ecosyst",
+      "ASE2025_dlbench-a-comprehensive-benchmark-for-sql-translation-with-large-languag",
+      "ASE2025_dnafuzz-descriptor-aware-fuzzing-for-usb-drivers",
+      "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+      "ASE2025_don-t-mess-with-bro-s-cheese-an-empirical-study-of-resource-conflict-in-",
+      "ASE2025_draincode-stealthy-energy-consumption-attacks-on-retrieval-augmented-cod",
+      "ASE2025_drift-debug-based-trace-inference-for-firmware-testing",
+      "ASE2025_dualfuzz-detecting-vulnerability-in-wi-fi-nics-through-dual-directional-",
+      "ASE2025_editfusion-resolving-code-merge-conflicts-via-edit-selection",
+      "ASE2025_effective-code-membership-inference-for-code-completion-models-via-adver",
+      "ASE2025_efficient-and-verifiable-proof-logging-for-maxsat-solving",
+      "ASE2025_efficient-understanding-of-machine-learning-model-mispredictions",
+      "ASE2025_efficientedit-accelerating-code-editing-via-edit-oriented-speculative-de",
+      "ASE2025_enhancing-llm-to-decompile-optimized-ptx-to-readable-cuda-for-tensor-pro",
+      "ASE2025_enhancing-llm-s-ability-to-generate-more-repository-aware-unit-tests-thr",
+      "ASE2025_enhancing-llms-with-staged-grouping-and-dehallucination-for-header-file-",
+      "ASE2025_epso-a-caching-based-efficient-superoptimizer-for-bpf-bytecode",
+      "ASE2025_evaluating-and-improving-framework-based-parallel-code-completion-with-l",
+      "ASE2025_evolution-aware-heuristics-for-gr-1-realizability-checking",
+      "ASE2025_exact-inference-for-quantum-circuits-a-testing-oracle-for-quantum-softwa",
+      "ASE2025_execution-aware-program-reduction-for-webassembly-via-record-and-replay",
+      "ASE2025_explainable-fault-localization-for-programming-assignments-via-llm-guide",
+      "ASE2025_exploring-static-taint-analysis-in-llms-a-dynamic-benchmarking-framework",
+      "ASE2025_fact-aligned-and-template-constrained-static-analyzer-rule-enhancement-w",
+      "ASE2025_failmapper-automated-generation-of-unit-tests-guided-by-failure-scenario",
+      "ASE2025_fastcoder-accelerating-repository-level-code-generation-via-efficient-re",
+      "ASE2025_faster-runtime-verification-during-testing-via-feedback-guided-selective",
+      "ASE2025_faultseeker-llm-empowered-framework-for-blockchain-transaction-fault-loc",
+      "ASE2025_fgit-fault-guided-fine-tuning-for-code-generation",
+      "ASE2025_finding-bugs-in-mlir-compiler-infrastructure-via-lowering-space-explorat",
+      "ASE2025_finding-bugs-in-webassembly-interface-type-binding-generators",
+      "ASE2025_finding-insecure-state-dependency-in-dapps-via-multi-source-tracing-and-",
+      "ASE2025_firmproj-detecting-firmware-leakage-in-iot-update-processes-via-companio",
+      "ASE2025_fixing-broken-graphs-llm-powered-automatic-code-optimization-for-dnn-pro",
+      "ASE2025_flakyguard-automatically-fixing-flaky-tests-at-industry-scale",
+      "ASE2025_forcrat-automatic-i-o-api-translation-from-c-to-rust-via-origin-and-capa",
+      "ASE2025_from-characters-to-structure-rethinking-real-time-collaborative-programm",
+      "ASE2025_from-sparse-to-structured-a-diffusion-enhanced-and-feature-aligned-frame",
+      "ASE2025_function-clustering-based-fuzzing-termination-toward-smarter-early-stopp",
+      "ASE2025_generating-failure-based-oracles-to-support-testing-of-reported-bugs-in-",
+      "ASE2025_glasswing-a-tailored-static-analysis-approach-for-flutter-android-apps",
+      "ASE2025_guifuzz-unleashing-grey-box-fuzzing-on-desktop-graphical-user-interfacin",
+      "ASE2025_have-we-solved-access-control-vulnerability-detection-in-smart-contracts",
+      "ASE2025_hfuzzer-testing-large-language-models-for-package-hallucinations-via-phr",
+      "ASE2025_hierarchical-knowledge-injection-for-improving-llm-based-program-repair",
+      "ASE2025_hit-the-bullseye-on-the-first-shot-improving-llms-using-multi-sample-sel",
+      "ASE2025_how-big-is-the-automaton-certified-lower-bounds-on-the-size-of-presburge",
+      "ASE2025_hybridsimd-a-super-c-simd-library-with-integrated-auto-tuning-capabiliti",
+      "ASE2025_hypergraph-neural-network-based-multi-granular-root-cause-localization-f",
+      "ASE2025_iknow-an-intent-guided-chatbot-for-cloud-operations-with-retrieval-augme",
+      "ASE2025_improving-llm-based-log-parsing-by-learning-from-errors-in-reasoning-tra",
+      "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+      "ASE2025_imufuzzer-resilience-based-discovery-of-signal-injection-attacks-on-robo",
+      "ASE2025_incremental-program-analysis-in-the-wild-an-empirical-study-on-real-worl",
+      "ASE2025_interaction2code-benchmarking-mllm-based-interactive-webpage-code-genera",
+      "ASE2025_interleaved-learning-and-exploration-a-self-adaptive-fuzz-testing-framew",
+      "ASE2025_interpretable-vulnerability-detection-reports",
+      "ASE2025_issue-localization-via-llm-driven-iterative-code-graph-searching",
+      "ASE2025_it-s-not-easy-being-green-on-the-energy-efficiency-of-programming-langua",
+      "ASE2025_lares-llm-driven-code-slice-semantic-search-for-patch-presence-testing",
+      "ASE2025_latra-a-template-based-language-agnostic-transformation-framework-for-ef",
+      "ASE2025_laura-enhancing-code-review-generation-with-context-enriched-retrieval-a",
+      "ASE2025_learning-from-the-past-real-world-exploit-migration-for-smart-contract-p",
+      "ASE2025_learning-project-wise-subsequent-code-edits-via-interleaving-neural-base",
+      "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method",
+      "ASE2025_leveraging-mixture-of-experts-framework-for-smart-contract-vulnerability",
+      "ASE2025_linebreaker-finding-token-inconsistency-bugs-using-large-language-models",
+      "ASE2025_llm-assisted-synthesis-of-high-assurance-c-programs",
+      "ASE2025_llm-based-identification-of-null-pointer-exception-patches",
+      "ASE2025_llm-powered-multi-agent-collaboration-for-intelligent-industrial-on-call",
+      "ASE2025_llmport-cross-file-patch-porting-via-task-decomposition-and-self-correct",
+      "ASE2025_llms-for-automated-unit-test-generation-and-assessment-in-java-the-agone",
+      "ASE2025_logaction-consistent-cross-system-anomaly-detection-through-logs-via-act",
+      "ASE2025_logmoe-lightweight-expert-mixture-for-cross-system-log-anomaly-detection",
+      "ASE2025_longcodezip-compress-long-context-for-code-language-models",
+      "ASE2025_losver-line-level-modifiability-signal-guided-vulnerability-detection-an",
+      "ASE2025_loupe-end-to-end-learning-of-loop-unrolling-heuristics-for-abstract-inte",
+      "ASE2025_lspfuzz-hunting-bugs-in-language-servers",
+      "ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-",
+      "ASE2025_metamorphic-testing-for-audio-content-moderation-software",
+      "ASE2025_mixture-of-experts-low-rank-adaptation-for-multilingual-code-summarizati",
+      "ASE2025_mockingbird-efficient-excessive-data-exposures-detection-via-dynamic-cod",
+      "ASE2025_multi-dimensional-assessment-of-crowdsourced-testing-reports-via-llms",
+      "ASE2025_nate-a-network-aware-testing-enhancer-for-network-related-fault-detectio",
+      "ASE2025_navigating-the-labyrinth-path-sensitive-unit-test-generation-with-large-",
+      "ASE2025_not-every-patch-is-an-island-llm-enhanced-identification-of-multiple-vul",
+      "ASE2025_on-automating-configuration-dependency-validation-via-retrieval-augmente",
+      "ASE2025_on-the-in-security-of-non-resettable-device-identifiers-in-custom-androi",
+      "ASE2025_on-the-correctness-of-software-merge",
+      "ASE2025_on-the-robustness-evaluation-of-3d-obstacle-detection-against-specificat",
+      "ASE2025_orfuzz-fuzzing-the-other-side-of-llm-safety-testing-over-refusal",
+      "ASE2025_palm-synergizing-program-analysis-and-llms-to-enhance-rust-unit-test-cov",
+      "ASE2025_pat-agent-autoformalization-for-model-checking",
+      "ASE2025_peace-towards-efficient-project-level-performance-optimization-via-hybri",
+      "ASE2025_policond-condition-aware-ontology-driven-llms-for-privacy-policy-analysi",
+      "ASE2025_polyglot-an-extensible-framework-to-benchmark-code-translation-with-llms",
+      "ASE2025_prefgen-a-preference-driven-methodology-for-secure-yet-gas-efficient-sma",
+      "ASE2025_profile-coverage-using-android-compilation-profiles-to-evaluate-dynamic-",
+      "ASE2025_profmal-detecting-malicious-npm-packages-by-the-synergy-between-static-a",
+      "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+      "ASE2025_promfuzz-leveraging-llm-driven-and-bug-oriented-composite-analysis-for-d",
+      "ASE2025_propagation-based-vulnerability-impact-assessment-for-software-supply-ch",
+      "ASE2025_protecting-source-code-privacy-when-hunting-memory-bugs",
+      "ASE2025_provable-fairness-repair-for-deep-neural-networks",
+      "ASE2025_pseudofix-refactoring-distorted-structures-in-decompiled-c-pseudocode",
+      "ASE2025_quanbench-benchmarking-quantum-code-generation-with-large-language-model",
+      "ASE2025_r3-bench-reproducible-real-world-reverse-engineering-dataset-for-symbol-",
+      "ASE2025_realisticcodebench-towards-more-realistic-evaluation-of-large-language-m",
+      "ASE2025_rechecking-recheck-requests-in-continuous-integration-an-empirical-study",
+      "ASE2025_reflective-unit-test-generation-for-precise-type-error-detection-with-la",
+      "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies",
+      "ASE2025_repairing-leaks-in-resource-wrappers",
+      "ASE2025_rfcaudit-ai-agent-for-auditing-protocol-implementations-against-rfc-spec",
+      "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+      "ASE2025_risk-estimation-in-differential-fuzzing-via-extreme-value-theory",
+      "ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning",
+      "ASE2025_rsfuzz-a-robustness-guided-swarm-fuzzing-framework-based-on-behavioral-c",
+      "ASE2025_rustassure-differential-symbolic-testing-for-llm-transpiled-c-to-rust-co",
+      "ASE2025_rustrepotrans-repository-level-context-code-translation-benchmark-target",
+      "ASE2025_satelight-a-satellite-application-update-framework-for-satellite-computi",
+      "ASE2025_satori-static-test-oracle-generation-for-rest-apis",
+      "ASE2025_scalecirc-scaling-the-analysis-over-circom-circuits",
+      "ASE2025_se-jury-an-llm-as-ensemble-judge-metric-for-narrowing-the-gap-with-human",
+      "ASE2025_security-debt-in-llm-agent-applications-a-measurement-study-of-vulnerabi",
+      "ASE2025_seeing-is-fixing-cross-modal-reasoning-with-multimodal-llms-for-visual-s",
+      "ASE2025_semguard-real-time-semantic-evaluator-for-correcting-llm-generated-code",
+      "ASE2025_sifting-truth-from-coincidences-a-two-stage-positive-and-unlabeled-learn",
+      "ASE2025_smtgazer-learning-to-schedule-smt-algorithms-via-bayesian-optimization",
+      "ASE2025_solcontracteval-a-benchmark-for-evaluating-contract-level-solidity-code-",
+      "ASE2025_soleker-uncovering-vulnerabilities-in-solana-smart-contracts",
+      "ASE2025_spec2code-mapping-software-specification-to-function-level-code-implemen",
+      "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+      "ASE2025_spice-an-automated-swe-bench-labeling-pipeline-for-issue-clarity-test-co",
+      "ASE2025_spinner-detecting-locking-violations-in-the-ebpf-runtime",
+      "ASE2025_ssr-safeguarding-staking-rewards-by-defining-and-detecting-logical-defec",
+      "ASE2025_state-field-coverage-a-metric-for-oracle-quality",
+      "ASE2025_tensorguard-gradient-based-model-fingerprinting-for-llm-similarity-detec",
+      "ASE2025_tephra-principled-discovery-of-fuzzer-limitations",
+      "ASE2025_terminator-enabling-efficient-fuzzing-of-closed-source-gui-programs-by-a",
+      "ASE2025_the-cost-of-downgrading-build-systems-a-case-study-of-kubernetes",
+      "ASE2025_the-fault-in-our-stats",
+      "ASE2025_token-sugar-making-source-code-sweeter-for-llms-through-token-efficient-",
+      "ASE2025_towards-generalizable-instruction-vulnerability-prediction-via-llm-enhan",
+      "ASE2025_towards-more-accurate-static-analysis-for-taint-style-bug-detection-in-l",
+      "ASE2025_triangle-empowering-incident-triage-with-multi-agent",
+      "ASE2025_uncovering-prompt-elements-cloning-system-prompts-from-behavioral-traces",
+      "ASE2025_understanding-feature-request-practice-on-github-via-a-large-scale-empir",
+      "ASE2025_understanding-resource-injection-vulnerabilities-in-kubernetes-ecosystem",
+      "ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu",
+      "ASE2025_unit-test-update-through-llm-driven-context-collection-and-error-type-aw",
+      "ASE2025_united-we-stand-towards-end-to-end-log-based-fault-diagnosis-via-interac",
+      "ASE2025_using-active-learning-to-train-predictive-mutation-testing-with-minimal-",
+      "ASE2025_using-fourier-analysis-and-mutant-clustering-to-accelerate-dnn-mutation-",
+      "ASE2025_veriexploit-automatic-bug-reproduction-in-smart-contracts-via-llms-and-f",
+      "ASE2025_vert-polyglot-verified-equivalent-rust-transpilation-with-large-language",
+      "ASE2025_vrexplorer-a-model-based-approach-for-automated-virtual-reality-scene-te",
+      "ASE2025_vrtestsniffer-test-smell-detector-for-virtual-reality-vr-software-projec",
+      "ASE2025_vul-r2-a-reasoning-llm-for-automated-vulnerability-repair",
+      "ASE2025_vulnerability-affected-versions-identification-how-far-are-we",
+      "ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe",
+      "ASE2025_west-specification-based-test-generation-for-webassembly",
+      "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+      "ASE2025_when-allclose-fails-round-off-error-estimation-for-deep-learning-program",
+      "ASE2025_when-autonomous-vehicle-meets-v2x-cooperative-perception-how-far-are-we",
+      "ASE2025_when-control-flows-deviate-directed-grey-box-fuzzing-with-probabilistic-",
+      "ASE2025_when-does-wasm-malware-detection-fail-a-systematic-analysis-of-their-rob",
+      "ASE2025_when-faster-isn-t-greener-the-hidden-costs-of-llm-based-code-optimizatio",
+      "ASE2025_which-is-better-for-reducing-outdated-and-vulnerable-dependencies-pinnin",
+      "ASE2025_who-s-to-blame-rethinking-the-brittleness-of-automated-web-gui-testing-f",
+      "ASE2025_why-ai-agents-still-need-you-findings-from-developer-agent-collaboration",
+      "ASE2025_why-is-my-transaction-risky-understanding-smart-contract-semantics-and-i",
+      "ASE2025_wired-for-reuse-automating-context-aware-code-adaptation-in-ides-via-llm",
+      "ASE2025_your-build-scripts-stink-the-state-of-code-smells-in-build-scripts",
+      "ASE2025_zenddiff-differential-testing-of-php-interpreter"
+    ],
+    "artifacts_code_data": [
+      "ASE2025_my-productivity-is-boosted-but-demystifying-users-perception-on-ai-codin",
+      "ASE2025_a-large-scale-study-of-ai-based-binary-function-similarity-detection-tec",
+      "ASE2025_a-multi-modality-evaluation-of-the-reality-gap-in-autonomous-driving-sys",
+      "ASE2025_actaint-agent-based-taint-analysis-for-access-control-vulnerabilities-in",
+      "ASE2025_adapteval-a-benchmark-for-evaluating-large-language-models-on-code-snipp",
+      "ASE2025_adperf-investigating-and-testing-performance-in-autonomous-driving-syste",
+      "ASE2025_advancing-automated-ethical-profiling-in-se-a-zero-shot-evaluation-of-ll",
+      "ASE2025_advancing-binary-code-similarity-detection-via-context-content-fusion-an",
+      "ASE2025_agentic-specification-generator-for-move-programs",
+      "ASE2025_agents-in-the-sandbox-end-to-end-crash-bug-reproduction-for-minecraft",
+      "ASE2025_alertguardian-intelligent-alert-life-cycle-management-for-large-scale-cl",
+      "ASE2025_algernon-a-flag-guided-hybrid-fuzzer-for-unlocking-hidden-program-paths",
+      "ASE2025_aligncoder-aligning-retrieval-with-target-intent-for-repository-level-co",
+      "ASE2025_aligning-llms-to-fully-utilize-the-cross-file-context-in-repository-leve",
+      "ASE2025_altered-histories-in-version-control-system-repositories-evidence-from-t",
+      "ASE2025_ample-fine-grained-file-access-policies-for-server-applications",
+      "ASE2025_amur-fixing-multi-resource-leaks-guided-by-resource-flow-analysis",
+      "ASE2025_an-agent-based-evaluation-framework-for-complex-code-generation",
+      "ASE2025_an-empirical-study-of-knowledge-transfer-in-ai-pair-programming",
+      "ASE2025_an-empirical-study-of-python-library-migration-using-large-language-mode",
+      "ASE2025_an-llm-based-multi-agent-framework-for-agile-effort-estimation",
+      "ASE2025_appbds-llm-powered-description-synthesis-for-sensitive-behaviors-in-mobi",
+      "ASE2025_arg-testing-query-rewriters-via-abstract-rule-guided-fuzzing",
+      "ASE2025_argus-resilience-oriented-safety-assurance-framework-for-end-to-end-adss",
+      "ASE2025_autofid-adaptive-and-noise-aware-fidelity-measurement-for-quantum-progra",
+      "ASE2025_automated-combinatorial-test-generation-for-alloy",
+      "ASE2025_automated-detection-of-web-application-navigation-barriers-for-screen-re",
+      "ASE2025_automated-generation-of-issue-reproducing-tests-by-combining-llms-and-se",
+      "ASE2025_automated-inline-comment-smell-detection-and-repair-with-large-language-",
+      "ASE2025_automated-insertion-of-flushes-and-fences-for-persistency",
+      "ASE2025_automated-repair-of-ambiguous-problem-descriptions-for-llm-based-code-ge",
+      "ASE2025_automated-repair-of-openid-connect-programs",
+      "ASE2025_automatic-fixing-of-missing-dependency-errors",
+      "ASE2025_backdoors-in-code-summarizers-how-bad-is-it",
+      "ASE2025_bcfuzz-bytecode-driven-fuzzing-for-javascript-engines",
+      "ASE2025_belief-propagation-with-local-structure-and-its-applications-in-program-",
+      "ASE2025_better-safe-than-sorry-preventing-policy-violations-through-predictive-r",
+      "ASE2025_beyond-static-gui-agent-evolving-llm-based-gui-testing-via-dynamic-memor",
+      "ASE2025_binstruct-binary-structure-recovery-combining-static-analysis-and-semant",
+      "ASE2025_breaking-the-traffic-barrier-unveiling-multi-format-of-protocols-via-aut",
+      "ASE2025_bridging-natural-language-and-formal-specification-automated-translation",
+      "ASE2025_can-mamba-be-better-an-experimental-evaluation-of-mamba-in-code-intellig",
+      "ASE2025_characterizing-and-repairing-color-related-accessibility-issues-in-andro",
+      "ASE2025_characterizing-multi-hunk-patches-divergence-proximity-and-llm-repair-ch",
+      "ASE2025_clarifying-semantics-of-in-context-examples-for-unit-test-generation",
+      "ASE2025_code-diting-automatic-evaluation-of-code-generation-without-references-o",
+      "ASE2025_coding-fuse-efficient-fusion-of-code-pre-trained-models-for-classificati",
+      "ASE2025_collaborlog-efficient-generalizable-log-anomaly-detection-via-large-smal",
+      "ASE2025_comprehend-imitate-and-then-update-unleashing-the-power-of-llms-in-test-",
+      "ASE2025_cotune-co-evolutionary-configuration-tuning",
+      "ASE2025_coverage-based-harmfulness-testing-for-llm-code-transformation",
+      "ASE2025_cross2oh-enabling-seamless-porting-of-c-c-software-libraries-to-openharm",
+      "ASE2025_cryptbara-dependency-guided-detection-of-python-cryptographic-api-misuse",
+      "ASE2025_debcovdiff-differential-testing-of-coverage-measurement-tools-on-real-wo",
+      "ASE2025_debun-detecting-bundled-javascript-libraries-on-web-using-property-order",
+      "ASE2025_deepexploitor-llm-enhanced-automated-exploitation-of-deeplink-attack-in-",
+      "ASE2025_defects4c-benchmarking-large-language-model-repair-capability-with-c-c-b",
+      "ASE2025_defects4log-benchmarking-llms-for-logging-code-defect-detection-and-reas",
+      "ASE2025_democratizing-the-cryptocurrency-ecosystem-by-just-in-time-transformatio",
+      "ASE2025_demystifying-cookie-sharing-risks-in-webview-based-mobile-app-in-app-eco",
+      "ASE2025_demystifying-cross-language-c-c-binaries-a-robust-software-component-ana",
+      "ASE2025_demystifying-openzeppelin-s-own-vulnerabilities-and-analyzing-their-prop",
+      "ASE2025_demystifying-the-evolution-of-neural-networks-with-bom-analysis-insights",
+      "ASE2025_destabilizing-neurons-to-generate-challenging-neural-network-verificatio",
+      "ASE2025_detecting-semantic-clones-of-unseen-functionality",
+      "ASE2025_detecting-various-defi-price-manipulations-with-llm-reasoning",
+      "ASE2025_diagnosing-performance-differences-in-model-checkers-via-runtime-guided-",
+      "ASE2025_difffix-incrementally-fixing-ast-diffs-via-context-and-type-information",
+      "ASE2025_diplomatist-what-do-cross-language-dependencies-reflect-software-ecosyst",
+      "ASE2025_dlbench-a-comprehensive-benchmark-for-sql-translation-with-large-languag",
+      "ASE2025_dnafuzz-descriptor-aware-fuzzing-for-usb-drivers",
+      "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+      "ASE2025_don-t-mess-with-bro-s-cheese-an-empirical-study-of-resource-conflict-in-",
+      "ASE2025_draincode-stealthy-energy-consumption-attacks-on-retrieval-augmented-cod",
+      "ASE2025_drift-debug-based-trace-inference-for-firmware-testing",
+      "ASE2025_dualfuzz-detecting-vulnerability-in-wi-fi-nics-through-dual-directional-",
+      "ASE2025_editfusion-resolving-code-merge-conflicts-via-edit-selection",
+      "ASE2025_effective-code-membership-inference-for-code-completion-models-via-adver",
+      "ASE2025_efficient-and-verifiable-proof-logging-for-maxsat-solving",
+      "ASE2025_efficient-understanding-of-machine-learning-model-mispredictions",
+      "ASE2025_efficientedit-accelerating-code-editing-via-edit-oriented-speculative-de",
+      "ASE2025_enhancing-llm-to-decompile-optimized-ptx-to-readable-cuda-for-tensor-pro",
+      "ASE2025_enhancing-llm-s-ability-to-generate-more-repository-aware-unit-tests-thr",
+      "ASE2025_enhancing-llms-with-staged-grouping-and-dehallucination-for-header-file-",
+      "ASE2025_epso-a-caching-based-efficient-superoptimizer-for-bpf-bytecode",
+      "ASE2025_evaluating-and-improving-framework-based-parallel-code-completion-with-l",
+      "ASE2025_evolution-aware-heuristics-for-gr-1-realizability-checking",
+      "ASE2025_exact-inference-for-quantum-circuits-a-testing-oracle-for-quantum-softwa",
+      "ASE2025_execution-aware-program-reduction-for-webassembly-via-record-and-replay",
+      "ASE2025_explainable-fault-localization-for-programming-assignments-via-llm-guide",
+      "ASE2025_exploring-static-taint-analysis-in-llms-a-dynamic-benchmarking-framework",
+      "ASE2025_fact-aligned-and-template-constrained-static-analyzer-rule-enhancement-w",
+      "ASE2025_failmapper-automated-generation-of-unit-tests-guided-by-failure-scenario",
+      "ASE2025_fastcoder-accelerating-repository-level-code-generation-via-efficient-re",
+      "ASE2025_faster-runtime-verification-during-testing-via-feedback-guided-selective",
+      "ASE2025_faultseeker-llm-empowered-framework-for-blockchain-transaction-fault-loc",
+      "ASE2025_fgit-fault-guided-fine-tuning-for-code-generation",
+      "ASE2025_finding-bugs-in-mlir-compiler-infrastructure-via-lowering-space-explorat",
+      "ASE2025_finding-bugs-in-webassembly-interface-type-binding-generators",
+      "ASE2025_finding-insecure-state-dependency-in-dapps-via-multi-source-tracing-and-",
+      "ASE2025_firmproj-detecting-firmware-leakage-in-iot-update-processes-via-companio",
+      "ASE2025_fixing-broken-graphs-llm-powered-automatic-code-optimization-for-dnn-pro",
+      "ASE2025_flakyguard-automatically-fixing-flaky-tests-at-industry-scale",
+      "ASE2025_forcrat-automatic-i-o-api-translation-from-c-to-rust-via-origin-and-capa",
+      "ASE2025_from-characters-to-structure-rethinking-real-time-collaborative-programm",
+      "ASE2025_from-sparse-to-structured-a-diffusion-enhanced-and-feature-aligned-frame",
+      "ASE2025_function-clustering-based-fuzzing-termination-toward-smarter-early-stopp",
+      "ASE2025_generating-failure-based-oracles-to-support-testing-of-reported-bugs-in-",
+      "ASE2025_glasswing-a-tailored-static-analysis-approach-for-flutter-android-apps",
+      "ASE2025_guifuzz-unleashing-grey-box-fuzzing-on-desktop-graphical-user-interfacin",
+      "ASE2025_have-we-solved-access-control-vulnerability-detection-in-smart-contracts",
+      "ASE2025_hfuzzer-testing-large-language-models-for-package-hallucinations-via-phr",
+      "ASE2025_hierarchical-knowledge-injection-for-improving-llm-based-program-repair",
+      "ASE2025_hit-the-bullseye-on-the-first-shot-improving-llms-using-multi-sample-sel",
+      "ASE2025_how-big-is-the-automaton-certified-lower-bounds-on-the-size-of-presburge",
+      "ASE2025_hybridsimd-a-super-c-simd-library-with-integrated-auto-tuning-capabiliti",
+      "ASE2025_hypergraph-neural-network-based-multi-granular-root-cause-localization-f",
+      "ASE2025_iknow-an-intent-guided-chatbot-for-cloud-operations-with-retrieval-augme",
+      "ASE2025_improving-llm-based-log-parsing-by-learning-from-errors-in-reasoning-tra",
+      "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+      "ASE2025_imufuzzer-resilience-based-discovery-of-signal-injection-attacks-on-robo",
+      "ASE2025_incremental-program-analysis-in-the-wild-an-empirical-study-on-real-worl",
+      "ASE2025_interaction2code-benchmarking-mllm-based-interactive-webpage-code-genera",
+      "ASE2025_interleaved-learning-and-exploration-a-self-adaptive-fuzz-testing-framew",
+      "ASE2025_interpretable-vulnerability-detection-reports",
+      "ASE2025_issue-localization-via-llm-driven-iterative-code-graph-searching",
+      "ASE2025_it-s-not-easy-being-green-on-the-energy-efficiency-of-programming-langua",
+      "ASE2025_lares-llm-driven-code-slice-semantic-search-for-patch-presence-testing",
+      "ASE2025_latra-a-template-based-language-agnostic-transformation-framework-for-ef",
+      "ASE2025_laura-enhancing-code-review-generation-with-context-enriched-retrieval-a",
+      "ASE2025_learning-from-the-past-real-world-exploit-migration-for-smart-contract-p",
+      "ASE2025_learning-project-wise-subsequent-code-edits-via-interleaving-neural-base",
+      "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method",
+      "ASE2025_leveraging-mixture-of-experts-framework-for-smart-contract-vulnerability",
+      "ASE2025_linebreaker-finding-token-inconsistency-bugs-using-large-language-models",
+      "ASE2025_llm-assisted-synthesis-of-high-assurance-c-programs",
+      "ASE2025_llm-based-identification-of-null-pointer-exception-patches",
+      "ASE2025_llm-powered-multi-agent-collaboration-for-intelligent-industrial-on-call",
+      "ASE2025_llmport-cross-file-patch-porting-via-task-decomposition-and-self-correct",
+      "ASE2025_llms-for-automated-unit-test-generation-and-assessment-in-java-the-agone",
+      "ASE2025_logaction-consistent-cross-system-anomaly-detection-through-logs-via-act",
+      "ASE2025_logmoe-lightweight-expert-mixture-for-cross-system-log-anomaly-detection",
+      "ASE2025_longcodezip-compress-long-context-for-code-language-models",
+      "ASE2025_losver-line-level-modifiability-signal-guided-vulnerability-detection-an",
+      "ASE2025_loupe-end-to-end-learning-of-loop-unrolling-heuristics-for-abstract-inte",
+      "ASE2025_lspfuzz-hunting-bugs-in-language-servers",
+      "ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-",
+      "ASE2025_metamorphic-testing-for-audio-content-moderation-software",
+      "ASE2025_mimic-integrating-diverse-personality-traits-for-better-game-testing-usi",
+      "ASE2025_mixture-of-experts-low-rank-adaptation-for-multilingual-code-summarizati",
+      "ASE2025_mockingbird-efficient-excessive-data-exposures-detection-via-dynamic-cod",
+      "ASE2025_multi-dimensional-assessment-of-crowdsourced-testing-reports-via-llms",
+      "ASE2025_nate-a-network-aware-testing-enhancer-for-network-related-fault-detectio",
+      "ASE2025_navigating-the-labyrinth-path-sensitive-unit-test-generation-with-large-",
+      "ASE2025_non-termination-witnesses-and-their-validation",
+      "ASE2025_not-every-patch-is-an-island-llm-enhanced-identification-of-multiple-vul",
+      "ASE2025_on-automating-configuration-dependency-validation-via-retrieval-augmente",
+      "ASE2025_on-the-in-security-of-non-resettable-device-identifiers-in-custom-androi",
+      "ASE2025_on-the-correctness-of-software-merge",
+      "ASE2025_on-the-robustness-evaluation-of-3d-obstacle-detection-against-specificat",
+      "ASE2025_orfuzz-fuzzing-the-other-side-of-llm-safety-testing-over-refusal",
+      "ASE2025_palm-synergizing-program-analysis-and-llms-to-enhance-rust-unit-test-cov",
+      "ASE2025_pat-agent-autoformalization-for-model-checking",
+      "ASE2025_peace-towards-efficient-project-level-performance-optimization-via-hybri",
+      "ASE2025_policond-condition-aware-ontology-driven-llms-for-privacy-policy-analysi",
+      "ASE2025_polyglot-an-extensible-framework-to-benchmark-code-translation-with-llms",
+      "ASE2025_prefgen-a-preference-driven-methodology-for-secure-yet-gas-efficient-sma",
+      "ASE2025_profile-coverage-using-android-compilation-profiles-to-evaluate-dynamic-",
+      "ASE2025_profmal-detecting-malicious-npm-packages-by-the-synergy-between-static-a",
+      "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+      "ASE2025_promfuzz-leveraging-llm-driven-and-bug-oriented-composite-analysis-for-d",
+      "ASE2025_propagation-based-vulnerability-impact-assessment-for-software-supply-ch",
+      "ASE2025_protecting-source-code-privacy-when-hunting-memory-bugs",
+      "ASE2025_provable-fairness-repair-for-deep-neural-networks",
+      "ASE2025_pseudofix-refactoring-distorted-structures-in-decompiled-c-pseudocode",
+      "ASE2025_quanbench-benchmarking-quantum-code-generation-with-large-language-model",
+      "ASE2025_r3-bench-reproducible-real-world-reverse-engineering-dataset-for-symbol-",
+      "ASE2025_realisticcodebench-towards-more-realistic-evaluation-of-large-language-m",
+      "ASE2025_rechecking-recheck-requests-in-continuous-integration-an-empirical-study",
+      "ASE2025_reflective-unit-test-generation-for-precise-type-error-detection-with-la",
+      "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies",
+      "ASE2025_repairing-leaks-in-resource-wrappers",
+      "ASE2025_rfcaudit-ai-agent-for-auditing-protocol-implementations-against-rfc-spec",
+      "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+      "ASE2025_risk-estimation-in-differential-fuzzing-via-extreme-value-theory",
+      "ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning",
+      "ASE2025_rsfuzz-a-robustness-guided-swarm-fuzzing-framework-based-on-behavioral-c",
+      "ASE2025_rustassure-differential-symbolic-testing-for-llm-transpiled-c-to-rust-co",
+      "ASE2025_rustrepotrans-repository-level-context-code-translation-benchmark-target",
+      "ASE2025_satelight-a-satellite-application-update-framework-for-satellite-computi",
+      "ASE2025_satori-static-test-oracle-generation-for-rest-apis",
+      "ASE2025_scalecirc-scaling-the-analysis-over-circom-circuits",
+      "ASE2025_se-jury-an-llm-as-ensemble-judge-metric-for-narrowing-the-gap-with-human",
+      "ASE2025_security-debt-in-llm-agent-applications-a-measurement-study-of-vulnerabi",
+      "ASE2025_seeing-is-fixing-cross-modal-reasoning-with-multimodal-llms-for-visual-s",
+      "ASE2025_semguard-real-time-semantic-evaluator-for-correcting-llm-generated-code",
+      "ASE2025_sifting-truth-from-coincidences-a-two-stage-positive-and-unlabeled-learn",
+      "ASE2025_smtgazer-learning-to-schedule-smt-algorithms-via-bayesian-optimization",
+      "ASE2025_solcontracteval-a-benchmark-for-evaluating-contract-level-solidity-code-",
+      "ASE2025_soleker-uncovering-vulnerabilities-in-solana-smart-contracts",
+      "ASE2025_spec2code-mapping-software-specification-to-function-level-code-implemen",
+      "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+      "ASE2025_spice-an-automated-swe-bench-labeling-pipeline-for-issue-clarity-test-co",
+      "ASE2025_spinner-detecting-locking-violations-in-the-ebpf-runtime",
+      "ASE2025_ssr-safeguarding-staking-rewards-by-defining-and-detecting-logical-defec",
+      "ASE2025_state-field-coverage-a-metric-for-oracle-quality",
+      "ASE2025_tensorguard-gradient-based-model-fingerprinting-for-llm-similarity-detec",
+      "ASE2025_tephra-principled-discovery-of-fuzzer-limitations",
+      "ASE2025_terminator-enabling-efficient-fuzzing-of-closed-source-gui-programs-by-a",
+      "ASE2025_the-cost-of-downgrading-build-systems-a-case-study-of-kubernetes",
+      "ASE2025_the-fault-in-our-stats",
+      "ASE2025_token-sugar-making-source-code-sweeter-for-llms-through-token-efficient-",
+      "ASE2025_towards-generalizable-instruction-vulnerability-prediction-via-llm-enhan",
+      "ASE2025_towards-more-accurate-static-analysis-for-taint-style-bug-detection-in-l",
+      "ASE2025_triangle-empowering-incident-triage-with-multi-agent",
+      "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+      "ASE2025_uncovering-prompt-elements-cloning-system-prompts-from-behavioral-traces",
+      "ASE2025_understanding-feature-request-practice-on-github-via-a-large-scale-empir",
+      "ASE2025_understanding-resource-injection-vulnerabilities-in-kubernetes-ecosystem",
+      "ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu",
+      "ASE2025_unit-test-update-through-llm-driven-context-collection-and-error-type-aw",
+      "ASE2025_united-we-stand-towards-end-to-end-log-based-fault-diagnosis-via-interac",
+      "ASE2025_using-active-learning-to-train-predictive-mutation-testing-with-minimal-",
+      "ASE2025_using-fourier-analysis-and-mutant-clustering-to-accelerate-dnn-mutation-",
+      "ASE2025_veriexploit-automatic-bug-reproduction-in-smart-contracts-via-llms-and-f",
+      "ASE2025_vert-polyglot-verified-equivalent-rust-transpilation-with-large-language",
+      "ASE2025_vrexplorer-a-model-based-approach-for-automated-virtual-reality-scene-te",
+      "ASE2025_vrtestsniffer-test-smell-detector-for-virtual-reality-vr-software-projec",
+      "ASE2025_vul-r2-a-reasoning-llm-for-automated-vulnerability-repair",
+      "ASE2025_vulnerability-affected-versions-identification-how-far-are-we",
+      "ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe",
+      "ASE2025_west-specification-based-test-generation-for-webassembly",
+      "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+      "ASE2025_when-allclose-fails-round-off-error-estimation-for-deep-learning-program",
+      "ASE2025_when-autonomous-vehicle-meets-v2x-cooperative-perception-how-far-are-we",
+      "ASE2025_when-control-flows-deviate-directed-grey-box-fuzzing-with-probabilistic-",
+      "ASE2025_when-does-wasm-malware-detection-fail-a-systematic-analysis-of-their-rob",
+      "ASE2025_when-faster-isn-t-greener-the-hidden-costs-of-llm-based-code-optimizatio",
+      "ASE2025_which-is-better-for-reducing-outdated-and-vulnerable-dependencies-pinnin",
+      "ASE2025_who-s-to-blame-rethinking-the-brittleness-of-automated-web-gui-testing-f",
+      "ASE2025_why-ai-agents-still-need-you-findings-from-developer-agent-collaboration",
+      "ASE2025_why-is-my-transaction-risky-understanding-smart-contract-semantics-and-i",
+      "ASE2025_wingmuzz-blackbox-testing-of-iot-protocols-via-two-dimensional-fuzzing-s",
+      "ASE2025_wired-for-reuse-automating-context-aware-code-adaptation-in-ides-via-llm",
+      "ASE2025_your-build-scripts-stink-the-state-of-code-smells-in-build-scripts",
+      "ASE2025_zenddiff-differential-testing-of-php-interpreter"
+    ],
+    "unclassified_official_links": [
+      {
+        "paper_id": "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/10/Do-LLMs-Generate-Useful-Test-Oracles-An-Empirical-Study-with-an-Unbiased-Dataset"
+          }
+        ]
+      },
+      {
+        "paper_id": "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/166/RFCScope-Detecting-Logical-Ambiguities-in-Internet-Protocol-Specifications"
+          }
+        ]
+      },
+      {
+        "paper_id": "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/25/Speculative-Automated-Refactoring-of-Imperative-Deep-Learning-Programs-to-Graph-Execu"
+          }
+        ]
+      },
+      {
+        "paper_id": "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/168/What-s-DAT-Smell-Untangling-and-Weaving-the-Disjoint-Assertion-Tangle-Test-Smell"
+          }
+        ]
+      }
+    ],
+    "external_link_targets_not_fetched": [
+      {
+        "paper_id": "ASE2025_my-productivity-is-boosted-but-demystifying-users-perception-on-ai-codin",
+        "url": "https://arxiv.org/abs/2508.12285"
+      },
+      {
+        "paper_id": "ASE2025_a-multi-modality-evaluation-of-the-reality-gap-in-autonomous-driving-sys",
+        "url": "https://arxiv.org/abs/2509.22379"
+      },
+      {
+        "paper_id": "ASE2025_advancing-automated-ethical-profiling-in-se-a-zero-shot-evaluation-of-ll",
+        "url": "https://arxiv.org/pdf/2510.00881"
+      },
+      {
+        "paper_id": "ASE2025_agentic-specification-generator-for-move-programs",
+        "url": "https://arxiv.org/abs/2509.24515"
+      },
+      {
+        "paper_id": "ASE2025_agents-in-the-sandbox-end-to-end-crash-bug-reproduction-for-minecraft",
+        "url": "https://arxiv.org/abs/2503.20036"
+      },
+      {
+        "paper_id": "ASE2025_alertguardian-intelligent-alert-life-cycle-management-for-large-scale-cl",
+        "url": "https://yuxiaoba.github.io/files/ASE25/AlertGuardian.pdf"
+      },
+      {
+        "paper_id": "ASE2025_altered-histories-in-version-control-system-repositories-evidence-from-t",
+        "url": "https://arxiv.org/pdf/2509.09294"
+      },
+      {
+        "paper_id": "ASE2025_an-empirical-study-of-python-library-migration-using-large-language-mode",
+        "url": "https://arxiv.org/abs/2504.13272"
+      },
+      {
+        "paper_id": "ASE2025_an-llm-based-multi-agent-framework-for-agile-effort-estimation",
+        "url": "https://arxiv.org/abs/2509.14483"
+      },
+      {
+        "paper_id": "ASE2025_argus-resilience-oriented-safety-assurance-framework-for-end-to-end-adss",
+        "url": "https://arxiv.org/abs/2511.09032"
+      },
+      {
+        "paper_id": "ASE2025_automated-generation-of-issue-reproducing-tests-by-combining-llms-and-se",
+        "url": "https://arxiv.org/abs/2509.01616"
+      },
+      {
+        "paper_id": "ASE2025_automated-inline-comment-smell-detection-and-repair-with-large-language-",
+        "url": "https://www.researchgate.net/publication/395359325_Automated_Inline_Comment_Smell_Detection_and_Repair_with_Large_Language_Models"
+      },
+      {
+        "paper_id": "ASE2025_backdoors-in-code-summarizers-how-bad-is-it",
+        "url": "https://arxiv.org/abs/2506.01825"
+      },
+      {
+        "paper_id": "ASE2025_belief-propagation-with-local-structure-and-its-applications-in-program-",
+        "url": "https://toledosakasa.github.io/files/ASE_2025.pdf"
+      },
+      {
+        "paper_id": "ASE2025_bridging-natural-language-and-formal-specification-automated-translation",
+        "url": "https://ieeexplore.ieee.org/document/11334235"
+      },
+      {
+        "paper_id": "ASE2025_bridging-natural-language-and-formal-specification-automated-translation",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00104"
+      },
+      {
+        "paper_id": "ASE2025_bridging-natural-language-and-formal-specification-automated-translation",
+        "url": "https://arxiv.org/pdf/2512.17334"
+      },
+      {
+        "paper_id": "ASE2025_characterizing-multi-hunk-patches-divergence-proximity-and-llm-repair-ch",
+        "url": "https://arxiv.org/pdf/2506.04418"
+      },
+      {
+        "paper_id": "ASE2025_code-diting-automatic-evaluation-of-code-generation-without-references-o",
+        "url": "https://arxiv.org/abs/2505.19502"
+      },
+      {
+        "paper_id": "ASE2025_cotune-co-evolutionary-configuration-tuning",
+        "url": "https://arxiv.org/pdf/2509.24694"
+      },
+      {
+        "paper_id": "ASE2025_debcovdiff-differential-testing-of-coverage-measurement-tools-on-real-wo",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/159/DebCovDiff-Differential-Testing-of-Coverage-Measurement-Tools-on-Real-World-Projects"
+      },
+      {
+        "paper_id": "ASE2025_defects4c-benchmarking-large-language-model-repair-capability-with-c-c-b",
+        "url": "https://arxiv.org/abs/2510.11059"
+      },
+      {
+        "paper_id": "ASE2025_detecting-semantic-clones-of-unseen-functionality",
+        "url": "https://arxiv.org/abs/2510.04143"
+      },
+      {
+        "paper_id": "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/10/Do-LLMs-Generate-Useful-Test-Oracles-An-Empirical-Study-with-an-Unbiased-Dataset"
+      },
+      {
+        "paper_id": "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/10/Do-LLMs-Generate-Useful-Test-Oracles-An-Empirical-Study-with-an-Unbiased-Dataset"
+      },
+      {
+        "paper_id": "ASE2025_efficientedit-accelerating-code-editing-via-edit-oriented-speculative-de",
+        "url": "https://arxiv.org/pdf/2506.02780"
+      },
+      {
+        "paper_id": "ASE2025_enhancing-llm-s-ability-to-generate-more-repository-aware-unit-tests-thr",
+        "url": "https://vinci-grape.github.io/papers/Enhancing_LLM_s_Ability_to_Generate_More_Repository_Aware_Unit_Tests_Through_Precise_Context_Injection.pdf"
+      },
+      {
+        "paper_id": "ASE2025_evolution-aware-heuristics-for-gr-1-realizability-checking",
+        "url": "https://dormaayan.github.io/assets/pdf/ASE25.pdf"
+      },
+      {
+        "paper_id": "ASE2025_execution-aware-program-reduction-for-webassembly-via-record-and-replay",
+        "url": "https://www.arxiv.org/pdf/2506.07834"
+      },
+      {
+        "paper_id": "ASE2025_explainable-fault-localization-for-programming-assignments-via-llm-guide",
+        "url": "https://arxiv.org/pdf/2509.25676"
+      },
+      {
+        "paper_id": "ASE2025_fastcoder-accelerating-repository-level-code-generation-via-efficient-re",
+        "url": "https://arxiv.org/pdf/2502.17139"
+      },
+      {
+        "paper_id": "ASE2025_guifuzz-unleashing-grey-box-fuzzing-on-desktop-graphical-user-interfacin",
+        "url": "https://futures.cs.utah.edu/papers/25ASE.pdf"
+      },
+      {
+        "paper_id": "ASE2025_hierarchical-knowledge-injection-for-improving-llm-based-program-repair",
+        "url": "https://arxiv.org/abs/2506.24015"
+      },
+      {
+        "paper_id": "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+        "url": "https://arxiv.org/pdf/2406.02122"
+      },
+      {
+        "paper_id": "ASE2025_llm-assisted-synthesis-of-high-assurance-c-programs",
+        "url": "https://prasitagit.github.io/papers/SynverPreprint.pdf"
+      },
+      {
+        "paper_id": "ASE2025_llms-for-automated-unit-test-generation-and-assessment-in-java-the-agone",
+        "url": "https://arxiv.org/abs/2511.20403"
+      },
+      {
+        "paper_id": "ASE2025_longcodezip-compress-long-context-for-code-language-models",
+        "url": "https://arxiv.org/abs/2510.00446"
+      },
+      {
+        "paper_id": "ASE2025_longcodezip-compress-long-context-for-code-language-models",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/121/LongCodeZip-Compress-Long-Context-for-Code-Language-Models"
+      },
+      {
+        "paper_id": "ASE2025_lspfuzz-hunting-bugs-in-language-servers",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00183"
+      },
+      {
+        "paper_id": "ASE2025_lspfuzz-hunting-bugs-in-language-servers",
+        "url": "https://scholar.henryhc.net/files/publications/2025/ASE2025-LSPFuzz.pdf"
+      },
+      {
+        "paper_id": "ASE2025_mimic-integrating-diverse-personality-traits-for-better-game-testing-usi",
+        "url": "https://mimic-persona.github.io/MIMIC-Home-Page/"
+      },
+      {
+        "paper_id": "ASE2025_mimic-integrating-diverse-personality-traits-for-better-game-testing-usi",
+        "url": "https://arxiv.org/abs/2510.01635"
+      },
+      {
+        "paper_id": "ASE2025_navigating-the-labyrinth-path-sensitive-unit-test-generation-with-large-",
+        "url": "https://arxiv.org/pdf/2509.23812"
+      },
+      {
+        "paper_id": "ASE2025_non-termination-witnesses-and-their-validation",
+        "url": "https://www.sosy-lab.org/research/pub/2025-ASE.Non-termination_Witnesses_and_Their_Validation.pdf"
+      },
+      {
+        "paper_id": "ASE2025_on-automating-configuration-dependency-validation-via-retrieval-augmente",
+        "url": "https://sws.informatik.uni-leipzig.de/wp-content/uploads/2025/09/DEP_RAG_ASE_2025.pdf"
+      },
+      {
+        "paper_id": "ASE2025_on-the-correctness-of-software-merge",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/210/On-the-Correctness-of-Software-Merge"
+      },
+      {
+        "paper_id": "ASE2025_orfuzz-fuzzing-the-other-side-of-llm-safety-testing-over-refusal",
+        "url": "https://arxiv.org/abs/2508.11222"
+      },
+      {
+        "paper_id": "ASE2025_peace-towards-efficient-project-level-performance-optimization-via-hybri",
+        "url": "https://arxiv.org/abs/2510.17142"
+      },
+      {
+        "paper_id": "ASE2025_prefgen-a-preference-driven-methodology-for-secure-yet-gas-efficient-sma",
+        "url": "https://arxiv.org/pdf/2506.03006v3"
+      },
+      {
+        "paper_id": "ASE2025_profile-coverage-using-android-compilation-profiles-to-evaluate-dynamic-",
+        "url": "https://themoep.at/research/2025-profile-coverage.pdf"
+      },
+      {
+        "paper_id": "ASE2025_propagation-based-vulnerability-impact-assessment-for-software-supply-ch",
+        "url": "https://arxiv.org/pdf/2506.01342"
+      },
+      {
+        "paper_id": "ASE2025_repairing-leaks-in-resource-wrappers",
+        "url": "https://arxiv.org/pdf/2510.03461"
+      },
+      {
+        "paper_id": "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+        "url": "https://wenxiwang.github.io/papers/rfcscope/rfcscope_paper.pdf"
+      },
+      {
+        "paper_id": "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/166/RFCScope-Detecting-Logical-Ambiguities-in-Internet-Protocol-Specifications"
+      },
+      {
+        "paper_id": "ASE2025_rfcscope-detecting-logical-ambiguities-in-internet-protocol-specificatio",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/166/RFCScope-Detecting-Logical-Ambiguities-in-Internet-Protocol-Specifications"
+      },
+      {
+        "paper_id": "ASE2025_rustrepotrans-repository-level-context-code-translation-benchmark-target",
+        "url": "https://arxiv.org/abs/2411.13990"
+      },
+      {
+        "paper_id": "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+        "url": "http://academicworks.cuny.edu/hc_pubs/877"
+      },
+      {
+        "paper_id": "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/25/Speculative-Automated-Refactoring-of-Imperative-Deep-Learning-Programs-to-Graph-Execu"
+      },
+      {
+        "paper_id": "ASE2025_speculative-automated-refactoring-of-imperative-deep-learning-programs-t",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/25/Speculative-Automated-Refactoring-of-Imperative-Deep-Learning-Programs-to-Graph-Execu"
+      },
+      {
+        "paper_id": "ASE2025_state-field-coverage-a-metric-for-oracle-quality",
+        "url": "https://arxiv.org/abs/2510.03071"
+      },
+      {
+        "paper_id": "ASE2025_the-cost-of-downgrading-build-systems-a-case-study-of-kubernetes",
+        "url": "https://rebels.cs.uwaterloo.ca/papers/ase2025_ranjan.pdf"
+      },
+      {
+        "paper_id": "ASE2025_towards-more-accurate-static-analysis-for-taint-style-bug-detection-in-l",
+        "url": "https://arxiv.org/abs/2504.11711"
+      },
+      {
+        "paper_id": "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+        "url": "https://ieeexplore.ieee.org/abstract/document/11334575"
+      },
+      {
+        "paper_id": "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00141"
+      },
+      {
+        "paper_id": "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+        "url": "https://arxiv.org/abs/2512.23769"
+      },
+      {
+        "paper_id": "ASE2025_uncovering-discrimination-clusters-quantifying-and-explaining-systematic",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/66/Uncovering-Discrimination-Clusters-Quantifying-and-Explaining-Systematic-Fairness-Vi"
+      },
+      {
+        "paper_id": "ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu",
+        "url": "https://arxiv.org/pdf/2506.18824"
+      },
+      {
+        "paper_id": "ASE2025_vrexplorer-a-model-based-approach-for-automated-virtual-reality-scene-te",
+        "url": "https://www.researchgate.net/publication/396011250_VRExplorer_A_Model-based_Approach_for_Semi-Automated_Testing_of_Virtual_Reality_Scenes"
+      },
+      {
+        "paper_id": "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+        "url": "https://superhangdu.com/publications/ase-25/#:~:text=1%20min%20read-,PDF,-A%20real-world"
+      },
+      {
+        "paper_id": "ASE2025_what-s-dat-smell-untangling-and-weaving-the-disjoint-assertion-tangle-te",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/168/What-s-DAT-Smell-Untangling-and-Weaving-the-Disjoint-Assertion-Tangle-Test-Smell"
+      },
+      {
+        "paper_id": "ASE2025_when-autonomous-vehicle-meets-v2x-cooperative-perception-how-far-are-we",
+        "url": "https://arxiv.org/pdf/2509.24927"
+      },
+      {
+        "paper_id": "ASE2025_which-is-better-for-reducing-outdated-and-vulnerable-dependencies-pinnin",
+        "url": "https://arxiv.org/abs/2510.08609"
+      },
+      {
+        "paper_id": "ASE2025_which-is-better-for-reducing-outdated-and-vulnerable-dependencies-pinnin",
+        "url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/232/Which-Is-Better-For-Reducing-Outdated-And-Vulnerable-Dependencies-Pinning-Or-Floatin"
+      },
+      {
+        "paper_id": "ASE2025_wingmuzz-blackbox-testing-of-iot-protocols-via-two-dimensional-fuzzing-s",
+        "url": "https://ieeexplore.ieee.org/document/11334343"
+      }
+    ]
+  },
+  "source_conflicts": [],
+  "deduplication": {
+    "audit_file": "corpus/ase2025-research-papers-dedup-audit.json",
+    "exact_normalized_title_duplicates": 0,
+    "normalized_title_and_author_duplicates": 0,
+    "doi_duplicates": 0,
+    "title_variant_candidates": 0,
+    "co_listed_formal_and_preprint_versions": 3,
+    "unresolved_preprint_formal_correspondence": 51
+  },
+  "taxonomy": {
+    "status": "initial taxonomy retained",
+    "rationale": "config/research_scope.yaml restricts taxonomy revision to the domain-map phase; records contain provisional title-and-abstract categories.",
+    "unclassified_title_and_abstract": [
+      "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+      "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+      "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies"
+    ]
+  },
+  "follow_up_verification": [
+    "Resolve DOI and proceedings pages, abstracts, and formal/preprint version links from publisher and author sources.",
+    "Classify official Media Attached targets before treating them as artifacts, code, or data.",
+    "Check author identity and title variants with publisher/preprint records once those sources are added."
+  ]
+}

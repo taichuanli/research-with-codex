@@ -147,6 +147,20 @@ test('configures the shared builder for ISSTA 2026 Research papers', () => {
   }]);
 });
 
+test('configures the shared builder for ASE 2025 Research Papers', () => {
+  const ase = corpusBuilder.resolveVenueConfig?.('ASE2025');
+  assert.deepEqual(ase, {
+    venue_id: 'ASE2025',
+    conference: 'ASE',
+    year: 2025,
+    conference_edition: 'ase-2025',
+    official_track: 'Research Papers',
+    display_name: 'ASE 2025 Research Papers',
+    official_url: 'https://conf.researchr.org/track/ase-2025/ase-2025-papers',
+    file_stem: 'ase2025-research-papers',
+  });
+});
+
 test('retains only explicitly labelled paper, artifact, code, and data links', () => {
   const fse = corpusBuilder.resolveVenueConfig?.('FSE2026');
   const record = corpusBuilder.canonicalRecord?.({

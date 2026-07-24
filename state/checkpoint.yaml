@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: CORPUS_BUILT_ISSTA2026
+current_phase: CORPUS_BUILT_ASE2025
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -9,7 +9,8 @@ phase_catalog:
   - CORPUS_BUILD_ISSTA2026
   - CORPUS_BUILT_ISSTA2026
   - CORPUS_BUILD_ASE2025
-  - CORPUS_COMPLETENESS_AUDIT
+  - CORPUS_BUILT_ASE2025
+  - CORPUS_AUDIT
   - DOMAIN_MAP
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
@@ -32,7 +33,11 @@ completed_items:
   - "CORPUS_BUILD_ISSTA2026: recorded titles, authors, venue/track, official detail URLs, all 210 official abstracts, source locators and access times, and every official DOI/publisher, paper, preprint, artifact, code, data, media, or unclassified-link field in corpus/issta2026-research-papers.jsonl."
   - "CORPUS_BUILD_ISSTA2026: validated 100% official-list coverage, unique IDs and official event IDs, JSON/JSONL parseability, title/author/raw-link equality with the official baseline, source-field conflicts, and title/title-plus-author/DOI duplicate checks; results are in corpus/issta2026-research-papers-dedup-audit.json and reports/issta2026-research-papers-corpus-build-report.json."
   - "CORPUS_BUILD_ISSTA2026: the official records listed four preprints and one Media Attached target, retained but not fetched; they listed no DOI, paper/PDF, artifact, code, data, or unclassified links. These are non-blocking for the official-list corpus inventory."
+  - "CORPUS_BUILD_ASE2025: captured 246 official ASE 2025 Research Papers records from the official Accepted Papers listing and all 246 official per-paper detail pages."
+  - "CORPUS_BUILD_ASE2025: recorded titles, authors, venue/track, official detail URLs, all 246 official abstracts, source locators and access times, all official DOI/publisher, formal-paper, preprint, media, artifact, code, data, and unclassified-link fields, plus provisional title-and-abstract taxonomy assignments in corpus/ase2025-research-papers.jsonl."
+  - "CORPUS_BUILD_ASE2025: validated 100% official-list coverage, unique IDs and official event IDs, JSON/JSONL parseability, title/author/raw-link equality with the official baseline, source-field conflicts, and title/title-plus-author/DOI duplicate checks; results are in corpus/ase2025-research-papers-dedup-audit.json and reports/ase2025-research-papers-corpus-build-report.json."
+  - "CORPUS_BUILD_ASE2025: the official records listed three DOI targets, five publication targets, 54 preprints, eight Media Attached targets, and four File Attached targets. Targets were retained but not fetched; no artifact, code, or data links were explicitly labelled, and the four File Attached targets remain unclassified by their official labels. These are non-blocking for the official-list corpus inventory."
 blockers: []
 human_decisions_pending: []
-next_phase: CORPUS_BUILD_ASE2025
-last_updated: "2026-07-24T10:10:58Z"
+next_phase: CORPUS_AUDIT
+last_updated: "2026-07-24T10:34:35Z"

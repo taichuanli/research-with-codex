@@ -34,6 +34,16 @@ const VENUE_CONFIGS = Object.freeze({
     official_url: 'https://conf.researchr.org/track/issta-2026/issta-2026-research-papers',
     file_stem: 'issta2026-research-papers',
   }),
+  ASE2025: Object.freeze({
+    venue_id: 'ASE2025',
+    conference: 'ASE',
+    year: 2025,
+    conference_edition: 'ase-2025',
+    official_track: 'Research Papers',
+    display_name: 'ASE 2025 Research Papers',
+    official_url: 'https://conf.researchr.org/track/ase-2025/ase-2025-papers',
+    file_stem: 'ase2025-research-papers',
+  }),
 });
 
 function resolveVenueConfig(venueId = 'ICSE2026') {
