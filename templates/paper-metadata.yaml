@@ -1,0 +1,26 @@
+# Create one canonical metadata record per paper under corpus/.
+paper_id: "<VENUE>_<YEAR>_<SHORT_SLUG>"
+title: "<paper title>"
+authors: []
+venue:
+  venue_id: "<must match config/research_scope.yaml>"
+  conference: "<conference>"
+  year: "<year>"
+  official_track: "<track name>"
+publication:
+  doi: null
+  publisher_url: null
+  pdf_url: null
+  artifact_url: null
+source_records:
+  - source_type: "official_program | proceedings | publisher | author_copy"
+    url: "<source URL>"
+    accessed_at: "<ISO-8601 timestamp>"
+    source_locator: "<page, section, or record identifier>"
+    supports: "<scope status or metadata fact supported>"
+corpus_status:
+  inclusion_status: "pending | included | excluded"
+  decision_reason: null
+  taxonomy_categories: []
+  duplicate_of: null
+notes: null

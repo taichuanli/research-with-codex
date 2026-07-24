@@ -1,0 +1,16 @@
+# Create one candidate idea record per idea under ideas/.
+idea_id: "IDEA_<SHORT_SLUG>"
+status: "proposed | narrowed | rejected | prior_art_pending"
+statement: null
+motivation: []
+target_context: null
+proposed_contribution: null
+supporting_basis: []
+scope_boundaries: []
+assumptions: []
+risks: []
+prior_art_ledger: "ideas/prior-art/<idea id>.yaml"
+decision: null
+
+# Every entry in motivation and supporting_basis uses:
+# {statement, claim_type, source_locator, supporting_paper_ids}

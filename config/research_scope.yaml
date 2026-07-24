@@ -1,0 +1,58 @@
+schema_version: 1
+last_reviewed_at: "2026-07-24T04:53:03-04:00"
+
+scope:
+  venues:
+    - venue_id: ICSE2026
+      conference: ICSE
+      year: 2026
+      official_track: "Research Track"
+      display_name: "ICSE 2026 Research Track"
+    - venue_id: FSE2026
+      conference: FSE
+      year: 2026
+      official_track: "Research Papers"
+      display_name: "FSE 2026 Research Papers"
+    - venue_id: ISSTA2026
+      conference: ISSTA
+      year: 2026
+      official_track: "Research Papers"
+      display_name: "ISSTA 2026 Research Papers"
+    - venue_id: ASE2025
+      conference: ASE
+      year: 2025
+      official_track: "Research Papers"
+      display_name: "ASE 2025 Research Papers"
+
+selection_policy:
+  include:
+    - "Papers explicitly listed in an in-scope official conference track."
+    - "A canonical metadata record with title, authors, venue, and at least one source URL."
+    - "One record per paper, with alternate versions linked rather than duplicated."
+  exclude:
+    - "Papers from workshops, co-located events, and tracks outside the stated scope."
+    - "Posters, extended abstracts, tool demonstrations, industry papers, and invited material unless the official in-scope track explicitly classifies them as research papers."
+    - "Duplicate records, withdrawn papers, and items without enough evidence to establish in-scope status."
+  source_expectations:
+    - "Use an official conference program, proceedings, or publisher record as the primary scope source."
+    - "Retain every consulted source URL and access date in paper metadata."
+    - "Mark unresolved inclusion decisions as pending rather than silently excluding them."
+
+initial_taxonomy:
+  status: provisional
+  revision_rule: "Revise only through an explicit, source-backed taxonomy update during the domain-map phase."
+  categories:
+    - category_id: AI_FOR_SOFTWARE_ENGINEERING
+      label: "AI-assisted software engineering"
+    - category_id: TESTING_VERIFICATION_DEBUGGING
+      label: "Testing, verification, and debugging"
+    - category_id: PROGRAM_ANALYSIS_SECURITY_PRIVACY
+      label: "Program analysis, security, and privacy"
+    - category_id: MAINTENANCE_EVOLUTION_QUALITY
+      label: "Maintenance, evolution, and quality"
+    - category_id: REQUIREMENTS_DESIGN_ARCHITECTURE
+      label: "Requirements, design, and architecture"
+    - category_id: EMPIRICAL_SOCIO_TECHNICAL_SE
+      label: "Empirical and socio-technical software engineering"
+    - category_id: BUILD_RELEASE_OPERATIONS
+      label: "Build, release, and software operations"

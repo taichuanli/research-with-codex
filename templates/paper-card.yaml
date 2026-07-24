@@ -1,0 +1,20 @@
+# Create one reading card per included paper under cards/.
+paper_id: "<must match corpus metadata>"
+metadata_file: "corpus/<paper metadata filename>.yaml"
+reading_status: "unread | skimmed | deep_read"
+research_problem:
+  statement: null
+  claim_type: "author_claim | direct_evidence | agent_inference"
+  source_locator: null
+method:
+  statement: null
+  claim_type: "author_claim | direct_evidence | agent_inference"
+  source_locator: null
+findings: []
+evidence_notes: []
+limitations: []
+relevance_to_synthesis: []
+open_questions: []
+
+# Every entry in findings, evidence_notes, limitations, and relevance_to_synthesis
+# uses: {statement, claim_type, source_locator, supporting_paper_ids}

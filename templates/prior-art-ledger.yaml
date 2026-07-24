@@ -1,0 +1,14 @@
+# Create one prior-art ledger per idea under ideas/prior-art/.
+idea_id: "<must match its idea card>"
+review_status: "not_started | in_progress | inconclusive | complete"
+search_log: []
+works: []
+decision:
+  outcome: "pending | retain | narrow | reject"
+  rationale: null
+  source_locator: null
+
+# Every entry in works uses:
+# {paper_id, citation, relation: direct_coverage|partial_overlap|neighboring,
+#  assessment, claim_type, source_locator, required_action}
+# For direct_coverage, required_action must be narrow or reject.

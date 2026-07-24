@@ -1,0 +1,21 @@
+schema_version: 1
+current_phase: WORKSPACE_INITIALIZED
+phase_catalog:
+  - WORKSPACE_INITIALIZED
+  - CORPUS_BUILD_ICSE2026
+  - CORPUS_BUILD_REMAINING_VENUES
+  - CORPUS_COMPLETENESS_AUDIT
+  - DOMAIN_MAP
+  - REPRESENTATIVE_PAPER_DEEP_READ
+  - CROSS_PAPER_SYNTHESIS
+  - IDEA_GENERATION
+  - PRIOR_ART_ATTACK
+  - DIRECTION_NARROWING
+  - PILOT_DESIGN
+completed_items:
+  - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
+  - "Recorded session protocol, research scope, selection policy, provisional taxonomy, and reusable templates."
+blockers: []
+human_decisions_pending: []
+next_phase: CORPUS_BUILD_ICSE2026
+last_updated: "2026-07-24T04:53:03-04:00"
