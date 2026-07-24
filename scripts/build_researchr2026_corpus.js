@@ -24,6 +24,16 @@ const VENUE_CONFIGS = Object.freeze({
     official_url: 'https://conf.researchr.org/track/fse-2026/fse-2026-research-papers',
     file_stem: 'fse2026-research-papers',
   }),
+  ISSTA2026: Object.freeze({
+    venue_id: 'ISSTA2026',
+    conference: 'ISSTA',
+    year: 2026,
+    conference_edition: 'issta-2026',
+    official_track: 'Research papers',
+    display_name: 'ISSTA 2026 Research Papers',
+    official_url: 'https://conf.researchr.org/track/issta-2026/issta-2026-research-papers',
+    file_stem: 'issta2026-research-papers',
+  }),
 });
 
 function resolveVenueConfig(venueId = 'ICSE2026') {
@@ -54,7 +64,7 @@ function extractAttr(tag, name) {
 
 function parseOfficialTrackPage(html, officialTrack = resolveVenueConfig().official_track) {
   const overviewStart = html.search(/id="event-overview"/i);
-  const callStart = html.search(/id="Call-for-Papers"/i);
+  const callStart = html.search(/id="-?Call-for-Papers"/i);
   const section = html.slice(overviewStart >= 0 ? overviewStart : 0, callStart >= 0 ? callStart : html.length);
   const papers = new Map();
 
@@ -184,6 +194,7 @@ function canonicalRecord(paper, config = resolveVenueConfig(), accessedAt = ACCE
   const urlsFor = (pattern) => officialLinks.filter((link) => pattern.test(link.label)).map((link) => link.url);
   const pdfUrls = urlsFor(/^(paper|pdf)$/i);
   const publicationUrls = urlsFor(/^link to publication$/i);
+  const mediaUrls = urlsFor(/^media attached$/i);
   const artifactUrls = urlsFor(/artifact/i);
   const codeUrls = urlsFor(/^(code|source code|repository)$/i);
   const dataUrls = urlsFor(/^(data|dataset)$/i);
@@ -217,7 +228,7 @@ function canonicalRecord(paper, config = resolveVenueConfig(), accessedAt = ACCE
       artifact_url: artifactUrls[0] || null,
       code_urls: codeUrls,
       data_urls: dataUrls,
-      media_url: paper.media_url || null,
+      media_url: paper.media_url || mediaUrls[0] || null,
       officially_listed_links: officialLinks,
       unclassified_official_link_urls: unclassifiedOfficialLinks,
     },
@@ -245,7 +256,7 @@ function canonicalRecord(paper, config = resolveVenueConfig(), accessedAt = ACCE
       preprint_or_paper_link: paper.preprint_url ? 'listed_by_official_program_not_fetched' : 'not_listed',
       artifact_code_data: artifactUrls.length || codeUrls.length || dataUrls.length
         ? 'listed_by_official_program_not_fetched'
-        : (unclassifiedOfficialLinks.length || paper.media_url ? 'official_links_listed_by_program_not_classified' : 'not_listed'),
+        : (unclassifiedOfficialLinks.length || mediaUrls.length ? 'official_links_listed_by_program_not_classified' : 'not_listed'),
       abstract: paper.abstract ? 'verified_from_official_event_details' : 'not_verified',
     },
     notes: 'This corpus-build record intentionally does not contain a paper card, deep reading, cross-conference synthesis, or research-gap judgment.',

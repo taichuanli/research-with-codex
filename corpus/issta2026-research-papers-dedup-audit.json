@@ -1,0 +1,29 @@
+{
+  "exact_normalized_title_duplicates": [],
+  "normalized_title_and_author_duplicates": [],
+  "doi_duplicates": [],
+  "title_variant_candidates": [],
+  "repeated_complete_author_lists_across_distinct_titles": [
+    {
+      "key": "junda zhao|shurui zhou|eldan cohen",
+      "paper_ids": [
+        "ISSTA2026_do-coverage-and-mutation-scores-of-llm-generated-test-suites-correlate-w",
+        "ISSTA2026_evaluating-and-mitigating-the-misguidance-effect-of-buggy-code-in-llm-ge"
+      ],
+      "interpretation": "not a duplicate finding by itself; a complete author-list match across different titles can represent distinct papers"
+    }
+  ],
+  "author_identity_check": "normalized author-name strings were used only as a companion duplicate key; no author identifier (for example ORCID) is present in the official acceptance listing.",
+  "version_mapping": {
+    "method": "direct_evidence: map formal DOI and preprint only when both external links are co-listed on the same official event record.",
+    "co_listed_formal_and_preprint": [],
+    "preprint_without_co_listed_formal_doi": [
+      "ISSTA2026_helo-apr-enhancing-low-resource-program-repair-through-cross-lingual-kno",
+      "ISSTA2026_llm-based-repair-of-static-nullability-errors",
+      "ISSTA2026_packmonitor-towards-zero-package-hallucinations-via-decoding-time-monito",
+      "ISSTA2026_testing-static-taint-analyzers-with-equivalence-modulo-taint"
+    ],
+    "formal_doi_without_co_listed_preprint": [],
+    "unresolved_preprint_formal_correspondence": "pending: do not infer a version correspondence solely from a title search."
+  }
+}

@@ -16,7 +16,7 @@ scope:
     - venue_id: ISSTA2026
       conference: ISSTA
       year: 2026
-      official_track: "Research Papers"
+      official_track: "Research papers"
       display_name: "ISSTA 2026 Research Papers"
     - venue_id: ASE2025
       conference: ASE

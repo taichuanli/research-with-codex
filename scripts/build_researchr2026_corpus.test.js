@@ -1,8 +1,14 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 
-const { parseOfficialTrackPage, parseOfficialEventDetails, classifyPaperText, duplicateAudit } = require('./build_icse2026_corpus');
-const corpusBuilder = require('./build_icse2026_corpus');
+const { parseOfficialTrackPage, parseOfficialEventDetails, classifyPaperText, duplicateAudit } = require('./build_researchr2026_corpus');
+const corpusBuilder = require('./build_researchr2026_corpus');
+
+test('exposes the shared builder through a conference-neutral entry point', () => {
+  assert.equal(fs.existsSync(path.join(__dirname, 'build_researchr2026_corpus.js')), true);
+});
 
 test('parses Research Track rows and preserves official links', () => {
   const html = `
@@ -115,6 +121,32 @@ test('configures the shared builder for FSE 2026 Research Papers', () => {
   assert.match(record?.corpus_status.decision_reason || '', /Research Papers/);
 });
 
+test('configures the shared builder for ISSTA 2026 Research papers', () => {
+  let issta;
+  try {
+    issta = corpusBuilder.resolveVenueConfig?.('ISSTA2026');
+  } catch {
+    issta = undefined;
+  }
+  assert.equal(issta?.official_track, 'Research papers');
+  assert.equal(issta?.official_url, 'https://conf.researchr.org/track/issta-2026/issta-2026-research-papers');
+
+  const html = `
+    <div id="event-overview">
+      <tr><td><a href="#" data-event-modal="issta-event-1">Included ISSTA Paper</a><div class="prog-track">Research papers</div><div class="performers"><a href="/profile/a">Ada Author</a></div></td></tr>
+    </div>
+    <div id="-Call-for-Papers">
+      <tr><td><a href="#" data-event-modal="issta-event-2">Must Not Be Parsed</a><div class="prog-track">Research papers</div><div class="performers"><a href="/profile/b">Ben Author</a></div></td></tr>
+    </div>`;
+  assert.deepEqual(parseOfficialTrackPage(html, issta?.official_track), [{
+    official_event_id: 'issta-event-1',
+    title: 'Included ISSTA Paper',
+    authors: ['Ada Author'],
+    doi_url: null,
+    preprint_url: null,
+  }]);
+});
+
 test('retains only explicitly labelled paper, artifact, code, and data links', () => {
   const fse = corpusBuilder.resolveVenueConfig?.('FSE2026');
   const record = corpusBuilder.canonicalRecord?.({
@@ -130,6 +162,7 @@ test('retains only explicitly labelled paper, artifact, code, and data links', (
       { label: 'Artifact', url: 'https://example.test/artifact' },
       { label: 'Code', url: 'https://example.test/code' },
       { label: 'Data', url: 'https://example.test/data' },
+      { label: 'Media Attached', url: 'https://example.test/media' },
       { label: 'File Attached', url: 'https://example.test/unknown' },
     ],
   }, fse, '2026-07-24T00:00:00.000Z');
@@ -139,6 +172,7 @@ test('retains only explicitly labelled paper, artifact, code, and data links', (
   assert.equal(record?.publication.artifact_url, 'https://example.test/artifact');
   assert.deepEqual(record?.publication.code_urls, ['https://example.test/code']);
   assert.deepEqual(record?.publication.data_urls, ['https://example.test/data']);
+  assert.equal(record?.publication.media_url, 'https://example.test/media');
   assert.deepEqual(record?.publication.unclassified_official_link_urls, [
     { label: 'File Attached', url: 'https://example.test/unknown' },
   ]);
