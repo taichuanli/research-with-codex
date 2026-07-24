@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-24T04:53:03-04:00"
+last_reviewed_at: "2026-07-24T11:04:24-04:00"
 
 scope:
   venues:
@@ -39,7 +39,8 @@ selection_policy:
     - "Mark unresolved inclusion decisions as pending rather than silently excluding them."
 
 initial_taxonomy:
-  status: provisional
+  status: superseded_by_field_mapping
+  superseded_by: "synthesis/field-mapping-taxonomy.yaml"
   revision_rule: "Revise only through an explicit, source-backed taxonomy update during the domain-map phase."
   categories:
     - category_id: AI_FOR_SOFTWARE_ENGINEERING
@@ -56,3 +57,43 @@ initial_taxonomy:
       label: "Empirical and socio-technical software engineering"
     - category_id: BUILD_RELEASE_OPERATIONS
       label: "Build, release, and software operations"
+
+field_mapping_taxonomy:
+  status: adopted
+  phase_completed: FIELD_MAPPED
+  taxonomy_path: "synthesis/field-mapping-taxonomy.yaml"
+  assignments_path: "synthesis/field-mapping-paper-assignments.jsonl"
+  primary_problem_domain_count: 11
+  uncertainty_state: CROSS_CUTTING_OR_UNCERTAIN
+  dimensions:
+    - problem_domain
+    - research_object
+    - method_mechanism
+    - evaluation_type
+    - resource_artifact_type
+    - topic_cluster
+
+deep_reading_selection:
+  status: selected
+  phase_completed: DEEP_READING_SELECTED
+  selected_count: 42
+  selection_path: "synthesis/deep-reading-selection.json"
+  report_path: "reports/deep-reading-selection-report.md"
+  reading_batches:
+    DEEP_READING_BATCH_1: 21
+    DEEP_READING_BATCH_2: 21
+  mechanism_clusters:
+    - FAILURE_LOOPS_RECOVERY
+    - PLANNING_ACTION_TOOL_STOPPING
+    - TEST_EXECUTION_ANALYSIS_FEEDBACK
+    - STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+    - OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+    - DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+    - TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+  research_preferences:
+    include:
+      - "Mechanisms relevant to general LLMs, agents, or code agents in software engineering."
+      - "Representative methods, empirical and failure studies, training and inference-time controls, feedback mechanisms, contradictory evidence, and mechanistically distinct recent work."
+    exclude:
+      - "Human-subject and organizational studies, multi-agent organization, pure benchmarks, pure safety or security, pure retrieval, prompt engineering, and work optimizing only cost or final score."
+  phase_boundary: "Reading plan only; no full-paper deep reading or research-idea generation was performed."
