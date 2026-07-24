@@ -1,9 +1,10 @@
 schema_version: 1
-current_phase: WORKSPACE_INITIALIZED
+current_phase: CORPUS_BUILT_ICSE2026
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
-  - CORPUS_BUILD_REMAINING_VENUES
+  - CORPUS_BUILT_ICSE2026
+  - CORPUS_BUILD_FSE2026
   - CORPUS_COMPLETENESS_AUDIT
   - DOMAIN_MAP
   - REPRESENTATIVE_PAPER_DEEP_READ
@@ -15,7 +16,11 @@ phase_catalog:
 completed_items:
   - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
   - "Recorded session protocol, research scope, selection policy, provisional taxonomy, and reusable templates."
+  - "CORPUS_BUILD_ICSE2026: captured 321 official ICSE 2026 Research Track accepted-paper records from the official Accepted Papers listing and its official per-paper detail pages."
+  - "CORPUS_BUILD_ICSE2026: recorded titles, authors, venue/track, official detail URLs, all 321 official abstracts, source locators and access times, provisional title-and-abstract taxonomy assignments, and access status in corpus/icse2026-research-track.jsonl."
+  - "CORPUS_BUILD_ICSE2026: validated 100% official-list coverage, unique IDs, JSON/JSONL parseability, source fields, and title/title-plus-author/DOI duplicate checks; results are in corpus/icse2026-research-track-dedup-audit.json and reports/icse2026-corpus-build-report.json."
+  - "CORPUS_BUILD_ICSE2026: no external artifact, code, or data links were listed by the official records; 130 DOI or preprint targets were retained but not fetched, which is non-blocking for the completed official-list corpus inventory."
 blockers: []
 human_decisions_pending: []
-next_phase: CORPUS_BUILD_ICSE2026
-last_updated: "2026-07-24T04:53:03-04:00"
+next_phase: CORPUS_BUILD_FSE2026
+last_updated: "2026-07-24T09:18:13Z"

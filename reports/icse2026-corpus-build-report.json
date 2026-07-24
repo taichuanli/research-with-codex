@@ -1,0 +1,894 @@
+{
+  "venue_id": "ICSE2026",
+  "scope": "ICSE 2026 Research Track only",
+  "claim_type": "direct_evidence",
+  "source_locator": "https://conf.researchr.org/track/icse-2026/icse-2026-research-track / Accepted Papers tab",
+  "official_accepted_count": 321,
+  "local_corpus_record_count": 321,
+  "coverage": {
+    "numerator": 321,
+    "denominator": 321,
+    "percentage": 100
+  },
+  "fields": {
+    "title": 321,
+    "authors": 321,
+    "official_source": 321,
+    "official_detail_page": 321,
+    "doi_or_publisher_link": 18,
+    "preprint_link": 112,
+    "abstract": 321,
+    "artifact_or_media_link": 0,
+    "code_link": 0,
+    "data_link": 0
+  },
+  "unavailable_or_pending": {
+    "abstracts": [],
+    "official_detail_fetch_failures": [],
+    "artifacts_code_data": [
+      "ICSE2026_game-changer-or-overenthusiastic-drunk-acquaintance-generative-ai-use-by",
+      "ICSE2026_i-need-to-learn-better-searching-tactics-for-privacy-policy-laws-investi",
+      "ICSE2026_making-our-life-less-monotonous-or-just-tick-things-off-an-exploratory-m",
+      "ICSE2026_maybe-we-need-some-more-examples-individual-and-team-drivers-of-develope",
+      "ICSE2026_write-in-english-nobody-understands-your-language-here-a-study-of-non-en",
+      "ICSE2026_3d-software-synthesis-driven-by-constraint-expressive-intermediate-repre",
+      "ICSE2026_a-causal-perspective-on-measuring-explaining-and-mitigating-smells-in-ll",
+      "ICSE2026_a-comparison-of-conversational-models-and-humans-in-answering-technical-",
+      "ICSE2026_a-comprehensive-study-of-concurrency-bugs-in-the-linux-kernel",
+      "ICSE2026_a-comprehensive-study-of-deep-learning-model-fixing-approaches",
+      "ICSE2026_a-first-look-at-model-supply-chain-from-the-risk-perspective",
+      "ICSE2026_a-large-scale-empirical-study-of-secret-key-leakage-in-hugging-face-spac",
+      "ICSE2026_a-semantic-based-optimization-approach-for-repairing-llms-case-study-on-",
+      "ICSE2026_accelerating-ic3-verification-by-exploiting-unsatisfiable-cores-and-sati",
+      "ICSE2026_accurate-inference-of-termination-conditions",
+      "ICSE2026_actionable-warning-is-not-enough-recommending-valid-actionable-warnings-",
+      "ICSE2026_adaptrack-constrained-decoding-without-distorting-llm-s-output-intent",
+      "ICSE2026_adarule-llm-driven-natural-language-to-ltl-conversion-via-pattern-adapti",
+      "ICSE2026_agent-based-ensemble-reasoning-for-repository-level-issue-resolution",
+      "ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing",
+      "ICSE2026_agentspec-customizable-runtime-enforcement-for-safe-and-reliable-llm-age",
+      "ICSE2026_aligning-requirement-for-large-language-model-s-code-generation",
+      "ICSE2026_an-empirical-analysis-of-community-and-coding-patterns-in-oss4sg-vs-conv",
+      "ICSE2026_an-empirical-study-of-fine-grained-entity-relationships-for-tracing-natu",
+      "ICSE2026_an-empirical-study-of-knowledge-distillation-for-code-understanding-task",
+      "ICSE2026_an-empirical-study-of-webassembly-usage-in-node-js",
+      "ICSE2026_an-empirical-study-on-static-application-security-testing-sast-tools-for",
+      "ICSE2026_an-empirical-study-on-the-robustness-of-android-third-party-library-dete",
+      "ICSE2026_an-eye-for-ai-eye-tracking-the-micro-interruptions-of-genai-code-suggest",
+      "ICSE2026_an-llm-agentic-approach-for-legal-critical-software-a-case-study-for-tax",
+      "ICSE2026_anchordiff-binary-oss-version-identification-method-based-on-anchor-node",
+      "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud",
+      "ICSE2026_are-humans-and-llms-confused-by-the-same-code-an-empirical-study-on-fixa",
+      "ICSE2026_argus-a-multi-agent-sensitive-information-leakage-detection-framework-ba",
+      "ICSE2026_assertflip-reproducing-bugs-via-inversion-of-llm-generated-passing-tests",
+      "ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large",
+      "ICSE2026_atomizer-an-llm-based-collaborative-multi-agent-framework-for-intent-dri",
+      "ICSE2026_atpatch-debugging-transformers-via-hot-fixing-over-attention",
+      "ICSE2026_attention-distance-a-novel-metric-for-directed-fuzzing-with-large-langua",
+      "ICSE2026_attention-pruning-automated-fairness-repair-of-language-models-via-surro",
+      "ICSE2026_automated-network-level-fault-injection-testing-of-microservice-architec",
+      "ICSE2026_automatic-dockerfile-generation-with-large-language-models",
+      "ICSE2026_automating-api-documentation-from-crowdsourced-knowledge",
+      "ICSE2026_automating-just-in-time-python-type-annotation-updating",
+      "ICSE2026_automating-requirements-formalization-using-llms-and-low-complexity-dist",
+      "ICSE2026_back-to-the-basics-rethinking-issue-commit-linking-with-llm-assisted-ret",
+      "ICSE2026_bayesian-multi-level-performance-models-for-multi-factor-variability-of-",
+      "ICSE2026_beyond-adoption-examining-the-evolution-and-impact-of-codes-of-conduct-o",
+      "ICSE2026_beyond-correctness-exposing-llm-generated-logical-flaws-in-reasoning-via",
+      "ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm",
+      "ICSE2026_beyond-fuzzy-matching-constraint-guided-patch-presence-testing-for-obfus",
+      "ICSE2026_bfix-automated-safe-memory-leak-fixing-for-binary-code",
+      "ICSE2026_boosting-gas-revenues-of-ethereum-miners",
+      "ICSE2026_bounded-exhaustive-random-program-generation-for-testing-solidity-compil",
+      "ICSE2026_breaking-single-tester-limits-multi-agent-llms-for-multi-user-feature-te",
+      "ICSE2026_breaking-strong-encapsulation-a-comprehensive-study-of-java-module-abuse",
+      "ICSE2026_breaking-the-alphabet-rethinking-file-ordering-in-code-review",
+      "ICSE2026_btreefuzz-enhanced-feedback-mechanism-for-ros-program-fuzzer-based-on-be",
+      "ICSE2026_bytecode-centric-detection-of-known-to-be-vulnerable-dependencies-in-jav",
+      "ICSE2026_can-sat-solvers-keep-up-with-the-linux-kernel-s-feature-model",
+      "ICSE2026_causal-or-correlational-a-cohort-study-on-the-effects-of-code-smells-on-",
+      "ICSE2026_cclinsight-unveiling-insights-in-gpu-collective-communication-libraries-",
+      "ICSE2026_change-and-cover-last-mile-pull-request-based-regression-test-augmentati",
+      "ICSE2026_characterizing-gpu-accelerated-web-applications-in-browsers",
+      "ICSE2026_characterizing-regression-bug-inducing-changes-and-improving-llm-based-r",
+      "ICSE2026_checking-unsupervised-learning-for-nondeterminism-and-inconsistency-via-",
+      "ICSE2026_closing-the-chain-how-to-reduce-your-risk-of-being-solarwinds-log4j-or-x",
+      "ICSE2026_cobblestone-a-divide-and-conquer-approach-for-automating-formal-verifica",
+      "ICSE2026_cobra-context-branch-sensitive-static-analysis-for-detecting-taint-style",
+      "ICSE2026_codemapper-a-language-agnostic-approach-to-mapping-code-regions-across-c",
+      "ICSE2026_cognitive-biases-in-llm-assisted-software-development",
+      "ICSE2026_combct-compiler-testing-via-combinatorial-testing",
+      "ICSE2026_comfrey-mitigating-integration-failures-in-llm-enabled-software-at-run-t",
+      "ICSE2026_configuration-sensitive-linux-kernel-fuzzing",
+      "ICSE2026_conflogger-enhance-systems-configuration-diagnosability-through-configur",
+      "ICSE2026_confuguard-using-metadata-to-detect-active-and-stealthy-package-confusio",
+      "ICSE2026_connected-to-stay-gender-homophily-and-its-role-in-open-source-software-",
+      "ICSE2026_context-free-grammar-inference-for-complex-programming-languages-in-blac",
+      "ICSE2026_context-free-property-oriented-fuzzing",
+      "ICSE2026_corex-context-aware-refinement-based-slicing-for-debugging-regression-fa",
+      "ICSE2026_creme-robustness-enhancement-of-code-llms-via-layer-aware-model-editing",
+      "ICSE2026_crudinfer-automated-crud-semantics-inference-for-rest-apis-through-black",
+      "ICSE2026_d-bundlr-destructing-javascript-bundles-for-effective-static-analysis",
+      "ICSE2026_debugging-performance-issues-in-webassembly-runtimes-via-mutation-based-",
+      "ICSE2026_decades-of-gnu-patch-and-git-cherry-pick-can-we-do-better",
+      "ICSE2026_defects4rest-a-benchmark-of-real-world-defects-to-enable-controlled-test",
+      "ICSE2026_deft-maintaining-determinism-and-extracting-unit-tests-for-autonomous-dr",
+      "ICSE2026_demystifying-the-cve-ecosystem-community-perceived-impacts-and-problems",
+      "ICSE2026_dependency-aware-residual-risk-analysis",
+      "ICSE2026_depradar-agentic-coordination-for-context-aware-defect-impact-analysis-i",
+      "ICSE2026_designing-abandabot-when-does-open-source-dependency-abandonment-matter",
+      "ICSE2026_diffploit-facilitating-cross-version-exploit-migration-for-open-source-l",
+      "ICSE2026_distance-guided-search-in-program-synthesis-with-imperfect-llm-solutions",
+      "ICSE2026_dnn-modularization-via-activation-driven-training",
+      "ICSE2026_do-unit-proofs-work-an-empirical-study-of-compositional-bounded-model-ch",
+      "ICSE2026_dually-hierarchical-drift-adaptation-for-online-configuration-performanc",
+      "ICSE2026_dyma-fuzz-dynamic-direct-memory-access-abstraction-for-re-hosted-monolit",
+      "ICSE2026_e-test-e-er-improving-test-suites",
+      "ICSE2026_echofuzz-empowering-smart-contract-fuzzing-with-large-language-models",
+      "ICSE2026_efficient-build-dependency-verification-using-ebpf-and-incremental-analy",
+      "ICSE2026_efficient-strong-updates-for-path-sensitive-data-dependence-analysis",
+      "ICSE2026_embedagent-benchmarking-large-language-models-in-embedded-system-develop",
+      "ICSE2026_emc-a-semantic-enhanced-malware-classification-method-with-robustness-an",
+      "ICSE2026_enabling-global-human-centered-explanations-for-llms-from-tokens-to-inte",
+      "ICSE2026_end-to-end-model-generation-with-large-language-models-for-adaptive-iot-",
+      "ICSE2026_energy-efficient-software-development-a-multi-dimensional-empirical-anal",
+      "ICSE2026_enforcing-control-flow-integrity-on-defi-smart-contracts",
+      "ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training",
+      "ICSE2026_enhancing-llm-code-generation-with-ensembles-a-similarity-based-selectio",
+      "ICSE2026_enhancing-symbolic-execution-with-self-configuring-parameters",
+      "ICSE2026_environment-aware-code-generation-how-far-are-we",
+      "ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio",
+      "ICSE2026_evaluating-generated-commit-messages-with-large-language-models",
+      "ICSE2026_evaluating-the-effectiveness-of-llm-based-interoperability",
+      "ICSE2026_evolving-trends-patterns-and-hidden-pitfalls-unveiling-javascript-featur",
+      "ICSE2026_evolving-with-ai-a-longitudinal-analysis-of-developer-logs",
+      "ICSE2026_exploring-and-improving-real-world-vulnerability-data-generation-via-pro",
+      "ICSE2026_fairness-is-not-just-ethical-performance-trade-off-via-data-correlation-",
+      "ICSE2026_fast-flow-sensitive-c-program-partitioning-via-iterative-value-flow-refi",
+      "ICSE2026_filtering-before-tuning-robust-fine-tuning-of-large-code-models-under-no",
+      "ICSE2026_fine-grained-analyses-for-evolution-aware-runtime-verification",
+      "ICSE2026_flipflop-a-static-analysis-based-energy-optimization-framework-for-gpu-k",
+      "ICSE2026_flowscope-non-intrusive-distributed-tracing-with-method-level-delay-esti",
+      "ICSE2026_fm4mc-improving-feature-models-for-microservice-chains-towards-more-effi",
+      "ICSE2026_forge-an-llm-driven-framework-for-large-scale-smart-contract-vulnerabili",
+      "ICSE2026_foundroot-towards-foundation-model-for-root-cause-analysis-via-structure",
+      "ICSE2026_frameshift-resizing-fuzzer-inputs-without-breaking-them",
+      "ICSE2026_freshbrew-a-benchmark-for-evaluating-ai-agents-on-java-code-migration",
+      "ICSE2026_from-code-changes-to-quality-gains-an-empirical-study-in-python-ml-syste",
+      "ICSE2026_from-code-to-correctness-closing-the-last-mile-of-code-generation-with-h",
+      "ICSE2026_from-seed-to-scope-reasoning-to-identify-change-impact-sets",
+      "ICSE2026_fuzzing-java-optimizing-compilers-with-complex-inter-class-structures-gu",
+      "ICSE2026_fuzzing-javascript-engines-by-fusing-javascript-and-webassembly",
+      "ICSE2026_gendetect-generalizing-reactive-detection-for-resilience-against-imitati",
+      "ICSE2026_generating-energy-efficient-code-via-large-language-models-where-are-we-",
+      "ICSE2026_generator-solving-for-symbolic-execution",
+      "ICSE2026_gptrace-effective-crash-deduplication-using-llm-embeddings",
+      "ICSE2026_hallucinating-certificates-differential-testing-of-tls-certificate-valid",
+      "ICSE2026_harnessllm-rust-verification-harness-generation-with-large-language-mode",
+      "ICSE2026_heterogeneous-prompting-and-execution-feedback-for-swe-issue-test-genera",
+      "ICSE2026_hey-chatgpt-look-at-my-work-using-conversational-ai-in-requirements-engi",
+      "ICSE2026_historyfinder-advancing-method-level-source-code-history-generation-with",
+      "ICSE2026_hoareprompt-structural-reasoning-about-program-correctness-in-natural-la",
+      "ICSE2026_how-do-semantically-equivalent-code-transformations-impact-membership-in",
+      "ICSE2026_how-does-core-contributor-disengagement-impact-open-source-project-activ",
+      "ICSE2026_how-good-are-input-grammar-miners-an-empirical-study",
+      "ICSE2026_hybrid-fault-driven-mutation-testing-for-python",
+      "ICSE2026_imitation-game-reproducing-deep-learning-bugs-leveraging-an-intelligent-",
+      "ICSE2026_improving-code-generation-via-small-language-model-as-a-judge",
+      "ICSE2026_inferlog-accelerating-llm-inference-for-online-log-parsing-via-icl-orien",
+      "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+      "ICSE2026_insecure-ingredients-exploring-dependency-update-patterns-of-bundled-jav",
+      "ICSE2026_inside-out-uncovering-how-comment-internalization-steers-llms-for-better",
+      "ICSE2026_intelliradar-a-comprehensive-platform-to-pinpoint-malicious-package-info",
+      "ICSE2026_intentfix-automated-logic-vulnerability-repair-via-llm-driven-intent-mod",
+      "ICSE2026_is-call-graph-pruning-really-effective-an-empirical-re-evaluation",
+      "ICSE2026_is-my-rpc-response-reliable-detecting-rpc-bugs-in-blockchain-client-unde",
+      "ICSE2026_issue2test-generating-reproducing-test-cases-from-issue-reports",
+      "ICSE2026_jedi-java-evaluation-of-declarative-and-imperative-queries-benchmarking-",
+      "ICSE2026_knowledge-matters-injecting-project-and-testing-knowledge-into-llm-based",
+      "ICSE2026_knowledge-augmented-log-anomaly-detection-with-large-language-models",
+      "ICSE2026_large-language-model-aided-partial-program-dependence-analysis",
+      "ICSE2026_learning-from-software-failures-a-case-study-at-a-national-space-researc",
+      "ICSE2026_learning-without-forgetting-towards-continual-learning-of-fault-localiza",
+      "ICSE2026_let-the-trial-begin-a-mock-court-approach-to-vulnerability-detection-usi",
+      "ICSE2026_light-over-heavy-automated-performance-requirements-quantification-with-",
+      "ICSE2026_likethis-empowering-app-users-to-submit-ui-improvement-suggestions-inste",
+      "ICSE2026_llm-test-generation-via-iterative-hybrid-program-analysis",
+      "ICSE2026_llm-based-agents-for-automated-bug-fixing-how-far-are-we",
+      "ICSE2026_llm-based-api-argument-completion-with-knowledge-augmented-prompts",
+      "ICSE2026_llm-based-vulnerability-discovery-through-the-lens-of-code-metrics",
+      "ICSE2026_llm4jmh-studying-the-use-of-llms-for-generating-java-performance-microbe",
+      "ICSE2026_llm4perf-large-language-models-are-effective-samplers-for-multi-objectiv",
+      "ICSE2026_logfold-compressing-logs-with-structured-tokens-and-hybrid-encoding",
+      "ICSE2026_loopscc-summarizing-complex-multi-branch-nested-loops-via-periodic-oscil",
+      "ICSE2026_lsprag-lsp-guided-rag-for-language-agnostic-real-time-unit-test-generati",
+      "ICSE2026_mactg-multi-agent-collaborative-thought-graph-for-automatic-programming",
+      "ICSE2026_mazebreaker-multi-agent-reinforcement-learning-for-dynamic-jailbreaking-",
+      "ICSE2026_measuring-the-influence-of-incorrect-code-on-test-generation",
+      "ICSE2026_memory-efficient-large-language-models-for-program-repair-with-semantic-",
+      "ICSE2026_meta2v2v-revealing-behavioural-deviations-under-mutual-perception-in-mul",
+      "ICSE2026_metamorphic-fuzzing-for-multi-agent-path-finding-algorithms",
+      "ICSE2026_metronome-differentiated-delay-scheduling-for-serverless-functions",
+      "ICSE2026_mines-explainable-anomaly-detection-through-web-api-invariant-inference",
+      "ICSE2026_minimizing-breaking-changes-and-redundancy-in-mitigating-technical-lag-f",
+      "ICSE2026_miohint-llm-assisted-request-mutation-for-whitebox-rest-api-testing",
+      "ICSE2026_misbehavior-forecasting-for-focused-autonomous-driving-systems-testing",
+      "ICSE2026_modeling-like-peeling-an-onion-layerwise-analysis-driven-automatic-behav",
+      "ICSE2026_modularevo-evolving-multi-task-models-via-neural-network-modularization-",
+      "ICSE2026_more-with-less-an-empirical-study-of-turn-control-strategies-for-efficie",
+      "ICSE2026_multi-location-software-model-completion",
+      "ICSE2026_mutdafny-a-mutation-based-approach-to-assess-dafny-specifications",
+      "ICSE2026_nb2p-generating-data-science-pipelines-from-computational-notebooks",
+      "ICSE2026_no-shot-in-the-dark-efficient-context-free-language-reachability-via-con",
+      "ICSE2026_notdec-webassembly-decompilation-with-inter-procedural-type-recovery",
+      "ICSE2026_octopusguard-k-line-enhanced-token-scam-detector-powered-by-multimodal-l",
+      "ICSE2026_on-interaction-effects-in-greybox-fuzzing",
+      "ICSE2026_on-llms-internal-representation-of-code-correctness",
+      "ICSE2026_on-the-robustness-of-fairness-practices-a-causal-framework-for-systemati",
+      "ICSE2026_one-signature-multiple-payments-demystifying-and-detecting-signature-rep",
+      "ICSE2026_one-size-does-fit-all-kernel-assisted-fine-grained-debloating-and-layout",
+      "ICSE2026_online-and-interactive-bayesian-inference-debugging",
+      "ICSE2026_optimization-aware-test-generation-for-deep-learning-compilers",
+      "ICSE2026_order-matters-an-empirical-study-on-large-language-models-input-order-bi",
+      "ICSE2026_out-of-distribution-out-of-luck-how-well-can-llms-trained-on-vulnerabili",
+      "ICSE2026_panoptes-a-profile-clustering-framework-for-context-aware-binary-optimiz",
+      "ICSE2026_parse-this-summoning-context-sensitive-inputs-with-goblin",
+      "ICSE2026_perspective-taking-in-software-engineering-a-study-on-its-relationship-t",
+      "ICSE2026_portable-power-modeling-with-transfer-learning-on-jvm-based-applications",
+      "ICSE2026_practitioner-views-on-mobile-app-accessibility-practices-and-challenges",
+      "ICSE2026_precise-static-identification-of-ethereum-storage-variables",
+      "ICSE2026_predicatefix-repairing-static-analysis-alerts-with-bridging-predicates",
+      "ICSE2026_predicting-failures-in-smart-human-centric-ecosystems",
+      "ICSE2026_preserve-intelligent-management-for-lmaas-systems-via-hierarchical-predi",
+      "ICSE2026_project-level-resource-leak-detection-through-agent-based-ownership-anal",
+      "ICSE2026_promisetune-unveiling-causally-promising-and-explainable-configuration-t",
+      "ICSE2026_proofcoop-collaborative-automated-formal-verification",
+      "ICSE2026_proxywar-dynamic-assessment-of-llm-code-generation-in-game-arenas",
+      "ICSE2026_ptv-scalable-version-detection-of-web-libraries-and-its-security-applica",
+      "ICSE2026_pyxray-practical-cross-language-call-graph-construction-through-object-l",
+      "ICSE2026_quantifying-memorization-advantage-in-code-llms",
+      "ICSE2026_rbctest-leveraging-llms-to-mine-and-verify-oracles-of-api-response-bodie",
+      "ICSE2026_realitycraft-automated-synthesis-of-extended-reality-device-interaction-",
+      "ICSE2026_refagent-a-multi-agent-llm-based-framework-for-automatic-software-refact",
+      "ICSE2026_reflections-on-the-reproducibility-of-commercial-llm-performance-in-empi",
+      "ICSE2026_remediating-superfluous-re-rendering-in-react-applications",
+      "ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based",
+      "ICSE2026_repairing-llm-executions-for-secure-automatic-programming",
+      "ICSE2026_reposcope-leveraging-call-chain-aware-multi-view-context-for-repository-",
+      "ICSE2026_rethinking-the-capability-of-fine-tuned-language-models-for-automated-vu",
+      "ICSE2026_rethinking-the-evaluation-of-secure-code-generation",
+      "ICSE2026_retrieval-augmented-test-generation-how-far-are-we",
+      "ICSE2026_revisiting-revisiting-neuron-coverage-for-dnn-testing-a-layer-wise-and-d",
+      "ICSE2026_rise-rule-driven-sql-dialect-translation-via-query-reduction",
+      "ICSE2026_rulepilot-an-llm-powered-agent-for-security-rule-generation",
+      "ICSE2026_rusted-types-static-detection-of-rust-type-confusion-bugs",
+      "ICSE2026_rusyfuzz-unhandled-exception-guided-fuzzing-for-rust-os-kernel",
+      "ICSE2026_safe-harnessing-llm-for-scenario-driven-ads-testing-from-multimodal-cras",
+      "ICSE2026_saint-service-level-integration-test-generation-with-program-analysis-an",
+      "ICSE2026_same-same-but-different-preventing-refactoring-attacks-on-software-plagi",
+      "ICSE2026_sapling-quantifying-and-measuring-the-maturity-of-the-risc-v-software-ec",
+      "ICSE2026_scaling-security-testing-by-addressing-the-reachability-gap",
+      "ICSE2026_scalpel-automotive-deep-learning-framework-testing-via-assembling-model-",
+      "ICSE2026_scrub-it-out-erasing-sensitive-memorization-in-code-language-models-via-",
+      "ICSE2026_sealign-alignment-training-for-software-engineering-agent",
+      "ICSE2026_securereviewer-enhancing-large-language-models-for-secure-code-review-th",
+      "ICSE2026_securing-the-ai-supply-chain-what-can-we-learn-from-developer-reported-s",
+      "ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d",
+      "ICSE2026_semantic-enhanced-automatic-refinement-of-architecture-recovery-results-",
+      "ICSE2026_sere-a-security-related-code-review-dataset-aligned-with-real-world-revi",
+      "ICSE2026_six-million-suspected-fake-stars-on-github-a-growing-spiral-of-popularit",
+      "ICSE2026_small-changes-big-trouble-demystifying-and-parsing-license-variants-for-",
+      "ICSE2026_smartc2rust-iterative-feedback-driven-c-to-rust-translation-via-large-la",
+      "ICSE2026_smoke-and-mirrors-jailbreaking-llm-based-code-generation-via-implicit-ma",
+      "ICSE2026_software-vulnerability-management-in-the-era-of-artificial-intelligence-",
+      "ICSE2026_specguru-hierarchical-llm-driven-api-points-to-specification-generation-",
+      "ICSE2026_specops-a-fully-automated-ai-agent-testing-framework-in-real-world-gui-e",
+      "ICSE2026_ssar-a-novel-software-architecture-recovery-approach-enhancing-accuracy-",
+      "ICSE2026_staying-or-leaving-how-job-satisfaction-embeddedness-and-antecedents-pre",
+      "ICSE2026_stem-ef-a-model-for-assessing-scrum-team-effectiveness-based-on-emotiona",
+      "ICSE2026_storfuzz-using-data-diversity-to-overcome-fuzzing-plateaus",
+      "ICSE2026_sustaindiffusion-optimising-the-social-and-environmental-sustainability-",
+      "ICSE2026_swe-debate-competitive-multi-agent-debate-for-software-issue-resolution",
+      "ICSE2026_symradar-poc-centered-bounded-verification-for-vulnerability-repair",
+      "ICSE2026_synthesizing-hardware-specific-instructions-for-efficient-code-generatio",
+      "ICSE2026_synthetic-repo-level-bug-dataset-for-training-automated-program-repair-m",
+      "ICSE2026_taaf-a-trace-abstraction-and-analysis-framework-synergizing-knowledge-gr",
+      "ICSE2026_taco-trust-assessment-of-large-language-models-in-coding-assistance-task",
+      "ICSE2026_tacos-generated-context-summaries-for-task-resumption",
+      "ICSE2026_taintp2x-detecting-taint-style-prompt-to-anything-injection-vulnerabilit",
+      "ICSE2026_tariplay-a-test-framework-for-ar-applications-based-on-interactive-area-",
+      "ICSE2026_temporal-specification-oriented-fuzzing-for-trigger-action-programming-s",
+      "ICSE2026_test-flimsiness-characterizing-flakiness-induced-by-mutation-to-the-code",
+      "ICSE2026_testifai-tomography-based-testing-for-deep-learning-systems",
+      "ICSE2026_testing-deep-learning-libraries-via-neurosymbolic-constraint-learning",
+      "ICSE2026_testora-using-natural-language-intent-to-detect-behavioral-regressions",
+      "ICSE2026_testweaver-execution-aware-feedback-driven-regression-testing-generation",
+      "ICSE2026_the-cost-vs-the-benefit-of-adding-an-extra-code-reviewer-to-mitigate-dev",
+      "ICSE2026_the-hidden-cost-of-readability-how-code-formatting-silently-consumes-you",
+      "ICSE2026_the-software-infrastructure-attitude-scale-sias-a-questionnaire-instrume",
+      "ICSE2026_the-state-of-open-science-in-software-engineering-research-a-case-study-",
+      "ICSE2026_think-like-human-developers-harnessing-community-knowledge-for-structure",
+      "ICSE2026_think-outside-the-box-automating-inter-app-functionality-testing-via-mem",
+      "ICSE2026_top-general-performance-top-domain-performance-domaincodebench-a-multi-d",
+      "ICSE2026_toward-efficient-package-maintenance-an-empirical-study-of-patch-sharing",
+      "ICSE2026_toward-systematic-counterfactual-fairness-evaluation-of-large-language-m",
+      "ICSE2026_towards-better-linux-kernel-fault-localization-leveraging-contrastive-re",
+      "ICSE2026_towards-global-matches-for-third-party-library-detection-in-android",
+      "ICSE2026_towards-scalable-and-interpretable-mobile-app-risk-analysis-via-large-la",
+      "ICSE2026_towards-supporting-open-source-library-maintainers-with-community-based-",
+      "ICSE2026_towards-understanding-and-characterizing-vulnerabilities-in-intelligent-",
+      "ICSE2026_toxicity-ahead-forecasting-conversational-derailment-on-github",
+      "ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-",
+      "ICSE2026_training-on-clean-data-but-getting-backdoored-models-a-poisoning-attack-",
+      "ICSE2026_typecare-boosting-python-type-inference-models-via-context-aware-re-rank",
+      "ICSE2026_uncovering-failures-in-cyber-physical-system-state-transitions-a-fuzzing",
+      "ICSE2026_understanding-devops-security-of-google-workspace-apps",
+      "ICSE2026_unicor-modality-collaboration-for-robust-cross-language-hybrid-code-retr",
+      "ICSE2026_unified-software-engineering-agent-as-ai-software-engineer",
+      "ICSE2026_unlocking-llm-repair-capabilities-through-cross-language-translation-and",
+      "ICSE2026_unlocking-the-silent-needs-business-logic-driven-iterative-requirements-",
+      "ICSE2026_using-a-sledgehammer-to-crack-a-nut-revisiting-automated-compiler-fault-",
+      "ICSE2026_vada-a-multicultural-benchmark-for-value-aware-data-generation-and-align",
+      "ICSE2026_validating-mixed-integer-programming-solvers",
+      "ICSE2026_variability-aware-fuzzing",
+      "ICSE2026_vdbfuzz-understanding-and-detecting-crash-bugs-in-vector-database-manage",
+      "ICSE2026_verification-of-multi-model-stochastic-systems",
+      "ICSE2026_views-on-internal-and-external-validity-in-empirical-software-engineerin",
+      "ICSE2026_weak-programmers-need-not-apply-llms-welcome-survey-screening-in-the-ai-",
+      "ICSE2026_well-begun-is-half-done-location-aware-and-trace-guided-iterative-automa",
+      "ICSE2026_what-makes-code-generation-ethically-sourced",
+      "ICSE2026_what-to-retrieve-for-effective-retrieval-augmented-code-generation-an-em",
+      "ICSE2026_what-s-in-a-software-engineering-job-posting",
+      "ICSE2026_when-ai-takes-the-wheel-security-analysis-of-framework-constrained-progr",
+      "ICSE2026_when-prompts-go-wrong-evaluating-code-model-robustness-to-ambiguous-cont",
+      "ICSE2026_whispercatcher-demystifying-unauthorized-and-encrypted-private-data-tran",
+      "ICSE2026_why-attention-fails-a-taxonomy-of-faults-in-attention-based-neural-netwo",
+      "ICSE2026_whyflow-interrogative-debugger-for-sensemaking-taint-analysis",
+      "ICSE2026_women-s-career-paths-in-the-nordic-software-industry-a-narrative-analysi",
+      "ICSE2026_write-your-own-code-checker-an-automated-test-driven-checker-development",
+      "ICSE2026_xrfix-exploring-performance-bug-repair-of-extended-reality-applications-"
+    ],
+    "external_link_targets_not_fetched": [
+      {
+        "paper_id": "ICSE2026_game-changer-or-overenthusiastic-drunk-acquaintance-generative-ai-use-by",
+        "url": "https://arxiv.org/abs/2512.24462"
+      },
+      {
+        "paper_id": "ICSE2026_i-need-to-learn-better-searching-tactics-for-privacy-policy-laws-investi",
+        "url": "https://arxiv.org/abs/2511.08059"
+      },
+      {
+        "paper_id": "ICSE2026_maybe-we-need-some-more-examples-individual-and-team-drivers-of-develope",
+        "url": "https://arxiv.org/abs/2507.21280"
+      },
+      {
+        "paper_id": "ICSE2026_3d-software-synthesis-driven-by-constraint-expressive-intermediate-repre",
+        "url": "https://arxiv.org/abs/2507.18625"
+      },
+      {
+        "paper_id": "ICSE2026_a-causal-perspective-on-measuring-explaining-and-mitigating-smells-in-ll",
+        "url": "https://doi.org/10.1145/3744916.3773164"
+      },
+      {
+        "paper_id": "ICSE2026_a-causal-perspective-on-measuring-explaining-and-mitigating-smells-in-ll",
+        "url": "https://arxiv.org/abs/2511.15817"
+      },
+      {
+        "paper_id": "ICSE2026_a-comparison-of-conversational-models-and-humans-in-answering-technical-",
+        "url": "https://arxiv.org/abs/2510.21933"
+      },
+      {
+        "paper_id": "ICSE2026_a-comprehensive-study-of-concurrency-bugs-in-the-linux-kernel",
+        "url": "https://sishuaigong.github.io/pdf/icse26-concurrencybugstudy.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_agent-based-ensemble-reasoning-for-repository-level-issue-resolution",
+        "url": "https://github.com/tianzhaotju/preprints/blob/main/ICSE'26%20-%20Agent-Based%20Ensemble%20Reasoning%20for%20Repository-Level%20Issue%20Resolution.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing",
+        "url": "https://arxiv.org/pdf/2508.21302"
+      },
+      {
+        "paper_id": "ICSE2026_agentspec-customizable-runtime-enforcement-for-safe-and-reliable-llm-age",
+        "url": "https://arxiv.org/abs/2503.18666"
+      },
+      {
+        "paper_id": "ICSE2026_aligning-requirement-for-large-language-model-s-code-generation",
+        "url": "https://arxiv.org/abs/2509.01313"
+      },
+      {
+        "paper_id": "ICSE2026_an-empirical-analysis-of-community-and-coding-patterns-in-oss4sg-vs-conv",
+        "url": "https://arxiv.org/pdf/2601.03430"
+      },
+      {
+        "paper_id": "ICSE2026_an-empirical-study-of-knowledge-distillation-for-code-understanding-task",
+        "url": "https://arxiv.org/abs/2508.15423"
+      },
+      {
+        "paper_id": "ICSE2026_an-eye-for-ai-eye-tracking-the-micro-interruptions-of-genai-code-suggest",
+        "url": "https://eye-for-ai.hasel.dev/download/an-eye-for-ai-icse2026-preprint.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_are-humans-and-llms-confused-by-the-same-code-an-empirical-study-on-fixa",
+        "url": "https://www.se.cs.uni-saarland.de/publications/docs/APM+26.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large",
+        "url": "https://arxiv.org/abs/2510.15079"
+      },
+      {
+        "paper_id": "ICSE2026_beyond-adoption-examining-the-evolution-and-impact-of-codes-of-conduct-o",
+        "url": "https://jys-sun.github.io/website/resources/Beyond_Adoption_ICSE2026_CR.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm",
+        "url": "https://arxiv.org/abs/2503.12374"
+      },
+      {
+        "paper_id": "ICSE2026_bytecode-centric-detection-of-known-to-be-vulnerable-dependencies-in-jav",
+        "url": "https://arxiv.org/abs/2510.19393"
+      },
+      {
+        "paper_id": "ICSE2026_can-sat-solvers-keep-up-with-the-linux-kernel-s-feature-model",
+        "url": "https://raw.githubusercontent.com/SoftVarE-Group/Papers/main/2026/2026-ICSE-Kuiter.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_causal-or-correlational-a-cohort-study-on-the-effects-of-code-smells-on-",
+        "url": "https://drive.google.com/file/d/1aPivADA0sNbBMq_Enjwy1u36uGVVrw7t/view?usp=sharing"
+      },
+      {
+        "paper_id": "ICSE2026_characterizing-gpu-accelerated-web-applications-in-browsers",
+        "url": "https://doi.org/10.1145/3744916.3787824"
+      },
+      {
+        "paper_id": "ICSE2026_characterizing-regression-bug-inducing-changes-and-improving-llm-based-r",
+        "url": "https://github.com/FudanSELab/LLM4Reg/blob/master/icse26_preprint_Regression_Bug_Inducing_Changes.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_closing-the-chain-how-to-reduce-your-risk-of-being-solarwinds-log4j-or-x",
+        "url": "https://arxiv.org/abs/2503.12192"
+      },
+      {
+        "paper_id": "ICSE2026_cobblestone-a-divide-and-conquer-approach-for-automating-formal-verifica",
+        "url": "https://doi.org/10.1145/3744916.3773178"
+      },
+      {
+        "paper_id": "ICSE2026_cobblestone-a-divide-and-conquer-approach-for-automating-formal-verifica",
+        "url": "https://people.cs.umass.edu/~brun/pubs/pubs/Kasibatla26icse.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_confuguard-using-metadata-to-detect-active-and-stealthy-package-confusio",
+        "url": "https://arxiv.org/abs/2502.20528"
+      },
+      {
+        "paper_id": "ICSE2026_context-free-grammar-inference-for-complex-programming-languages-in-blac",
+        "url": "https://arxiv.org/abs/2601.12385"
+      },
+      {
+        "paper_id": "ICSE2026_corex-context-aware-refinement-based-slicing-for-debugging-regression-fa",
+        "url": "https://people.ece.ubc.ca/~mjulia/publications/2026_CoReX_ICSE.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_decades-of-gnu-patch-and-git-cherry-pick-can-we-do-better",
+        "url": "https://lanpirot.github.io/publications/Decades_of_GNU_Patch_and_Git_Cherry-Pick_Can_We_Do_Better.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_defects4rest-a-benchmark-of-real-world-defects-to-enable-controlled-test",
+        "url": "https://mmotwani.com/publications/publication_sources/Mehta26icse.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_deft-maintaining-determinism-and-extracting-unit-tests-for-autonomous-dr",
+        "url": "https://doi.org/10.1145/3744916.3773252"
+      },
+      {
+        "paper_id": "ICSE2026_deft-maintaining-determinism-and-extracting-unit-tests-for-autonomous-dr",
+        "url": "https://github.com/YuqiHuai/DeFT/blob/main/publication/ICSE_2026_DeFT.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_dependency-aware-residual-risk-analysis",
+        "url": "https://nimgnoeseel.github.io/assets/pdf/structrr-paper.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_depradar-agentic-coordination-for-context-aware-defect-impact-analysis-i",
+        "url": "https://arxiv.org/pdf/2601.09440"
+      },
+      {
+        "paper_id": "ICSE2026_diffploit-facilitating-cross-version-exploit-migration-for-open-source-l",
+        "url": "https://arxiv.org/abs/2511.12950"
+      },
+      {
+        "paper_id": "ICSE2026_dnn-modularization-via-activation-driven-training",
+        "url": "https://arxiv.org/abs/2411.01074"
+      },
+      {
+        "paper_id": "ICSE2026_do-unit-proofs-work-an-empirical-study-of-compositional-bounded-model-ch",
+        "url": "https://arxiv.org/abs/2503.13762"
+      },
+      {
+        "paper_id": "ICSE2026_dually-hierarchical-drift-adaptation-for-online-configuration-performanc",
+        "url": "https://arxiv.org/pdf/2507.08730"
+      },
+      {
+        "paper_id": "ICSE2026_e-test-e-er-improving-test-suites",
+        "url": "https://arxiv.org/abs/2510.19860"
+      },
+      {
+        "paper_id": "ICSE2026_efficient-strong-updates-for-path-sensitive-data-dependence-analysis",
+        "url": "https://doi.org/10.1145/3744916.3773183"
+      },
+      {
+        "paper_id": "ICSE2026_efficient-strong-updates-for-path-sensitive-data-dependence-analysis",
+        "url": "https://yiyuaner.github.io/files/icse26.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_enabling-global-human-centered-explanations-for-llms-from-tokens-to-inte",
+        "url": "https://arxiv.org/pdf/2503.16771v2"
+      },
+      {
+        "paper_id": "ICSE2026_energy-efficient-software-development-a-multi-dimensional-empirical-anal",
+        "url": "https://arxiv.org/pdf/2409.19222"
+      },
+      {
+        "paper_id": "ICSE2026_enforcing-control-flow-integrity-on-defi-smart-contracts",
+        "url": "https://arxiv.org/pdf/2504.05509"
+      },
+      {
+        "paper_id": "ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training",
+        "url": "https://arxiv.org/pdf/2508.03012"
+      },
+      {
+        "paper_id": "ICSE2026_evaluating-generated-commit-messages-with-large-language-models",
+        "url": "https://arxiv.org/pdf/2507.10906"
+      },
+      {
+        "paper_id": "ICSE2026_exploring-and-improving-real-world-vulnerability-data-generation-via-pro",
+        "url": "https://doi.org/10.1145/3744916.3773176"
+      },
+      {
+        "paper_id": "ICSE2026_exploring-and-improving-real-world-vulnerability-data-generation-via-pro",
+        "url": "https://chapering.github.io/pubs/icse26guangbei.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_flipflop-a-static-analysis-based-energy-optimization-framework-for-gpu-k",
+        "url": "https://tusharma.in/preprints/ICSE2026_FlipFlop.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_forge-an-llm-driven-framework-for-large-scale-smart-contract-vulnerabili",
+        "url": "https://arxiv.org/abs/2506.18795"
+      },
+      {
+        "paper_id": "ICSE2026_from-code-changes-to-quality-gains-an-empirical-study-in-python-ml-syste",
+        "url": "https://arxiv.org/pdf/2511.02827"
+      },
+      {
+        "paper_id": "ICSE2026_from-code-to-correctness-closing-the-last-mile-of-code-generation-with-h",
+        "url": "https://arxiv.org/abs/2410.01215"
+      },
+      {
+        "paper_id": "ICSE2026_from-seed-to-scope-reasoning-to-identify-change-impact-sets",
+        "url": "https://aashishyadavally.github.io/assets/pdf/pub-icse2026-(2).pdf"
+      },
+      {
+        "paper_id": "ICSE2026_gendetect-generalizing-reactive-detection-for-resilience-against-imitati",
+        "url": "https://doi.org/10.1145/3744916.3787799."
+      },
+      {
+        "paper_id": "ICSE2026_gendetect-generalizing-reactive-detection-for-resilience-against-imitati",
+        "url": "https://arxiv.org/pdf/2604.26094"
+      },
+      {
+        "paper_id": "ICSE2026_generating-energy-efficient-code-via-large-language-models-where-are-we-",
+        "url": "https://www.ivanomalavolta.com/files/papers/ICSE_2026.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_gptrace-effective-crash-deduplication-using-llm-embeddings",
+        "url": "https://arxiv.org/abs/2512.01609"
+      },
+      {
+        "paper_id": "ICSE2026_hallucinating-certificates-differential-testing-of-tls-certificate-valid",
+        "url": "https://talhaparacha.com/icse_preprint.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_heterogeneous-prompting-and-execution-feedback-for-swe-issue-test-genera",
+        "url": "https://arxiv.org/abs/2508.06365"
+      },
+      {
+        "paper_id": "ICSE2026_hey-chatgpt-look-at-my-work-using-conversational-ai-in-requirements-engi",
+        "url": "https://people.ece.ubc.ca/~mjulia/publications/2026_AI_In_RE_ICSE.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_hybrid-fault-driven-mutation-testing-for-python",
+        "url": "https://arxiv.org/pdf/2601.19088"
+      },
+      {
+        "paper_id": "ICSE2026_imitation-game-reproducing-deep-learning-bugs-leveraging-an-intelligent-",
+        "url": "https://doi.org/10.1145/3744916.3787795"
+      },
+      {
+        "paper_id": "ICSE2026_imitation-game-reproducing-deep-learning-bugs-leveraging-an-intelligent-",
+        "url": "https://arxiv.org/pdf/2512.14990"
+      },
+      {
+        "paper_id": "ICSE2026_improving-code-generation-via-small-language-model-as-a-judge",
+        "url": "https://arxiv.org/abs/2602.11911"
+      },
+      {
+        "paper_id": "ICSE2026_inferlog-accelerating-llm-inference-for-online-log-parsing-via-icl-orien",
+        "url": "https://arxiv.org/abs/2507.08523"
+      },
+      {
+        "paper_id": "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+        "url": "https://doi.org/10.1145/3744916.3787760"
+      },
+      {
+        "paper_id": "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+        "url": "https://arxiv.org/abs/2507.15251"
+      },
+      {
+        "paper_id": "ICSE2026_insecure-ingredients-exploring-dependency-update-patterns-of-bundled-jav",
+        "url": "https://arxiv.org/abs/2512.15447"
+      },
+      {
+        "paper_id": "ICSE2026_inside-out-uncovering-how-comment-internalization-steers-llms-for-better",
+        "url": "https://arxiv.org/abs/2512.16790"
+      },
+      {
+        "paper_id": "ICSE2026_intelliradar-a-comprehensive-platform-to-pinpoint-malicious-package-info",
+        "url": "https://arxiv.org/pdf/2409.15049"
+      },
+      {
+        "paper_id": "ICSE2026_is-call-graph-pruning-really-effective-an-empirical-re-evaluation",
+        "url": "https://mohpydev.github.io/papers/call-graph-pruning-preprint.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_knowledge-matters-injecting-project-and-testing-knowledge-into-llm-based",
+        "url": "https://doi.org/10.1145/3744916.3787769"
+      },
+      {
+        "paper_id": "ICSE2026_knowledge-matters-injecting-project-and-testing-knowledge-into-llm-based",
+        "url": "https://arxiv.org/abs/2511.14224"
+      },
+      {
+        "paper_id": "ICSE2026_large-language-model-aided-partial-program-dependence-analysis",
+        "url": "https://aashishyadavally.github.io/assets/pdf/pub-icse2026-(1).pdf"
+      },
+      {
+        "paper_id": "ICSE2026_learning-from-software-failures-a-case-study-at-a-national-space-researc",
+        "url": "https://doi.org/10.1145/3744916.3773149"
+      },
+      {
+        "paper_id": "ICSE2026_learning-from-software-failures-a-case-study-at-a-national-space-researc",
+        "url": "https://arxiv.org/abs/2509.06301"
+      },
+      {
+        "paper_id": "ICSE2026_light-over-heavy-automated-performance-requirements-quantification-with-",
+        "url": "https://arxiv.org/pdf/2511.03421"
+      },
+      {
+        "paper_id": "ICSE2026_llm-based-vulnerability-discovery-through-the-lens-of-code-metrics",
+        "url": "https://mlsec.org/docs/2026-icse.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_llm4perf-large-language-models-are-effective-samplers-for-multi-objectiv",
+        "url": "https://arxiv.org/abs/2512.16070"
+      },
+      {
+        "paper_id": "ICSE2026_minimizing-breaking-changes-and-redundancy-in-mitigating-technical-lag-f",
+        "url": "https://arxiv.org/abs/2511.06762"
+      },
+      {
+        "paper_id": "ICSE2026_misbehavior-forecasting-for-focused-autonomous-driving-systems-testing",
+        "url": "https://arxiv.org/abs/2512.18823"
+      },
+      {
+        "paper_id": "ICSE2026_on-interaction-effects-in-greybox-fuzzing",
+        "url": "https://arxiv.org/pdf/2510.19984"
+      },
+      {
+        "paper_id": "ICSE2026_on-llms-internal-representation-of-code-correctness",
+        "url": "https://arxiv.org/abs/2512.07404"
+      },
+      {
+        "paper_id": "ICSE2026_one-signature-multiple-payments-demystifying-and-detecting-signature-rep",
+        "url": "https://arxiv.org/abs/2511.09134"
+      },
+      {
+        "paper_id": "ICSE2026_out-of-distribution-out-of-luck-how-well-can-llms-trained-on-vulnerabili",
+        "url": "https://arxiv.org/pdf/2507.21817"
+      },
+      {
+        "paper_id": "ICSE2026_practitioner-views-on-mobile-app-accessibility-practices-and-challenges",
+        "url": "https://doi.org/10.1145/3744916.3787791"
+      },
+      {
+        "paper_id": "ICSE2026_practitioner-views-on-mobile-app-accessibility-practices-and-challenges",
+        "url": "https://arxiv.org/abs/2601.14131"
+      },
+      {
+        "paper_id": "ICSE2026_precise-static-identification-of-ethereum-storage-variables",
+        "url": "https://sifislag.github.io/assets/papers/storage-modeling-full.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_predicatefix-repairing-static-analysis-alerts-with-bridging-predicates",
+        "url": "https://arxiv.org/abs/2503.12205"
+      },
+      {
+        "paper_id": "ICSE2026_promisetune-unveiling-causally-promising-and-explainable-configuration-t",
+        "url": "https://arxiv.org/pdf/2507.05995"
+      },
+      {
+        "paper_id": "ICSE2026_proofcoop-collaborative-automated-formal-verification",
+        "url": "https://doi.org/10.1145/3744916.3787783"
+      },
+      {
+        "paper_id": "ICSE2026_proofcoop-collaborative-automated-formal-verification",
+        "url": "https://people.cs.umass.edu/~brun/pubs/pubs/Kaufman26icse.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_pyxray-practical-cross-language-call-graph-construction-through-object-l",
+        "url": "https://grgalex.gr/assets/pdf/pyxray_icse26.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_reflections-on-the-reproducibility-of-commercial-llm-performance-in-empi",
+        "url": "https://doi.org/10.1145/3744916.3773207"
+      },
+      {
+        "paper_id": "ICSE2026_reflections-on-the-reproducibility-of-commercial-llm-performance-in-empi",
+        "url": "https://arxiv.org/pdf/2510.25506"
+      },
+      {
+        "paper_id": "ICSE2026_reposcope-leveraging-call-chain-aware-multi-view-context-for-repository-",
+        "url": "https://arxiv.org/abs/2507.14791"
+      },
+      {
+        "paper_id": "ICSE2026_rethinking-the-capability-of-fine-tuned-language-models-for-automated-vu",
+        "url": "https://arxiv.org/abs/2512.22633"
+      },
+      {
+        "paper_id": "ICSE2026_retrieval-augmented-test-generation-how-far-are-we",
+        "url": "https://arxiv.org/abs/2409.12682"
+      },
+      {
+        "paper_id": "ICSE2026_revisiting-revisiting-neuron-coverage-for-dnn-testing-a-layer-wise-and-d",
+        "url": "https://arxiv.org/pdf/2601.08729"
+      },
+      {
+        "paper_id": "ICSE2026_same-same-but-different-preventing-refactoring-attacks-on-software-plagi",
+        "url": "https://arxiv.org/abs/2510.25057"
+      },
+      {
+        "paper_id": "ICSE2026_scrub-it-out-erasing-sensitive-memorization-in-code-language-models-via-",
+        "url": "https://arxiv.org/abs/2509.13755"
+      },
+      {
+        "paper_id": "ICSE2026_securereviewer-enhancing-large-language-models-for-secure-code-review-th",
+        "url": "https://arxiv.org/abs/2510.26457"
+      },
+      {
+        "paper_id": "ICSE2026_securing-the-ai-supply-chain-what-can-we-learn-from-developer-reported-s",
+        "url": "https://arxiv.org/abs/2512.23385"
+      },
+      {
+        "paper_id": "ICSE2026_small-changes-big-trouble-demystifying-and-parsing-license-variants-for-",
+        "url": "https://arxiv.org/abs/2507.14594"
+      },
+      {
+        "paper_id": "ICSE2026_smoke-and-mirrors-jailbreaking-llm-based-code-generation-via-implicit-ma",
+        "url": "https://arxiv.org/pdf/2503.17953"
+      },
+      {
+        "paper_id": "ICSE2026_software-vulnerability-management-in-the-era-of-artificial-intelligence-",
+        "url": "https://arxiv.org/pdf/2512.18261"
+      },
+      {
+        "paper_id": "ICSE2026_staying-or-leaving-how-job-satisfaction-embeddedness-and-antecedents-pre",
+        "url": "https://arxiv.org/abs/2512.00869"
+      },
+      {
+        "paper_id": "ICSE2026_storfuzz-using-data-diversity-to-overcome-fuzzing-plateaus",
+        "url": "https://softsec.rub.de/files/pdf/icse2026-storfuzz.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_sustaindiffusion-optimising-the-social-and-environmental-sustainability-",
+        "url": "https://arxiv.org/abs/2507.15663"
+      },
+      {
+        "paper_id": "ICSE2026_taaf-a-trace-abstraction-and-analysis-framework-synergizing-knowledge-gr",
+        "url": "https://arxiv.org/abs/2601.02632"
+      },
+      {
+        "paper_id": "ICSE2026_the-software-infrastructure-attitude-scale-sias-a-questionnaire-instrume",
+        "url": "https://arxiv.org/abs/2512.00855"
+      },
+      {
+        "paper_id": "ICSE2026_the-state-of-open-science-in-software-engineering-research-a-case-study-",
+        "url": "https://arxiv.org/abs/2601.02066"
+      },
+      {
+        "paper_id": "ICSE2026_towards-global-matches-for-third-party-library-detection-in-android",
+        "url": "https://doi.org/10.1145/3744916.3764541"
+      },
+      {
+        "paper_id": "ICSE2026_toxicity-ahead-forecasting-conversational-derailment-on-github",
+        "url": "https://arxiv.org/pdf/2512.15031"
+      },
+      {
+        "paper_id": "ICSE2026_uncovering-failures-in-cyber-physical-system-state-transitions-a-fuzzing",
+        "url": "https://arxiv.org/abs/2601.05449"
+      },
+      {
+        "paper_id": "ICSE2026_variability-aware-fuzzing",
+        "url": "https://chaoticcross12.github.io/papers/Variability-Aware%20Fuzzing.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_verification-of-multi-model-stochastic-systems",
+        "url": "https://drive.google.com/file/d/1icMGEs1cx92BAeRUiJ4-2nV06Y3aunUX/view"
+      },
+      {
+        "paper_id": "ICSE2026_views-on-internal-and-external-validity-in-empirical-software-engineerin",
+        "url": "https://sws.informatik.uni-leipzig.de/wp-content/uploads/2025/09/10-years-validity.pdf"
+      },
+      {
+        "paper_id": "ICSE2026_what-s-in-a-software-engineering-job-posting",
+        "url": "http://arxiv.org/abs/2511.13656"
+      },
+      {
+        "paper_id": "ICSE2026_when-ai-takes-the-wheel-security-analysis-of-framework-constrained-progr",
+        "url": "https://arxiv.org/abs/2510.16823"
+      },
+      {
+        "paper_id": "ICSE2026_when-prompts-go-wrong-evaluating-code-model-robustness-to-ambiguous-cont",
+        "url": "https://arxiv.org/pdf/2507.20439"
+      },
+      {
+        "paper_id": "ICSE2026_why-attention-fails-a-taxonomy-of-faults-in-attention-based-neural-netwo",
+        "url": "https://www.arxiv.org/abs/2508.04925"
+      },
+      {
+        "paper_id": "ICSE2026_whyflow-interrogative-debugger-for-sensemaking-taint-analysis",
+        "url": "https://doi.org/10.1145/3744916.3773145"
+      },
+      {
+        "paper_id": "ICSE2026_whyflow-interrogative-debugger-for-sensemaking-taint-analysis",
+        "url": "https://arxiv.org/abs/2508.07198"
+      },
+      {
+        "paper_id": "ICSE2026_women-s-career-paths-in-the-nordic-software-industry-a-narrative-analysi",
+        "url": "https://doi.org/10.1145/3744916.3787803"
+      },
+      {
+        "paper_id": "ICSE2026_women-s-career-paths-in-the-nordic-software-industry-a-narrative-analysi",
+        "url": "https://nva.sikt.no/registration/019b2c5983c3-79c31d45-130c-4490-8677-c13140b46ed0"
+      },
+      {
+        "paper_id": "ICSE2026_xrfix-exploring-performance-bug-repair-of-extended-reality-applications-",
+        "url": "https://doi.org/10.1145/3744916.3773120"
+      },
+      {
+        "paper_id": "ICSE2026_xrfix-exploring-performance-bug-repair-of-extended-reality-applications-",
+        "url": "https://www.researchgate.net/publication/398772694_XRFix_Exploring_Performance_Bug_Repair_of_Extended_Reality_Applications_with_Large_Language_Models"
+      }
+    ]
+  },
+  "source_conflicts": [],
+  "deduplication": {
+    "audit_file": "corpus/icse2026-research-track-dedup-audit.json",
+    "exact_normalized_title_duplicates": 0,
+    "normalized_title_and_author_duplicates": 0,
+    "doi_duplicates": 0,
+    "title_variant_candidates": 0,
+    "co_listed_formal_and_preprint_versions": 16,
+    "unresolved_preprint_formal_correspondence": 96
+  },
+  "taxonomy": {
+    "status": "initial taxonomy retained",
+    "rationale": "config/research_scope.yaml restricts taxonomy revision to the domain-map phase; records contain provisional title-and-abstract categories.",
+    "unclassified_title_and_abstract": []
+  },
+  "follow_up_verification": [
+    "Resolve DOI and proceedings pages, abstracts, and formal/preprint version links from publisher and author sources.",
+    "Classify official Media Attached targets before treating them as artifacts, code, or data.",
+    "Check author identity and title variants with publisher/preprint records once those sources are added."
+  ]
+}
