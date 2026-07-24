@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_agentic-verification-of-software-systems"
+title: "Agentic Verification of Software Systems"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Haoxin Tu", "Huan Zhao", "Yahui Song", "Mehtab Zafar", "Ruijie Meng", "Abhik Roychoudhury"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2511.17330"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2511.17330v3, 11 April 2026, 24 pages"
+  doi: "10.1145/3808164"
+research_problem:
+  statement: "Neural theorem provers struggle on software-verification obligations because whole-proof generation and fixed tactic prediction lack proof-tree state and the relevant local or global Rocq context."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Prior systems either synthesize complete scripts, retrieve by a fixed policy, or react to errors without treating context search and backtracking as agent actions."
+  claim_type: author_claim
+  source_locator: "Sections 2.2 and 4"
+technical_mechanisms:
+  - statement: "AutoRocq gives the LLM typed context-query commands, represents partial proofs as a tree, and interprets tactic results against the current branch rather than as a flat transcript."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.1-4.2; Tables 1-2"
+  - statement: "Rocq errors trigger local repairs; persistent errors trigger context search after a threshold, while a history manager stores successful proofs for on-the-fly reuse."
+    claim_type: direct_evidence
+    source_locator: "Section 4.3.1-4.3.3"
+assumptions:
+  - statement: "Rocq's kernel acceptance is the correctness criterion, and the supplied theorem statement faithfully represents the intended software property."
+    claim_type: agent_inference
+    source_locator: "Sections 2.1, 5.1, and 6"
+  - statement: "A threshold of three repeated errors balances premature context injection against delayed retrieval."
+    claim_type: direct_evidence
+    source_locator: "Section 6.3; Table 3"
+evaluation:
+  datasets:
+    - statement: "The evaluation uses 1,717 mathematical lemmas from the leakage-controlled CoqGym/CoqStoq test intersection and 641 newly extracted verification lemmas from SV-COMP C programs."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1.1-5.1.4"
+  baselines:
+    - statement: "AutoRocq is compared with Rango, PALM, COPRA, QEDC, and P9001 under the benchmark-specific compatible setups."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Figures 4-6"
+  metrics:
+    - statement: "The primary metric is number and percentage of lemmas accepted by Rocq, with unique-success and complexity breakdowns."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1-6.2; Figures 4-6"
+  ablations:
+    - statement: "Six variants remove context search, proof-tree awareness, error feedback, or history, and alter the error threshold, but the experiment covers only 70 randomly sampled verification lemmas."
+      claim_type: direct_evidence
+      source_locator: "Section 6.3; Table 3"
+  main_results:
+    - statement: "AutoRocq proves 824/1,717 CoqGym lemmas (48.0%) versus Rango's 715 (41.6%), including 140 successes unique among the compared tools."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1; Figure 4"
+    - statement: "It proves 198/641 verification lemmas (30.9%), 10.6% more than the strongest baseline by the paper's relative comparison, with 28 unique successes."
+      claim_type: direct_evidence
+      source_locator: "Section 6.2; Figure 5"
+    - statement: "On the 70-lemma ablation sample, full AutoRocq succeeds on 44.3%; removing context search falls to 30.0%, while other removals yield 38.6%-41.4%."
+      claim_type: direct_evidence
+      source_locator: "Section 6.3; Table 3"
+conclusion_evidence:
+  - statement: "Proof errors and retrieved context demonstrably change later tactic choice and stopping is grounded in a checked proof, making this a genuine online feedback controller."
+    claim_type: agent_inference
+    source_locator: "Section 4.3; Figures 4-5; Table 3"
+limitations:
+  - statement: "The SV-COMP lemmas have no human proof ground truth and may not all be provable; evaluations cover Rocq and two benchmark families only."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.1.4, 6.4, and 6.5"
+  - statement: "The small ablation sample makes fine differences between proof-tree, feedback, and history variants uncertain."
+    claim_type: agent_inference
+    source_locator: "Section 6.3; Table 3, n=70"
+failure_modes:
+  - statement: "Too-frequent context queries can confuse the agent with irrelevant facts, while delayed queries leave it repeatedly attempting tactics without needed lemmas."
+    claim_type: direct_evidence
+    source_locator: "Section 6.3, Err1 and Err5 discussion"
+reusable_artifacts:
+  - statement: "AutoRocq and its academic-use artifacts are released by the authors."
+    claim_type: direct_evidence
+    source_locator: "Section 1 footnote 1; Data Availability; https://github.com/NUS-Program-Verification/AutoRocq"
+within_cluster_difference:
+  - statement: "Unlike Locus's one-time program rewrite, AutoRocq keeps a live proof tree and uses each prover outcome to select the next tactic, query, repair, backtrack, or stop action."
+    claim_type: agent_inference
+    source_locator: "Section 4; companion Locus card"
+relevance_reassessment:
+  statement: "It is more valuable than the shortlist alone indicated because the verified proof endpoint and context-search ablation expose an unusually concrete feedback-to-action loop."
+  claim_type: agent_inference
+  source_locator: "Sections 4 and 6; Table 3"
+evidence_gaps:
+  - statement: "The study does not establish theorem-specification validity, transfer beyond Rocq, or ablation stability on the full 2,358-lemma corpus."
+    claim_type: agent_inference
+    source_locator: "Sections 5-6 and threats in Section 6.5"
+

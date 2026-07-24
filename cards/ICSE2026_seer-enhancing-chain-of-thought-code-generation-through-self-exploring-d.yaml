@@ -1,0 +1,96 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d"
+title: "SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Shuzheng Gao", "Chaozheng Wang", "Cuiyun Gao", "Michael R. Lyu"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2510.17130"
+  version_reviewed: "arXiv:2510.17130v1, 20 October 2025, 13 pages"
+  version_note: "The latest located PDF uses generic Conference'17 metadata and states ICSE 2026 acceptance, but no formal DOI or publisher version was confirmed."
+research_problem:
+  statement: "Code CoT methods explore too few reasoning paths, do not score intermediate steps, and can overthink simple problems into slower or incorrect solutions."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1; Figure 2"
+prior_methods_insufficient:
+  statement: "Prompting and SFT train on a single correct rationale and lack negative step examples or an inference-time decision between direct generation and explicit reasoning."
+  claim_type: author_claim
+  source_locator: "Section 1; Sections 2-3"
+technical_mechanisms:
+  - statement: "SEER builds MCTS trees whose terminal code is labeled by tests, then perturbs all-correct paths to create negatives and uses ground-truth solutions to refine all-incorrect paths into positives."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1.1-3.1.2; Figure 4"
+  - statement: "It trains a step-generating policy on correct paths and a value model on positive and negative partial paths, then uses value-guided beam search to choose direct code or successive reasoning steps."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3; Algorithm 1"
+  - statement: "A second adaptive-training stage adds direct-generation examples and KL regularization so the policy preserves base generation ability while the value model learns when CoT is useful."
+    claim_type: direct_evidence
+    source_locator: "Section 3.3; Section 5.2.2; Table 3"
+assumptions:
+  - statement: "Passing the available unit tests supplies a correct terminal label whose MCTS backpropagated value is an adequate target for intermediate reasoning quality."
+    claim_type: agent_inference
+    source_locator: "Section 3.1.1; Equation 2"
+  - statement: "Paths corrected with access to a ground-truth solution provide faithful reasoning supervision rather than post-hoc rationalization."
+    claim_type: agent_inference
+    source_locator: "Section 3.1.2, Path Refinement"
+evaluation:
+  datasets:
+    - statement: "Training starts from 10K decontaminated Self-OSS question/code/test records and yields about 68K DeepSeek-Coder and 60K Qwen path samples; evaluation uses MBPP/MBPP+, HumanEval/HumanEval+, and 713 LiveCodeBench tasks."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2 and 4.4"
+  baselines:
+    - statement: "DeepSeek-Coder 6.7B and Qwen2.5-Coder 7B are compared under direct generation, Self-Planning, Code CoT, ordinary SFT, and DeepSeek-R1-style RL, plus larger open and proprietary models."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Table 1"
+  metrics:
+    - statement: "Primary evaluation is pass@1, repeated three times for SEER; ablations also report generation time and adaptive-CoT usage."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2, 4.4, and 5.2; Tables 1-3"
+  ablations:
+    - statement: "The study removes path perturbation, path refinement, value-guided selection, or adaptive CoT and compares first-stage-only and two-stage-without-KL training, plus beam, temperature, and value-weight sensitivity."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.2-5.3; Tables 2-3; Figures 5-6"
+  main_results:
+    - statement: "DeepSeek SEER scores 82.0/72.2 on MBPP, 82.9/73.8 on HumanEval, and 23.8 on LiveCodeBench; Qwen SEER scores 88.6/75.1, 90.9/86.0, and 36.7."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 1"
+    - statement: "Removing the value model lowers LiveCodeBench from 23.8 to 18.6 for DeepSeek and from 36.7 to 31.3 for Qwen, the largest and most consistent component loss."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2.1; Table 2"
+    - statement: "Two-stage training without KL falls to 19.5 and 23.6 on LiveCodeBench, showing severe forgetting relative to full SEER; first-stage-only is less damaging."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2.2; Table 3"
+conclusion_evidence:
+  - statement: "At deployment, the value estimate changes whether the model emits direct code or explores another reasoning action, and ablations link that choice to final test outcomes; this is online control over generation, not an autonomous repository agent."
+    claim_type: agent_inference
+    source_locator: "Section 3.3; Algorithm 1; Table 2"
+limitations:
+  - statement: "Only two base model families are trained, Python dominates training and principal benchmarks, and contamination cannot be eliminated despite Self-OSS filtering and LiveCodeBench."
+    claim_type: direct_evidence
+    source_locator: "Section 6.5, Threats to Validity"
+  - statement: "Non-terminal MCTS nodes initially receive zero rather than an independently observed correctness label; later value targets inherit terminal test coverage and search-policy biases."
+    claim_type: agent_inference
+    source_locator: "Section 3.1.1, Evaluation and Backpropagation"
+failure_modes:
+  - statement: "Explicit reasoning makes 4.7% of previously correct DeepSeek/MBPP answers incorrect; without adaptive selection the model overthinks more tasks and takes roughly one-third longer."
+    claim_type: direct_evidence
+    source_locator: "Section 1; Figure 2; Section 5.2.1"
+reusable_artifacts:
+  - statement: "The paper links code, models, prompts, and step-annotated data in an anonymized replication package."
+    claim_type: direct_evidence
+    source_locator: "Reference 27; https://anonymous.4open.science/r/icse26-730"
+within_cluster_difference:
+  - statement: "SEER explicitly learns an intermediate value model and uses it online; ToolTrain uses terminal localization reward for repository tools, while MCTS-Refine uses gold-visible offline judges and produces SFT data."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion ToolTrain and MCTS-Refine cards"
+relevance_reassessment:
+  statement: "Its value is higher than a generic CoT-training paper because the value-model and adaptive-CoT ablations expose a real action-selection mechanism, but intermediate correctness remains only indirectly supervised."
+  claim_type: agent_inference
+  source_locator: "Tables 2-3; Sections 3.1-3.3"
+evidence_gaps:
+  - statement: "Independent step labels, stronger test suites, repository-agent transfer, model-family breadth, a non-gold refinement control, and confirmed formal artifact/version metadata remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 3-6 and version metadata"

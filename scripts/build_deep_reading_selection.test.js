@@ -124,8 +124,8 @@ for (const exclusion of selection.important_exclusions) {
 assert.equal(selection.human_decisions_pending.length, 0);
 assert.match(report, /# Deep-Reading Selection Report/);
 assert.match(report, /No full-paper deep reading, research-idea generation, or direction confirmation was performed/);
-assert.match(checkpoint, /^current_phase: DEEP_READING_SELECTED$/m);
-assert.match(checkpoint, /^next_phase: DEEP_READING_BATCH_1$/m);
+assert.match(checkpoint, /^  - DEEP_READING_SELECTED$/m);
+assert.match(checkpoint, /^deep_reading_selection:$/m);
 assert.match(checkpoint, /^  selected_count: 42$/m);
 assert.match(checkpoint, /^  human_decisions_pending: \[\]$/m);
 assert.match(config, /^deep_reading_selection:$/m);

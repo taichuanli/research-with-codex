@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DEEP_READING_SELECTED
+current_phase: DEEP_READING_BATCH_1_COMPLETED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -17,6 +17,7 @@ phase_catalog:
   - DEEP_READING_SELECTION
   - DEEP_READING_SELECTED
   - DEEP_READING_BATCH_1
+  - DEEP_READING_BATCH_1_COMPLETED
   - DEEP_READING_BATCH_2
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
@@ -53,6 +54,10 @@ completed_items:
   - "DEEP_READING_SELECTION: selected 42 unique papers from the 988-paper corpus, with six primary papers for each of seven requested mechanism clusters and no author appearing on more than two selections."
   - "DEEP_READING_SELECTION: split the plan into two 21-paper batches; each batch contains exactly three papers from every mechanism cluster, and all Batch 1 papers have a verified public full-text URL."
   - "DEEP_READING_SELECTION: recorded per-paper reasons, mechanisms, topic roles, deep-reading questions, evaluation families, coverage roles, full-text status, 19 important exclusions, and explicit phase boundaries without full-paper reading or idea generation."
+  - "DEEP_READING_BATCH_1: fully read and created structured YAML cards for all 21 assigned papers, with exactly three papers in each of seven mechanism clusters."
+  - "DEEP_READING_BATCH_1: recorded paper-level problems, prior-method limitations, mechanisms, assumptions, datasets, baselines, metrics, ablations, result locators, limitations, failure modes, artifacts, within-cluster differences, and relevance reassessments using the required claim types."
+  - "DEEP_READING_BATCH_1: synthesized online versus offline intervention, signal-to-decision evidence, shared assumptions, empirical/method consistency, contradictions, and unresolved evidence in synthesis/deep-reading-batch-1-synthesis.md."
+  - "DEEP_READING_BATCH_1: created a nine-paper cross-domain dLLM watchlist without adding a new equal-weight cluster or claiming superiority over autoregressive models."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -176,5 +181,161 @@ deep_reading_selection:
     - "scripts/build_deep_reading_selection.js"
     - "scripts/build_deep_reading_selection.test.js"
   human_decisions_pending: []
-next_phase: DEEP_READING_BATCH_1
-last_updated: "2026-07-24T15:04:24Z"
+deep_reading_batch_1:
+  status: completed
+  completed_count: 21
+  mechanism_cluster_count: 7
+  papers_per_cluster: 3
+  paper_ids:
+    - ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu
+    - ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm
+    - FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis
+    - ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing
+    - FSE2026_agentic-verification-of-software-systems
+    - FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair
+    - FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues
+    - ISSTA2026_issueexec-a-test-driven-approach-for-localizing-software-engineering-iss
+    - ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large
+    - FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis
+    - ASE2025_agentic-specification-generator-for-move-programs
+    - ISSTA2026_logichunter-testing-llm-agent-frameworks-with-an-agentic-oracle
+    - ICSE2026_on-llms-internal-representation-of-code-correctness
+    - FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu
+    - FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c
+    - FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb
+    - ICSE2026_input-reduction-enhanced-llm-based-program-repair
+    - ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio
+    - ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training
+    - ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-
+    - ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d
+  mechanism_coverage:
+    FAILURE_LOOPS_RECOVERY: 3
+    PLANNING_ACTION_TOOL_STOPPING: 3
+    TEST_EXECUTION_ANALYSIS_FEEDBACK: 3
+    STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION: 3
+    OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS: 3
+    DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS: 3
+    TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION: 3
+  evidence:
+    claim_type: direct_evidence
+    source: "cards/*.yaml"
+    source_locator: "21 cards with phase=DEEP_READING_BATCH_1 and reading_status=deep_read"
+    statement: "All assigned Batch 1 papers have structured cards with full-text version metadata and source-located evidence for their problem, mechanism, assumptions, evaluation, results, limitations, failures, artifacts, and within-cluster differences."
+  synthesis:
+    claim_type: agent_inference
+    source: "synthesis/deep-reading-batch-1-synthesis.md"
+    source_locator: "Decision-loop audit; seven cluster sections; Cross-cluster findings"
+    statement: "The strongest closed signal-to-decision-to-outcome evidence currently comes from ADI, AutoRocq, TestPrune's controlled positive and negative cases, RustForger, and SEER; many other works remain offline diagnostics, prepared context, or endpoint-only supervision."
+  major_contradictions:
+    - claim_type: direct_evidence
+      source: "cards/ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm.yaml"
+      source_locator: "evaluation.main_results; paper Table 3 and Figure 2"
+      statement: "Resolution is nearly equal with versus without any solving error (54.61% versus 54.42%), even though higher error counts associate with lower resolution and more reasoning; difficulty confounding is unresolved."
+    - claim_type: direct_evidence
+      source: "cards/FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues.yaml"
+      source_locator: "limitations; paper Table 3 versus Section 4.6.2"
+      statement: "The TestPrune table and prose swap the Trae/SWE-agent benchmark mapping; selected tests also cause previously solved cases to stop prematurely."
+    - claim_type: direct_evidence
+      source: "cards/FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c.yaml"
+      source_locator: "evaluation.main_results; paper Table 2 versus Section 4.2"
+      statement: "AdaDec's prose claims consistent superiority over beam search, but Table 2 contains several beam-search wins."
+    - claim_type: direct_evidence
+      source: "cards/ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-.yaml"
+      source_locator: "evaluation.main_results; abstract and Table 2 versus Section 4.B conclusion"
+      statement: "MCTS-Refine's conclusion swaps the Verified and Lite result sequences; the abstract and Table 2 agree and are treated as authoritative."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Clusters 2-4 and Non-monotonic evidence and contradictions"
+      statement: "Formal acceptance does not establish intended semantics, coherent execution reasoning can still be wrong, and additional tools, tests, retrieval records, or reasoning rounds can reduce outcomes."
+  shared_assumptions:
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Shared hidden assumptions, items 1-6"
+      statement: "Tests and checker outcomes adequately represent semantic correctness."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Shared hidden assumptions, items 1-6"
+      statement: "Failures can be reproduced stably enough for traces and reduced inputs to remain valid evidence."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Shared hidden assumptions, items 1-6"
+      statement: "DAGs, proof trees, generated specifications, memories, summaries, latent scores, and minimized failures faithfully preserve the state needed for the next decision."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Shared hidden assumptions, items 1-6"
+      statement: "Canaries, requirements, troubleshooting guides, reference solutions, and gold patches encode the intended target and valid action space."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Shared hidden assumptions, items 1-6"
+      statement: "A capable host model will invoke, interpret, and stop using the supplied control signal appropriately, and public benchmark evidence transfers to broader agents."
+  evidence_gaps:
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Principal evidence gaps carried into Batch 2"
+      statement: "Many focal signals lack a causal deployed-consumption test, including empirical anti-patterns, CES, LAT, Clotho, DeepK recovery, and MCTS-Refine process supervision."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Principal evidence gaps carried into Batch 2"
+      statement: "Intermediate reasoning, root-cause explanations, generated specifications, and reduced counterexamples are usually validated only by terminal tests, gold endpoints, or formal consistency rather than independent semantic review."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-batch-1-synthesis.md"
+      source_locator: "Principal evidence gaps carried into Batch 2"
+      statement: "Repeated-run stability, independent annotation reliability, non-Python/Rust transfer, alternative valid fixes, incomplete test coverage, and nondeterministic execution remain unevenly addressed."
+  version_and_locator_issues:
+    - claim_type: direct_evidence
+      source: "paper-card metadata and full-text title pages"
+      source_locator: "LAT, ToolTrain, MCTS-Refine, SEER, LogicHunter, IssueExec, and DeepK cards"
+      statement: "LAT and SEER use generic proceedings metadata; ToolTrain's official and PDF titles differ and its PDF is under review; MCTS-Refine has no confirmed formal version; LogicHunter has a placeholder DOI; IssueExec is future-dated relative to review; DeepK states artifact availability without a URL."
+    - claim_type: direct_evidence
+      source: "paper tables and prose recorded in cards"
+      source_locator: "TestPrune Table 3/Section 4.6.2; AdaDec Table 2/Section 4.2; MCTS-Refine Table 2/Section 4.B"
+      statement: "Three internal reporting inconsistencies are preserved rather than silently reconciled."
+  dllm_watchlist:
+    status: completed_for_batch_1
+    count: 9
+    source: "synthesis/dllm-adjacent-watchlist.md"
+    evidence_basis:
+      claim_type: direct_evidence
+      source_locator: "nine arXiv API entries and abstracts checked 2026-07-24"
+      statement: "Current versions were confirmed for CodeFusion, Diffusion of Thoughts, LLaDA, Block Diffusion, d1, Fast-dLLM, DiffuCoder, Seed Diffusion, and Dream 7B."
+    conclusion:
+      claim_type: agent_inference
+      source_locator: "Cross-watchlist intersections and Watch status"
+      statement: "Generation order, iterative revision, diffusion-native RL, infilling, and confidence-aware commitment intersect the seven SE clusters, but current evidence is mainly code generation or non-SE reasoning rather than repository-agent control, and no AR-superiority claim is supported."
+  outputs:
+    - "cards/ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu.yaml"
+    - "cards/ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm.yaml"
+    - "cards/FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis.yaml"
+    - "cards/ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing.yaml"
+    - "cards/FSE2026_agentic-verification-of-software-systems.yaml"
+    - "cards/FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair.yaml"
+    - "cards/FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues.yaml"
+    - "cards/ISSTA2026_issueexec-a-test-driven-approach-for-localizing-software-engineering-iss.yaml"
+    - "cards/ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large.yaml"
+    - "cards/FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis.yaml"
+    - "cards/ASE2025_agentic-specification-generator-for-move-programs.yaml"
+    - "cards/ISSTA2026_logichunter-testing-llm-agent-frameworks-with-an-agentic-oracle.yaml"
+    - "cards/ICSE2026_on-llms-internal-representation-of-code-correctness.yaml"
+    - "cards/FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu.yaml"
+    - "cards/FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c.yaml"
+    - "cards/FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb.yaml"
+    - "cards/ICSE2026_input-reduction-enhanced-llm-based-program-repair.yaml"
+    - "cards/ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio.yaml"
+    - "cards/ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training.yaml"
+    - "cards/ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-.yaml"
+    - "cards/ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d.yaml"
+    - "synthesis/deep-reading-batch-1-synthesis.md"
+    - "synthesis/dllm-adjacent-watchlist.md"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-24"
+    source_locator: "YAML parse; selected-ID/title/field/cluster audit; recursive card-claim audit; phase-gate/watchlist audit; Markdown claim-label audit; full-text-file count; node --test scripts/*.test.js; git diff --check"
+    statement: "All 23 YAML files parsed; all 21 selected Batch 1 IDs and titles matched their cards; every cluster had three cards; all card statements had an allowed claim type and nonempty source locator; nine watchlist entries and seven synthesis sections were present; 21 PDFs and 21 extracted texts were nonempty; all 18 repository tests passed; and tracked diffs had no whitespace errors."
+  conclusion:
+    claim_type: agent_inference
+    source: "synthesis/deep-reading-batch-1-synthesis.md"
+    source_locator: "Stage boundary"
+    statement: "All required Batch 1 reading, paper cards, cluster synthesis, contradiction tracking, and adjacent dLLM reconnaissance are complete, so the workspace can enter DEEP_READING_BATCH_2 without generating a research idea in this phase."
+  human_decisions_pending: []
+next_phase: DEEP_READING_BATCH_2
+last_updated: "2026-07-24T17:21:57Z"

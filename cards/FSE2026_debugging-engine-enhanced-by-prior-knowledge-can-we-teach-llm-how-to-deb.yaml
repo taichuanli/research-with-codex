@@ -1,0 +1,97 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb"
+title: "Debugging Engine Enhanced by Prior Knowledge: Can We Teach LLM How to Debug?"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Kunyi Li", "Sai Wu", "Xiu Tang", "Chang Yao", "Songhao Bu", "Quanqing Xu", "Gang Chen"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://raw.githubusercontent.com/lucky20020327/DeepK/main/Debugging_Engine_Enhanced_by_Prior_Knowledge.pdf"
+  version_reviewed: "Published FSE 2026 manuscript, 21 pages"
+  doi: "10.1145/3797110"
+research_problem:
+  statement: "LLM repair systems rely mainly on implicit reasoning or retrieve raw examples, leaving reusable root-cause explanations and debugging strategies in historical fixes unmodeled."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Prompt, agent, and RAG approaches either infer a strategy anew or retrieve surface-similar artifacts without converting fixes into explicit, validated debugging knowledge."
+  claim_type: author_claim
+  source_locator: "Sections 1 and 2.2"
+technical_mechanisms:
+  - statement: "EditDescriptor computes AST edit operations, filters semantically incompatible updates, and renders the change as ordered natural-language edits."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Algorithm 1; Figure 2"
+  - statement: "An LLM extracts separate Bug Understanding and Debugging Strategy records; a record is retained only when another repair generated from that record passes the source instance's tests."
+    claim_type: direct_evidence
+    source_locator: "Section 3.2; Algorithm 2; Figure 1"
+  - statement: "At inference, task-description, AST, and executed-line embeddings are independently retrieved and fused with reciprocal rank fusion before three knowledge records are injected into ThinkRepair or Self-Repair."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.3-4.3; Table 10"
+assumptions:
+  - statement: "A knowledge record that lets an LLM repair its source bug is treated as validated debugging knowledge, although this does not establish that its stated root-cause reasoning is faithful or transferable."
+    claim_type: agent_inference
+    source_locator: "Section 3.2; Algorithm 2"
+  - statement: "Similarity in task text, AST structure, and executed lines retrieves debugging strategies relevant to a new bug."
+    claim_type: agent_inference
+    source_locator: "Section 3.3"
+evaluation:
+  datasets:
+    - statement: "Training uses 793 ACPR and 800 ACPR-Hard pairs; tests use 196 ACPR, 200 ACPR-Hard, and 100/177/181 out-of-distribution AtCoder ABC/ARC/AGC instances."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 1"
+  baselines:
+    - statement: "DeepK-T and DeepK-S are compared with ThinkRepair, Self-Repair, LDB, AgentCoder, and AutoCodeRover using GPT-4o and DeepSeek-v3; all feedback loops and iterative refinement are disabled."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2-4.3; Table 2"
+  metrics:
+    - statement: "Repair accuracy is the proportion of generated patches passing every dataset test; component comparisons also report absolute/relative changes, Wilcoxon tests, retained knowledge counts, and retrieval-size ranks."
+      claim_type: direct_evidence
+      source_locator: "Section 4.4; Sections 5.1-5.3; Tables 2-10"
+  ablations:
+    - statement: "Ablations remove each retrieval index, Bug Understanding, Debugging Strategy, or EditDescriptor and vary retrieved records from one to five."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2-5.3; Tables 5-10"
+  main_results:
+    - statement: "With DeepSeek-v3, DeepK-T records 0.9056/0.7675/0.4200/0.2655/0.2155 accuracy on ACPR, ACPR-Hard, ABC, ARC, and AGC; the best method varies on the harder AtCoder sets."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 2"
+    - statement: "Removing Bug Understanding lowers accuracy by 1.88 points on average and removing Debugging Strategy by 2.67 points; both one-sided five-dataset Wilcoxon tests report p=0.03125."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2.2; Tables 6-8"
+    - statement: "Three retrieved records have the best mean rank for both variants; four or five records often reduce performance, especially for DeepK-S on out-of-distribution tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 10; Figure 5"
+conclusion_evidence:
+  - statement: "The controlled experiment isolates structured knowledge injection, not a complete feedback-driven debugging policy: disabling baseline loops means the study tests one-shot guidance rather than recovery behavior."
+    claim_type: agent_inference
+    source_locator: "Section 4.2-4.3"
+limitations:
+  - statement: "The setting is function-level competitive-program repair, benchmark overlap cannot be fully excluded, and repair accuracy does not measure partial correctness, semantic equivalence, or human patch quality."
+    claim_type: direct_evidence
+    source_locator: "Section 6, Threats to Validity"
+  - statement: "Repository-level repair would require new cross-file knowledge representations and retrieval indices."
+    claim_type: direct_evidence
+    source_locator: "Section 6, Function-Level Scope"
+failure_modes:
+  - statement: "Trace/structure signals can over-specialize retrieval on unseen tasks, and adding more than three records introduces distracting or conflicting strategies."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.2.1 and 5.3; Tables 5 and 10"
+reusable_artifacts:
+  - statement: "The Data Availability section states that source, data, and artifacts are in a GitHub repository, but the reviewed PDF does not provide its URL."
+    claim_type: direct_evidence
+    source_locator: "Section 8, Data Availability"
+within_cluster_difference:
+  - statement: "DeepK chooses repair guidance from historical fixes before generation; ReduceFix transforms the current failing input, while RustForger gathers new runtime evidence inside a repository repair trajectory."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion ReduceFix and RustForger cards"
+relevance_reassessment:
+  statement: "Its value shifted from an agentic debugging engine to a clean knowledge-injection study: it offers useful retrieval-noise evidence but little direct evidence about online diagnosis or recovery."
+  claim_type: agent_inference
+  source_locator: "Section 4.2-4.3; Table 10"
+evidence_gaps:
+  - statement: "Independent validation of explanation fidelity, live feedback loops, repository-scale transfer, adaptive retrieval, and comparison with raw matched examples remain unresolved."
+    claim_type: agent_inference
+    source_locator: "Sections 3-6"
+

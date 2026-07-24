@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm"
+title: "Beyond Final Code: A Process-Oriented Error Analysis of Software Development Agents in Real-World GitHub Scenarios"
+primary_mechanism_cluster: FAILURE_LOOPS_RECOVERY
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Zhi Chen", "Wei Ma", "Lingxiao Jiang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2503.12374"
+  version_reviewed: "ICSE 2026 author manuscript, arXiv:2503.12374v4, 9 April 2026, 13 pages"
+  doi: "10.1145/3744916.3773140"
+research_problem:
+  statement: "Binary SWE-bench outcomes hide execution errors during issue solving and failures during benchmark-side testing, preventing diagnosis of how agents recover or fail."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3"
+prior_methods_insufficient:
+  statement: "Prior evaluations emphasize final patch quality and do not jointly analyze solving trajectories, test logs, persistent cross-phase errors, and benchmark failures."
+  claim_type: author_claim
+  source_locator: "Sections 1 and 3.4"
+technical_mechanisms:
+  - statement: "Agent-specific parsers extract Python errors from OBSERVATION regions of solving traces, aggregate prevalence and recurrence, and pair them with errors found in the benchmark testing phase."
+    claim_type: direct_evidence
+    source_locator: "Sections 2.3 and 3; Figure 1"
+  - statement: "The study combines quantitative error-frequency analysis, cross-phase matching, and manual review of unresolved cases without explicit extracted errors."
+    claim_type: direct_evidence
+    source_locator: "Sections 4-7; Tables 3-11"
+assumptions:
+  - statement: "Regular expressions and keyword rules over heterogeneous logs recover the execution failures relevant to agent behavior."
+    claim_type: direct_evidence
+    source_locator: "Sections 2.3, 5.1, and 8.4"
+  - statement: "Error count is interpreted as a recovery burden, although harder tasks can independently cause both more errors and lower resolution."
+    claim_type: agent_inference
+    source_locator: "Section 4.2; Figure 2; Table 4"
+evaluation:
+  datasets:
+    - statement: "The study analyzes 3,977 solving-phase trajectories and 3,931 testing logs from eight top-ranked agents on all 500 SWE-bench Verified issues from 12 Python repositories."
+      claim_type: direct_evidence
+      source_locator: "Abstract; Section 2; Table 2"
+  baselines:
+    - statement: "Comparisons stratify each agent's tasks by error occurrence and frequency; there is no randomized recovery intervention."
+      claim_type: direct_evidence
+      source_locator: "Section 4; Table 3; Figure 2"
+  metrics:
+    - statement: "Reported measures include resolution rate, occurrence/task/agent prevalence, repetition ratios, Pearson correlation with reasoning steps, cross-phase pairs, and manually categorized testing failures."
+      claim_type: direct_evidence
+      source_locator: "Sections 4-7; Tables 3-10"
+  ablations:
+    - statement: "No recovery component is ablated because the work is an empirical diagnosis rather than a proposed agent."
+      claim_type: direct_evidence
+      source_locator: "Figure 1 and Sections 4-7"
+  main_results:
+    - statement: "Overall resolution is nearly identical when at least one solving error is present (54.61%, 1,084/1,985) and absent (54.42%, 1,084/1,992)."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Table 3"
+    - statement: "Resolution rises to 58.6% for 1-2 errors but falls from 54.9% at 3-5 errors to 22.6% beyond 20 errors; error count correlates with reasoning steps at r=0.59423, p<0.001."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Figure 2; Table 4"
+    - statement: "Manual review of 56 unresolved cases found 34 in which tests never executed and 22 with executed tests; it also exposed three SWE-bench platform bugs confirmed by maintainers."
+      claim_type: direct_evidence
+      source_locator: "Section 7.3-7.4; Tables 10-11"
+conclusion_evidence:
+  - statement: "The data show repeated and cross-phase execution failures, but do not establish that error frequency itself causes patch failure or that existing agents learned effectively from individual errors."
+    claim_type: agent_inference
+    source_locator: "Table 3; Figure 2; threats in Section 8.4"
+limitations:
+  - statement: "Only eight agents with usable traces were selected, parser accuracy is vulnerable to inconsistent log formats, and the entire setting is Python/SWE-bench Verified."
+    claim_type: direct_evidence
+    source_locator: "Section 8.4, internal and external validity"
+  - statement: "The study reports association rather than a difficulty-controlled or causal recovery model."
+    claim_type: agent_inference
+    source_locator: "Section 4.2 and absence of task-difficulty controls"
+failure_modes:
+  - statement: "ModuleNotFoundError and TypeError are highly prevalent, while operational/database exceptions recur; testing can also fail through environment setup, SystemExit, unusual output formats, or false-negative reporting."
+    claim_type: direct_evidence
+    source_locator: "Sections 5-7; Tables 5-10"
+reusable_artifacts:
+  - statement: "Trajectories, logs, and analysis material are linked through the paper's Figshare package."
+    claim_type: direct_evidence
+    source_locator: "Section 2, footnote 3; https://figshare.com/s/bf7c3e656d1a57e1f50b"
+within_cluster_difference:
+  - statement: "It scales error mining far beyond Understanding Agents but loses its semantic thought-action coding; unlike ADI it recommends recovery directions without testing an online control."
+    claim_type: agent_inference
+    source_locator: "This card; ASE2025_understanding-software-engineering-agents card; FSE2026_empowering-autonomous-debugging-agents card"
+relevance_reassessment:
+  statement: "Its strongest value is not proof that agents recover from errors, but the counterevidence that error presence alone is weak and benchmark-side failures can corrupt outcome labels."
+  claim_type: agent_inference
+  source_locator: "Table 3; Tables 10-11"
+evidence_gaps:
+  - statement: "No model separates task difficulty, agent capability, error cause, attempted recovery, and final outcome; recovery success is therefore unresolved."
+    claim_type: agent_inference
+    source_locator: "Sections 4-7 and Section 8.4"
+

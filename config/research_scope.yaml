@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-24T11:04:24-04:00"
+last_reviewed_at: "2026-07-24T13:21:57-04:00"
 
 scope:
   venues:
@@ -97,3 +97,19 @@ deep_reading_selection:
     exclude:
       - "Human-subject and organizational studies, multi-agent organization, pure benchmarks, pure safety or security, pure retrieval, prompt engineering, and work optimizing only cost or final score."
   phase_boundary: "Reading plan only; no full-paper deep reading or research-idea generation was performed."
+
+deep_reading_progress:
+  status: batch_1_completed
+  current_phase: DEEP_READING_BATCH_1_COMPLETED
+  next_phase: DEEP_READING_BATCH_2
+  completed_batches:
+    DEEP_READING_BATCH_1:
+      status: completed
+      completed_count: 21
+      mechanism_cluster_count: 7
+      papers_per_cluster: 3
+      cards_path: "cards/"
+      synthesis_path: "synthesis/deep-reading-batch-1-synthesis.md"
+      adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
+      adjacent_watchlist_count: 9
+  phase_boundary: "Batch 1 full-paper reading and interim mechanism synthesis only; Batch 2 reading, research-idea generation, prior-art attack, and complete solution design were not performed."

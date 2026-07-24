@@ -1,0 +1,97 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_input-reduction-enhanced-llm-based-program-repair"
+title: "Input Reduction Enhanced LLM-based Program Repair"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Boyang Yang", "Luyao Ren", "Xin Yin", "Jiadong Ren", "Haoye Tian", "Shunfu Jin"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2507.15251"
+  version_reviewed: "ICSE 2026 author manuscript, arXiv:2507.15251v2, 18 December 2025, 13 pages"
+  doi: "10.1145/3744916.3787760"
+research_problem:
+  statement: "Long failure-inducing inputs overwhelm repair prompts and hide the causal counterexample, while existing reducers require hand-built grammars or domain-specific transformations."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1; Figure 1"
+prior_methods_insufficient:
+  statement: "APR systems insert the whole test as fixed context even when it hurts accuracy, and raw ddmin cannot preserve heterogeneous input syntax well enough for automated use."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "ReduceFix prompts an LLM once per programming task to synthesize a format-aware reducer, then uses that reducer inside ddmin's systematic interestingness loop."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1-3.2; Listing 1"
+  - statement: "Every candidate reduced input is executed against the buggy and reference programs; only a smaller input that preserves their output disagreement is passed to patch generation."
+    claim_type: direct_evidence
+    source_locator: "Section 3.3; Section 5.1 success definition"
+assumptions:
+  - statement: "Preserving the observed failing predicate while minimizing bytes retains the behavior needed to infer the intended root cause."
+    claim_type: agent_inference
+    source_locator: "Sections 3 and 5.4"
+  - statement: "Official tests and the reference implementation adequately detect patches that overfit the reduced counterexample."
+    claim_type: direct_evidence
+    source_locator: "Section 3.3; Section 6, Construct Validity"
+evaluation:
+  datasets:
+    - statement: "LFTBench contains 200 C++ bugs over 20 AtCoder tasks with median failing-input size 1 MB; LFTBench-Py mirrors the tasks, and the repository study uses 12 selected OSS-Fuzz/ARVO crashes from five projects."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2 and 5.6; Table 1"
+  baselines:
+    - statement: "Reduction is compared with pure LLM shortening and delimiter-based ddmin; repair prompts compare no test, original test, reduced test, diff lines, and reduced-plus-original, and the reducer is plugged into ChatRepair and CREF."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.6; Tables 3-13"
+  metrics:
+    - statement: "Metrics include reduction success, mean/median compression, tokens/cost, pass@1/5/10, and full official-test or Docker-grounded patch validation."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.6"
+  ablations:
+    - statement: "Prompt-composition comparisons separate shorter context from retained input/output evidence, and downstream integrations replace only the failure input while holding their repair logic and budget fixed."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.4-5.5; Tables 8-11"
+  main_results:
+    - statement: "On 200 LFTBench bugs, 95.0% of reducers succeed and remove 89.1% of input bytes on average, versus 35.5% success for ddmin-only and 40.0% for pure LLM shortening."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Tables 3-4"
+    - statement: "Across four repair LLMs, the reduced-test prompt is better than the original-test prompt overall; full tests sometimes perform worse than omitting test evidence, and prompt ablations identify compact but complete failure evidence as the main benefit."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.3-5.4; Tables 6-9"
+    - statement: "ChatRepair pass@10 rises from 30.5% to 37.0%, whereas CREF rises only from 39.0% to 40.0%."
+      claim_type: direct_evidence
+      source_locator: "Section 5.5; Tables 10-11"
+    - statement: "On 12 selected OSS-Fuzz crashes, ReduceFix preserves failure in 91.7% and reaches pass@10 41.7%, but the sample is restricted to the smallest one-file ground-truth patches."
+      claim_type: direct_evidence
+      source_locator: "Section 5.6; Tables 12-13"
+conclusion_evidence:
+  - statement: "Execution validates each reduction before it changes downstream repair context, and controlled plug-in comparisons show that this transformed evidence changes patch outcomes."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.3 and 5.3-5.6"
+limitations:
+  - statement: "LFTBench is competition-program focused, and the 12 OSS-Fuzz cases are selected after requiring a one-file fix, input over 1 KB, then taking the smallest ground-truth patches."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2, 5.6, and 6"
+  - statement: "A minimized input preserves one executable predicate, not necessarily the full causal mechanism or all behavior relevant to a semantically correct repair."
+    claim_type: agent_inference
+    source_locator: "Sections 3.3 and 6, Construct Validity"
+failure_modes:
+  - statement: "A synthesized reducer can delete a value magnitude or structural invariant that triggers the bug, causing ddmin to stall or return the original case; binary/container inputs also defeat naive chunk reduction."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2 failed case; Section 5.6 FFmpeg case"
+reusable_artifacts:
+  - statement: "The authors release LFTBench, LFTBench-Py, reducers, and evaluation code."
+    claim_type: direct_evidence
+    source_locator: "Section 4.2 artifact statement; https://github.com/GLEAM-Lab/ReduceFix"
+within_cluster_difference:
+  - statement: "ReduceFix transforms current execution evidence without claiming to localize a root cause; DeepK retrieves prior strategies, while RustForger actively reproduces and traces repository behavior."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion DeepK and RustForger cards"
+relevance_reassessment:
+  statement: "Its value increased because it isolates a non-monotonic feedback result: adding the full failing test can hurt, while preserving the same failure in a shorter form changes repair decisions substantially."
+  claim_type: agent_inference
+  source_locator: "Sections 5.3-5.5; Tables 6 and 9-11"
+evidence_gaps:
+  - statement: "Causal-equivalence checks beyond the failure predicate, larger unbiased repository samples, multi-file repairs, and effects on localization versus patch selection are not established."
+    claim_type: agent_inference
+    source_locator: "Sections 5.6 and 6"
+

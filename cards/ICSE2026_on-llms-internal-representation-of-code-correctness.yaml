@@ -1,0 +1,93 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_on-llms-internal-representation-of-code-correctness"
+title: "On LLMs’ Internal Representation of Code Correctness"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Francisco Ribeiro", "Claudio Spiess", "Prem Devanbu", "Sarah Nadi"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2512.07404"
+  version_reviewed: "arXiv:2512.07404v3, 21 January 2026, 13 pages"
+  version_note: "The latest located PDF uses generic Conference'17 proceedings metadata; no formal DOI or publisher version was confirmed."
+research_problem:
+  statement: "Likelihood and verbalized confidence often rank incorrect generated code above correct code, leaving no reliable test-free signal for selecting among candidates."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1; Figure 1"
+prior_methods_insufficient:
+  statement: "Output probabilities expose only the final token distribution, reflective confidence is inconsistent, and execution-trained neural rankers require large labeled sample sets and test runs."
+  claim_type: author_claim
+  source_locator: "Sections 1, 2.3, 4.1.3, and 5.1.3"
+technical_mechanisms:
+  - statement: "The method adapts Linear Artificial Tomography by subtracting last-token hidden states for paired correct and incorrect implementations, fitting layer-wise PCA directions, and selecting the layer on validation data."
+    claim_type: direct_evidence
+    source_locator: "Sections 2.1 and 3; Figure 2"
+  - statement: "A candidate implementation is scored by projecting its hidden representation onto the fitted correctness direction; the score is then used to rank ten self-generated solutions without executing them."
+    claim_type: direct_evidence
+    source_locator: "Sections 3 and 5.1; Equation and pass@rank-k definition"
+assumptions:
+  - statement: "Reference implementations and test-failing generated implementations form valid positive/negative correctness pairs."
+    claim_type: direct_evidence
+    source_locator: "Section 4.1.1; Table 2"
+  - statement: "Because correct options are reference solutions while incorrect options are outputs from other models in RQ1, the learned direction may partly encode provenance, style, or implementation regularity rather than semantic correctness alone."
+    claim_type: agent_inference
+    source_locator: "Section 4.1.1 and Section 6, Internal Validity"
+evaluation:
+  datasets:
+    - statement: "RQ1 constructs four-choice tasks for 151 HumanEval problems and 457 BigCodeBench problems; MBPP+ and 20 synthetic problems provide out-of-distribution fitting pairs. RQ2 ranks ten samples for 121 HumanEval and 367 BigCodeBench test tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1.1-4.1.2; Tables 1-2; Section 5.1.1"
+  baselines:
+    - statement: "Four 7-8B target models are compared using random choice, intrinsic likelihood, two verbalized-confidence prompts, and the execution-trained RankEF ranker."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1.3-4.1.4 and 5.1.3; Tables 3-6"
+  metrics:
+    - statement: "RQ1 reports correct-choice accuracy under nested cross-validation; RQ2 reports pass@rank-1 through pass@rank-5 against direct pass@1 and the pass@10 candidate-pool ceiling."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1.2-4.1.3 and 5.1.3"
+  ablations:
+    - statement: "The study contrasts in-distribution, MBPP+, and synthetic fitting and validation-selected versus test-optimal layers, but does not ablate provenance/style cues or intervene on generation."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1.2; Tables 3-4; Section 6"
+  main_results:
+    - statement: "LAT exceeds the strongest intrinsic or reflective baseline by 13.3-28.8 percentage points on BigCodeBench and 8.7-26.2 points on HumanEval, depending on the target model."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Tables 3-4"
+    - statement: "On HumanEval, a LAT fitting has the best pass@rank-1 for Mistral (41.3%), Qwen (85.1%), and OpenCoder (80.2%), while CodeLlama's intrinsic likelihood is better; on BigCodeBench, every pass@rank-1 result remains low, approximately 1%-8%."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2.2-5.2.3; Tables 5-6"
+    - statement: "LAT ranking usually approaches the pass@10 ceiling by rank 5, but CodeLlama on BigCodeBench needs rank 3 before it exceeds non-LAT alternatives."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2.3-5.2.5; Figures 4-5"
+conclusion_evidence:
+  - statement: "The experiments establish a model-specific offline ranking signal under candidate selection; they do not show calibrated correctness probabilities or that the signal improves an agent's next action online."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5; Section 6, Inference and generalizability trade-offs"
+limitations:
+  - statement: "Evaluation is limited to four similarly sized open models, Python, and two principal benchmarks; representations cannot be transferred directly between models."
+    claim_type: direct_evidence
+    source_locator: "Section 6, External Validity and Inference and generalizability trade-offs"
+  - statement: "The stronger ranking claims depend on repeated candidate generation and a pass@10 opportunity set, so they do not represent single-pass correctness detection."
+    claim_type: agent_inference
+    source_locator: "Section 5.1.3; Figures 4-5"
+failure_modes:
+  - statement: "Out-of-distribution fitting is model-dependent and can fall below random choice; CodeLlama and Qwen show failures for some synthetic or MBPP+ fittings."
+    claim_type: direct_evidence
+    source_locator: "Section 4.2.2; Tables 3-4"
+reusable_artifacts:
+  - statement: "The authors release code and constructed data through a replication package."
+    claim_type: direct_evidence
+    source_locator: "Section 1 artifact link; https://figshare.com/s/6ded6fcc84af7a088161"
+within_cluster_difference:
+  - statement: "LAT scores completed candidate code with white-box activations; Clotho scores inputs before generation, while AdaDec uses uncertainty during token generation to change the next token choice."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion Clotho and AdaDec cards"
+relevance_reassessment:
+  statement: "Its diagnostic value remains high, but its control value is lower than the shortlist suggested because the strongest absolute results are candidate reranking and the harder benchmark remains near single-digit rank-1 accuracy."
+  claim_type: agent_inference
+  source_locator: "Tables 5-6; Figures 4-5"
+evidence_gaps:
+  - statement: "Provenance-controlled contrast pairs, calibration, semantic-error stratification, larger/current models, repository tasks, and online use by an agent remain untested."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6 and evaluation scope"

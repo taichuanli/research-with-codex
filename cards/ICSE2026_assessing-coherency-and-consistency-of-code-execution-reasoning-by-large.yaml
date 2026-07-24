@@ -1,0 +1,93 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large"
+title: "Assessing Coherency and Consistency of Code Execution Reasoning by Large Language Models"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Changshu Liu", "Yang Chen", "Reyhaneh Jabbarvand"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2510.15079"
+  version_reviewed: "Published ICSE 2026 manuscript, 13 pages"
+  doi: "10.1145/3744916.3773272"
+research_problem:
+  statement: "Correct final outputs do not reveal whether an LLM actually simulated program control and data flow coherently or arrived through shortcuts, hallucination, or leakage."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Output prediction and prior execution-reasoning tasks inspect only final answers or partial states, making divergence localization and consistency across different inputs unavailable."
+  claim_type: author_claim
+  source_locator: "Sections 1-2 and 6.6"
+technical_mechanisms:
+  - statement: "CES prompts a model to predict selected variable states, loop iterables, predicates, branches, next statements, and final output, then checks flow-sensitive coherence rules against the real execution."
+    claim_type: direct_evidence
+    source_locator: "Sections 3-4; Figures 3-5"
+  - statement: "Across three tests per program, CES classifies reasoning as strong, weak, or random and identifies the first simulated state or control point that diverges."
+    claim_type: direct_evidence
+    source_locator: "Sections 5 and 6.3-6.4; Figures 6-7"
+assumptions:
+  - statement: "Explicitly predicting selected intermediate states is a necessary and measurable proxy for code understanding."
+    claim_type: agent_inference
+    source_locator: "Sections 1, 3, and 5"
+  - statement: "Three sampled tests are sufficient to characterize cross-input reasoning consistency, although only 52/164 programs have two tests with different prime-path coverage."
+    claim_type: agent_inference
+    source_locator: "Sections 6.1 and 6.3"
+evaluation:
+  datasets:
+    - statement: "Sixteen base, instruction, code, and reasoning models are evaluated on all 164 HumanEval programs with three sampled tests each; selected models are also tested on HumanEvalPack bug tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1 and 6.5"
+  baselines:
+    - statement: "CES is compared with REval and CodeMind, and its coherence score is related to bug prediction, localization, and repair accuracy."
+      claim_type: direct_evidence
+      source_locator: "Sections 6.5-6.6; Tables 2-3"
+  metrics:
+    - statement: "Metrics separate coherent/incoherent reasoning from correct/incorrect output, cross-test strong/weak/random consistency, divergence location, and bug-task accuracy."
+      claim_type: direct_evidence
+      source_locator: "Sections 4-6; Tables 1-3"
+  ablations:
+    - statement: "There is no intervention or component ablation; the study compares model families, code constructs, and inclusion/exclusion of suspiciously correct cases."
+      claim_type: direct_evidence
+      source_locator: "Section 6; Tables 1 and 3"
+  main_results:
+    - statement: "Across models, 81.42% of simulations are coherent, but only 46.92% of coherent cases predict the correct output; 53.08% remain coherent but wrong."
+      claim_type: direct_evidence
+      source_locator: "Abstract; Section 6.2; Table 1"
+    - statement: "Cross-test reasoning averages 5.76% strong, 45.37% weak, and 48.87% random; restricted to 52 programs with path-diverse tests, the values are 17.88%, 38.70%, and 43.42%."
+      claim_type: direct_evidence
+      source_locator: "Section 6.3; Figure 6"
+    - statement: "CES flags 361 incoherent-but-correct predictions and manually examines 64, finding natural-language shortcuts and hallucinated correct answers among the observed patterns."
+      claim_type: direct_evidence
+      source_locator: "Section 6.4.2"
+conclusion_evidence:
+  - statement: "CES reveals that final correctness and internally consistent execution simulation are different properties, but it is an offline diagnostic and does not feed its signal back into generation or repair."
+    claim_type: agent_inference
+    source_locator: "Sections 3-6; no downstream intervention"
+limitations:
+  - statement: "HumanEval programs are small, three tests are sampled for cost, and results may reflect implementation or prompt-processing errors despite pipeline tests and cross-checks."
+    claim_type: direct_evidence
+    source_locator: "Section 8, Threats to Validity"
+  - statement: "Calling a correct answer 'suspicious' cannot distinguish shortcut reasoning, pattern matching, lucky guessing, and training leakage causally."
+    claim_type: agent_inference
+    source_locator: "Section 6.4.2 manual analysis"
+failure_modes:
+  - statement: "Models commonly lose dynamically changing loop iterables, compound predicates, nested-control state, or API return values, with early errors propagating to later simulated states."
+    claim_type: direct_evidence
+    source_locator: "Section 6.4.1; Figure 7 and examples"
+reusable_artifacts:
+  - statement: "Prompts, results, and additional experiments are released in the CES repository."
+    claim_type: direct_evidence
+    source_locator: "Section 6.1 footnote 8; https://github.com/Intelligent-CAT-Lab/CES"
+within_cluster_difference:
+  - statement: "CES evaluates whether a model can reason about execution, whereas IssueExec actually runs tests to localize code and TestPrune inserts selected executions into patch workflows."
+    claim_type: agent_inference
+    source_locator: "Sections 3-6; companion IssueExec and TestPrune cards"
+relevance_reassessment:
+  statement: "Its value is higher as counterevidence against treating final score or fluent simulation as sufficient, but lower as agent-control evidence because no subsequent decision consumes CES."
+  claim_type: agent_inference
+  source_locator: "Table 1; Sections 6.3-6.5"
+evidence_gaps:
+  - statement: "Whether CES predicts repository-agent failures, improves action selection when used online, or remains reliable on long multi-file executions is untested."
+    claim_type: agent_inference
+    source_locator: "Evaluation scope and Section 8"

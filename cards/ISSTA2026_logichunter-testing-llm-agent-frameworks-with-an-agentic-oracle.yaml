@@ -1,0 +1,93 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ISSTA2026_logichunter-testing-llm-agent-frameworks-with-an-agentic-oracle"
+title: "LogicHunter: Testing LLM Agent Frameworks with an Agentic Oracle"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research papers"
+  authors: ["Minghui Long", "Yanjie Zhao", "Haoyu Wang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2607.06195"
+  version_reviewed: "arXiv:2607.06195v1, 7 July 2026, 23 pages"
+  version_note: "The manuscript contains placeholder proceedings metadata and DOI 10.1145/nnnnnnn.nnnnnnn; no formal DOI is confirmable."
+research_problem:
+  statement: "Python agent frameworks often fail silently or raise exceptions for invalid tests, so crashes, coverage, and passive LLM judges cannot reliably distinguish framework bugs from bad API use."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 2.3"
+prior_methods_insufficient:
+  statement: "Search-based and LLM fuzzers generate shallow invalid calls, while passive oracles lack current documentation, source inspection, runtime probes, and an evidence-preserving decision process."
+  claim_type: author_claim
+  source_locator: "Sections 2.3-2.4"
+technical_mechanisms:
+  - statement: "LogicHunter mines documentation, signatures, type hints, source, and real usage to synthesize seeds, then performs complexity-aware mutation and silent-failure behavioral probes."
+    claim_type: direct_evidence
+    source_locator: "Section 3.2"
+  - statement: "Its Agentic Oracle moves through explicit investigation and verdict states, calls documentation/source/runtime tools, prunes observations with dual memory, and requires high-confidence consensus before reporting."
+    claim_type: direct_evidence
+    source_locator: "Section 3.3.2; Figures 3-5; Table 1"
+assumptions:
+  - statement: "Documentation, source intent, and locally executable behavior together provide enough evidence to adjudicate an API failure without a developer-written oracle."
+    claim_type: agent_inference
+    source_locator: "Section 3.3.2"
+  - statement: "Usage examples from mature framework ecosystems adequately seed realistic API interactions."
+    claim_type: direct_evidence
+    source_locator: "Section 3.2; Section 5.2"
+evaluation:
+  datasets:
+    - statement: "Targets are LangChain, LlamaIndex, and CrewAI; oracle evaluation uses 1,000 deduplicated failures with 28 bugs and 972 non-bugs, plus 31 post-cutoff bugs and 484 hard negatives."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1.3-4.1.5"
+  baselines:
+    - statement: "Generation baselines include TitanFuzz, FuzzGPT/Fuzz4All, Pynguin, and TELPA; oracle baselines are raw failure, heuristics, and passive LLM judges with and without docs using GPT-5-mini or GPT-5.2."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1.4 and 4.3-4.5; Tables 6-7"
+  metrics:
+    - statement: "Generation uses coverage and three levels of valid failure; oracle evaluation uses precision, recall, F1, FPR, cost, and reviews per confirmed bug."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2"
+  ablations:
+    - statement: "Ablations vary minimum reasoning rounds, tool access, ReAct versus the structured state machine, full context versus dual memory, HCC, and usage mining."
+      claim_type: direct_evidence
+      source_locator: "Section 4.6; Figure 5; Tables 8-9"
+  main_results:
+    - statement: "LogicHunter reports 40 previously undisclosed bugs; 30 were acknowledged and 26 fixed, while baseline tools report none under their original oracles."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Tables 4-5"
+    - statement: "On the 1,000-failure corpus, the Agentic Oracle achieves precision 91.17%, recall 72.14%, F1 80.49%, and FPR 0.21%; the best passive GPT-5.2 judge reaches about 29% precision."
+      claim_type: direct_evidence
+      source_locator: "Section 4.5; Table 7"
+    - statement: "Two independent annotators label the corpus with Cohen's kappa 0.77; post-cutoff recall is 60.65% and hard-negative FPR is 0.04%."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1.5; Table 7"
+    - statement: "Vanilla ReAct raises recall to 85.71% but lowers precision to 54.55%; removing HCC or dual memory also degrades precision/FPR, supporting structured state rather than tool access alone."
+      claim_type: direct_evidence
+      source_locator: "Section 4.6; Table 8"
+conclusion_evidence:
+  - statement: "Documents, source, and execution actively determine subsequent investigation tools and the final oracle verdict, but the loop triages generated tests rather than repairing framework code."
+    claim_type: agent_inference
+    source_locator: "Section 3.3.2 and Section 4"
+limitations:
+  - statement: "Generation depends on realistic usages, the API-centric design misses multi-API/environmental workflows, multi-round reasoning adds latency, and only three Python frameworks and fixed model roles are tested."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2"
+failure_modes:
+  - statement: "Too few mandatory rounds cause conservative premature judgments, but forcing eight rounds induces searches for nonexistent clues, hallucination, and higher FPR."
+    claim_type: direct_evidence
+    source_locator: "Section 4.6; Figure 5"
+reusable_artifacts:
+  - statement: "The authors release the framework, corpus, and bug material."
+    claim_type: direct_evidence
+    source_locator: "Conclusion artifact statement; https://github.com/security-pride/LogicHunter"
+within_cluster_difference:
+  - statement: "LogicHunter's state is epistemic evidence for classification, not procedural state like StepFly or a formal contract like MSG; its online actions investigate rather than modify the target."
+    claim_type: agent_inference
+    source_locator: "Section 3; companion StepFly and MSG cards"
+relevance_reassessment:
+  statement: "Its actual value is higher than a generic testing paper suggested: the ablations directly expose a precision-recall trade-off in state depth, memory pruning, tool evidence, and stopping."
+  claim_type: agent_inference
+  source_locator: "Section 4.6; Table 8"
+evidence_gaps:
+  - statement: "Broader frameworks, multi-API workflows, independent reproduction of the 40 reports, and repair/recurrence outcomes beyond acknowledgment remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4.3 and 5.2"

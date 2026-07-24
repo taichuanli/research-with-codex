@@ -1,0 +1,93 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis"
+title: "Empowering Autonomous Debugging Agents with Efficient Dynamic Analysis"
+primary_mechanism_cluster: FAILURE_LOOPS_RECOVERY
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Jiahong Xiang", "Xiaoyang Xu", "Xiaopan Chu", "Hongliang Tian", "Yuqun Zhang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2604.24212"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2604.24212v1, 27 April 2026, 22 pages"
+  doi: "10.1145/3797126"
+research_problem:
+  statement: "Conventional debuggers expose low-level, sequential interactions that induce long, costly loops when autonomous agents need runtime state for repository repair."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3.2"
+prior_methods_insufficient:
+  statement: "Binary test feedback and static context omit function-level state transitions, while standard PDB commands require agents to maintain fragile debugger state across many turns."
+  claim_type: author_claim
+  source_locator: "Sections 1-2; motivating example in Figure 1"
+technical_mechanisms:
+  - statement: "ADI records a Frame Lifetime Trace that joins function invocations, arguments, return values, and inter-frame relationships, then exposes higher-level break, continue, execute, and call-tree commands."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.1-4.2; Figures 3-7"
+  - statement: "FramePilot adds ADI to an otherwise basic repair agent, allowing on-demand re-execution and runtime inspection to change localization, diagnosis, and patching actions online."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.3 and 5.3.2"
+assumptions:
+  - statement: "A minimal reproduction script replays deterministically enough that observations from repeated instrumented executions describe the failing behavior."
+    claim_type: agent_inference
+    source_locator: "Section 6, internal validity"
+  - statement: "The host LLM is capable of deciding when and how to invoke ADI; weaker models invoke it much less often."
+    claim_type: direct_evidence
+    source_locator: "Section 5.4.3; Figure 8"
+evaluation:
+  datasets:
+    - statement: "FramePilot is evaluated on SWE-bench Verified (500 tasks) and Lite (300 tasks) in official Docker environments."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1 and 5.3"
+  baselines:
+    - statement: "Baselines include BaseAgent, BaseAgent with PDB, SWE-agent, mini-SWE-agent, Agentless, AutoCodeRover, SWESynInfer, and Claude-Tools; ADI is also plugged into mini-SWE-agent and AutoCodeRover."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Tables 1-3"
+  metrics:
+    - statement: "The study reports resolved/pass@1, file/function/line correct-location rates, API cost, ADI invocation, and execution overhead."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1 and 5.4; Tables 1-4; Figure 8"
+  ablations:
+    - statement: "Table 2 compares BaseAgent, PDB, and full FramePilot across four LLMs; Table 4 progressively adds frame timing, arguments, and return values."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4.1 and 5.4.3; Tables 2 and 4"
+  main_results:
+    - statement: "With Claude Sonnet 3.7, FramePilot resolves 319/500 Verified tasks (63.8%) versus BaseAgent's 275/500 (55.0%), at $1.28 versus $1.02 average cost."
+      claim_type: direct_evidence
+      source_locator: "Table 2"
+    - statement: "Adding ADI to mini-SWE-agent and AutoCodeRover improves Verified resolved counts by 6.2%-18.5% relative across the tested model pairings."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4.2; Table 3"
+    - statement: "PDB averaged 10.1 commands on 191 debugging attempts, and manual review found 53% were abandoned; full FLT improves Lite resolutions from 130 to 152 as its components are added."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4.1; Table 4"
+conclusion_evidence:
+  - statement: "This is the cluster's clearest online signal-to-decision-to-outcome chain: runtime state becomes an available action, agents invoke it, localization improves, and controlled variants resolve more tasks."
+    claim_type: agent_inference
+    source_locator: "Tables 2-4; Figure 8; case study Figure 9"
+limitations:
+  - statement: "The implementation is Python-only and best suited to function-level state/data-flow bugs; concurrency, memory leaks, and behavior spanning many shallow calls are less supported."
+    claim_type: direct_evidence
+    source_locator: "Section 6, external validity"
+  - statement: "Temperature zero does not remove model/provider nondeterminism, and most configurations are evaluated once per benchmark rather than across repeated independent runs."
+    claim_type: agent_inference
+    source_locator: "Sections 5.3 and 6"
+failure_modes:
+  - statement: "Re-execution adds overhead and can be sensitive to nondeterminism; tool value also collapses when the host model fails to invoke it."
+    claim_type: direct_evidence
+    source_locator: "Section 5.4.3; Section 6"
+reusable_artifacts:
+  - statement: "Source, evaluation scripts, and results are released at the ADI repository and Zenodo record."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://github.com/GhabiX/ADI; doi:10.5281/zenodo.19728388"
+within_cluster_difference:
+  - statement: "Unlike both empirical cluster mates, ADI changes the action space during execution and directly tests whether fine-grained runtime feedback improves subsequent repair decisions."
+    claim_type: agent_inference
+    source_locator: "Section 4; Tables 2-4; two companion cards"
+relevance_reassessment:
+  statement: "Its practical and causal value is higher than the shortlist-level description indicated, though the finding is bounded to reproducible Python execution and capable host models."
+  claim_type: agent_inference
+  source_locator: "Tables 2-4; Figure 8; Section 6"
+evidence_gaps:
+  - statement: "Multi-run stability, non-Python transfer, nondeterministic/concurrent failures, and semantic patch review beyond benchmark tests remain open."
+    claim_type: agent_inference
+    source_locator: "Section 6 and evaluation scope"

@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu"
+title: "Clotho: Measuring Task-Specific Pre-Generation Test Adequacy for LLM Inputs"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Juyeon Yoon", "Somin Kim", "Robert Feldt", "Shin Yoo"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2509.17314"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2509.17314v4, 1 July 2026, 23 pages"
+  doi: "10.1145/3797114"
+research_problem:
+  statement: "LLM test inputs vary greatly in failure likelihood, but most uncertainty measures require generating outputs first and repeatedly paying inference or labeling cost."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Post-generation likelihood, consistency, and semantic uncertainty cannot prioritize an unexecuted input suite cheaply, while generic surprise adequacy does not adapt its latent model or sampling to a task."
+  claim_type: author_claim
+  source_locator: "Sections 1-2 and 4.3"
+technical_mechanisms:
+  - statement: "Clotho fits a Gaussian Mixture Model only to hidden states of labeled passing inputs, then treats low density under that distribution as a pre-generation failure-likelihood score."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Algorithm 1"
+  - statement: "It grows the reference set by balancing exploration and component-entropy exploitation, while adaptively selecting representation dimensionality and the number of mixture components."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.2; Algorithm 1"
+assumptions:
+  - statement: "Input-side hidden-state geometry separates task-specific passing and failing regions before an output is generated."
+    claim_type: agent_inference
+    source_locator: "Sections 2-3; Figure 2"
+  - statement: "Labels obtained from repeated generations at a fixed pass threshold represent stable input difficulty and remain useful when transferred to a different model."
+    claim_type: agent_inference
+    source_locator: "Sections 4.1-4.4"
+evaluation:
+  datasets:
+    - statement: "The study covers eight heterogeneous tasks with three open-weight models (Llama 3.1 8B, Mistral 7B, and Gemma 2 9B); GPT-4o-mini, Claude Haiku, and Gemini 2.5 Flash Lite are added for transfer."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Tables 1-2"
+  baselines:
+    - statement: "Baselines are model sequence log likelihood, Mahalanobis-distance surprise adequacy, a base GMM without balanced active sampling or adaptive dimensionality/components, random prioritization, and post-generation uncertainty metrics."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Sections 5.1-5.3"
+  metrics:
+    - statement: "Evaluation reports Spearman correlation with observed pass rates, ROC-AUC, failure@N, APFD, and cross-model score correlations."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Sections 5.1-5.4"
+  ablations:
+    - statement: "GMMb and alternative sampling strategies jointly test active reference selection and adaptive modeling, although the two adaptive changes are not fully isolated from one another."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Section 5.1; Table 3"
+  main_results:
+    - statement: "With reference sets of at most 500 labels, averaging 5.4% of each input suite, Clotho obtains mean ROC-AUC 0.716 versus 0.655 for MDSA."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Table 4"
+    - statement: "Clotho has the highest score/pass-rate correlation in 14 of 24 task-model configurations, while the simpler GMMb is best in seven and exceeds Clotho on three tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1.1; Table 3"
+    - statement: "Transferred open-model scores identify an average 42.5 failures among the first 100 proprietary-model inputs versus 18.7 under random prioritization."
+      claim_type: direct_evidence
+      source_locator: "Abstract; Section 5.4; Figure 8 and Table 8"
+conclusion_evidence:
+  - statement: "Clotho can prioritize which inputs to execute next, including for closed models, but the paper evaluates an offline ordering rather than an online policy that adapts generation or agent behavior."
+    claim_type: agent_inference
+    source_locator: "Algorithm 1; Sections 5.2 and 5.4"
+limitations:
+  - statement: "The latent score may correlate with properties other than task difficulty, is task- and model-specific, and is not tested on reasoning-model architectures."
+    claim_type: direct_evidence
+    source_locator: "Section 7, Threats to Validity"
+  - statement: "Constructing the reference labels still requires multiple generations and task-specific verification; pre-generation refers to later ranked inputs, not a label-free setup."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4"
+failure_modes:
+  - statement: "Sparse initial data can make the GMM miss global structure, and adaptive selection can underperform a simple random/base GMM on tasks whose latent distribution is already easy to model."
+    claim_type: direct_evidence
+    source_locator: "Section 5.1.1-5.1.2; Table 3"
+reusable_artifacts:
+  - statement: "Task data and replication code are released on GitHub and Zenodo."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://github.com/coinse/clotho"
+within_cluster_difference:
+  - statement: "Clotho predicts input-level failure before output generation and can transfer an ordering to closed models; LAT evaluates generated candidates, and AdaDec operates at individual decoding decisions."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion LAT and AdaDec cards"
+relevance_reassessment:
+  statement: "Its practical role narrowed from general uncertainty control to economical test prioritization: it exposes difficult inputs but does not explain a failure or demonstrate that an agent acts better on the score."
+  claim_type: agent_inference
+  source_locator: "Sections 5-7"
+evidence_gaps:
+  - statement: "Calibration under distribution shift, label stability, failure-type prediction, agent integration, and whether prioritized execution changes downstream decisions remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 5-7 and absence of an intervention study"
+

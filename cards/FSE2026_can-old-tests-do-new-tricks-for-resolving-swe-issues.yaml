@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues"
+title: "Can Old Tests do New Tricks for Resolving SWE Issues?"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Yang Chen", "Toufique Ahmed", "Reyhaneh Jabbarvand", "Martin Hirzel"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2510.18270"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2510.18270v2, 8 May 2026, 22 pages"
+  doi: "10.1145/3808148"
+research_problem:
+  statement: "Repository repair agents need regression feedback, but full suites are slow and broad default subsets can supply noisy or misleading evidence for a specific issue."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Existing patch pipelines either run large suites, select tests without issue-specific coverage, or generate reproduction tests without enough relevant examples."
+  claim_type: author_claim
+  source_locator: "Sections 2 and 3"
+technical_mechanisms:
+  - statement: "TestPrune localizes suspicious functions, asks an LLM for relevant test files using imports, collects line coverage, and greedily selects passing tests that cover the suspicious code."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Algorithms 1-2; Figures 1-4"
+  - statement: "The selected tests are injected into Otter for reproduction, Agentless for patch selection, and SWE-agent or Trae for early online validation and refinement."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3 and 4.2"
+assumptions:
+  - statement: "Coverage of LLM-localized suspicious functions is a useful proxy for issue relevance and for the buggy lines that a patch must preserve."
+    claim_type: agent_inference
+    source_locator: "Sections 3.1 and 4.4"
+  - statement: "Passing a small selected regression set supplies enough evidence for an agent to stop or refine safely."
+    claim_type: agent_inference
+    source_locator: "Sections 3.3, 4.6, and 5.3.2"
+evaluation:
+  datasets:
+    - statement: "The study evaluates all 500 SWE-bench Verified and 300 SWE-bench Lite issues, with full suites averaging 528 and 322 tests respectively."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2.4 and 4.4"
+  baselines:
+    - statement: "Test selection is compared with full/default suites, BM25, Agentless selection, and two greedy variants; downstream clients are Otter, Agentless, SWE-agent, and Trae Agent."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2-4.6; Tables 1-3; Figure 9"
+  metrics:
+    - statement: "Metrics include number/runtime of tests, buggy-line precision and coverage recall, fail-to-pass at N, issue resolution, cost, steps, and McNemar significance."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.3-4.6"
+  ablations:
+    - statement: "Otter variants remove planner, patch localization, full context, or TestPrune, and patch selection crosses default/TestPrune regression tests with default/Otter reproduction tests."
+      claim_type: direct_evidence
+      source_locator: "Section 4.5-4.6; Tables 2-3"
+  main_results:
+    - statement: "TestPrune selects nine tests on average and runs in 52 seconds versus 23m49s for full suites, with mean precision 0.63 and coverage recall 0.71."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.3-4.4; Figures 8-9"
+    - statement: "For Otter, TestPrune uniquely enables 49 fail-to-pass cases but loses 35 cases solved by the planner variant, so selected context is beneficial but not monotonic."
+      claim_type: direct_evidence
+      source_locator: "Section 4.5; Table 2 and following overlap analysis"
+    - statement: "Table 3 reports Trae Agent on Verified improving 325/500 to 351/500 and SWE-agent on Lite improving 170/300 to 186/300; it also reports Agentless gains when selected regression and reproduction tests are combined."
+      claim_type: direct_evidence
+      source_locator: "Section 4.6; Table 3"
+conclusion_evidence:
+  - statement: "For the two agents, selected tests are executed during the trajectory and can redirect localization, reproduction, patch refinement, cost, and stopping; this is online intervention rather than only diagnosis."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.6.2 and 5.3.2; Figure 11"
+limitations:
+  - statement: "The evaluation covers only Python/SWE-bench and is exposed to repository memorization and benchmark-specific test structure."
+    claim_type: direct_evidence
+    source_locator: "Section 6, Threats to Validity"
+  - statement: "Table 3 and Section 4.6.2 swap the benchmark-agent mapping: the table assigns Trae to Verified and SWE-agent to Lite, while the prose states the reverse."
+    claim_type: direct_evidence
+    source_locator: "Table 3 versus Section 4.6.2 first paragraph"
+failure_modes:
+  - statement: "Selected tests caused eight formerly solved SWE-agent cases and 17 Trae cases to fail because general functionality passed while the specific buggy behavior was missed, inducing premature stopping."
+    claim_type: direct_evidence
+    source_locator: "Section 5.3.2"
+reusable_artifacts:
+  - statement: "The TestPrune implementation and artifacts are public."
+    claim_type: direct_evidence
+    source_locator: "Section 8; https://github.com/IBM/Issue-Test-Localizer"
+within_cluster_difference:
+  - statement: "Unlike IssueExec's offline trace-mediated localization and CES's diagnostic score, TestPrune places executable evidence into downstream repair loops and observes changed actions and outcomes."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion IssueExec and CES cards"
+relevance_reassessment:
+  statement: "Its value increased after deep reading because it contains both positive causal cases and explicit regressions, showing that more actionable feedback can still produce unsafe stopping."
+  claim_type: agent_inference
+  source_locator: "Sections 4.6.2 and 5.3.2"
+evidence_gaps:
+  - statement: "The paper does not calibrate a stop rule for incomplete selected coverage, and the benchmark-agent reporting contradiction requires author clarification."
+    claim_type: agent_inference
+    source_locator: "Table 3; Sections 4.6.2 and 5.3.2"
+

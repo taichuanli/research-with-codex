@@ -1,0 +1,98 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing"
+title: "Agentic Predicates Reasoning for Directed Fuzzing"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Jie Zhu", "Chihao Shen", "Ziyang Li", "Jiahao Yu", "Yizheng Chen", "Kexin Pei"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2508.21302"
+  version_reviewed: "Published ICSE 2026 manuscript, 13 pages"
+  doi: "10.1145/3744916.3773102"
+  version_note: "The reviewed PDF title is 'Locus: Agentic Predicate Synthesis for Directed Fuzzing', which differs from the official shortlist title."
+research_problem:
+  statement: "Directed fuzzers use sparse or coarse progress heuristics and can spend most of a campaign exploring states that cannot reach a target vulnerability."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Static distance metrics and manually designed target-state guidance neither encode the semantic input conditions of a vulnerability nor generalize cheaply across fuzzers."
+  claim_type: author_claim
+  source_locator: "Sections 1-2 and 5"
+technical_mechanisms:
+  - statement: "Locus uses an LLM agent with lexical, call-graph, and reference-graph tools to infer vulnerability-related input properties and iteratively synthesize earlier branch predicates."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3; Algorithm 1; Table 1"
+  - statement: "Each predicate is compiled and checked with targeted symbolic execution for a counterexample to the required relaxation relation before it instruments the program with an early exit."
+    claim_type: direct_evidence
+    source_locator: "Section 3.4; Theorems 1-2"
+assumptions:
+  - statement: "A manually supplied Magma canary faithfully characterizes the vulnerable states that the fuzzer should preserve."
+    claim_type: direct_evidence
+    source_locator: "Section 4.1, Dataset"
+  - statement: "A bounded symbolic-execution search that finds no counterexample is treated operationally as sufficient validation even though it cannot prove relaxation in all cases."
+    claim_type: agent_inference
+    source_locator: "Section 3.4; Section 6, predicate validation threat"
+evaluation:
+  datasets:
+    - statement: "The principal study uses Magma vulnerabilities from nine real projects, runs ten 24-hour trials per vulnerability, and adds 48 real-world fuzzing campaigns for patched vulnerabilities."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1 and 4.5; Tables 2 and 6"
+  baselines:
+    - statement: "Four directed fuzzers (AFLGo, SelectFuzz, Beacon, Titan) and four coverage-guided fuzzers (AFL++, AFL, MOPT, Fox) are run with and without the same Locus transformations."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 3"
+  metrics:
+    - statement: "Primary metrics are average time-to-exposure, vulnerabilities reached within 24 hours, preprocessing time, token cost, and Mann-Whitney significance."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1-4.3; Tables 2 and 4"
+  ablations:
+    - statement: "Five vulnerabilities compare base predicates, refinement without validation, and the validated pipeline across AFL++ and SelectFuzz; three LLM backbones are also compared."
+      claim_type: direct_evidence
+      source_locator: "Section 4.4; Table 5"
+  main_results:
+    - statement: "Average TTE speedups range from 5.5x for MOPT to 214.2x for SelectFuzz; within the 24-hour cap, AFLGo reaches five and AFL four additional vulnerabilities."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Table 2"
+    - statement: "Locus averages 457K tokens ($0.72) per Magma sample and its preprocessing remains below the compared directed analyses on the largest target."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Table 4"
+    - statement: "Unvalidated refinement sometimes makes TTE worse or time out; the full validation stage restores consistent benefit in the five-sample ablation."
+      claim_type: direct_evidence
+      source_locator: "Section 4.4; Table 5"
+    - statement: "The additional campaigns find nine previously undisclosed bugs; without Locus, AFL++ and SelectFuzz find only two and five of them respectively."
+      claim_type: direct_evidence
+      source_locator: "Section 4.5; Table 6"
+conclusion_evidence:
+  - statement: "The synthesized predicates change later fuzzing decisions, but only after an offline preprocessing stage; the LLM is not controlling the fuzzer online."
+    claim_type: agent_inference
+    source_locator: "Algorithm 1; Figure 2; Section 4 setup"
+limitations:
+  - statement: "Symbolic execution can time out or suffer path explosion, especially across loops, so the paper explicitly cannot formally guarantee every relaxation."
+    claim_type: direct_evidence
+    source_locator: "Section 6, Threats to predicate validation"
+  - statement: "The study covers a limited set of models and Magma programs, and the target projects may occur in model training data."
+    claim_type: direct_evidence
+    source_locator: "Section 6, LLM types and data leakage threats"
+failure_modes:
+  - statement: "A semantically plausible but overly restrictive predicate can remove the target path, while even a valid predicate can conflict with a fuzzer's own termination or prioritization heuristic."
+    claim_type: direct_evidence
+    source_locator: "Section 4.4 and 4.6; Tables 5-6"
+reusable_artifacts:
+  - statement: "No dedicated Locus replication URL is stated in the reviewed manuscript; implementation details name PydanticAI, Multiplier, SVF, and KLEE."
+    claim_type: direct_evidence
+    source_locator: "Section 4.1, Implementations; reference list"
+within_cluster_difference:
+  - statement: "Locus compiles reasoning into a static search-space transformation, whereas AutoRocq and Event-B Agent use verifier feedback repeatedly during online proof or model construction."
+    claim_type: agent_inference
+    source_locator: "Section 3; companion AutoRocq and Event-B cards"
+relevance_reassessment:
+  statement: "Its value shifted from general agent planning to a strong example of validated preprocessing: feedback changes a downstream search policy, but not an autonomous agent's live action selection."
+  claim_type: agent_inference
+  source_locator: "Algorithm 1; Section 4 evaluation"
+evidence_gaps:
+  - statement: "No end-to-end comparison separates synthesis benefit from hand-authored equivalent predicates, and validation soundness under timeouts remains unresolved."
+    claim_type: agent_inference
+    source_locator: "Sections 3.4, 4, and 6"
+

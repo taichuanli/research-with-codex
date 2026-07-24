@@ -1,0 +1,96 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c"
+title: "AdaDec: A Uncertainty-Guided Lookahead Decoding Framework for LLM-based Code Generation"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Kaifeng He", "Mingwei Liu", "Chong Wang", "Zike Li", "Yanlin Wang", "Xin Peng", "Zibin Zheng"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2506.08980"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2506.08980v5, 24 April 2026, 23 pages"
+  doi: "10.1145/3808142"
+research_problem:
+  statement: "Greedy code decoding commits irreversibly at locally ambiguous tokens, while global beam search spends computation at every step and existing adaptive methods use coarse line-start heuristics."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "AdapT perturbs all line-start tokens with sampling, and Uncert-CoT triggers line-level reasoning, so neither learns model-specific risk thresholds or targets uncertain in-line decisions."
+  claim_type: author_claim
+  source_locator: "Section 1; Section 7"
+technical_mechanisms:
+  - statement: "AdaDec computes Shannon entropy at each decoding step and uses a per-model logistic-regression threshold to decide whether generation should pause."
+    claim_type: direct_evidence
+    source_locator: "Sections 2.3 and 3.2; Figure 5"
+  - statement: "At a triggered step, it expands the top three next-token candidates for a fixed lookahead horizon, scores their continuations, commits the best candidate, and resumes ordinary decoding."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3; Algorithms and lookahead-beam selection"
+assumptions:
+  - statement: "Entropy learned from ground-truth next-token ranking is an adequate signal for semantic logic drift during free generation."
+    claim_type: agent_inference
+    source_locator: "Section 2.3; Table 1; Section 4.4"
+  - statement: "A short fixed lookahead (typically five tokens) contains enough evidence to choose among continuations whose correctness may depend on longer-range program behavior."
+    claim_type: agent_inference
+    source_locator: "Section 3.3.3; Section 5.2"
+evaluation:
+  datasets:
+    - statement: "Nine open code models from 0.6B to 8B are evaluated on 164 HumanEval+, 378 MBPP+, and a random 238-problem sample of DevEval."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1"
+  baselines:
+    - statement: "AdaDec is compared with greedy decoding, beam search with the same candidate width of three, and AdapT; Uncert-CoT is excluded because no reproducible implementation was available."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1"
+  metrics:
+    - statement: "The principal metrics are Pass@1, pause rate, per-problem latency, entropy-classifier accuracy/precision/recall/F1/AUC, and parameter sensitivity."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2-4.5; Tables 2-7"
+  ablations:
+    - statement: "A learned threshold is compared with a fixed threshold, and lookahead depth, threshold perturbation, classifier quality, and domain/prompt transfer are varied; the reranker itself is not removed under a matched trigger."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.4-5.1; Tables 5-7; Figure 6"
+  main_results:
+    - statement: "Relative to greedy decoding, AdaDec's mean Pass@1 changes are +3.59, +7.61, and +4.53 percentage points on HumanEval+, MBPP+, and DevEval."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Table 2"
+    - statement: "Beam search is better than AdaDec in multiple individual Table 2 cells, including DS-6.7B on HumanEval+ and several small-model settings, contradicting the prose claim of consistent superiority."
+      claim_type: direct_evidence
+      source_locator: "Table 2 versus Section 4.2, Comparison with Beam Search"
+    - statement: "The learned entropy classifier averages F1 0.9351 and AUC 0.9116; learned thresholds improve HumanEval+ Pass@1 by 1.76 points over a fixed 1.2 threshold."
+      claim_type: direct_evidence
+      source_locator: "Section 4.4; Tables 5-6"
+    - statement: "Reranking activates on 6.75% of tokens on average; mean added latency over greedy is 0.75s, 0.32s, and 7.47s on the three benchmarks."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3; Tables 3-4"
+conclusion_evidence:
+  - statement: "AdaDec supplies this cluster's direct signal-to-action link: an uncertainty threshold changes the next token online and generally improves final tests, but the evidence does not support universal dominance over matched beam search."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; Table 2"
+limitations:
+  - statement: "Entropy is a coarse single feature, threshold learning is linear, lookahead depth is fixed, and a short horizon may miss repository-level dependencies."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2, Limitations"
+  - statement: "Evaluation covers only open models and three benchmarks; proprietary models and broader real-world tasks are not tested."
+    claim_type: direct_evidence
+    source_locator: "Section 6, External Validity"
+failure_modes:
+  - statement: "High entropy does not uniquely identify a wrong token, and beam search can outperform selective lookahead when maintaining alternative sequences matters more than a local commitment."
+    claim_type: agent_inference
+    source_locator: "Table 2; Sections 5.2 and 6"
+reusable_artifacts:
+  - statement: "Data and code are public in the AdaDec repository."
+    claim_type: direct_evidence
+    source_locator: "Section 9, Data Availability; https://github.com/SYSUSELab/AdaDec"
+within_cluster_difference:
+  - statement: "Unlike LAT and Clotho, AdaDec consumes its uncertainty signal immediately during generation; its action granularity is a token commitment rather than test prioritization or candidate reranking."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; companion LAT and Clotho cards"
+relevance_reassessment:
+  statement: "It is stronger online-control evidence than the other signal papers, but weaker comparative evidence than its abstract implies because Table 2 contains several beam-search wins."
+  claim_type: agent_inference
+  source_locator: "Abstract and Section 4.2 versus Table 2"
+evidence_gaps:
+  - statement: "Matched-trigger reranker ablation, semantic error categories, calibration after fine-tuning, repeated-run variance, and use at repository-agent action boundaries remain untested."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6"

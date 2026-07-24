@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis"
+title: "StepFly: Agentic Troubleshooting Guide Automation for Incident Diagnosis"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Jiayi Mao", "Liqun Li", "Yanjie Gao", "Zegang Peng", "Shilin He", "Chaoyun Zhang", "Si Qin", "Samia Khalid", "Qingwei Lin", "Saravan Rajmohan", "Sitaram Lanka", "Dongmei Zhang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2510.10074"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2510.10074v2, 21 April 2026, 23 pages"
+  doi: "10.1145/3808143"
+research_problem:
+  statement: "Natural-language troubleshooting guides contain ambiguous control flow, brittle query templates, and cross-step data dependencies that general-purpose agents fail to preserve during incident diagnosis."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3"
+prior_methods_insufficient:
+  statement: "ReAct has no precomputed workflow and TaskWeaver replans through conversational agents; both can skip steps, stop early, generate invalid KQL, or pass large tool outputs as text."
+  claim_type: author_claim
+  source_locator: "Sections 3.3, 4, and 5.4"
+technical_mechanisms:
+  - statement: "Offline stages revise a TSG with human-facing guidelines, extract a reviewed execution DAG, and turn query templates into callable Query Preparation Plugins."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.1-4.3; Figures 5-7"
+  - statement: "Online execution uses an event-driven scheduler, single-step executors, typed node/edge states, retry limits, plugins, and key-value memory for cross-tool structured data."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.4-4.5; Figures 8-9"
+assumptions:
+  - statement: "A reviewed troubleshooting guide and its DAG encode a valid diagnostic path for the incident class."
+    claim_type: agent_inference
+    source_locator: "Sections 4.1-4.2 and 5.1"
+  - statement: "The necessary operational state is accessible through supported log, metric, DevOps, code, and query plugins."
+    claim_type: direct_evidence
+    source_locator: "Section 4.4.3"
+evaluation:
+  datasets:
+    - statement: "The preliminary quality study uses 92 labeled TSGs; end-to-end evaluation uses 15 expert-revised TSGs and 80 real Microsoft incidents, with three runs per condition."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1, 5.1, and 5.3-5.5"
+  baselines:
+    - statement: "StepFly and StepFly without QPP are compared with matched-tool ReAct and TaskWeaver implementations across GPT-4.1, GPT-4.1-mini, GPT-4o, and Grok-3."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4; Table 3"
+  metrics:
+    - statement: "Preprocessing uses node/edge precision, recall, F1 and condition accuracy; execution uses path-plus-conclusion success, latency, tokens, and parallel speedup."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.3-5.5; Tables 2-3; Figures 10-11"
+  ablations:
+    - statement: "Removing QPP isolates query preparation, while executor counts from two to five test parallel scheduling; no ablation isolates DAG, scheduler, and memory independently."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.4-5.5"
+  main_results:
+    - statement: "DAG extraction obtains overall F1 94.89%, edge F1 93.47%, and condition accuracy 91.78%; 251/258 QPP extractions are functionally correct."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 2"
+    - statement: "With GPT-4.1, StepFly succeeds on 94.38% of executions versus 80.0% for TaskWeaver and 71.25% for ReAct; QPP removal lowers StepFly to 91.88%."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4; Table 3"
+    - statement: "Median StepFly tokens are about 71% of ReAct and 61% of TaskWeaver; two highly parallel TSGs reduce latency by about 70%, but only seven of 15 guides were manually judged parallelizable."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.4-5.5; Figures 10-11"
+conclusion_evidence:
+  - statement: "The DAG, edge states, retries, and memory directly determine which diagnostic step runs next and what data it sees, so structured state changes online decisions."
+    claim_type: direct_evidence
+    source_locator: "Section 4.4"
+limitations:
+  - statement: "The evaluated TSGs were comprehensively revised by experienced SREs before execution and come from a controlled set of service domains, limiting transfer to raw documentation."
+    claim_type: direct_evidence
+    source_locator: "Section 5.1; Section 6"
+  - statement: "Condition equivalence and QPP equivalence include LLM or manual judgment, and parallelizable guides were manually identified."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.3 and 5.5"
+failure_modes:
+  - statement: "An incorrect DAG edge can suppress a necessary branch; failed steps disable all outgoing edges, and unsupported external dependencies or human judgment can halt diagnosis."
+    claim_type: agent_inference
+    source_locator: "Section 4.4.1; Section 6"
+reusable_artifacts:
+  - statement: "Code and synthesized incident data are public, while production incident details are necessarily constrained."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://github.com/microsoft/StepFly"
+within_cluster_difference:
+  - statement: "StepFly preserves workflow and operational data across a long run; MSG preserves formal constraints via a prover, while LogicHunter preserves investigative evidence for an oracle verdict."
+    claim_type: agent_inference
+    source_locator: "Section 4; companion MSG and LogicHunter cards"
+relevance_reassessment:
+  statement: "It is stronger state-control evidence than expected, but its endpoint is diagnosis reviewed by an SRE, not automated remediation or demonstrated failure recovery."
+  claim_type: agent_inference
+  source_locator: "Figures 5 and 12; Sections 4.4 and 7"
+evidence_gaps:
+  - statement: "The isolated effects of DAG state, memory, retries, and human review, plus performance on unrevised TSGs and remediation outcomes, remain unknown."
+    claim_type: agent_inference
+    source_locator: "Sections 5-7"
+

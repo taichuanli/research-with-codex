@@ -1,0 +1,92 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ISSTA2026_issueexec-a-test-driven-approach-for-localizing-software-engineering-iss"
+title: "IssueExec: A Test-Driven Approach for Localizing Software Engineering Issues"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research papers"
+  authors: ["Jiawei Liu", "Yun Lin", "Chenyan Liu", "Yu Qian", "Yiming Liu", "Jiaxin Chang", "Weinan Zhang", "Linpeng Huang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2607.17286"
+  version_reviewed: "arXiv:2607.17286v1, 19 July 2026, formatted as Proc. ACM ISSTA 2026 (October 2026), 22 pages"
+  doi: "10.1145/3832290"
+  version_note: "The DOI and proceedings formatting are present, but publication occurs after the 24 July 2026 review date; v1 is the confirmable version."
+research_problem:
+  statement: "Direct semantic matching from a natural-language issue to code has high uncertainty because issue vocabulary often differs from implementation identifiers."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Retrievers and agents search issue-to-code directly, while tests already encode requirements and executable links to implementation but are not used as a structured intermediate representation."
+  claim_type: author_claim
+  source_locator: "Sections 1-3"
+technical_mechanisms:
+  - statement: "IssueExec mines historical co-change terminology, retrieves five semantically related tests, traces their executions, and builds a sparse test-to-code call hierarchy."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2-4.4"
+  - statement: "It expands beyond covered nodes using structural and semantic relations, then reranks file, module, and function candidates for a downstream repair system."
+    claim_type: direct_evidence
+    source_locator: "Section 4.5"
+assumptions:
+  - statement: "Existing passing tests are usable executable proxies for issue requirements even before an issue-specific reproducer exists."
+    claim_type: agent_inference
+    source_locator: "Sections 2-4"
+  - statement: "Historical commits are sufficiently atomic and well named to bridge issue and test vocabulary."
+    claim_type: direct_evidence
+    source_locator: "Section 4.2; Section 7, internal validity"
+evaluation:
+  datasets:
+    - statement: "An empirical premise study covers 18 Python repositories; the controlled localization and repair evaluation uses all 300 SWE-bench Lite issues."
+      claim_type: direct_evidence
+      source_locator: "Sections 3.1 and 5.1"
+  baselines:
+    - statement: "Four retrieval, two procedure, and six agent baselines include BM25, mGTE, CodeSage, CodeRankEmbed, Agentless, PatchPilot, LocAgent, SWE-Agent, OrcaLoca, OpenHands, and MoatlessTools."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 2"
+  metrics:
+    - statement: "Localization uses precision and recall at 1/3/5 at file, module, and function granularity; downstream evaluation uses resolved rate, F1@3, and API cost."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Tables 2-5"
+  ablations:
+    - statement: "Ablations remove tests, domain knowledge, trace analysis, refinement, or reranking, and substitute module-only refinement."
+      claim_type: direct_evidence
+      source_locator: "Section 5.5; Table 5"
+  main_results:
+    - statement: "With GPT-4o, IssueExec attains function Precision@1 46.72% and Recall@1 41.07%; its file and module Recall@1 are 70.07% and 58.39%."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Table 2"
+    - statement: "Replacing Agentless localization raises SWE-bench Lite resolution from 96/300 (32.00%) to 113/300 (37.67%)."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 3"
+    - statement: "Removing tests reduces F1@3 by 12.72, 9.80, and 12.94 points at file, module, and function levels; removing reranking produces the largest function F1@3 loss."
+      claim_type: direct_evidence
+      source_locator: "Section 5.5; Table 5"
+conclusion_evidence:
+  - statement: "Execution feedback improves a prepared localization ranking that later changes Agentless patch context; IssueExec itself does not adapt test choice or agent actions during a live repair trajectory."
+    claim_type: agent_inference
+    source_locator: "Sections 4 and 5.3"
+limitations:
+  - statement: "IssueExec requires runnable Python tests and sys.settrace; non-runnable issues, missing behavioral coverage, weak history, and other languages are outside the demonstrated setting."
+    claim_type: direct_evidence
+    source_locator: "Sections 6-7"
+failure_modes:
+  - statement: "The full repository suite does not cover 33.30% of ground-truth functions, and long call chains can push the edit location outside the retained trace neighborhood."
+    claim_type: direct_evidence
+    source_locator: "Section 6.1-6.2"
+reusable_artifacts:
+  - statement: "Source, prompts, and extra materials are linked from the project website."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://code-philia.github.io/IssueExec.github.io/"
+within_cluster_difference:
+  - statement: "It supplies stronger localization evidence than CES but is less directly interventionist than TestPrune because traces are computed before and outside the downstream patch loop."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5; companion TestPrune and CES cards"
+relevance_reassessment:
+  statement: "The paper is valuable as test-mediated localization, but the shortlist phrase 'test-driven' overstated adaptivity: issue execution is inferred from existing-test traces, not an online execute-observe-replan loop."
+  claim_type: agent_inference
+  source_locator: "Framework in Section 4; downstream integration in Section 5.3"
+evidence_gaps:
+  - statement: "It remains unknown whether issue-specific generated tests, adaptive trace queries, or uncovered functions would change later decisions more reliably than the fixed five-test pipeline."
+    claim_type: agent_inference
+    source_locator: "Sections 4.3, 6, and 7"
+

@@ -1,0 +1,96 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio"
+title: "Evaluating and Improving Automated Repository-Level Rust Issue Resolution with LLM-based Agents"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Jiahong Xiang", "Wenxiao He", "Xihua Wang", "Hongliang Tian", "Yuqun Zhang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2602.22764"
+  version_reviewed: "Published ICSE 2026 manuscript, arXiv:2602.22764v1, 26 February 2026, 13 pages"
+  doi: "10.1145/3744916.3773108"
+research_problem:
+  statement: "Existing repository issue benchmarks are dominated by Python and do not reveal how agents handle Rust's build configuration, type/trait semantics, reproduction, and cross-project runtime behavior."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1"
+prior_methods_insufficient:
+  statement: "Small or granular Rust benchmarks miss real repository issues, and general agents often fail before patching because they cannot create a runnable reproducer or instrument a complex Cargo project safely."
+  claim_type: author_claim
+  source_locator: "Section 1; Section 4.4.2"
+technical_mechanisms:
+  - statement: "Rust-SWE-bench applies SWE-bench-style fail-to-pass construction and manual review to 500 merged issue-linked pull requests from 34 repositories."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Figure 2; Tables 1-2"
+  - statement: "RustForger creates an isolated Cargo workspace for reproduction, then exposes a Trace command that instruments selected functions with procedural macros and returns cross-project calls, arguments, and outputs as JSON."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2-5.3; Figures 8-9"
+  - statement: "The agent uses reproduction and trace observations to choose code regions and patches, then iteratively revalidates the solution in the isolated workspace."
+    claim_type: direct_evidence
+    source_locator: "Section 5.3; case study in Figure 11"
+assumptions:
+  - statement: "An issue can be reproduced reliably in a separately constructed workspace whose local dependency points to the target project."
+    claim_type: agent_inference
+    source_locator: "Sections 5.2-5.3"
+  - statement: "Developer-written acceptance tests are adequate semantic oracles for a single submitted patch."
+    claim_type: direct_evidence
+    source_locator: "Section 4.1.3"
+evaluation:
+  datasets:
+    - statement: "The benchmark contains 500 manually reviewed tasks from 34 popular Rust repositories; four agents and four LLMs are evaluated on all tasks, and 200 random tasks are used for ablation."
+      claim_type: direct_evidence
+      source_locator: "Sections 3-5; Tables 1-3 and 6"
+  baselines:
+    - statement: "Baselines are OpenHands/CodeAct, SWE-agent, Agentless, and AutoCodeRover, paired with Claude Sonnet 3.7, GPT-4o, o4-mini, and Qwen3."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 3"
+  metrics:
+    - statement: "The study reports resolved/pass@1, reproduction success, edit size, cost, tokens, compilation errors, task complexity, unique resolutions, and McNemar significance."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1.3-4.4 and 5.3; Tables 3-5; Figures 4-10"
+  ablations:
+    - statement: "On 200 tasks, RustForger-base removes the isolated workspace, RustForger-reproduce keeps the workspace but removes Trace, and the full system includes both."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4; Table 6"
+  main_results:
+    - statement: "RustForger with Claude Sonnet 3.7 resolves 143/500 tasks (28.6%) versus OpenHands' 106/500 (21.2%), with paired McNemar p<0.001."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3.3; Table 5"
+    - statement: "Its reproduction success is 67.3% with Claude versus 55.5% for OpenHands, and the Trace command is used in 71.3% of RustForger's successful resolutions."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3.3; Figure 10"
+    - statement: "Across four models on the 200-task ablation, mean resolved counts rise from 22.0 without isolation to 25.0 with reproduction and 30.3 with reproduction plus Trace."
+      claim_type: direct_evidence
+      source_locator: "Section 5.4; Table 6"
+conclusion_evidence:
+  - statement: "The workspace and tracing ablation provides a comparatively clear chain from executable state, through changed reproduction/localization/patch actions, to accepted repairs."
+    claim_type: agent_inference
+    source_locator: "Sections 5.3-5.4; Tables 5-6; Figure 11"
+limitations:
+  - statement: "All tasks are Rust and each configuration is run once with temperature zero; provider nondeterminism and generalization to other build systems remain."
+    claim_type: agent_inference
+    source_locator: "Section 6; evaluation protocol"
+  - statement: "Reproduction outcomes are manually assessed by three authors reaching consensus, but no label-reliability statistic is reported."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2.2 and 6, Internal Validity"
+failure_modes:
+  - statement: "Agents frequently fail to import the right crate/module/type or satisfy traits during reproduction; dynamic tracing is bypassed when no reproducer can be built or the issue is not suited to function instrumentation."
+    claim_type: direct_evidence
+    source_locator: "Section 4.4.2; Table 4; Section 5.3.2"
+reusable_artifacts:
+  - statement: "The benchmark, source, evaluation details, and RustForger are released on GitHub."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://github.com/GhabiX/Rust-SWE-Bench"
+within_cluster_difference:
+  - statement: "RustForger acquires current repository evidence online and acts on it; ReduceFix preprocesses a known counterexample, while DeepK supplies retrieved historical knowledge without live recovery loops."
+    claim_type: agent_inference
+    source_locator: "Sections 5.2-5.4; companion ReduceFix and DeepK cards"
+relevance_reassessment:
+  statement: "Its actual mechanism value is higher than a benchmark-led shortlist reading suggested because the workspace/Trace ablation isolates reproduction and runtime analysis as distinct decisions."
+  claim_type: agent_inference
+  source_locator: "Section 5.4; Table 6"
+evidence_gaps:
+  - statement: "Repeated-run stability, independent reproduction labels, non-Rust transfer, which trace facts causally select patches, and semantic review beyond tests remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 5-6"

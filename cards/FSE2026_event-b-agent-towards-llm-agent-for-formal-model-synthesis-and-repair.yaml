@@ -1,0 +1,93 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair"
+title: "Event-B Agent: Towards LLM Agent for Formal Model Synthesis and Repair"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Hongshu Wang", "Xinyue Zuo", "Yuhan Sun", "Qin Li", "Yamine Ait Ameur", "Jin Song Dong"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2605.17475"
+  version_reviewed: "Published FSE 2026 manuscript, arXiv:2605.17475v1, 17 May 2026, 23 pages"
+  doi: "10.1145/3808218"
+research_problem:
+  statement: "Natural-language-to-formal-model approaches treat synthesis and proof as separate steps, so generated Event-B systems can omit requirements or leave model and proof repairs uncoordinated."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Naive LLM synthesis plus automated provers, general coding agents, and model-checking-only agents do not jointly plan refinements, inspect proof states, and repair both models and proof artifacts."
+  claim_type: author_claim
+  source_locator: "Sections 1, 4, and 5.1 baselines"
+technical_mechanisms:
+  - statement: "The agent first distributes requirements across a refinement strategy, synthesizes each Event-B layer, compiles it, and checks bounded invariant counterexamples."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2-4.4.1; Figures 3-5"
+  - statement: "Failed proof obligations are mapped to seven empirical proof-state categories; an LLM selects parameterized atomic model, proof, joint, or retrieval actions, and all affected proofs are replayed."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.4.2-4.4.4; Table 2; Figure 7"
+assumptions:
+  - statement: "The input requirements are internally consistent and their manually prepared wording captures intended behavior."
+    claim_type: direct_evidence
+    source_locator: "Section 7.1, Potential Biases and Assumptions of Requirements"
+  - statement: "Requirements fulfilled at an abstract layer remain fulfilled after refinement when refinement proof obligations discharge; the observed refinement PDR is used to approximate this condition."
+    claim_type: direct_evidence
+    source_locator: "Section 5.1, Validity of Assumption; Table 5"
+evaluation:
+  datasets:
+    - statement: "The dataset contains 27 Event-B systems, nine each with 3-8, 9-13, and 14-24 manually constructed requirements, drawn from classic algorithms and real systems."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1, Dataset"
+  baselines:
+    - statement: "Baselines are LLM synthesis plus automated provers, Cursor adapted to Event-B, and PAT-Agent adapted from model checking; GPT-5 medium is the shared backbone."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 3"
+  metrics:
+    - statement: "PDR measures discharged proof obligations; RC and RF use generated requirement labels to approximate requirement coverage and fulfillment across refinements."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1, Metrics"
+  ablations:
+    - statement: "Four variants cross refinement planning and repair guidance, and refinement-specific PDR is reported separately."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Tables 4-5"
+  main_results:
+    - statement: "Overall Event-B Agent reaches PDR 0.9786, RC 0.9713, and RF 0.9379 versus the strongest corresponding baseline values of 0.9556, 0.9250, and 0.7578."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Table 3"
+    - statement: "The full system's refinement-specific PDR is 0.9256, with the complex subset at 0.8213, so the assumption behind cross-layer RC/RF does not hold universally."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 5"
+    - statement: "Full-system overall scores exceed the three ablations, although repair-guidance-only is slightly better on RC/RF for the simple subset."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 4"
+conclusion_evidence:
+  - statement: "Model-checker counterexamples and proof states change subsequent repair actions online, and a repair is accepted only after the target obligation discharges and prior proofs replay."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.4.1-4.4.4"
+limitations:
+  - statement: "Repair rules and atomic strategies are empirically derived and non-exhaustive; inconsistent real requirements and human-in-the-loop resolution are not supported."
+    claim_type: direct_evidence
+    source_locator: "Section 7"
+  - statement: "LLM-generated requirement labels occasionally require manual correction, weakening the claim that RC and RF are fully automatic objective measures."
+    claim_type: direct_evidence
+    source_locator: "Section 7.1, Requirement Capturing"
+failure_modes:
+  - statement: "Guard strengthening, invariant changes, or adding a context axiom can discharge a proof while narrowing or altering intended behavior; prover acceptance alone cannot detect an inadequate requirement encoding."
+    claim_type: agent_inference
+    source_locator: "Table 2 repair rules; Sections 4.4.3-4.4.4; RC/RF definitions in Section 5.1"
+reusable_artifacts:
+  - statement: "Implementation, interface, and data are released on GitHub and Zenodo."
+    claim_type: direct_evidence
+    source_locator: "Data Availability; https://github.com/HongshuW/EventB_Agent; doi:10.5281/zenodo.19642103"
+within_cluster_difference:
+  - statement: "Event-B Agent controls both specification state and proof state, unlike AutoRocq's fixed theorem statement and Locus's fixed vulnerability canary."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5; companion AutoRocq and Locus cards"
+relevance_reassessment:
+  statement: "It is a strong online controller but weaker evidence of intent preservation than its high PDR suggests; RC/RF depend on generated labels and an incompletely discharged refinement chain."
+  claim_type: agent_inference
+  source_locator: "Tables 3-5; Section 7.1"
+evidence_gaps:
+  - statement: "Independent expert validation of semantic fidelity, adversarial or inconsistent requirements, and repeated-run variance are not reported."
+    claim_type: agent_inference
+    source_locator: "Sections 5 and 7"

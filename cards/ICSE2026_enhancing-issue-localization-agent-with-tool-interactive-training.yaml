@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training"
+title: "Enhancing Issue Localization Agent with Tool-Interactive Training"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Zexiong Ma", "Chao Peng", "Qunhong Zeng", "Pengfei Gao", "Yanzhen Zou", "Bing Xie"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2508.03012"
+  version_reviewed: "arXiv:2508.03012v2, 6 August 2025, 17 pages"
+  version_note: "The reviewed preprint is titled 'Tool-integrated Reinforcement Learning for Repo Deep Search' and marked 'Preprint. Under review'; no formal ICSE title, DOI, or publisher version was confirmed."
+research_problem:
+  statement: "Issue localization agents must navigate multi-hop repository dependencies with tools, but off-the-shelf LLMs make invalid or aimless calls and lose coherence over long searches."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Rejection-sampled SFT teaches only successful trajectories and can memorize their surface form, while RL from a base model must discover tool syntax before it can optimize search behavior."
+  claim_type: author_claim
+  source_locator: "Sections 2.2 and 3.3"
+technical_mechanisms:
+  - statement: "RepoSearcher exposes five simple repository-structure/class/function retrieval tools plus an Exit action and alternates thought, tool, observation, and final ranked localization."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Figure 1; Table 1"
+  - statement: "ToolTrain first rejection-samples successful tool trajectories for SFT, then performs tool-integrated RL whose terminal reward is nDCG between the predicted function ranking and functions touched by the gold patch."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3; Figure 2; Equations 1-3"
+assumptions:
+  - statement: "Files and functions modified by a linked pull request or SWE-bench gold patch are the unique relevant targets for localization."
+    claim_type: agent_inference
+    source_locator: "Sections 3.2 and 4.1; Appendix C"
+  - statement: "Improving terminal nDCG teaches useful intermediate tool reasoning, although no reward directly checks whether thoughts are faithful or individual calls are necessary."
+    claim_type: agent_inference
+    source_locator: "Section 3.3.2; Figure 2"
+evaluation:
+  datasets:
+    - statement: "About 28K issue-PR examples from 600 non-evaluation GitHub repositories are split into 10K trajectory-sampling examples and 18K RL examples; 5K sampled trajectories survive for SFT. Evaluation uses all 500 SWE-bench Verified issues."
+      claim_type: direct_evidence
+      source_locator: "Section 3.2; Section 4.4"
+  baselines:
+    - statement: "RepoSearcher is compared with Agentless, OrcaLoca, CoSIL, and LocAgent across Qwen 7B/32B, their specialized models, GPT-4o, and Claude 3.7; localization is also fed to Agentless patch generation."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.3 and 5.1-5.3; Tables 2-3"
+  metrics:
+    - statement: "File/function localization uses Recall@1/3/5, MAP, MRR, and nDCG@5; downstream evaluation uses SWE-bench percent resolved."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Tables 2-3"
+  ablations:
+    - statement: "Base Qwen, SFT-only, RL-only, and sequential SFT+RL are compared at both 7B and 32B, isolating the value of warm-up before RL."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Figure 3"
+  main_results:
+    - statement: "RepoSearcher with ToolTrain-32B reaches function Recall@5 68.55, compared with 48.19 for untrained RepoSearcher/Qwen-32B and 66.38 for CoSIL/Claude 3.7."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 2"
+    - statement: "For 7B file Recall@5, base/SFT-only/RL-only/full scores are 57.73/79.31/73.18/83.11; the two-stage method exceeds either training stage alone across reported metrics."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Figure 3"
+    - statement: "Using the trained 32B localization with Agentless/Qwen-32B patching yields 31.60% resolved versus 25.80% for Agentless localization and 26.40% for CoSIL localization."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 3"
+conclusion_evidence:
+  - statement: "This study links a trained tool policy to changed search trajectories and downstream patch context, but the training signal validates only the final target list rather than the claimed reasoning process."
+    claim_type: agent_inference
+    source_locator: "Sections 3.3 and 5; Figure 2; Table 3"
+limitations:
+  - statement: "Gold-patch locations can omit alternative valid fixes, and all evaluation repositories are Python."
+    claim_type: direct_evidence
+    source_locator: "Appendix C, Threats to Validity"
+  - statement: "The study does not report independent trajectory-quality annotation, a no-thought control, or evidence that RL reduces redundant calls beyond better endpoint localization."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5"
+failure_modes:
+  - statement: "RL without SFT spends capacity discovering valid tool usage and underperforms SFT-only; a gold-location reward can penalize a different but valid repair path."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2; Appendix C"
+reusable_artifacts:
+  - statement: "The paper links the RepoSearcher/ToolTrain implementation."
+    claim_type: direct_evidence
+    source_locator: "Section 7; https://github.com/Mizersy/RepoDeepSearch"
+within_cluster_difference:
+  - statement: "ToolTrain optimizes a live repository-search policy with terminal ranking reward; MCTS-Refine manufactures supervised rationales with gold-visible judges, while SEER trains policy/value models for token-level reasoning choice."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion MCTS-Refine and SEER cards"
+relevance_reassessment:
+  statement: "Its process-control value is substantial because localization changes downstream repair, but its official-paper status is weaker than assumed and its 'reasoning' evidence is endpoint-only."
+  claim_type: agent_inference
+  source_locator: "PDF title page; Sections 3.3 and 5.3"
+evidence_gaps:
+  - statement: "Confirmed formal version, non-Python transfer, call-level rewards, reasoning fidelity, alternative-fix labels, and evaluation under a common patch model independent of model scale remain unresolved."
+    claim_type: agent_inference
+    source_locator: "Version metadata; Sections 4-5; Appendix C"
+

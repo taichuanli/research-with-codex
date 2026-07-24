@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ASE2025_agentic-specification-generator-for-move-programs"
+title: "Agentic Specification Generator for Move Programs"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "ASE 2025 Research Papers"
+  authors: ["Yu-Fu Fu", "Meng Xu", "Taesoo Kim"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2509.24515"
+  version_reviewed: "arXiv:2509.24515v1 extended version, 29 September 2025, 18 pages"
+  version_note: "The PDF explicitly identifies itself as the extended version of the ASE 2025 paper; no DOI was confirmed."
+research_problem:
+  statement: "Move smart contracts need formal pre/postconditions, but writing them is costly and prior LLM specification tools focus on languages with much richer training data."
+  claim_type: author_claim
+  source_locator: "Abstract; Section I"
+prior_methods_insufficient:
+  statement: "One-shot or all-in-one generation does not exploit Move Specification Language's orthogonal clause classes, prover feedback, dependency context, or a scalable measure of comprehensiveness."
+  claim_type: author_claim
+  source_locator: "Sections I and III"
+technical_mechanisms:
+  - statement: "MSG assigns separate ClauseGen agents to ensures, aborts_if, modifies, and loop invariants, merges their output, and iteratively rewrites clauses from Move Prover errors."
+    claim_type: direct_evidence
+    source_locator: "Section III, agentic workflow and prover feedback"
+  - statement: "Static dependency analysis, optional function inlining, pretty-printing, and mutation-based specification coverage scope context and probe missing clauses."
+    claim_type: direct_evidence
+    source_locator: "Sections III-C-F; Figure 3"
+assumptions:
+  - statement: "A specification that Move Prover verifies is treated as accurate with respect to the implementation."
+    claim_type: direct_evidence
+    source_locator: "Section IV, Specification Quality Metrics"
+  - statement: "Randomly deleting implementation fragments while preserving compilation provides an adequate proxy for whether a specification is comprehensive."
+    claim_type: agent_inference
+    source_locator: "Section III-C; Section V-C"
+evaluation:
+  datasets:
+    - statement: "The study specifies 357 functions from move-stdlib, aptos-stdlib, and aptos-framework (3,259 body LOC), including 17 functions with loops, with three trials per function."
+      claim_type: direct_evidence
+      source_locator: "Section IV; Table I"
+  baselines:
+    - statement: "Agentic MSG is compared with no-prover MSG, inlined MSG, and four all-in-one variants that cross curated prompts/static analysis, prover feedback, and inlining."
+      claim_type: direct_evidence
+      source_locator: "Section V-B; Tables II and IV-V"
+  metrics:
+    - statement: "Metrics include prover verifiability, generated/matched/unique clauses, loop invariants, expert-clause subsumption, and mutation-triggered specification coverage."
+      claim_type: direct_evidence
+      source_locator: "Section IV; Tables II-III; Figure 4"
+  ablations:
+    - statement: "Removing prover feedback, collapsing agents into one loop, removing prompt/static scaffolding, and enabling inlining are each compared."
+      claim_type: direct_evidence
+      source_locator: "Section V-B; Tables II and IV-V"
+  main_results:
+    - statement: "MSG generates verifiable specifications for 300/357 functions (84.0%) and verifiable loop invariants for 14/17 loop functions."
+      claim_type: direct_evidence
+      source_locator: "Section V-A; Tables II-III"
+    - statement: "Removing prover feedback lowers verifiability from 84.0% to 70.9% and reduces generated clauses from 876 to 590."
+      claim_type: direct_evidence
+      source_locator: "Section V-B; Tables II and IV"
+    - statement: "Of 876 generated clauses, 291 are not matched by expert-written clauses; this counts syntactic/semantic additions, not independently validated improvements to intended behavior."
+      claim_type: direct_evidence
+      source_locator: "Section V-A; Table III; Figure 4"
+conclusion_evidence:
+  - statement: "Compiler/prover outcomes directly trigger later specification edits, so formal feedback changes online generation rather than merely scoring completed output."
+    claim_type: direct_evidence
+    source_locator: "Section III workflow; Section V-B"
+limitations:
+  - statement: "Passing verification establishes implementation-specification consistency, not that the generated contract fully captures developer intent; generated 'unique' clauses have no independent semantic adjudication."
+    claim_type: agent_inference
+    source_locator: "Section IV metrics; Table III; Section VI-B"
+  - statement: "The study covers three Aptos Move libraries and one main reasoning model; deep call nesting and impure functions remain difficult."
+    claim_type: direct_evidence
+    source_locator: "Section V-A failure analysis; Section VI"
+failure_modes:
+  - statement: "Inlining can either expose necessary context or overwhelm the model with nested branches; prover feedback cannot repair clauses outside the prover's encoded semantics."
+    claim_type: agent_inference
+    source_locator: "Section V-B; Table V"
+reusable_artifacts:
+  - statement: "MSG is released as open source."
+    claim_type: direct_evidence
+    source_locator: "Section III; https://github.com/sslab-gatech/MSG"
+within_cluster_difference:
+  - statement: "MSG preserves machine-checkable constraints during artifact generation, unlike StepFly's reviewed procedural DAG and LogicHunter's evidence-driven classifier state."
+    claim_type: agent_inference
+    source_locator: "Sections III-V; companion StepFly and LogicHunter cards"
+relevance_reassessment:
+  statement: "Its feedback-loop evidence is stronger than expected, while its claim of specification quality is weaker: verifiability and mutation coverage do not establish intent completeness."
+  claim_type: agent_inference
+  source_locator: "Tables II-IV; Section V-C"
+evidence_gaps:
+  - statement: "Independent expert review, mutation adequacy, false or over-constraining clauses, and downstream defect-detection benefit are not measured."
+    claim_type: agent_inference
+    source_locator: "Sections IV-VI"
+

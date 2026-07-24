@@ -1,0 +1,94 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_1
+paper_id: "ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-"
+title: "MCTS-Refined CoT: High-Quality Fine-Tuning Data for LLM-Based Repository Issue Resolution"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ASE 2025 Research Papers"
+  authors: ["Yibo Wang", "Zhihao Peng", "Ying Wang", "Zhao Wei", "Hai Yu", "Zhiliang Zhu"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2506.12728"
+  version_reviewed: "arXiv:2506.12728v1, 15 June 2025, 12 pages"
+  version_note: "No formal DOI or publisher version was confirmed in the reviewed manuscript."
+research_problem:
+  statement: "Repository-resolution CoT datasets accept loosely matching final answers and do not validate intermediate reasoning, allowing errors to propagate into fine-tuning data."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Single-turn rationale generation with Jaccard, overlap, or diff-format filters can retain internally wrong explanations even when their endpoint resembles a developer patch."
+  claim_type: author_claim
+  source_locator: "Section 2; Table 1; Figure 1"
+technical_mechanisms:
+  - statement: "MCTS-Refine decomposes Agentless into file localization, fault localization, and patch generation, giving each subtask an exact-match criterion derived from the developer patch."
+    claim_type: direct_evidence
+    source_locator: "Section 3.A"
+  - statement: "For each reasoning step, an LLM judge sees the current path and subtask ground truth, scores expansions, rejects endpoints that do not exactly match, and uses ground-truth-visible feedback to rewrite the last step."
+    claim_type: direct_evidence
+    source_locator: "Section 3.B; Figures 3-4"
+assumptions:
+  - statement: "Developer-modified files/functions and normalized developer code are treated as the only valid endpoint, even though repository issues can admit alternative correct patches."
+    claim_type: agent_inference
+    source_locator: "Section 3.A-B"
+  - statement: "A rationale refined while the judge sees the gold answer is treated as valid process supervision once its endpoint exactly matches, without independent verification that the intermediate explanation is true."
+    claim_type: agent_inference
+    source_locator: "Section 3.B, Expansion and Refinement"
+evaluation:
+  datasets:
+    - statement: "MCTS-Refine samples 20K issue-PR pairs from SWE-Fixer-Train-110K and produces 52,068 training records: 18,340 file, 17,338 fault, and 16,390 patch examples. Evaluation uses SWE-bench Verified (500) and Lite (300)."
+      claim_type: direct_evidence
+      source_locator: "Section 4.A.1 and 4.A.4"
+  baselines:
+    - statement: "End-to-end results are compared with published agent and pipeline systems at varied model scales; localization is compared with Lingma SWE-GPT and proprietary models, while isolated patch generation compares base versus fine-tuned Qwen and DeepSeek."
+      claim_type: direct_evidence
+      source_locator: "Section 4.A.3; Tables 2-4"
+  metrics:
+    - statement: "Metrics are percent resolved by official tests, file/function/line hit, and patch-format compliance."
+      claim_type: direct_evidence
+      source_locator: "Section 4.A.4; Tables 2-4"
+  ablations:
+    - statement: "No matched ablation compares MCTS refinement with ordinary CoT, endpoint-only filtering, or the same amount of patch-format SFT; the paper compares model sizes and subtasks instead."
+      claim_type: direct_evidence
+      source_locator: "Section 4; Tables 2-4"
+  main_results:
+    - statement: "Fine-tuned 7B/32B/72B models resolve 22.6%/32.4%/35.0% of SWE-bench Verified and 16.3%/25.7%/28.3% of Lite."
+      claim_type: direct_evidence
+      source_locator: "Section 4.B; Table 2"
+    - statement: "The manuscript's post-table conclusion swaps the Verified and Lite sequences, while Table 2 and the abstract consistently report Verified as the larger values."
+      claim_type: direct_evidence
+      source_locator: "Abstract and Table 2 versus Section 4.B conclusion box"
+    - statement: "When given precise issue locations and 20 context lines, fine-tuned 72B patch generation reaches 96.8% format compliance and 43.8% resolved versus 37.0% and 14.4% for the base model."
+      claim_type: direct_evidence
+      source_locator: "Section 4.D; Table 4"
+conclusion_evidence:
+  - statement: "The results show that the resulting SFT corpus improves endpoint tasks, but do not isolate MCTS/refinement or verify that its rationales, rather than exact-location and edit-format supervision, cause the gain."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; absence of a matched data-construction ablation"
+limitations:
+  - statement: "The authors address repository overlap in corpus construction and foundation-model pretraining leakage, but evaluation still uses the SWE-bench family and one base-model family."
+    claim_type: direct_evidence
+    source_locator: "Section 5, Threats to Validity"
+  - statement: "Gold-visible judging and refinement make the corpus unsuitable as evidence that an agent can assess intermediate reasoning at deployment time."
+    claim_type: agent_inference
+    source_locator: "Section 3.B; Figures 3-4"
+failure_modes:
+  - statement: "Strict exact match discards alternative valid paths and can train a model to reproduce developer patch form; relaxed normalization ignores whitespace, comments, and line breaks but does not establish semantic equivalence."
+    claim_type: agent_inference
+    source_locator: "Section 3.A-B"
+reusable_artifacts:
+  - statement: "The framework, CoT dataset, and fine-tuned models are linked from the project site."
+    claim_type: direct_evidence
+    source_locator: "Section 1; https://mcts-refine.github.io/"
+within_cluster_difference:
+  - statement: "MCTS-Refine is offline gold-conditioned data synthesis, unlike ToolTrain's reward-trained search policy and SEER's value-guided inference-time reasoning selection."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; companion ToolTrain and SEER cards"
+relevance_reassessment:
+  statement: "Its value is lower than the shortlist implied for process supervision: endpoint gains are real, but gold-visible refinement, missing construction ablations, and large patch-format gains prevent attributing them to faithful intermediate reasoning."
+  claim_type: agent_inference
+  source_locator: "Section 3.B; Tables 2 and 4"
+evidence_gaps:
+  - statement: "A same-size plain-CoT or patch-SFT control, rationale-fidelity audit, alternative-patch handling, formal version, and independent artifact reproduction are missing."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5 and version metadata"
+
