@@ -6,9 +6,9 @@ research reconnaissance. The active scope and stage are recorded in
 
 ## Workflow
 
-corpus construction -> completeness audit -> domain map -> representative paper
-deep reading -> cross-paper synthesis -> idea generation -> prior-art attack ->
-direction narrowing -> pilot design
+corpus construction -> completeness audit -> domain map -> deep-reading selection
+-> representative paper deep reading -> cross-paper synthesis -> idea generation ->
+prior-art attack -> direction narrowing -> pilot design
 
 Each stage writes its durable outputs into this repository and updates the
 checkpoint. Start every new stage in a new Codex conversation: read the
@@ -22,7 +22,7 @@ repository state rather than depending on historical chat context.
 - `ideas/`: candidate idea records; `ideas/prior-art/` holds their coverage
   ledgers.
 - `directions/`: selected research directions and pilot designs.
-- `config/`: scope, selection rules, and provisional taxonomy.
+- `config/`: scope, selection rules, and active taxonomy status/pointers.
 - `templates/`: reusable YAML records.
 - `state/`: current checkpoint and handoff state.
 - `reports/`: phase reports when a prompt requests them.
