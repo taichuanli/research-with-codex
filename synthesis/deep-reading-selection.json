@@ -1,0 +1,2905 @@
+{
+  "schema_version": 1,
+  "phase": "DEEP_READING_SELECTION",
+  "status": "DEEP_READING_SELECTED",
+  "generated_at": "2026-07-24T14:57:32Z",
+  "input": {
+    "record_count": 988,
+    "corpus": "corpus/cross-venue-research-paper-index.jsonl",
+    "assignments": "synthesis/field-mapping-paper-assignments.jsonl",
+    "taxonomy": "synthesis/field-mapping-taxonomy.yaml",
+    "topic_matrix": "synthesis/cross-venue-topic-matrix.csv",
+    "candidate_report": "synthesis/deep-reading-topic-clusters.md",
+    "evidence": {
+      "claim_type": "direct_evidence",
+      "source_locator": "field-mapping-paper-assignments.jsonl / all 988 records",
+      "statement": "The candidate universe contains 988 in-scope papers with official titles, abstracts, authors, venues, and source locators."
+    }
+  },
+  "scope_boundary": {
+    "claim_type": "agent_inference",
+    "statement": "Selection favors general LLM, agent, and code-agent mechanisms for SE; human studies, multi-agent organization, pure benchmarks, pure security/safety/retrieval, prompt engineering, and efficiency-only work are excluded unless a paper supplies a distinct mechanism or counterexample needed by the plan.",
+    "source_locator": "user-specified research preferences"
+  },
+  "mechanism_clusters": {
+    "FAILURE_LOOPS_RECOVERY": {
+      "label": "Failures, ineffective loops, and recovery in agent trajectories",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Pair trajectory-level empirical failure evidence with methods that expose, prevent, or recover from unproductive behavior."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu",
+        "ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm",
+        "ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea",
+        "ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a",
+        "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+        "ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-"
+      ]
+    },
+    "PLANNING_ACTION_TOOL_STOPPING": {
+      "label": "Planning, action choice, tool choice, and stopping",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Compare learned and inference-time control over search, tool use, backtracking, and termination across different SE tasks."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-",
+        "ISSTA2026_steering-tree-of-thought-reasoning-via-deductive-verification",
+        "ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing",
+        "ICSE2026_saint-service-level-integration-test-generation-with-program-analysis-an",
+        "FSE2026_agentic-verification-of-software-systems",
+        "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair"
+      ]
+    },
+    "TEST_EXECUTION_ANALYSIS_FEEDBACK": {
+      "label": "Testing, execution, and program-analysis feedback",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Test whether executable and analytic evidence actually changes agent decisions, including cases where feedback is weak or misleading."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud",
+        "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues",
+        "ISSTA2026_issueexec-a-test-driven-approach-for-localizing-software-engineering-iss",
+        "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method",
+        "ICSE2026_specguru-hierarchical-llm-driven-api-points-to-specification-generation-",
+        "ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large"
+      ]
+    },
+    "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION": {
+      "label": "State, memory, specification, and constraint preservation",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Contrast memories, structured state, specifications, and evidence-preserving controllers on long or iterative workflows."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai",
+        "ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar",
+        "ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack",
+        "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis",
+        "ASE2025_agentic-specification-generator-for-move-programs",
+        "ISSTA2026_logichunter-testing-llm-agent-frameworks-with-an-agentic-oracle"
+      ]
+    },
+    "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS": {
+      "label": "Signals of success, failure, progress, and uncertainty",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Compare internal, behavioral, execution-grounded, and pre-generation signals and how they support intervention."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-",
+        "ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe",
+        "ICSE2026_on-llms-internal-representation-of-code-correctness",
+        "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu",
+        "ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic",
+        "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c"
+      ]
+    },
+    "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS": {
+      "label": "Debugging, root-cause localization, and repair decisions",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Cover reproduction, localization, causal diagnosis, repair-ingredient selection, and patch validation as distinct decisions."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based",
+        "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+        "ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning",
+        "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+        "ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au",
+        "ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio"
+      ]
+    },
+    "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION": {
+      "label": "Agent training, process supervision, and policy optimization",
+      "selection_goal": {
+        "claim_type": "agent_inference",
+        "source_locator": "user research preferences + field-mapping title/abstract assignments",
+        "statement": "Compare trajectory construction, intermediate validation, SFT, preference optimization, value learning, and RL for SE behavior."
+      },
+      "primary_selected_count": 6,
+      "selected_paper_ids": [
+        "ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training",
+        "ICSE2026_sealign-alignment-training-for-software-engineering-agent",
+        "ISSTA2026_swe-pdb-teaching-llms-to-leverage-debugging-tools-via-agentic-training",
+        "ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-",
+        "ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d",
+        "ISSTA2026_seer-self-enhancing-chain-of-thought-compression-for-reasoning-models"
+      ]
+    }
+  },
+  "selected_papers": [
+    {
+      "paper_id": "ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu",
+      "title": "Understanding Software Engineering Agents: A Study of Thought-Action-Result Trajectories",
+      "authors": [
+        "Islem BOUZENIA",
+        "Michael Pradel"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event eb127353-1d7b-48e8-a8db-15c801b17c0c / All Details / event description abstract",
+        "statement": "Provides the closest trajectory-level empirical baseline for recurring action motifs, feedback integration, and anti-patterns across three software agents."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event eb127353-1d7b-48e8-a8db-15c801b17c0c / All Details / event description abstract",
+        "statement": "Normalizes thought-action-result logs and compares structural patterns, action sequences, coherence, and feedback use between successful and failed runs."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event eb127353-1d7b-48e8-a8db-15c801b17c0c / All Details / event description abstract",
+        "statement": "Anchor empirical study for defining observable trajectory failures before evaluating recovery methods."
+      },
+      "deep_read_questions": [
+        "Are the anti-pattern labels reliable across annotators, agents, and task difficulty rather than proxies for trajectory length?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SOFTWARE_REPAIR_AGENT_TRAJECTORIES"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2506.18824",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event eb127353-1d7b-48e8-a8db-15c801b17c0c / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm",
+      "title": "Beyond Final Code: A Process-Oriented Error Analysis of Software Development Agents in Real-World GitHub Scenarios",
+      "authors": [
+        "Zhi Chen",
+        "Wei Ma",
+        "Lingxiao Jiang"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70c3fe1e-0989-4c5f-bcac-bfe17001c8a5 / All Details / event description abstract",
+        "statement": "Adds large-scale solving and testing logs plus concrete execution errors that correlate with failure and reasoning overhead."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 70c3fe1e-0989-4c5f-bcac-bfe17001c8a5 / All Details / event description abstract",
+        "statement": "Mines 3,977 solving trajectories and 3,931 testing logs to connect runtime error types with resolution outcomes and debugging effort."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70c3fe1e-0989-4c5f-bcac-bfe17001c8a5 / All Details / event description abstract",
+        "statement": "Large-sample failure analysis and a check against conclusions drawn only from final patches."
+      },
+      "deep_read_questions": [
+        "Do the reported error correlations survive controls for issue difficulty, agent identity, and environment failures?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2503.12374",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70c3fe1e-0989-4c5f-bcac-bfe17001c8a5 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea",
+      "title": "Understanding Automated Program Repair Agents Through the Lens of Traceability: An Empirical Study",
+      "authors": [
+        "Ira Ceka",
+        "Hailie Mitchell",
+        "Saurabh Pujar",
+        "Luca Buratti",
+        "Shyam Ramji",
+        "Junfeng Yang",
+        "Gail Kaiser",
+        "Baishakhi Ray"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event f42657c3-18c2-4351-967c-e88c0e895a64 / All Details / event description abstract",
+        "statement": "Traces complete APR pipelines and reports bottlenecks in issue reproduction, regression-test choice, tooling, and semantic patch validity."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event f42657c3-18c2-4351-967c-e88c0e895a64 / All Details / event description abstract",
+        "statement": "Compares five repair agents step by step from issue description through validation, with explicit behavioral comparison to developer workflows."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event f42657c3-18c2-4351-967c-e88c0e895a64 / All Details / event description abstract",
+        "statement": "Broad empirical counterweight to end-to-end leaderboard improvements."
+      },
+      "deep_read_questions": [
+        "How are pipeline actions aligned across heterogeneous agents, and which claimed bottlenecks are causally linked to failure?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2506.08311",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event f42657c3-18c2-4351-967c-e88c0e895a64 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a",
+      "title": "AgentInspect: Diagnosing Behavioral Failures in Artificial Intelligence Agents",
+      "authors": [
+        "Ruchira Manke",
+        "Mohammad Wardat",
+        "Foutse Khomh",
+        "Hridesh Rajan"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0c821c5b-6ed7-4f54-8a69-44e4f4d3f44c / All Details / event description abstract",
+        "statement": "Tests general tool-using agents under abnormal tool behavior, widening the evidence beyond repository repair and normal executions."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 0c821c5b-6ed7-4f54-8a69-44e4f4d3f44c / All Details / event description abstract",
+        "statement": "Uses agent-specific coverage, captured and simulated tool responses, and deterministic trajectory comparison to expose six behavioral failure classes."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0c821c5b-6ed7-4f54-8a69-44e4f4d3f44c / All Details / event description abstract",
+        "statement": "Representative agent-testing method and out-of-distribution failure injection case."
+      },
+      "deep_read_questions": [
+        "Do the six failure classes cover silent non-crashing failures and remain valid outside LangChain agents?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "AGENT_FRAMEWORKS_GITHUB"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + OpenAlex exact-title search returned replication package only + arXiv exact-title query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0c821c5b-6ed7-4f54-8a69-44e4f4d3f44c / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+      "title": "Empowering Autonomous Debugging Agents with Efficient Dynamic Analysis",
+      "authors": [
+        "Jiahong Xiang",
+        "Xiaoyang Xu",
+        "Xiaopan Chu",
+        "Hongliang Tian",
+        "Yuqun Zhang"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4c61c63b-032a-4865-a8d4-45afe4a19c36 / All Details / event description abstract",
+        "statement": "Directly targets exhausted budgets and unproductive debugger loops with an interface designed around agent-level actions."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 4c61c63b-032a-4865-a8d4-45afe4a19c36 / All Details / event description abstract",
+        "statement": "Exposes function-level frame-lifetime traces and high-level navigation commands instead of line-by-line debugger interactions."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4c61c63b-032a-4865-a8d4-45afe4a19c36 / All Details / event description abstract",
+        "statement": "Recovery-oriented method that changes the action interface rather than only prompting the agent to reflect."
+      },
+      "deep_read_questions": [
+        "Which unproductive loops disappear because of higher-level observations, and which gains come from additional runtime information?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2604.24212",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4c61c63b-032a-4865-a8d4-45afe4a19c36 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-",
+      "title": "TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code",
+      "authors": [
+        "Jiangping Huang",
+        "Wenguang Ye",
+        "Weisong Sun",
+        "Jian Zhang",
+        "Mingyue Zhang",
+        "Yang Liu"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "FAILURE_LOOPS_RECOVERY",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b0f9926-8131-4d52-a0a8-650e06fb61e2 / All Details / event description abstract",
+        "statement": "Combines runtime traces, lessons from failed attempts, and rollback, making repeated-error prevention explicit and testable."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 8b0f9926-8131-4d52-a0a8-650e06fb61e2 / All Details / event description abstract",
+        "statement": "Instruments executions, performs causal analysis, stores historical lessons, and rolls back iterations that do not strictly improve the solution."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b0f9926-8131-4d52-a0a8-650e06fb61e2 / All Details / event description abstract",
+        "statement": "Representative closed-loop recovery method, retained for its rollback mechanism rather than its multi-agent organization."
+      },
+      "deep_read_questions": [
+        "How is strict improvement defined without access to hidden tests, and can rollback reject plausible but semantically worse patches?",
+        "What is the unit and coding procedure for identifying a failed or unproductive trajectory?",
+        "Do recovery claims improve semantic task correctness rather than only shorten traces or reduce cost?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_REPAIR_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2602.06875",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b0f9926-8131-4d52-a0a8-650e06fb61e2 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-",
+      "title": "To Run or Not to Run: Analyzing the Cost-Effectiveness of Code Execution in LLM-Based Program Repair",
+      "authors": [
+        "Zhihao Lin",
+        "Junhua Zhu",
+        "Mingyi Zhou",
+        "Xin Wang",
+        "Zhensu Sun",
+        "Renyu Yang",
+        "David Lo",
+        "Li Li"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event fadfc637-50d7-43a7-8e0b-3895a086663e / All Details / event description abstract",
+        "statement": "Provides unusually direct evidence about when agents choose execution and whether repeated test runs help."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event fadfc637-50d7-43a7-8e0b-3895a086663e / All Details / event description abstract",
+        "statement": "Analyzes 7,745 traces and controls four execution regimes to compare execution timing, localization, validation, and repair outcomes."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event fadfc637-50d7-43a7-8e0b-3895a086663e / All Details / event description abstract",
+        "statement": "Contradictory evidence against treating more execution feedback as uniformly beneficial."
+      },
+      "deep_read_questions": [
+        "Does prohibiting execution change agent planning behavior in ways that confound the estimated causal value of execution?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2606.26978",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "targeted arXiv exact-title query / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event fadfc637-50d7-43a7-8e0b-3895a086663e / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_steering-tree-of-thought-reasoning-via-deductive-verification",
+      "title": "Steering Tree-of-Thought Reasoning via Deductive Verification",
+      "authors": [
+        "Haoliang Cheng",
+        "Enyi Tang",
+        "Shuoxiao Zhang",
+        "Jiahe Mao",
+        "Yanling Fu",
+        "Zhiyuan Ma",
+        "Keyu Cui",
+        "Yuchuan Liu",
+        "Yu Tian",
+        "Xinyu Gao",
+        "Haibin Wang"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 414ba45a-a835-4761-9da5-c41ce1487080 / All Details / event description abstract",
+        "statement": "Replaces heuristic self-evaluation during tree search with solver-grounded pruning, counterexample refinement, and backtracking."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 414ba45a-a835-4761-9da5-c41ce1487080 / All Details / event description abstract",
+        "statement": "Encodes candidate reasoning steps as SMT constraints, verifies consequences, and uses counterexamples to choose or revise paths."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 414ba45a-a835-4761-9da5-c41ce1487080 / All Details / event description abstract",
+        "statement": "Formal inference-time controller for comparing self-judgment with external verification."
+      },
+      "deep_read_questions": [
+        "How often are LLM-produced constraints faithful to the natural-language reasoning step they are used to accept or prune?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "FAULT_LOCALIZATION_SYNTHESIS_INVARIANT_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + OpenAlex exact-title search returned artifact only + arXiv exact-title query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 414ba45a-a835-4761-9da5-c41ce1487080 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_agentic-predicates-reasoning-for-directed-fuzzing",
+      "title": "Agentic Predicates Reasoning for Directed Fuzzing",
+      "authors": [
+        "Jie Zhu",
+        "Chihao Shen",
+        "Ziyang Li",
+        "Jiahao Yu",
+        "Yizheng Chen",
+        "Kexin Pei"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ea824b23-9911-4788-97cd-1c332df869be / All Details / event description abstract",
+        "statement": "Uses explicit semantic progress milestones and program-analysis tools to guide exploration rather than a final-score-only search."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event ea824b23-9911-4788-97cd-1c332df869be / All Details / event description abstract",
+        "statement": "Synthesizes and iteratively refines progress predicates, verifies their relaxation relation symbolically, and uses them to reject hopeless executions."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ea824b23-9911-4788-97cd-1c332df869be / All Details / event description abstract",
+        "statement": "Mechanistically distinct search-control method with explicit intermediate progress state."
+      },
+      "deep_read_questions": [
+        "Are predicate refinements driven by observable failures, and how sensitive are results to false or overly weak milestones?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "DIRECTED_FUZZING_REAL_WORLD_PROGRAMS"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FUZZING_AND_INPUT_EXPLORATION"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2508.21302",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event ea824b23-9911-4788-97cd-1c332df869be / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_saint-service-level-integration-test-generation-with-program-analysis-an",
+      "title": "SAINT: Service-level Integration Test Generation with Program Analysis and LLM-based Agents",
+      "authors": [
+        "Rangeet Pan",
+        "Raju Pavuluri",
+        "Ruikai Huang",
+        "Tyler Stennett",
+        "Rahul Krishna",
+        "Alessandro Orso",
+        "Saurabh Sinha"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event b2656c63-9e52-4b30-953d-f91b6e6af6f3 / All Details / event description abstract",
+        "statement": "Makes planning, action, and reflection phases concrete in a service-testing agent grounded by endpoint and dependency models."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event b2656c63-9e52-4b30-953d-f91b6e6af6f3 / All Details / event description abstract",
+        "statement": "Builds endpoint and operation-dependency representations, then plans and refines executable service scenarios through an agent loop."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event b2656c63-9e52-4b30-953d-f91b6e6af6f3 / All Details / event description abstract",
+        "statement": "Tool- and model-grounded planning case outside repository issue resolution."
+      },
+      "deep_read_questions": [
+        "Which planning decisions use static-analysis facts, and what happens when the dependency model is incomplete or wrong?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "ENTERPRISE_JAVA_SERVICES"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2511.13305",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event b2656c63-9e52-4b30-953d-f91b6e6af6f3 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_agentic-verification-of-software-systems",
+      "title": "Agentic Verification of Software Systems",
+      "authors": [
+        "Haoxin Tu",
+        "Huan Zhao",
+        "Yahui Song",
+        "Mehtab Zafar",
+        "Ruijie Meng",
+        "Abhik Roychoudhury"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 460db077-3153-4258-8fa9-4cd2172bbae0 / All Details / event description abstract",
+        "statement": "Offers a sharply constrained setting where proof-tree structure, theorem-prover calls, and stopping at a checked derivation are observable."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 460db077-3153-4258-8fa9-4cd2172bbae0 / All Details / event description abstract",
+        "statement": "Lets an LLM agent select proof structure and iteratively query Rocq for context until the prover accepts a derivation."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 460db077-3153-4258-8fa9-4cd2172bbae0 / All Details / event description abstract",
+        "statement": "Representative external-tool planning method with a sound terminal oracle."
+      },
+      "deep_read_questions": [
+        "How are proof-search actions chosen, and are failed proof attempts reported rather than hidden by successful final derivations?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SV_COMP_AND_LINUX_KERNEL"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2511.17330",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 460db077-3153-4258-8fa9-4cd2172bbae0 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair",
+      "title": "Event-B Agent: Towards LLM Agent for Formal Model Synthesis and Repair",
+      "authors": [
+        "Hongshu Wang",
+        "Xinyue Zuo",
+        "Yuhan Sun",
+        "Qin Li",
+        "Yamine AIT AMEUR",
+        "Jin Song Dong"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "PLANNING_ACTION_TOOL_STOPPING",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 55a98c95-7e61-4d3a-8e49-65097b41a18c / All Details / event description abstract",
+        "statement": "Interleaves model synthesis, repair, model checking, and proof discharge rather than treating formalization as a one-shot output."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 55a98c95-7e61-4d3a-8e49-65097b41a18c / All Details / event description abstract",
+        "statement": "Uses model-checker and theorem-prover feedback to decide how to revise an Event-B model and simplify remaining proof obligations."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 55a98c95-7e61-4d3a-8e49-65097b41a18c / All Details / event description abstract",
+        "statement": "Formal planning-and-repair case with multiple tool feedback channels."
+      },
+      "deep_read_questions": [
+        "Does the agent choose between model repair and proof repair using a stated policy, and how are cycles detected?",
+        "At what point in a trajectory is the control decision made, and what observations are available then?",
+        "Does the evaluation isolate the control policy from model scale, prompt, tool interface, and search budget?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "FORMAL_MODEL_SYNTHESIS_CASES"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2605.17475",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 55a98c95-7e61-4d3a-8e49-65097b41a18c / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud",
+      "title": "Are “Solved Issues” in SWE-bench Really Solved Correctly? An Empirical Study",
+      "authors": [
+        "You Wang",
+        "Michael Pradel",
+        "Zhongxin Liu"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 6aa55b46-6431-42bd-9d9f-1a4a30e8288a / All Details / event description abstract",
+        "statement": "Shows that test-passing feedback can mislabel semantically incorrect agent patches and quantifies the resulting score inflation."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 6aa55b46-6431-42bd-9d9f-1a4a30e8288a / All Details / event description abstract",
+        "statement": "Differentially tests generated and developer patches, adds developer tests, and manually inspects behaviorally divergent cases."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 6aa55b46-6431-42bd-9d9f-1a4a30e8288a / All Details / event description abstract",
+        "statement": "Primary counterexample to equating test success with task success."
+      },
+      "deep_read_questions": [
+        "How does PatchDiff treat valid alternative implementations, and how robust is the manual certainty judgment for divergent behavior?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "REPOSITORY_LEVEL_LLM_AGENTS"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 6aa55b46-6431-42bd-9d9f-1a4a30e8288a / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues",
+      "title": "Can Old Tests do New Tricks for Resolving SWE Issues?",
+      "authors": [
+        "Yang Chen",
+        "Toufique Ahmed",
+        "Reyhaneh Jabbarvand",
+        "Martin Hirzel"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c838c291-745c-425d-bd2b-94a48a9cb0ff / All Details / event description abstract",
+        "statement": "Treats existing regression tests as both issue-reproduction context and post-patch constraints, with direct agent-pipeline integration."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event c838c291-745c-425d-bd2b-94a48a9cb0ff / All Details / event description abstract",
+        "statement": "Selects and minimizes relevant regression tests, uses them to guide reproduction-test generation, and validates candidate patches for regressions."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c838c291-745c-425d-bd2b-94a48a9cb0ff / All Details / event description abstract",
+        "statement": "Positive method evidence for carefully selected test feedback rather than indiscriminate execution."
+      },
+      "deep_read_questions": [
+        "Are gains caused by better localization, better reproduction, or rejection of regressions, and do minimized suites omit relevant behavior?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2510.18270",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event c838c291-745c-425d-bd2b-94a48a9cb0ff / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_issueexec-a-test-driven-approach-for-localizing-software-engineering-iss",
+      "title": "IssueExec: A Test-Driven Approach for Localizing Software Engineering Issues",
+      "authors": [
+        "Jiawei Liu",
+        "Yun Lin",
+        "Chenyan Liu",
+        "Yu Qian",
+        "Liu Yiming",
+        "Jiaxin Chang",
+        "Weinan Zhang",
+        "Linpeng Huang"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ef39d180-599e-49be-b638-a2755de42fdf / All Details / event description abstract",
+        "statement": "Uses test suites as executable requirement proxies and measures how much they reduce issue-localization uncertainty."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event ef39d180-599e-49be-b638-a2755de42fdf / All Details / event description abstract",
+        "statement": "Maps issues to tests, filters infrastructure noise from traces, and feeds test-derived execution structure into code localization."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ef39d180-599e-49be-b638-a2755de42fdf / All Details / event description abstract",
+        "statement": "Empirical and method bridge between test feedback and an upstream agent decision."
+      },
+      "deep_read_questions": [
+        "Does the reported uncertainty reduction predict downstream repair success on issues whose existing tests do not expose the bug?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2607.17286",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event ef39d180-599e-49be-b638-a2755de42fdf / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method",
+      "title": "Let the Code Speak: Incorporating Program Dynamic State for Better Method-Level Fault Localization",
+      "authors": [
+        "Yihao Qin",
+        "Shangwen Wang",
+        "Bo Lin",
+        "Xin Peng",
+        "Sheng Ouyang",
+        "Liqian Chen",
+        "Xiaoguang Mao"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a0832d89-7bd4-44c3-8cc4-e61bffbe2ab6 / All Details / event description abstract",
+        "statement": "Makes runtime state an explicit challenge to an LLM fault-localization hypothesis instead of relying on static plausibility."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event a0832d89-7bd4-44c3-8cc4-e61bffbe2ab6 / All Details / event description abstract",
+        "statement": "A localization agent proposes suspicious code and a print-debugging agent gathers dynamic state over multiple rounds to verify it."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a0832d89-7bd4-44c3-8cc4-e61bffbe2ab6 / All Details / event description abstract",
+        "statement": "Dynamic-feedback method with interpretable tool-use patterns."
+      },
+      "deep_read_questions": [
+        "How often does runtime evidence reverse an initially wrong suspicion rather than merely confirm the first hypothesis?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "DEFECTS4J_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "PUBLISHER_RECORD_ONLY",
+        "claim_type": "direct_evidence",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00072",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title publisher record / DOI",
+        "statement": "A stable official or publisher record was located, but no publicly accessible paper PDF was confirmed in the targeted title search."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event a0832d89-7bd4-44c3-8cc4-e61bffbe2ab6 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_specguru-hierarchical-llm-driven-api-points-to-specification-generation-",
+      "title": "SpecGuru: Hierarchical LLM-Driven API Points-to Specification Generation with Self-Validation",
+      "authors": [
+        "Shuangxiang Kan",
+        "Yuekang Li",
+        "Xiao Cheng",
+        "Yulei Sui"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5d3563da-2a70-4ca9-8425-f00dac02b083 / All Details / event description abstract",
+        "statement": "Uses differential tests after every bottom-up specification step to prevent error propagation into later static analysis."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 5d3563da-2a70-4ca9-8425-f00dac02b083 / All Details / event description abstract",
+        "statement": "Generates leaf specifications, validates them with synthesized differential tests, and reuses only validated abstractions higher in the call graph."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5d3563da-2a70-4ca9-8425-f00dac02b083 / All Details / event description abstract",
+        "statement": "Incremental validation case linking testing feedback to program-analysis artifacts."
+      },
+      "deep_read_questions": [
+        "What behaviors do synthesized tests miss, and can an incorrect validated leaf specification contaminate higher-level results?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "C_LIBRARY_STATIC_ANALYSIS"
+      ],
+      "mapped_topic_clusters": [],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5d3563da-2a70-4ca9-8425-f00dac02b083 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_assessing-coherency-and-consistency-of-code-execution-reasoning-by-large",
+      "title": "Assessing Coherency and Consistency of Code Execution Reasoning by Large Language Models",
+      "authors": [
+        "Changshu Liu",
+        "Yang Chen",
+        "Reyhaneh Jabbarvand"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TEST_EXECUTION_ANALYSIS_FEEDBACK",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 11a3f235-4d7b-4f87-ac16-0e34cecb5e2d / All Details / event description abstract",
+        "statement": "Separates apparently correct answers from coherent execution reasoning and finds that bug-task success may come from shortcuts."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 11a3f235-4d7b-4f87-ac16-0e34cecb5e2d / All Details / event description abstract",
+        "statement": "Evaluates variable-state simulation, commonsense execution coherence, and consistency across path-covering tests before comparison to bug tasks."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 11a3f235-4d7b-4f87-ac16-0e34cecb5e2d / All Details / event description abstract",
+        "statement": "Counterexample showing that correct final outputs need not imply use of execution semantics."
+      },
+      "deep_read_questions": [
+        "Are coherence labels and path-coverage comparisons sufficient to distinguish real execution reasoning from pattern matching?",
+        "Is feedback causal to the next agent decision, or merely used for final validation or ranking?",
+        "How are weak, flaky, incomplete, or misleading tests and analyses handled?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "HUMANEVAL_AND_BUG_TASKS"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_RELIABILITY_EVALUATION"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2510.15079",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 11a3f235-4d7b-4f87-ac16-0e34cecb5e2d / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai",
+      "title": "ExpeRepair: Dual-Memory Enhanced LLM-based Repository-Level Program Repair",
+      "authors": [
+        "Fangwen Mu",
+        "Junjie Wang",
+        "Lin Shi",
+        "Song Wang",
+        "Shoubin Li",
+        "Qing Wang"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event bb2a4436-8f5d-482c-97c7-bd578a376420 / All Details / event description abstract",
+        "statement": "Offers explicit episodic and semantic memories with different update and recall roles for repository repair."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event bb2a4436-8f5d-482c-97c7-bd578a376420 / All Details / event description abstract",
+        "statement": "Accumulates concrete repair episodes and abstract reflective insights, then composes both dynamically into inference context."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event bb2a4436-8f5d-482c-97c7-bd578a376420 / All Details / event description abstract",
+        "statement": "Representative cross-task memory method for testing experience reuse versus prompt retrieval."
+      },
+      "deep_read_questions": [
+        "How are memories updated after failures, and do evaluations prevent leakage from near-duplicate historical fixes?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://doi.org/10.1145/3808181",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title record reports CC-BY open published version at DOI",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event bb2a4436-8f5d-482c-97c7-bd578a376420 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar",
+      "title": "AttnCompress: Dynamic Attention-Guided Trajectory Compression for Software Engineering Agents",
+      "authors": [
+        "Zhengran Zeng",
+        "Yixin Li",
+        "Rui Xie",
+        "Wei Ye",
+        "Shikun Zhang"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 93d772e0-b7f1-4c19-9823-5f67a28fc3d6 / All Details / event description abstract",
+        "statement": "Directly addresses preservation and recall of critical evidence as long software-agent trajectories grow."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 93d772e0-b7f1-4c19-9823-5f67a28fc3d6 / All Details / event description abstract",
+        "statement": "Segments code and logs structurally, estimates historical-block relevance with proxy attention, and re-evaluates a rolling context window."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 93d772e0-b7f1-4c19-9823-5f67a28fc3d6 / All Details / event description abstract",
+        "statement": "Efficiency-motivated method retained because semantic preservation and dynamic recall are its testable core mechanisms."
+      },
+      "deep_read_questions": [
+        "What evidence is lost by compression, and are preservation claims measured beyond final pass rate and token reduction?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 93d772e0-b7f1-4c19-9823-5f67a28fc3d6 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack",
+      "title": "EvidenT: An Evidence-Preserving Framework for Iterative System-Level Package Repair",
+      "authors": [
+        "Chenyu Zhao",
+        "Minghua Ma",
+        "Shenglin Zhang",
+        "Zeshun Huang",
+        "Yongqian Sun",
+        "Chetan Bansal",
+        "Saravan Rajmohan",
+        "Dan Pei"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ab6c51a9-e45e-45a2-aa59-d098b9635d66 / All Details / event description abstract",
+        "statement": "Separates iteration-aware evidence management from tools in a multi-artifact repair task with dependency and architecture constraints."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event ab6c51a9-e45e-45a2-aa59-d098b9635d66 / All Details / event description abstract",
+        "statement": "Fuses repair history, knowledge, and build artifacts in a controller while an external build service supplies reproducible feedback."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ab6c51a9-e45e-45a2-aa59-d098b9635d66 / All Details / event description abstract",
+        "statement": "Closed-loop state controller grounded in system-level build failures rather than source-only repair."
+      },
+      "deep_read_questions": [
+        "Which evidence is promoted or discarded between iterations, and how does the controller resolve conflicting build observations?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "RISC_V_PACKAGE_BUILD_FAILURES"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2605.08621",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event ab6c51a9-e45e-45a2-aa59-d098b9635d66 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis",
+      "title": "StepFly: Agentic Troubleshooting Guide Automation for Incident Diagnosis",
+      "authors": [
+        "Jiayi Mao",
+        "Liqun Li",
+        "Yanjie Gao",
+        "Zegang Peng",
+        "Shilin He",
+        "Chaoyun Zhang",
+        "Si Qin",
+        "Samia Khalid",
+        "Qingwei Lin",
+        "Saravan Rajmohan",
+        "Sitaram Lanka",
+        "Dongmei Zhang"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1300cbab-9d63-4e11-b26d-5286826ec0c7 / All Details / event description abstract",
+        "statement": "Turns a troubleshooting specification into an execution DAG and memory-backed scheduler, making workflow state explicit."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 1300cbab-9d63-4e11-b26d-5286826ec0c7 / All Details / event description abstract",
+        "statement": "Extracts structured DAGs from guides, builds query plugins, and runs a scheduler-executor with memory that enforces dependencies."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1300cbab-9d63-4e11-b26d-5286826ec0c7 / All Details / event description abstract",
+        "statement": "Industrial workflow-state case with real guides and incidents."
+      },
+      "deep_read_questions": [
+        "How does the scheduler recover when a guide is incomplete or an observation invalidates an already executed DAG branch?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "INDUSTRIAL_TROUBLESHOOTING_GUIDES"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2510.10074",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1300cbab-9d63-4e11-b26d-5286826ec0c7 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ASE2025_agentic-specification-generator-for-move-programs",
+      "title": "Agentic Specification Generator for Move Programs",
+      "authors": [
+        "Yu-Fu Fu",
+        "Meng Xu",
+        "Taesoo Kim"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c0435a32-c06a-449b-8f73-a2bc9888b6a4 / All Details / event description abstract",
+        "statement": "Makes formal specification clauses and verifier feedback persistent constraints in an iterative generation setting."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event c0435a32-c06a-449b-8f73-a2bc9888b6a4 / All Details / event description abstract",
+        "statement": "Uses modular agent steps to exploit language-specific specification features and repeatedly checks generated clauses with the Move verifier."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c0435a32-c06a-449b-8f73-a2bc9888b6a4 / All Details / event description abstract",
+        "statement": "Specification-preservation case in a non-mainstream verification ecosystem."
+      },
+      "deep_read_questions": [
+        "Are clauses preserved because they encode intended behavior or only because the verifier can prove them?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "MOVE_SMART_CONTRACTS"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2509.24515",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event c0435a32-c06a-449b-8f73-a2bc9888b6a4 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_logichunter-testing-llm-agent-frameworks-with-an-agentic-oracle",
+      "title": "LogicHunter: Testing LLM Agent Frameworks with an Agentic Oracle",
+      "authors": [
+        "Minghui Long",
+        "Yanjie Zhao",
+        "Haoyu Wang"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5e39f5de-1da5-42bf-84e5-04f4e17a7cdc / All Details / event description abstract",
+        "statement": "Its oracle must maintain both operational state and evidence memory while navigating documentation, code, and runtime behavior."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 5e39f5de-1da5-42bf-84e5-04f4e17a7cdc / All Details / event description abstract",
+        "statement": "Combines specification-aware fuzzing with a ReAct oracle that uses dual-layer state management and dual-stream memory."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5e39f5de-1da5-42bf-84e5-04f4e17a7cdc / All Details / event description abstract",
+        "statement": "Stateful agent-oracle method evaluated on failures of agent-framework software itself."
+      },
+      "deep_read_questions": [
+        "What information enters each state and memory layer, and which layer contributes to finding silent semantic failures?",
+        "What state is retained, discarded, summarized, or made authoritative across steps?",
+        "Does the method test consistency over genuinely long trajectories and changing requirements?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "LLM_AGENT_FRAMEWORKS"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2607.06195",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 5e39f5de-1da5-42bf-84e5-04f4e17a7cdc / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-",
+      "title": "Atropos: Improving Cost-Benefit Trade-off of LLM-based Agents under Self-Consistency with Early Termination and Model Hotswap",
+      "authors": [
+        "Naryeong Kim",
+        "Shin Yoo"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 868854da-d36f-40ac-bf09-2ea5b9afa101 / All Details / event description abstract",
+        "statement": "Predicts eventual trajectory failure at the midpoint and couples the signal to termination and model-hotswap intervention."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 868854da-d36f-40ac-bf09-2ea5b9afa101 / All Details / event description abstract",
+        "statement": "Merges self-consistent inference paths into a graph and trains a GCN to predict failure before choosing whether to migrate context."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 868854da-d36f-40ac-bf09-2ea5b9afa101 / All Details / event description abstract",
+        "statement": "Only selected cost-oriented paper because it contains an explicit predictive signal and downstream control action."
+      },
+      "deep_read_questions": [
+        "Is midpoint failure prediction calibrated per agent and task, and can hotswap gains be separated from simply using a stronger model?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "MULTI_AGENT_TASK_COLLECTION"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2604.15075",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 868854da-d36f-40ac-bf09-2ea5b9afa101 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe",
+      "title": "Watson: A Cognitive Observability Framework for the Reasoning of LLM-Powered Agents",
+      "authors": [
+        "Benjamin Rombaut",
+        "Sogol Masoumzadeh",
+        "Kirill Vasilevski",
+        "Dayi Lin",
+        "Ahmed E. Hassan"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ca10ff3e-ed9c-4a6b-af49-08bf3e63028a / All Details / event description abstract",
+        "statement": "Treats inferred reasoning evidence as an observability signal that can support debugging and automated correction."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event ca10ff3e-ed9c-4a6b-af49-08bf3e63028a / All Details / event description abstract",
+        "statement": "Retroactively reconstructs reasoning traces with prompt attribution without modifying the observed agent."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ca10ff3e-ed9c-4a6b-af49-08bf3e63028a / All Details / event description abstract",
+        "statement": "Representative observability method and a contrast to direct trajectory logging."
+      },
+      "deep_read_questions": [
+        "How faithfully do inferred traces represent the actual causes of actions, and are interventions tested against misleading attributions?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY",
+        "MMLU"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "PUBLISHER_RECORD_ONLY",
+        "claim_type": "direct_evidence",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00067",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title publisher record / DOI",
+        "statement": "A stable official or publisher record was located, but no publicly accessible paper PDF was confirmed in the targeted title search."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event ca10ff3e-ed9c-4a6b-af49-08bf3e63028a / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_on-llms-internal-representation-of-code-correctness",
+      "title": "On LLMs’ Internal Representation of Code Correctness",
+      "authors": [
+        "Francisco Ribeiro",
+        "Claudio Spiess",
+        "Prem Devanbu",
+        "Sarah Nadi"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event feb1e4f3-e26e-45a7-bf07-b61c0023252d / All Details / event description abstract",
+        "statement": "Finds an internal code-correctness signal that outperforms likelihood and verbalized confidence without test execution."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event feb1e4f3-e26e-45a7-bf07-b61c0023252d / All Details / event description abstract",
+        "statement": "Contrasts hidden states for correct and incorrect solution pairs and uses the extracted representation to rank generated samples."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event feb1e4f3-e26e-45a7-bf07-b61c0023252d / All Details / event description abstract",
+        "statement": "White-box correctness signal that can be compared with execution-grounded and behavioral alternatives."
+      },
+      "deep_read_questions": [
+        "Does the correctness direction transfer to unseen tasks and error types without paired calibration data?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_RELIABILITY_EVALUATION"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2512.07404",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event feb1e4f3-e26e-45a7-bf07-b61c0023252d / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu",
+      "title": "Clotho: Measuring Task-Specific Pre-Generation Test Adequacy for LLM Inputs",
+      "authors": [
+        "Juyeon Yoon",
+        "Somin Kim",
+        "Robert Feldt",
+        "Shin Yoo"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0d1454e9-dfc1-4999-ac09-cfb99492e771 / All Details / event description abstract",
+        "statement": "Predicts task-specific failures before generation and explicitly compares pre- and post-generation uncertainty measures."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 0d1454e9-dfc1-4999-ac09-cfb99492e771 / All Details / event description abstract",
+        "statement": "Fits a GMM over hidden states using a small labeled reference set and ranks unseen inputs by estimated failure likelihood."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0d1454e9-dfc1-4999-ac09-cfb99492e771 / All Details / event description abstract",
+        "statement": "Pre-action difficulty signal and cross-model transfer case."
+      },
+      "deep_read_questions": [
+        "Is the reported transfer stable under task-distribution shift, and how sensitive is it to the selected reference labels?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "EIGHT_LLM_TASK_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2509.17314",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 0d1454e9-dfc1-4999-ac09-cfb99492e771 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic",
+      "title": "Code-MUE: Measuring Code LLM' Uncertainty through Execution-based Semantic Interaction Graphs",
+      "authors": [
+        "xiaoning ren",
+        "Yinxing Xue",
+        "Lei Ma",
+        "Yuheng Huang"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b596313-4b5f-4ca3-867e-f309998f82c9 / All Details / event description abstract",
+        "statement": "Grounds black-box uncertainty in runtime semantics rather than textual variation and links it to selective prediction."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 8b596313-4b5f-4ca3-867e-f309998f82c9 / All Details / event description abstract",
+        "statement": "Executes candidate solutions, builds semantic interaction graphs, and computes Von Neumann entropy over behavioral diversity."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b596313-4b5f-4ca3-867e-f309998f82c9 / All Details / event description abstract",
+        "statement": "Execution-grounded uncertainty signal for closed models."
+      },
+      "deep_read_questions": [
+        "Does the strong correctness correlation persist when diverse implementations are semantically equivalent on incomplete tests?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_RELIABILITY_EVALUATION",
+        "ML_DL_SYSTEM_RELIABILITY"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2607.12273",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / arXiv best_oa_location",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 8b596313-4b5f-4ca3-867e-f309998f82c9 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+      "title": "AdaDec: A Uncertainty-Guided Lookahead Decoding Framework for LLM-based Code Generation",
+      "authors": [
+        "He Kaifeng",
+        "Mingwei Liu",
+        "Chong Wang",
+        "Zike Li",
+        "Yanlin Wang",
+        "Xin Peng",
+        "Zibin Zheng"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70b19293-1f5e-458b-87e3-8a47c845d466 / All Details / event description abstract",
+        "statement": "Connects token-level uncertainty to a selective pause-and-rerank action instead of using uncertainty only for reporting."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 70b19293-1f5e-458b-87e3-8a47c845d466 / All Details / event description abstract",
+        "statement": "Learns model-specific uncertainty thresholds and invokes lookahead reranking only at high-uncertainty code decisions."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70b19293-1f5e-458b-87e3-8a47c845d466 / All Details / event description abstract",
+        "statement": "Fine-grained inference-time signal-to-control method for general code generation."
+      },
+      "deep_read_questions": [
+        "Are learned thresholds calibrated outside the training model and benchmarks, and which error types are recoverable by lookahead?",
+        "Is the signal calibrated and evaluated before the outcome it is intended to predict?",
+        "Does the signal generalize across models, tasks, repositories, and agent implementations?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2506.08980",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 70b19293-1f5e-458b-87e3-8a47c845d466 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based",
+      "title": "Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search",
+      "authors": [
+        "Jiayi Zhang",
+        "Kevin Huang",
+        "Jian Zhang",
+        "Yang Liu",
+        "Chunyang Chen"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a2ca8b54-6bfb-49ec-ad33-25591fcabf7b / All Details / event description abstract",
+        "statement": "Separates internal evidence for root-cause reasoning from external historical ingredients for choosing repair actions."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event a2ca8b54-6bfb-49ec-ad33-25591fcabf7b / All Details / event description abstract",
+        "statement": "Queries static analysis when context is insufficient and searches verified historical fixes when the agent lacks a repair strategy."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a2ca8b54-6bfb-49ec-ad33-25591fcabf7b / All Details / event description abstract",
+        "statement": "Representative conditional information-acquisition policy for repair."
+      },
+      "deep_read_questions": [
+        "What triggers each ingredient search, and are improvements due to causal diagnosis or retrieval of near-matching patches?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "DEFECTS4J_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2506.23100",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "targeted arXiv exact-title query / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event a2ca8b54-6bfb-49ec-ad33-25591fcabf7b / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+      "title": "Debugging Engine Enhanced by Prior Knowledge: Can We Teach LLM How to Debug?",
+      "authors": [
+        "Kunyi Li",
+        "Sai Wu",
+        "Xiu Tang",
+        "Chang Yao",
+        "Songhao Bu",
+        "Quanqing Xu",
+        "Gang Chen"
+      ],
+      "venue_id": "FSE2026",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4e0fd535-d4ce-4592-a33e-fdb2e7af8e43 / All Details / event description abstract",
+        "statement": "Represents explicit, validated debugging knowledge and stepwise repair strategies rather than implicit prompting alone."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 4e0fd535-d4ce-4592-a33e-fdb2e7af8e43 / All Details / event description abstract",
+        "statement": "Extracts and verifies structured debugging knowledge from historical fixes, then injects relevant traces and strategies into repair pipelines."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4e0fd535-d4ce-4592-a33e-fdb2e7af8e43 / All Details / event description abstract",
+        "statement": "Knowledge-backed repair-decision method and retrieval-noise ablation case."
+      },
+      "deep_read_questions": [
+        "How is debugging knowledge validated independently of the LLM that extracts it, and when does retrieved knowledge mislead repair?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "ACPR_AND_ATCODER"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://raw.githubusercontent.com/lucky20020327/DeepK/main/Debugging_Engine_Enhanced_by_Prior_Knowledge.pdf",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "officially listed GitHub preprint / raw URL HTTP HEAD 200",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4e0fd535-d4ce-4592-a33e-fdb2e7af8e43 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning",
+      "title": "Root Cause Analysis of RISC-V Build Failures via LLM and MCTS Reasoning",
+      "authors": [
+        "Weipeng Shuai",
+        "Jie Liu",
+        "Zhirou Ma",
+        "Liangyi Kang",
+        "Zehua Wang",
+        "Shuai Wang",
+        "Dan Ye",
+        "Hui Li",
+        "Wei Wang",
+        "Jiaxin Zhu"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2326b450-09b1-497d-b334-e0089b850259 / All Details / event description abstract",
+        "statement": "Uses constrained MCTS over logs, configurations, environment evidence, and domain knowledge for interpretable root-cause selection."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 2326b450-09b1-497d-b334-e0089b850259 / All Details / event description abstract",
+        "statement": "Compresses phase-aware build logs and performs LLM-guided multi-source MCTS reasoning under root-cause classification constraints."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2326b450-09b1-497d-b334-e0089b850259 / All Details / event description abstract",
+        "statement": "Non-SWE-bench root-cause case with heterogeneous operational evidence."
+      },
+      "deep_read_questions": [
+        "What constitutes an MCTS state and reward, and are reasoning traces faithful to the evidence used for the final diagnosis?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "RISC_V_BUILD_FAILURES"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION"
+      ],
+      "full_text": {
+        "status": "PUBLISHER_RECORD_ONLY",
+        "claim_type": "direct_evidence",
+        "url": "https://doi.org/10.1109/ASE63991.2025.00227",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title publisher record / DOI",
+        "statement": "A stable official or publisher record was located, but no publicly accessible paper PDF was confirmed in the targeted title search."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2326b450-09b1-497d-b334-e0089b850259 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_input-reduction-enhanced-llm-based-program-repair",
+      "title": "Input Reduction Enhanced LLM-based Program Repair",
+      "authors": [
+        "Boyang Yang",
+        "Luyao Ren",
+        "Xin Yin",
+        "Jiadong Ren",
+        "Haoye Tian",
+        "Shunfu Jin"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 9d3f369e-36b9-4998-88bf-89b04f1944aa / All Details / event description abstract",
+        "statement": "Tests whether preserving a minimal failure-inducing input improves root-cause reasoning under long-context limits."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 9d3f369e-36b9-4998-88bf-89b04f1944aa / All Details / event description abstract",
+        "statement": "Has an LLM synthesize an input reducer, minimizes the failing input, and uses the compressed failure evidence for patch generation."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 9d3f369e-36b9-4998-88bf-89b04f1944aa / All Details / event description abstract",
+        "statement": "Failure-evidence reduction method and direct long-context stress case."
+      },
+      "deep_read_questions": [
+        "Does reduction preserve the same root cause, and how often does a smaller input remove behavior needed for the correct repair?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "LONG_INPUT_REPAIR_AND_OSS_FUZZ"
+      ],
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2507.15251",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 9d3f369e-36b9-4998-88bf-89b04f1944aa / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au",
+      "title": "CausalRepair: Bridging the Causality Gap in Large Language Model-based Automated Program Repair via Dual-Slicing",
+      "authors": [
+        "Linhao Wu",
+        "Yizhou Chen",
+        "Zhen Yang",
+        "Pengyu Xue",
+        "Dan Hao"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2ac27f0b-5a03-40f6-8f73-3e546445425f / All Details / event description abstract",
+        "statement": "Defines minimal causal context and combines test-side and source-side slices to guide iterative repair decisions."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 2ac27f0b-5a03-40f6-8f73-3e546445425f / All Details / event description abstract",
+        "statement": "Purifies test semantics with context-aware static slicing and extracts executed source dependencies with dynamic slicing."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2ac27f0b-5a03-40f6-8f73-3e546445425f / All Details / event description abstract",
+        "statement": "Causal-context repair method and contrast to similarity-based context selection."
+      },
+      "deep_read_questions": [
+        "How is minimal causal context validated, and can dual slicing exclude code needed for multi-fault or stateful failures?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK"
+      ],
+      "evaluation_families": [
+        "DEFECTS4J_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 2ac27f0b-5a03-40f6-8f73-3e546445425f / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio",
+      "title": "Evaluating and Improving Automated Repository-Level Rust Issue Resolution with LLM-based Agents",
+      "authors": [
+        "Jiahong Xiang",
+        "Wenxiao He",
+        "Xihua Wang",
+        "Hongliang Tian",
+        "Yuqun Zhang"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event fee502f5-b4bd-44e0-afd2-1fc544553e98 / All Details / event description abstract",
+        "statement": "Combines a cross-agent empirical limitation study with issue reproduction and language-aware dynamic tracing for repair."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event fee502f5-b4bd-44e0-afd2-1fc544553e98 / All Details / event description abstract",
+        "statement": "Builds test environments, reproduces issues, and uses Rust metaprogramming traces to expose repository and type/trait evidence."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event fee502f5-b4bd-44e0-afd2-1fc544553e98 / All Details / event description abstract",
+        "statement": "New-language case showing that reproduction and semantics can dominate generic agent flow."
+      },
+      "deep_read_questions": [
+        "Are RUSTFORGER gains attributable to reproduction, tracing, or benchmark environment setup, and do they generalize beyond Rust?",
+        "Does the method distinguish localization, causal diagnosis, repair selection, and patch validation?",
+        "Are root-cause and decision-quality claims validated independently of final patch pass rate?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION",
+        "REPOSITORY_LEVEL_LLM_AGENTS"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2602.22764",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event fee502f5-b4bd-44e0-afd2-1fc544553e98 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training",
+      "title": "Enhancing Issue Localization Agent with Tool-Interactive Training",
+      "authors": [
+        "Zexiong Ma",
+        "Chao Peng",
+        "Qunhong Zeng",
+        "Pengfei Gao",
+        "Yanzhen Zou",
+        "Bing Xie"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ec43a996-6785-4654-b53a-0844b57569a1 / All Details / event description abstract",
+        "statement": "Directly trains multi-step repository-tool use with both rejection-sampled SFT and interactive RL."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event ec43a996-6785-4654-b53a-0844b57569a1 / All Details / event description abstract",
+        "statement": "Constructs accepted tool trajectories, applies supervised fine-tuning, then optimizes tool interactions with reinforcement learning."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event ec43a996-6785-4654-b53a-0844b57569a1 / All Details / event description abstract",
+        "statement": "Representative tool-use policy training method."
+      },
+      "deep_read_questions": [
+        "What reward credits individual tool actions, and how much improvement comes from better localization data versus interactive RL?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "ISSUE_LOCALIZATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2508.03012",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official preprint URL / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event ec43a996-6785-4654-b53a-0844b57569a1 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_sealign-alignment-training-for-software-engineering-agent",
+      "title": "SEAlign: Alignment Training for Software Engineering Agent",
+      "authors": [
+        "Kechi Zhang",
+        "Huangzhao Zhang",
+        "Ge Li",
+        "Jinliang You",
+        "Jia Li",
+        "Yunfei Zhao",
+        "Zhi Jin"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event da77c2fa-8ecd-4783-880b-75828c4cdf5b / All Details / event description abstract",
+        "statement": "Uses workflow steps, MCTS, and preference optimization to align critical actions in multi-step SE processes."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event da77c2fa-8ecd-4783-880b-75828c4cdf5b / All Details / event description abstract",
+        "statement": "Searches alternative workflow steps with MCTS and forms preference data around critical actions for post-training."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event da77c2fa-8ecd-4783-880b-75828c4cdf5b / All Details / event description abstract",
+        "statement": "Broad SE-agent alignment method against competitive-programming-oriented training."
+      },
+      "deep_read_questions": [
+        "How are critical actions identified, and does preference optimization improve process quality beyond extra MCTS-generated data?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY",
+        "HUMANEVALFIX"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "REPOSITORY_LEVEL_LLM_AGENTS"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2503.18455",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "targeted arXiv exact-title query / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event da77c2fa-8ecd-4783-880b-75828c4cdf5b / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_swe-pdb-teaching-llms-to-leverage-debugging-tools-via-agentic-training",
+      "title": "SWE-PDB: Teaching LLMs to Leverage Debugging Tools via Agentic Training",
+      "authors": [
+        "Jiaxing Liu",
+        "Xing Hu",
+        "Xin Xia"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c9b53d39-8f33-4e8b-ae5a-d4d9214250d3 / All Details / event description abstract",
+        "statement": "Trains a stateful, long-horizon debugger policy using filtered interactive trajectories, SFT, and rule-reward RL."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event c9b53d39-8f33-4e8b-ae5a-d4d9214250d3 / All Details / event description abstract",
+        "statement": "Synthesizes structured debugger trajectories, filters and refines them, then applies agentic SFT followed by RL for strategic tool use."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c9b53d39-8f33-4e8b-ae5a-d4d9214250d3 / All Details / event description abstract",
+        "statement": "Training counterpart to inference-time debugger-interface methods."
+      },
+      "deep_read_questions": [
+        "Do rule rewards favor meaningful debugging state transitions or merely shorter successful command sequences?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event c9b53d39-8f33-4e8b-ae5a-d4d9214250d3 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-",
+      "title": "MCTS-Refined CoT: High-Quality Fine-Tuning Data for LLM-Based Repository Issue Resolution",
+      "authors": [
+        "Yibo Wang",
+        "Zhihao Peng",
+        "Ying Wang",
+        "Zhao Wei",
+        "Hai Yu",
+        "Zhiliang Zhu"
+      ],
+      "venue_id": "ASE2025",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event e78cabb1-a7e9-484f-b635-f78aa5a3745c / All Details / event description abstract",
+        "statement": "Makes intermediate step validation and rejection sampling explicit in repository-level reasoning-data construction."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event e78cabb1-a7e9-484f-b635-f78aa5a3745c / All Details / event description abstract",
+        "statement": "Uses MCTS, reflection, and ground-truth criteria for localization and patch steps to refine CoT trajectories before fine-tuning."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event e78cabb1-a7e9-484f-b635-f78aa5a3745c / All Details / event description abstract",
+        "statement": "Process-supervision data method with strict intermediate acceptance rules."
+      },
+      "deep_read_questions": [
+        "Does exact agreement with developer patches reject valid alternative reasoning paths and teach benchmark-specific shortcuts?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "SWE_BENCH_FAMILY"
+      ],
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2506.12728",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event e78cabb1-a7e9-484f-b635-f78aa5a3745c / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d",
+      "title": "SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning",
+      "authors": [
+        "Shuzheng Gao",
+        "Chaozheng Wang",
+        "Cuiyun Gao",
+        "Michael Lyu"
+      ],
+      "venue_id": "ICSE2026",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_1",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1e0b18b0-e544-4025-861c-53fa56169820 / All Details / event description abstract",
+        "statement": "Trains separate policy and value models over intermediate code-reasoning steps and adapts whether to reason deeply."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event 1e0b18b0-e544-4025-861c-53fa56169820 / All Details / event description abstract",
+        "statement": "Explores diverse paths, annotates step quality, trains policy/value models, and dynamically selects direct versus stepwise generation."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1e0b18b0-e544-4025-861c-53fa56169820 / All Details / event description abstract",
+        "statement": "Value-guided process optimization outside repository repair."
+      },
+      "deep_read_questions": [
+        "How are intermediate quality labels obtained without circular self-evaluation, and does the value model detect overthinking?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "METHOD_WORK",
+        "TRAINING_WORK"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [],
+      "full_text": {
+        "status": "OPEN_FULL_TEXT_CONFIRMED",
+        "claim_type": "direct_evidence",
+        "url": "https://arxiv.org/pdf/2510.17130",
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "OpenAlex exact-title match / HTTP HEAD 200 application/pdf",
+        "statement": "A public paper PDF or openly licensed publisher full text was located; batch-1 PDF URLs were also verified reachable by HTTP HEAD."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1e0b18b0-e544-4025-861c-53fa56169820 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_seer-self-enhancing-chain-of-thought-compression-for-reasoning-models",
+      "title": "SEER: Self-Enhancing Chain-of-Thought Compression for Reasoning Models",
+      "authors": [
+        "Kerui Huang",
+        "Shuhan Liu",
+        "Xing Hu",
+        "Tongtong Xu",
+        "Lingfeng Bao",
+        "Xin Xia"
+      ],
+      "venue_id": "ISSTA2026",
+      "primary_mechanism_cluster": "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION",
+      "secondary_mechanism_clusters": [],
+      "reading_batch": "DEEP_READING_BATCH_2",
+      "selection_reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a7b75461-b387-462d-a762-970c91e144b5 / All Details / event description abstract",
+        "statement": "Uses observed repetition, truncation, and failure-length relationships to filter self-generated traces before fine-tuning concise behavior."
+      },
+      "main_mechanism": {
+        "claim_type": "author_claim",
+        "source_locator": "official event a7b75461-b387-462d-a762-970c91e144b5 / All Details / event description abstract",
+        "statement": "Detects degenerate loops, samples and filters concise correct CoTs, and fine-tunes the model on the filtered trajectories."
+      },
+      "topic_role": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event a7b75461-b387-462d-a762-970c91e144b5 / All Details / event description abstract",
+        "statement": "Training method plus counterexample to assuming longer reasoning is better."
+      },
+      "deep_read_questions": [
+        "Does n-gram filtering remove necessary iterative reasoning, and do concision gains persist on long repository tasks?",
+        "What exact supervision unit, reward, or acceptance rule shapes the learned behavior?",
+        "Do ablations separate data quality, model scaling, search at inference time, and policy learning?"
+      ],
+      "coverage_roles": [
+        "EMPIRICAL_STUDY",
+        "METHOD_WORK",
+        "TRAINING_WORK",
+        "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE"
+      ],
+      "evaluation_families": [
+        "CODE_GENERATION_BENCHMARKS"
+      ],
+      "mapped_topic_clusters": [],
+      "full_text": {
+        "status": "NOT_LOCATED_AFTER_TARGETED_SEARCH",
+        "claim_type": "agent_inference",
+        "url": null,
+        "checked_at": "2026-07-24T14:57:32Z",
+        "source_locator": "official links + normalized exact-title OpenAlex lookup + targeted arXiv query",
+        "statement": "No paper PDF was located through the official links, exact-title OpenAlex lookup, and targeted arXiv query; this is an access status, not evidence that no full text exists."
+      },
+      "selection_basis": {
+        "status": "SUFFICIENT_FROM_TITLE_AND_ABSTRACT",
+        "claim_type": "agent_inference",
+        "source_locator": "official event a7b75461-b387-462d-a762-970c91e144b5 / All Details / event description abstract",
+        "statement": "The official title and abstract state enough about the mechanism and evaluation role for reading-plan selection; no systematic full-paper reading was performed."
+      }
+    }
+  ],
+  "important_exclusions": [
+    {
+      "paper_id": "ASE2025_why-ai-agents-still-need-you-findings-from-developer-agent-collaboration",
+      "title": "Why AI Agents Still Need You: Findings from Developer-Agent Collaborations in the Wild",
+      "venue_id": "ASE2025",
+      "exclusion_category": "OUT_OF_SCOPE_HUMAN_STUDY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 20d46d4e-35fb-47ad-9fa5-d2c5311aef98 / All Details / event description abstract",
+        "statement": "Focuses on in-the-wild human-agent collaboration rather than agent mechanism control."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_unpacking-ai-agent-participation-in-issue-centered-collaboration-in-open",
+      "title": "Unpacking AI Agent Participation in Issue-Centered Collaboration in Open-Source Software Development",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "OUT_OF_SCOPE_HUMAN_ORGANIZATIONAL",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 1c4d43d7-aee7-49d0-9af0-5602f907dea5 / All Details / event description abstract",
+        "statement": "Studies participation in open-source collaboration, outside the requested technical mechanism focus."
+      }
+    },
+    {
+      "paper_id": "FSE2026_spectrum-based-failure-attribution-for-multi-agent-systems",
+      "title": "Spectrum-based Failure Attribution for Multi-Agent Systems",
+      "venue_id": "FSE2026",
+      "exclusion_category": "MULTI_AGENT_ORGANIZATION",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4b03d06c-ec0b-47ed-8140-253086bbac80 / All Details / event description abstract",
+        "statement": "Failure attribution is specific to multi-agent activation and action allocation; excluded despite topical failure language."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_cam-a-causality-based-analysis-framework-for-multi-agent-code-generation",
+      "title": "CAM: A Causality-based Analysis Framework for Multi-Agent Code Generation Systems",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "MULTI_AGENT_ORGANIZATION",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 69d92e87-8363-4a96-b112-4ffbec22bf86 / All Details / event description abstract",
+        "statement": "Centers on causal importance of intermediate outputs in multi-agent code-generation architectures."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_swe-debate-competitive-multi-agent-debate-for-software-issue-resolution",
+      "title": "SWE-Debate: Competitive Multi-Agent Debate for Software Issue Resolution",
+      "venue_id": "ICSE2026",
+      "exclusion_category": "MULTI_AGENT_ORGANIZATION",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 71853d10-c1ca-4f58-9adc-76123202756c / All Details / event description abstract",
+        "statement": "Contribution is competitive multi-agent debate and orchestration, which the research preference excludes."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_tracedev-a-traceability-driven-multi-agent-framework-for-requirement-to-",
+      "title": "TraceDev: A Traceability-Driven Multi-Agent Framework for Requirement-to-Code Development",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "MULTI_AGENT_ORGANIZATION",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event b81edf3c-3056-484d-be11-dabc8875ec1a / All Details / event description abstract",
+        "statement": "Traceability is relevant, but five-role organization dominates and state coverage is supplied by more mechanism-isolating papers."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_agentspec-customizable-runtime-enforcement-for-safe-and-reliable-llm-age",
+      "title": "AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents",
+      "venue_id": "ICSE2026",
+      "exclusion_category": "PURE_SAFETY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event c21ffb94-0491-4559-baae-3d6c98f91b1a / All Details / event description abstract",
+        "statement": "Runtime constraints are evaluated chiefly as cross-domain safety enforcement, outside the selected general SE-control evidence."
+      }
+    },
+    {
+      "paper_id": "FSE2026_agentbound-securing-execution-boundaries-of-ai-agents",
+      "title": "AgentBound: Securing Execution Boundaries of AI Agents",
+      "venue_id": "FSE2026",
+      "exclusion_category": "PURE_SECURITY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event b038d77b-df2a-4d71-bc79-978f06713376 / All Details / event description abstract",
+        "statement": "Focuses on securing agent execution boundaries rather than general decision-control behavior."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_red-teaming-coding-agents-from-a-tool-invocation-perspective-an-empirica",
+      "title": "Red-Teaming Coding Agents from a Tool-Invocation Perspective: An Empirical Security Assessment",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "PURE_SECURITY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 490aa0a8-e3e4-497b-9e9d-51ea9b76211d / All Details / event description abstract",
+        "statement": "Tool-invocation analysis is framed as an adversarial security assessment."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_datura-progressive-red-teaming-testing-for-tool-invocation-chain-in-llm-",
+      "title": "Datura: Progressive Red Teaming Testing for Tool Invocation Chain in LLM Agents",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "PURE_SECURITY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event d9f9598b-aaf9-44c1-9f85-23bb0bb8769d / All Details / event description abstract",
+        "statement": "Progressive tool-chain testing targets attacks and guardrail bypass rather than general failure recovery."
+      }
+    },
+    {
+      "paper_id": "FSE2026_reducing-cost-of-llm-agents-with-trajectory-reduction",
+      "title": "Reducing Cost of LLM Agents with Trajectory Reduction",
+      "venue_id": "FSE2026",
+      "exclusion_category": "EFFICIENCY_ONLY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 88f14287-8f56-4384-ac32-ea16d27905fb / All Details / event description abstract",
+        "statement": "Optimizes token and monetary cost while preserving final performance; no distinct state-quality or decision signal is evaluated."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_an-empirical-study-of-speculative-decoding-on-software-engineering-tasks",
+      "title": "An Empirical Study of Speculative Decoding on Software Engineering Tasks",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "EFFICIENCY_ONLY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 368cd7a6-468f-4607-bc9e-7aaaa6fe9ef6 / All Details / event description abstract",
+        "statement": "Studies decoding speed/cost rather than agent policy or process correctness."
+      }
+    },
+    {
+      "paper_id": "ASE2025_longcodezip-compress-long-context-for-code-language-models",
+      "title": "LongCodeZip: Compress Long Context for Code Language Models",
+      "venue_id": "ASE2025",
+      "exclusion_category": "EFFICIENCY_AND_CONTEXT_ONLY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event fdd730e5-b3a1-45ed-9b5f-87e92e3fb7d4 / All Details / event description abstract",
+        "statement": "Non-agent long-context compression is efficiency-first and adds less trajectory-state evidence than AttnCompress."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_freshbrew-a-benchmark-for-evaluating-ai-agents-on-java-code-migration",
+      "title": "FreshBrew: A Benchmark for Evaluating AI Agents on Java Code Migration",
+      "venue_id": "ICSE2026",
+      "exclusion_category": "PURE_BENCHMARK",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 9e919a21-3735-40b6-bf3e-7cb93c9840c2 / All Details / event description abstract",
+        "statement": "Valuable benchmark but does not itself isolate a control mechanism; omitted to prevent benchmark-led selection."
+      }
+    },
+    {
+      "paper_id": "FSE2026_backportbench-a-multilingual-benchmark-for-automated-patch-backporting",
+      "title": "BackportBench: A Multilingual Benchmark for Automated Patch Backporting",
+      "venue_id": "FSE2026",
+      "exclusion_category": "PURE_BENCHMARK",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 4bf3b605-7ec9-4041-adc9-013e04b85981 / All Details / event description abstract",
+        "statement": "Benchmark construction without a distinct trajectory-control mechanism."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_proxywar-dynamic-assessment-of-llm-code-generation-in-game-arenas",
+      "title": "ProxyWar: Dynamic Assessment of LLM Code Generation in Game Arenas",
+      "venue_id": "ICSE2026",
+      "exclusion_category": "BENCHMARK_EVALUATION_ONLY",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 3017a37f-db54-4591-afe6-657fa394a710 / All Details / event description abstract",
+        "statement": "Dynamic evaluation is interesting but focuses on arena scoring rather than a software-agent control loop."
+      }
+    },
+    {
+      "paper_id": "FSE2026_one-size-does-not-fit-all-revisiting-code-context-engineering-for-reposi",
+      "title": "One Size Does Not Fit All: Revisiting Code Context Engineering for Repository-Level Code Generation",
+      "venue_id": "FSE2026",
+      "exclusion_category": "PROMPT_OR_CONTEXT_ENGINEERING",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event 68ec7afd-8e26-4664-96ab-95711f99beb6 / All Details / event description abstract",
+        "statement": "Primarily compares repository context engineering, which is outside the stated preference."
+      }
+    },
+    {
+      "paper_id": "ISSTA2026_better-call-grep-evaluating-and-improving-grep-like-lexical-retrieval-fo",
+      "title": "Better Call Grep: Evaluating and Improving Grep-Like Lexical Retrieval for Repository-Level Code Completion",
+      "venue_id": "ISSTA2026",
+      "exclusion_category": "PURE_RETRIEVAL",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event b8cbd546-2dea-457d-9525-5b8b717bb989 / All Details / event description abstract",
+        "statement": "Lexical retrieval improvement is outside scope unless tied to a broader decision-control mechanism."
+      }
+    },
+    {
+      "paper_id": "ICSE2026_llm-based-agents-for-automated-bug-fixing-how-far-are-we",
+      "title": "LLM-based Agents for Automated Bug Fixing: How Far Are We?",
+      "venue_id": "ICSE2026",
+      "exclusion_category": "REDUNDANT_SWE_BENCH_EMPIRICAL",
+      "reason": {
+        "claim_type": "agent_inference",
+        "source_locator": "official event beeaa93b-e892-46f5-bbb8-2c29db0fa49a / All Details / event description abstract",
+        "statement": "Relevant comparison, but the selected trajectory and traceability studies provide deeper process evidence without adding another overlapping SWE-bench slot."
+      }
+    }
+  ],
+  "summary": {
+    "selected_count": 42,
+    "mechanism_primary_counts": {
+      "FAILURE_LOOPS_RECOVERY": 6,
+      "PLANNING_ACTION_TOOL_STOPPING": 6,
+      "TEST_EXECUTION_ANALYSIS_FEEDBACK": 6,
+      "STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION": 6,
+      "OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS": 6,
+      "DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS": 6,
+      "TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION": 6
+    },
+    "batch_counts": {
+      "DEEP_READING_BATCH_1": 21,
+      "DEEP_READING_BATCH_2": 21
+    },
+    "venue_counts": {
+      "ASE2025": 6,
+      "ICSE2026": 14,
+      "ISSTA2026": 13,
+      "FSE2026": 9
+    },
+    "coverage_role_counts": {
+      "EMPIRICAL_STUDY": 15,
+      "METHOD_WORK": 37,
+      "TRAINING_WORK": 7,
+      "COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE": 8
+    },
+    "full_text_status_counts": {
+      "OPEN_FULL_TEXT_CONFIRMED": 31,
+      "NOT_LOCATED_AFTER_TARGETED_SEARCH": 8,
+      "PUBLISHER_RECORD_ONLY": 3
+    },
+    "important_exclusion_count": 19,
+    "swe_bench_family_count": 14
+  },
+  "selection_self_check": {
+    "claim_type": "direct_evidence",
+    "source_locator": "scripts/build_deep_reading_selection.test.js",
+    "statement": "The executable phase check enforces 42 unique corpus papers, seven six-paper mechanism clusters, 3+3 per cluster across two 21-paper batches, role coverage minima, author and SWE-bench concentration limits, per-paper evidence/questions/access status, and an exclusion ledger."
+  },
+  "human_decisions_pending": [],
+  "phase_boundary": {
+    "claim_type": "agent_inference",
+    "source_locator": "AGENTS.md / Phase Discipline + user phase instructions",
+    "statement": "This artifact is a reading plan only. It does not contain complete paper readings, candidate research ideas, novelty claims, or a confirmed direction."
+  }
+}

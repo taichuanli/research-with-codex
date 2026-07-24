@@ -1,0 +1,197 @@
+schema_version: 1
+phase: FIELD_MAPPING
+status: adopted
+input_basis:
+  claim_type: direct_evidence
+  source: corpus/cross-venue-research-paper-index.jsonl
+  source_locator: "all 988 records / title, abstract, venue, and official_detail source locator"
+  statement: "The taxonomy was revised and assignments were made from official titles and abstracts only. No PDF or external publication target was fetched."
+
+classification_policy:
+  claim_type: agent_inference
+  rules:
+    - "Assign exactly one primary SE problem domain when the title and abstract provide a reliable target; otherwise use CROSS_CUTTING_OR_UNCERTAIN."
+    - "Use secondary_domains for genuine problem overlap. Methods, objects, evaluations, and resource contributions are independent multi-label dimensions and must not determine the problem domain by themselves."
+    - "AI or an LLM is a method unless the paper studies the engineering, reliability, safety, or lifecycle of the model-enabled system itself."
+    - "A paper using an LLM for testing remains testing; one using an LLM for vulnerability analysis remains security; one evaluating an LLM's own behavior may be ML-enabled systems engineering or empirical benchmarking."
+    - "Benchmark and dataset tags describe explicit contributions or uses. Their absence means only that the abstract did not state such a contribution, not that no artifact exists."
+    - "Counts are objective aggregations of the assignments. Labels, boundaries, confidence, cluster construction, and interpretations are agent_inference."
+  exact_implementation: scripts/build_field_mapping.js
+  assignments: synthesis/field-mapping-paper-assignments.jsonl
+
+problem_domains:
+  - id: TESTING_QUALITY_ASSURANCE
+    label: "Testing and quality assurance"
+    include: "Test generation, augmentation, selection, prioritization, oracles, assertions, fuzzing, mutation, differential/metamorphic testing, coverage, and fault injection."
+    exclude: "Post-failure diagnosis and patching belong to debugging/repair; proof-oriented correctness belongs to program analysis/formal methods."
+  - id: DEBUGGING_FAULT_LOCALIZATION_REPAIR
+    label: "Debugging, fault localization, and repair"
+    include: "Failure diagnosis, root cause, bug reproduction, fault or issue localization, crash triage, program reduction for diagnosis, patch generation, and repair."
+    exclude: "Pre-release fault revelation without diagnosis belongs to testing; vulnerability repair keeps security as primary when the security objective dominates."
+  - id: PROGRAM_ANALYSIS_FORMAL_METHODS
+    label: "Program analysis and formal methods"
+    include: "Static/dynamic analysis, data flow, taint, slicing, abstract interpretation, symbolic execution, SAT/SMT, model checking, theorem proving, and formal verification."
+    exclude: "An analysis used chiefly to find a vulnerability is security; test-producing analysis is testing when test generation is the stated objective."
+  - id: SECURITY_PRIVACY_SAFETY
+    label: "Security, privacy, and safety"
+    include: "Vulnerabilities, attacks, malware, privacy, access control, secrets, software supply-chain risk, licensing compliance, LLM attacks, and safety assurance."
+    exclude: "Generic correctness is testing or formal methods; non-security dependency maintenance is maintenance/evolution."
+  - id: CODE_INTELLIGENCE_GENERATION_TRANSFORMATION
+    label: "Code intelligence, generation, and transformation"
+    include: "Code generation/completion, synthesis, search, retrieval, summarization, documentation, translation, transpilation, decompilation, adaptation, and editing."
+    exclude: "Code changes whose objective is defect repair belong to debugging; migration/refactoring studies centered on evolution belong to maintenance."
+  - id: MAINTENANCE_EVOLUTION_QUALITY
+    label: "Maintenance, evolution, and code quality"
+    include: "Change impact, history, refactoring, migration, code smells, technical debt, dependencies, API evolution, commits, reviews, and merge/evolution quality."
+    exclude: "Build/deployment configuration belongs to operations; security-sensitive dependencies belong primarily to security."
+  - id: REQUIREMENTS_DESIGN_ARCHITECTURE
+    label: "Requirements, design, architecture, and specification"
+    include: "Requirements elicitation/formalization, traceability to specifications, architecture, feature models, design, usability recommendations, and system modeling."
+    exclude: "Formal solvers used as the research target belong to formal methods; generated executable code belongs to code generation."
+  - id: BUILD_RELEASE_OPERATIONS_PERFORMANCE
+    label: "Build, release, operations, configuration, and performance"
+    include: "Build and CI, configuration, deployment, infrastructure as code, cloud operations, logs, observability, incidents, microservices, performance, energy, and runtime resource management."
+    exclude: "Performance used only as an evaluation metric does not establish this domain."
+  - id: ML_ENABLED_SYSTEMS_ENGINEERING
+    label: "Engineering of ML-, DL-, and LLM-enabled systems"
+    include: "Model lifecycle, training-data quality, fine-tuning robustness, model repair, serving, fairness, and reliability when the model-enabled system is the research object."
+    exclude: "Using an LLM as a mechanism for another SE objective does not put a paper here."
+  - id: HUMAN_SOCIAL_EDUCATION
+    label: "Human, social, organizational, and educational SE"
+    include: "Developer cognition and behavior, teams, organizations, communities, accessibility, inclusion, work practices, education, and human-AI collaboration."
+    exclude: "A user study that merely evaluates a technical method does not by itself establish this problem domain."
+  - id: EMPIRICAL_BENCHMARKS_REPRODUCIBILITY
+    label: "Empirical methods, benchmarks, datasets, and reproducibility"
+    include: "Research-method validity, replication, open science, cross-task methodology, and benchmark/dataset construction when no single target problem dominates."
+    exclude: "Targeted benchmarks retain their target problem domain and receive a benchmark/resource tag."
+
+uncertainty_state:
+  id: CROSS_CUTTING_OR_UNCERTAIN
+  label: "Cross-cutting or not reliable from title and abstract"
+  rule: "Use only when the available title and abstract do not reliably identify one of the 11 problem domains; do not treat this as a research theme."
+
+major_subtopics:
+  testing:
+    - TEST_GENERATION_AUGMENTATION
+    - REGRESSION_TESTING_SELECTION
+    - FUZZING
+    - TEST_ORACLES_ASSERTIONS
+    - MUTATION_TESTING
+  debugging_repair:
+    - BUG_DETECTION_LOCALIZATION
+    - PROGRAM_REPAIR
+    - BUG_REPRODUCTION_ROOT_CAUSE
+  analysis_formal:
+    - STATIC_DYNAMIC_ANALYSIS
+    - SYMBOLIC_FORMAL_VERIFICATION
+  security:
+    - VULNERABILITY_SECURITY_ANALYSIS
+    - PRIVACY_ACCESS_CONTROL
+    - SUPPLY_CHAIN_DEPENDENCY
+  code_intelligence:
+    - CODE_GENERATION_COMPLETION
+    - CODE_UNDERSTANDING_RETRIEVAL
+    - CODE_TRANSFORMATION_MIGRATION
+    - TRACEABILITY_DOCUMENTATION
+  maintenance:
+    - CODE_QUALITY_SMELLS
+    - EVOLUTION_CHANGE_IMPACT
+  requirements_design:
+    - REQUIREMENTS_SPECIFICATION
+    - ARCHITECTURE_DESIGN_MODELING
+  operations:
+    - BUILD_CONFIGURATION_DEPLOYMENT
+    - PERFORMANCE_ENERGY_OBSERVABILITY
+  ml_enabled_systems:
+    - ML_MODEL_TESTING_REPAIR
+    - LLM_SYSTEM_RELIABILITY_SAFETY
+  human_social:
+    - DEVELOPER_AI_ADOPTION_WORKFLOW
+    - OSS_COMMUNITY_COLLABORATION
+    - EDUCATION_ACCESSIBILITY_INCLUSION
+  empirical_resources:
+    - BENCHMARK_DATASET_REPRODUCIBILITY
+
+research_object_dimension:
+  type: multi_label
+  labels:
+    - REPOSITORY_PROJECT
+    - ISSUE_PULL_REQUEST_COMMIT_REVIEW
+    - SOURCE_CODE_PROGRAM_UNIT
+    - TEST_ASSET
+    - BINARY_BYTECODE_EXECUTABLE
+    - API_LIBRARY_DEPENDENCY_PACKAGE
+    - REQUIREMENT_SPECIFICATION_MODEL
+    - BUILD_CONFIGURATION_DEPLOYMENT
+    - RUNTIME_LOG_TRACE
+    - COMPILER_LANGUAGE_RUNTIME
+    - DATABASE_DATA_SYSTEM
+    - GUI_WEB_MOBILE_INTERFACE
+    - DISTRIBUTED_NETWORKED_SYSTEM
+    - CLOUD_CONTAINER_INFRASTRUCTURE
+    - EMBEDDED_CYBER_PHYSICAL_SYSTEM
+    - SMART_CONTRACT_BLOCKCHAIN
+    - ML_DL_LLM_MODEL
+    - DEVELOPER_TEAM_COMMUNITY
+    - DATASET_BENCHMARK
+    - NOT_SPECIFIED_FROM_TITLE_AND_ABSTRACT
+
+method_mechanism_dimension:
+  type: multi_label
+  labels:
+    - LLM_CODE_MODEL
+    - AI_CODING_ASSISTANT
+    - LLM_AGENT_OR_MULTI_AGENT
+    - PROMPTING_RETRIEVAL_CONTEXT_ENGINEERING
+    - STATISTICAL_ML_DEEP_LEARNING
+    - STATIC_PROGRAM_ANALYSIS
+    - DYNAMIC_RUNTIME_ANALYSIS
+    - SYMBOLIC_CONSTRAINT_SOLVING
+    - FORMAL_VERIFICATION_PROOF
+    - SEARCH_OPTIMIZATION_REINFORCEMENT_LEARNING
+    - FUZZING_INPUT_EXPLORATION
+    - TESTING_TRANSFORMATION_ORACLE
+    - GRAPH_KNOWLEDGE_REPRESENTATION
+    - EMPIRICAL_MINING_STATISTICAL_ANALYSIS
+    - HUMAN_SUBJECTS_QUALITATIVE_METHOD
+    - BENCHMARK_DATASET_CONSTRUCTION_OR_USE
+    - PROGRAM_TRANSFORMATION_SYNTHESIS
+    - NOT_SPECIFIED_FROM_TITLE_AND_ABSTRACT
+
+evaluation_dimension:
+  type: multi_label
+  labels:
+    - AUTOMATED_EXPERIMENT_OR_COMPARISON
+    - BENCHMARK_OR_DATASET_EVALUATION
+    - REAL_WORLD_OR_INDUSTRIAL_CASE_STUDY
+    - HUMAN_SUBJECTS_STUDY
+    - FORMAL_ARGUMENT_OR_PROOF
+    - SIMULATION_OR_SYNTHETIC_EVALUATION
+    - REPLICATION_OR_REEVALUATION
+    - NOT_STATED_CLEARLY_IN_ABSTRACT
+
+resource_artifact_dimension:
+  type: multi_label
+  interpretation: "These tags record contributions explicitly stated in titles/abstracts, not artifact availability or reproducibility."
+  labels:
+    - NEW_BENCHMARK_OR_TEST_SUITE
+    - NEW_DATASET_OR_CORPUS
+    - NEW_TOOL_OR_PROTOTYPE
+    - NEW_FRAMEWORK_OR_PLATFORM
+    - NEW_METHOD_OR_ALGORITHM
+    - OFFICIAL_ARTIFACT_CODE_OR_DATA_LINK_LISTED
+    - NO_RESOURCE_CONTRIBUTION_STATED_IN_ABSTRACT
+
+principal_boundary_cases:
+  - claim_type: agent_inference
+    paper_id: ASE2025_improving-nlsat-for-nonlinear-real-arithmetic
+    decision: "PROGRAM_ANALYSIS_FORMAL_METHODS; the abstract states SMT/NLSAT solver improvements and SMT-LIB evaluation."
+  - claim_type: agent_inference
+    paper_id: ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari
+    decision: "HUMAN_SOCIAL_EDUCATION with code-intelligence secondary; the research target is programmer attention and comprehension, not automated summarization."
+  - claim_type: agent_inference
+    paper_id: ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies
+    decision: "SECURITY_PRIVACY_SAFETY with formal-methods and operations secondary; access-control assurance is the objective and SMT is the mechanism."
+  - claim_type: agent_inference
+    paper_id: ICSE2026_boosting-gas-revenues-of-ethereum-miners
+    decision: "CROSS_CUTTING_OR_UNCERTAIN; title and abstract center on blockchain miner-revenue optimization and do not map reliably to one SE problem domain."

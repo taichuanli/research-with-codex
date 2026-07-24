@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "phase": "FIELD_MAPPING",
+  "claim_type": "direct_evidence",
+  "source": "corpus/cross-venue-research-paper-index.jsonl",
+  "source_locator": "selected records / title and official_detail event description abstract",
+  "papers": [
+    {
+      "evidence_id": "E01",
+      "paper_id": "ICSE2026_game-changer-or-overenthusiastic-drunk-acquaintance-generative-ai-use-by",
+      "title": "\"Game Changer\" or \"Overenthusiastic Drunk Acquaintance\"? Generative AI Use by Blind and Low Vision Software Professionals in the Workplace",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/130/-Game-Changer-or-Overenthusiastic-Drunk-Acquaintance-Generative-AI-Use-by-Blind-a",
+      "source_locator": "official event 29b0a81e-980c-45f1-92d1-dc6b295a1326 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": [
+        "HUMAN_AI_DEVELOPER_WORK"
+      ]
+    },
+    {
+      "evidence_id": "E02",
+      "paper_id": "ICSE2026_knowledge-matters-injecting-project-and-testing-knowledge-into-llm-based",
+      "title": "Knowledge Matters: Injecting Project and Testing Knowledge into LLM-based Unit Test Generation",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/241/Knowledge-Matters-Injecting-Project-and-Testing-Knowledge-into-LLM-based-Unit-Test-G",
+      "source_locator": "official event a62ebf23-2794-4f69-8312-febad4f3041b / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E03",
+      "paper_id": "ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio",
+      "title": "Evaluating and Improving Automated Repository-Level Rust Issue Resolution with LLM-based Agents",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/67/Evaluating-and-Improving-Automated-Repository-Level-Rust-Issue-Resolution-with-LLM-ba",
+      "source_locator": "official event fee502f5-b4bd-44e0-afd2-1fc544553e98 / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION",
+        "REPOSITORY_LEVEL_LLM_AGENTS"
+      ]
+    },
+    {
+      "evidence_id": "E04",
+      "paper_id": "FSE2026_agentic-verification-of-software-systems",
+      "title": "Agentic Verification of Software Systems",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/110/Agentic-Verification-of-Software-Systems",
+      "source_locator": "official event 460db077-3153-4258-8fa9-4cd2172bbae0 / All Details / event description abstract",
+      "mapped_primary_domain": "PROGRAM_ANALYSIS_FORMAL_METHODS",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E05",
+      "paper_id": "ISSTA2026_tracedev-a-traceability-driven-multi-agent-framework-for-requirement-to-",
+      "title": "TraceDev: A Traceability-Driven Multi-Agent Framework for Requirement-to-Code Development",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/80/TraceDev-A-Traceability-Driven-Multi-Agent-Framework-for-Requirement-to-Code-Develop",
+      "source_locator": "official event b81edf3c-3056-484d-be11-dabc8875ec1a / All Details / event description abstract",
+      "mapped_primary_domain": "REQUIREMENTS_DESIGN_ARCHITECTURE",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E06",
+      "paper_id": "ASE2025_agents-in-the-sandbox-end-to-end-crash-bug-reproduction-for-minecraft",
+      "title": "Agents in the Sandbox: End-to-End Crash Bug Reproduction for Minecraft",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/244/Agents-in-the-Sandbox-End-to-End-Crash-Bug-Reproduction-for-Minecraft",
+      "source_locator": "official event 5e8ee6d6-568d-4a93-baea-24553a0f8577 / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_DEBUGGING_REPAIR"
+      ]
+    },
+    {
+      "evidence_id": "E07",
+      "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+      "title": "Evaluating LLM-based Regression Test Generation",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/54/Evaluating-LLM-based-Regression-Test-Generation",
+      "source_locator": "official event 089f8d15-3c93-475e-ac0e-1869dd3d32c7 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "LLM_ENABLED_TEST_ENGINEERING",
+        "LLM_RELIABILITY_EVALUATION"
+      ]
+    },
+    {
+      "evidence_id": "E08",
+      "paper_id": "ISSTA2026_context-matters-improving-the-practical-reliability-of-llm-based-unit-te",
+      "title": "Context Matters: Improving the Practical Reliability of LLM-Based Unit Test Generation (Experience Paper)",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/151/Context-Matters-Improving-the-Practical-Reliability-of-LLM-Based-Unit-Test-Generatio",
+      "source_locator": "official event 369eafa1-6a0a-430e-9f86-c80572955bcc / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E09",
+      "paper_id": "ASE2025_do-llms-generate-useful-test-oracles-an-empirical-study-with-an-unbiased",
+      "title": "Do LLMs Generate Useful Test Oracles? An Empirical Study with an Unbiased Dataset",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/10/Do-LLMs-Generate-Useful-Test-Oracles-An-Empirical-Study-with-an-Unbiased-Dataset",
+      "source_locator": "official event 6fd47d33-880d-49d9-bd80-90f66b26422e / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING",
+        "LLM_RELIABILITY_EVALUATION"
+      ]
+    },
+    {
+      "evidence_id": "E10",
+      "paper_id": "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+      "title": "Empowering Autonomous Debugging Agents with Efficient Dynamic Analysis",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/86/Empowering-Autonomous-Debugging-Agents-with-Efficient-Dynamic-Analysis",
+      "source_locator": "official event 4c61c63b-032a-4865-a8d4-45afe4a19c36 / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E11",
+      "paper_id": "ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au",
+      "title": "CausalRepair: Bridging the Causality Gap in Large Language Model-based Automated Program Repair via Dual-Slicing",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/134/CausalRepair-Bridging-the-Causality-Gap-in-Large-Language-Model-based-Automated-Prog",
+      "source_locator": "official event 2ac27f0b-5a03-40f6-8f73-3e546445425f / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR"
+      ]
+    },
+    {
+      "evidence_id": "E12",
+      "paper_id": "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+      "title": "VulInstruct: Teaching LLMs Root-Cause Reasoning for Vulnerability Detection via Security Specifications",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/59/VulInstruct-Teaching-LLMs-Root-Cause-Reasoning-for-Vulnerability-Detection-via-Secur",
+      "source_locator": "official event 36993e6e-ed1c-430e-885b-1140f5b6e740 / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "LLM_RELIABILITY_EVALUATION",
+        "LLM_SECURITY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E13",
+      "paper_id": "ISSTA2026_agentbreaker-evaluating-context-aware-indirect-prompt-injection-risks-in",
+      "title": "AgentBreaker: Evaluating Context-Aware Indirect Prompt Injection Risks in Modern Web Agents",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/74/AgentBreaker-Evaluating-Context-Aware-Indirect-Prompt-Injection-Risks-in-Modern-Web-",
+      "source_locator": "official event 4236dda4-3454-423f-a074-c12743224f0d / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "LLM_SECURITY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E14",
+      "paper_id": "ASE2025_actaint-agent-based-taint-analysis-for-access-control-vulnerabilities-in",
+      "title": "ACTaint: Agent-Based Taint Analysis for Access Control Vulnerabilities in Smart Contracts",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/219/ACTaint-Agent-Based-Taint-Analysis-for-Access-Control-Vulnerabilities-in-Smart-Contr",
+      "source_locator": "official event 0b4a1872-c88e-448c-93c7-d99b8a2f5d21 / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "LLM_SECURITY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E15",
+      "paper_id": "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud",
+      "title": "Are “Solved Issues” in SWE-bench Really Solved Correctly? An Empirical Study",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/59/Are-Solved-Issues-in-SWE-bench-Really-Solved-Correctly-An-Empirical-Study",
+      "source_locator": "official event 6aa55b46-6431-42bd-9d9f-1a4a30e8288a / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "REPOSITORY_LEVEL_LLM_AGENTS"
+      ]
+    },
+    {
+      "evidence_id": "E16",
+      "paper_id": "FSE2026_swr-bench-assessing-llm-performance-in-real-world-code-review-comment-ge",
+      "title": "SWR-Bench: Assessing LLM Performance in Real-World Code Review Comment Generation",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/78/SWR-Bench-Assessing-LLM-Performance-in-Real-World-Code-Review-Comment-Generation",
+      "source_locator": "official event 6839b32e-031b-45f6-a09f-b16f88759a2d / All Details / event description abstract",
+      "mapped_primary_domain": "MAINTENANCE_EVOLUTION_QUALITY",
+      "mapped_topic_clusters": [
+        "LLM_RELIABILITY_EVALUATION"
+      ]
+    },
+    {
+      "evidence_id": "E17",
+      "paper_id": "ISSTA2026_do-coverage-and-mutation-scores-of-llm-generated-test-suites-correlate-w",
+      "title": "Do Coverage and Mutation Scores of LLM-Generated Test Suites Correlate With Their Effectiveness? (Replicability Study)",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/2/Do-Coverage-and-Mutation-Scores-of-LLM-Generated-Test-Suites-Correlate-With-Their-Eff",
+      "source_locator": "official event 73ec6259-eb47-4dde-9bd6-5314a12491c3 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING",
+        "LLM_RELIABILITY_EVALUATION"
+      ]
+    },
+    {
+      "evidence_id": "E18",
+      "paper_id": "ASE2025_defects4c-benchmarking-large-language-model-repair-capability-with-c-c-b",
+      "title": "Defects4C: Benchmarking Large Language Model Repair Capability with C/C++ Bugs",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/9/Defects4C-Benchmarking-Large-Language-Model-Repair-Capability-with-C-C-Bugs",
+      "source_locator": "official event 20c7e9c7-fd86-495c-b270-93e0576082c7 / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": [
+        "LLM_DEBUGGING_REPAIR",
+        "LLM_RELIABILITY_EVALUATION"
+      ]
+    },
+    {
+      "evidence_id": "E19",
+      "paper_id": "ICSE2026_configuration-sensitive-linux-kernel-fuzzing",
+      "title": "Configuration-Sensitive Linux Kernel Fuzzing",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/94/Configuration-Sensitive-Linux-Kernel-Fuzzing",
+      "source_locator": "official event 151b26f4-496c-4c4a-928b-791760ad95ac / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION"
+      ]
+    },
+    {
+      "evidence_id": "E20",
+      "paper_id": "FSE2026_adaptive-mutation-scheduling-with-deep-reinforcement-learning-for-smart-",
+      "title": "Adaptive Mutation Scheduling with Deep Reinforcement Learning for Smart Contract Fuzzing",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/40/Adaptive-Mutation-Scheduling-with-Deep-Reinforcement-Learning-for-Smart-Contract-Fuzz",
+      "source_locator": "official event 5cc43ac0-b53f-44e6-9ec5-364baba19ab8 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION"
+      ]
+    },
+    {
+      "evidence_id": "E21",
+      "paper_id": "ISSTA2026_belobog-move-language-fuzzing-framework-for-real-world-smart-contracts",
+      "title": "Belobog: Move Language Fuzzing Framework For Real-World Smart Contracts",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/78/Belobog-Move-Language-Fuzzing-Framework-For-Real-World-Smart-Contracts",
+      "source_locator": "official event d3eaac14-2a20-4c51-9b2e-e7103621821a / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION"
+      ]
+    },
+    {
+      "evidence_id": "E22",
+      "paper_id": "ASE2025_guifuzz-unleashing-grey-box-fuzzing-on-desktop-graphical-user-interfacin",
+      "title": "GUIFuzz++: Unleashing Grey-box Fuzzing on Desktop Graphical User Interfacing Applications",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/44/GUIFuzz-Unleashing-Grey-box-Fuzzing-on-Desktop-Graphical-User-Interfacing-Applicat",
+      "source_locator": "official event ce2dd0c8-a5c1-4be0-9c4e-2a097c89ba8b / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "GUI_WEB_MOBILE_AUTOMATION"
+      ]
+    },
+    {
+      "evidence_id": "E23",
+      "paper_id": "ICSE2026_adarule-llm-driven-natural-language-to-ltl-conversion-via-pattern-adapti",
+      "title": "ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/293/ADARULE-LLM-Driven-Natural-Language-to-LTL-Conversion-via-Pattern-Adaptive-Rule-Indu",
+      "source_locator": "official event f5358e8f-874a-46cc-b345-0a4315f9fcb7 / All Details / event description abstract",
+      "mapped_primary_domain": "REQUIREMENTS_DESIGN_ARCHITECTURE",
+      "mapped_topic_clusters": [
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E24",
+      "paper_id": "ISSTA2026_kapilot-llm-assisted-generation-of-kani-specifications-for-unsafe-rust-v",
+      "title": "KaPilot: LLM-Assisted Generation of Kani Specifications for Unsafe Rust Verification",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/148/KaPilot-LLM-Assisted-Generation-of-Kani-Specifications-for-Unsafe-Rust-Verification",
+      "source_locator": "official event fef3107d-1452-4f5f-8da6-6420b492b401 / All Details / event description abstract",
+      "mapped_primary_domain": "PROGRAM_ANALYSIS_FORMAL_METHODS",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E25",
+      "paper_id": "ASE2025_improving-nlsat-for-nonlinear-real-arithmetic",
+      "title": "Improving NLSAT for Nonlinear Real Arithmetic",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/58/Improving-NLSAT-for-Nonlinear-Real-Arithmetic",
+      "source_locator": "official event 42d58bec-87f0-454b-afed-e7ed96c013a4 / All Details / event description abstract",
+      "mapped_primary_domain": "PROGRAM_ANALYSIS_FORMAL_METHODS",
+      "mapped_topic_clusters": [
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E26",
+      "paper_id": "ICSE2026_a-comprehensive-study-of-deep-learning-model-fixing-approaches",
+      "title": "A Comprehensive Study of Deep Learning Model Fixing Approaches",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/11/A-Comprehensive-Study-of-Deep-Learning-Model-Fixing-Approaches",
+      "source_locator": "official event 4c3779e3-539f-4813-a693-6b1b1855815a / All Details / event description abstract",
+      "mapped_primary_domain": "ML_ENABLED_SYSTEMS_ENGINEERING",
+      "mapped_topic_clusters": [
+        "ML_DL_SYSTEM_RELIABILITY"
+      ]
+    },
+    {
+      "evidence_id": "E27",
+      "paper_id": "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+      "title": "Verifying Structural Robustness of Deep Neural Network",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/162/Verifying-Structural-Robustness-of-Deep-Neural-Network",
+      "source_locator": "official event c392238a-6170-459e-a568-a0225612c4e7 / All Details / event description abstract",
+      "mapped_primary_domain": "ML_ENABLED_SYSTEMS_ENGINEERING",
+      "mapped_topic_clusters": [
+        "ML_DL_SYSTEM_RELIABILITY"
+      ]
+    },
+    {
+      "evidence_id": "E28",
+      "paper_id": "ISSTA2026_spectradl-a-historical-issue-driven-test-specification-assisted-transfer",
+      "title": "SpectraDL: A Historical Issue-Driven, Test Specification-Assisted Transfer Testing Approach for Deep Learning Frameworks via LLMs",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/103/SpectraDL-A-Historical-Issue-Driven-Test-Specification-Assisted-Transfer-Testing-Ap",
+      "source_locator": "official event 8199e5ab-2f89-40b4-8c06-a94ea79629c5 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "LLM_ENABLED_TEST_ENGINEERING",
+        "ML_DL_SYSTEM_RELIABILITY"
+      ]
+    },
+    {
+      "evidence_id": "E29",
+      "paper_id": "ASE2025_destabilizing-neurons-to-generate-challenging-neural-network-verificatio",
+      "title": "Destabilizing Neurons to Generate Challenging Neural Network Verification Benchmarks",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/51/Destabilizing-Neurons-to-Generate-Challenging-Neural-Network-Verification-Benchmarks",
+      "source_locator": "official event 3fa583a7-ce32-49b1-93b4-db6601852530 / All Details / event description abstract",
+      "mapped_primary_domain": "ML_ENABLED_SYSTEMS_ENGINEERING",
+      "mapped_topic_clusters": [
+        "ML_DL_SYSTEM_RELIABILITY"
+      ]
+    },
+    {
+      "evidence_id": "E30",
+      "paper_id": "ICSE2026_specops-a-fully-automated-ai-agent-testing-framework-in-real-world-gui-e",
+      "title": "SpecOps: A Fully Automated AI Agent Testing Framework in Real-World GUI Environments",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/250/SpecOps-A-Fully-Automated-AI-Agent-Testing-Framework-in-Real-World-GUI-Environments",
+      "source_locator": "official event bef99733-fb10-48d8-9efe-cf2742e34caf / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "GUI_WEB_MOBILE_AUTOMATION",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E31",
+      "paper_id": "FSE2026_guimigrator-semantics-preserving-transpilation-from-android-xml-to-compo",
+      "title": "GUIMigrator: Semantics-Preserving Transpilation from Android XML to Compose and SwiftUI",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/204/GUIMigrator-Semantics-Preserving-Transpilation-from-Android-XML-to-Compose-and-Swift",
+      "source_locator": "official event c458b220-2452-4996-9864-50e4d3f2cdf1 / All Details / event description abstract",
+      "mapped_primary_domain": "CODE_INTELLIGENCE_GENERATION_TRANSFORMATION",
+      "mapped_topic_clusters": [
+        "EVOLUTION_MIGRATION_REFACTORING",
+        "GUI_WEB_MOBILE_AUTOMATION"
+      ]
+    },
+    {
+      "evidence_id": "E32",
+      "paper_id": "ISSTA2026_characterizing-and-repairing-obsolete-android-gui-tests-under-ui-evoluti",
+      "title": "Characterizing and Repairing Obsolete Android GUI Tests under UI Evolution",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/209/Characterizing-and-Repairing-Obsolete-Android-GUI-Tests-under-UI-Evolution",
+      "source_locator": "official event eeb4ab64-0fda-492e-9b9f-7d6d26ce87f2 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "GUI_WEB_MOBILE_AUTOMATION"
+      ]
+    },
+    {
+      "evidence_id": "E33",
+      "paper_id": "ASE2025_beyond-static-gui-agent-evolving-llm-based-gui-testing-via-dynamic-memor",
+      "title": "Beyond Static GUI Agent: Evolving LLM-based GUI Testing via Dynamic Memory",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/62/Beyond-Static-GUI-Agent-Evolving-LLM-based-GUI-Testing-via-Dynamic-Memory",
+      "source_locator": "official event 5f8a3ff7-6a4b-4064-93bf-fccbb958fb57 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "GUI_WEB_MOBILE_AUTOMATION",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E34",
+      "paper_id": "ICSE2026_a-first-look-at-model-supply-chain-from-the-risk-perspective",
+      "title": "A First Look at Model Supply Chain: From the Risk Perspective",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/129/A-First-Look-at-Model-Supply-Chain-From-the-Risk-Perspective",
+      "source_locator": "official event 83ce94ea-1087-45b5-b15f-23726fcf8523 / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "SUPPLY_CHAIN_AND_DEPENDENCY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E35",
+      "paper_id": "FSE2026_break-to-adapt-knowledge-based-updates-of-breaking-dependencies-in-javas",
+      "title": "Break to Adapt: Knowledge-Based Updates of Breaking Dependencies in JavaScript",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/31/Break-to-Adapt-Knowledge-Based-Updates-of-Breaking-Dependencies-in-JavaScript",
+      "source_locator": "official event e896d885-6ef6-439f-8e82-e368ebe635ad / All Details / event description abstract",
+      "mapped_primary_domain": "MAINTENANCE_EVOLUTION_QUALITY",
+      "mapped_topic_clusters": [
+        "EVOLUTION_MIGRATION_REFACTORING",
+        "SUPPLY_CHAIN_AND_DEPENDENCY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E36",
+      "paper_id": "ISSTA2026_deepsca-dependency-aware-software-composition-analysis-for-c-c-based-on-",
+      "title": "DeepSCA: Dependency-Aware Software Composition Analysis for C/C++ Based on a Curated Code Feature Database",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/136/DeepSCA-Dependency-Aware-Software-Composition-Analysis-for-C-C-Based-on-a-Curated-",
+      "source_locator": "official event 7fdcd6ed-0ff1-4275-9cf5-7fc426e1f063 / All Details / event description abstract",
+      "mapped_primary_domain": "MAINTENANCE_EVOLUTION_QUALITY",
+      "mapped_topic_clusters": [
+        "SUPPLY_CHAIN_AND_DEPENDENCY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E37",
+      "paper_id": "ASE2025_an-empirical-study-of-python-library-migration-using-large-language-mode",
+      "title": "An Empirical Study of Python Library Migration Using Large Language Models",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/30/An-Empirical-Study-of-Python-Library-Migration-Using-Large-Language-Models",
+      "source_locator": "official event 4fcecd48-ef37-47f2-91bf-3ecc37986d1c / All Details / event description abstract",
+      "mapped_primary_domain": "MAINTENANCE_EVOLUTION_QUALITY",
+      "mapped_topic_clusters": [
+        "EVOLUTION_MIGRATION_REFACTORING",
+        "SUPPLY_CHAIN_AND_DEPENDENCY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E38",
+      "paper_id": "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+      "title": "How Do Developers Interact with AI? An Exploratory Study on Modeling Developer Programming Behavior",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/39/How-Do-Developers-Interact-with-AI-An-Exploratory-Study-on-Modeling-Developer-Progra",
+      "source_locator": "official event 57604a70-9416-47a4-9a43-3de8e38c71f2 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": [
+        "HUMAN_AI_DEVELOPER_WORK"
+      ]
+    },
+    {
+      "evidence_id": "E39",
+      "paper_id": "ISSTA2026_unpacking-ai-agent-participation-in-issue-centered-collaboration-in-open",
+      "title": "Unpacking AI Agent Participation in Issue-Centered Collaboration in Open-Source Software Development",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/115/Unpacking-AI-Agent-Participation-in-Issue-Centered-Collaboration-in-Open-Source-Softw",
+      "source_locator": "official event 1c4d43d7-aee7-49d0-9af0-5602f907dea5 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "HUMAN_AI_DEVELOPER_WORK"
+      ]
+    },
+    {
+      "evidence_id": "E40",
+      "paper_id": "ASE2025_an-empirical-study-of-knowledge-transfer-in-ai-pair-programming",
+      "title": "An Empirical Study of Knowledge Transfer in AI Pair Programming",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/122/An-Empirical-Study-of-Knowledge-Transfer-in-AI-Pair-Programming",
+      "source_locator": "official event 26ec3e7c-6710-4139-a832-97a1ad7bbce6 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": [
+        "HUMAN_AI_DEVELOPER_WORK"
+      ]
+    },
+    {
+      "evidence_id": "E41",
+      "paper_id": "ICSE2026_freshbrew-a-benchmark-for-evaluating-ai-agents-on-java-code-migration",
+      "title": "FreshBrew: A Benchmark for Evaluating AI Agents on Java Code Migration",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/172/FreshBrew-A-Benchmark-for-Evaluating-AI-Agents-on-Java-Code-Migration",
+      "source_locator": "official event 9e919a21-3735-40b6-bf3e-7cb93c9840c2 / All Details / event description abstract",
+      "mapped_primary_domain": "MAINTENANCE_EVOLUTION_QUALITY",
+      "mapped_topic_clusters": [
+        "AGENTIC_SOFTWARE_ENGINEERING",
+        "EVOLUTION_MIGRATION_REFACTORING"
+      ]
+    },
+    {
+      "evidence_id": "E42",
+      "paper_id": "ICSE2026_forge-an-llm-driven-framework-for-large-scale-smart-contract-vulnerabili",
+      "title": "FORGE: An LLM-driven Framework for Large-Scale Smart Contract Vulnerability Dataset Construction",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/12/FORGE-An-LLM-driven-Framework-for-Large-Scale-Smart-Contract-Vulnerability-Dataset-C",
+      "source_locator": "official event f73e137a-a17b-4572-ad25-0e64d7dfc6fe / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "LLM_SECURITY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E43",
+      "paper_id": "ISSTA2026_asyncleakbench-a-curated-benchmark-of-asynchronous-resource-leaks-in-ope",
+      "title": "AsyncLeakBench: A Curated Benchmark of Asynchronous Resource Leaks in Open-Source Java Projects",
+      "venue_id": "ISSTA2026",
+      "official_detail_url": "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/197/AsyncLeakBench-A-Curated-Benchmark-of-Asynchronous-Resource-Leaks-in-Open-Source-Jav",
+      "source_locator": "official event 35b3b827-8c72-4afb-ad43-da34f6d28921 / All Details / event description abstract",
+      "mapped_primary_domain": "DEBUGGING_FAULT_LOCALIZATION_REPAIR",
+      "mapped_topic_clusters": []
+    },
+    {
+      "evidence_id": "E44",
+      "paper_id": "ASE2025_relia-accelerating-analysis-of-cloud-access-control-policies",
+      "title": "RELIA: Accelerating Analysis of Cloud Access Control Policies",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/125/RELIA-Accelerating-Analysis-of-Cloud-Access-Control-Policies",
+      "source_locator": "official event 4a55753a-9fff-46a3-b562-5dbf0a74c9d9 / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "FORMAL_AND_SPEC_DRIVEN_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E45",
+      "paper_id": "ASE2025_rustassure-differential-symbolic-testing-for-llm-transpiled-c-to-rust-co",
+      "title": "RustAssure: Differential Symbolic Testing for LLM-Transpiled C-to-Rust Code",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/138/RustAssure-Differential-Symbolic-Testing-for-LLM-Transpiled-C-to-Rust-Code",
+      "source_locator": "official event 761c3521-5476-4c4d-ae84-1566d20b7978 / All Details / event description abstract",
+      "mapped_primary_domain": "TESTING_QUALITY_ASSURANCE",
+      "mapped_topic_clusters": [
+        "FUZZING_AND_INPUT_EXPLORATION",
+        "LLM_ENABLED_TEST_ENGINEERING"
+      ]
+    },
+    {
+      "evidence_id": "E46",
+      "paper_id": "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+      "title": "AccessDroid: Detecting Screen Reader Accessibility Issues in Android Applications via Semantics Trees",
+      "venue_id": "FSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/191/AccessDroid-Detecting-Screen-Reader-Accessibility-Issues-in-Android-Applications-via",
+      "source_locator": "official event b848b156-0616-418d-a4b0-aef064cfd9e6 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": []
+    },
+    {
+      "evidence_id": "E47",
+      "paper_id": "ICSE2026_intentfix-automated-logic-vulnerability-repair-via-llm-driven-intent-mod",
+      "title": "INTENTFIX: Automated Logic Vulnerability Repair via LLM-Driven Intent Modeling",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/218/INTENTFIX-Automated-Logic-Vulnerability-Repair-via-LLM-Driven-Intent-Modeling",
+      "source_locator": "official event 3bf1693f-15c1-4c0a-859a-a6c788876983 / All Details / event description abstract",
+      "mapped_primary_domain": "SECURITY_PRIVACY_SAFETY",
+      "mapped_topic_clusters": [
+        "LLM_SECURITY_ASSURANCE"
+      ]
+    },
+    {
+      "evidence_id": "E48",
+      "paper_id": "ICSE2026_boosting-gas-revenues-of-ethereum-miners",
+      "title": "Boosting Gas Revenues of Ethereum Miners",
+      "venue_id": "ICSE2026",
+      "official_detail_url": "https://conf.researchr.org/details/icse-2026/icse-2026-research-track/242/Boosting-Gas-Revenues-of-Ethereum-Miners",
+      "source_locator": "official event ddf52fbb-1895-4109-becb-5dd71d30cc4d / All Details / event description abstract",
+      "mapped_primary_domain": "CROSS_CUTTING_OR_UNCERTAIN",
+      "mapped_topic_clusters": []
+    },
+    {
+      "evidence_id": "E49",
+      "paper_id": "ASE2025_programmers-visual-attention-on-function-call-graphs-during-code-summari",
+      "title": "Programmers’ Visual Attention on Function Call Graphs During Code Summarization",
+      "venue_id": "ASE2025",
+      "official_detail_url": "https://conf.researchr.org/details/ase-2025/ase-2025-papers/37/Programmers-Visual-Attention-on-Function-Call-Graphs-During-Code-Summarization",
+      "source_locator": "official event 9a773164-2d6e-490f-82b7-46dd178e64d2 / All Details / event description abstract",
+      "mapped_primary_domain": "HUMAN_SOCIAL_EDUCATION",
+      "mapped_topic_clusters": []
+    }
+  ]
+}

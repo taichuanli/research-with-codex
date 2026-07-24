@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: CORPUS_AUDITED
+current_phase: DEEP_READING_SELECTED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -13,6 +13,11 @@ phase_catalog:
   - CORPUS_AUDIT
   - CORPUS_AUDITED
   - FIELD_MAPPING
+  - FIELD_MAPPED
+  - DEEP_READING_SELECTION
+  - DEEP_READING_SELECTED
+  - DEEP_READING_BATCH_1
+  - DEEP_READING_BATCH_2
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
   - IDEA_GENERATION
@@ -41,6 +46,13 @@ completed_items:
   - "CORPUS_AUDIT: reconciled the four official baselines, four local corpora, four per-venue dedup audits, and four build reports. ICSE 2026, FSE 2026, ISSTA 2026, and ASE 2025 have 321, 211, 210, and 246 matched records respectively (988 total; 100% baseline coverage)."
   - "CORPUS_AUDIT: generated corpus/cross-venue-research-paper-index.jsonl and reports/cross-venue-corpus-audit-report.json. The index retains venue, track, year, source records, and original JSONL path/line locators without modifying the four source corpora."
   - "CORPUS_AUDIT: found no cross-venue exact normalized title-plus-author, shared DOI, shared external URL, title-variant, or formal/preprint double-count candidate, and no track-scope mismatch. Fourteen high-similarity author-roster pairs remain explicitly marked as candidates rather than duplicate findings."
+  - "FIELD_MAPPING: replaced the provisional seven-bucket taxonomy with 11 primary SE problem domains plus an explicit CROSS_CUTTING_OR_UNCERTAIN state, 29 major subtopics, and independent multi-label dimensions for research object, method/mechanism, evaluation, and resource/artifact contribution."
+  - "FIELD_MAPPING: classified all 988 papers from official titles and abstracts in synthesis/field-mapping-paper-assignments.jsonl; reconciled all three prior ASE UNCLASSIFIED_TITLE_AND_ABSTRACT records and retained one cross-cutting ICSE paper without a forced primary-domain assignment."
+  - "FIELD_MAPPING: generated a count-and-percentage cross-venue matrix, machine-readable totals and intersections, an evidence index, and reports that distinguish direct counts, author claims, and agent interpretations."
+  - "FIELD_MAPPING: selected 11 topic clusters for the later deep-reading selection phase without proposing research ideas, asserting novelty, or claiming a research gap."
+  - "DEEP_READING_SELECTION: selected 42 unique papers from the 988-paper corpus, with six primary papers for each of seven requested mechanism clusters and no author appearing on more than two selections."
+  - "DEEP_READING_SELECTION: split the plan into two 21-paper batches; each batch contains exactly three papers from every mechanism cluster, and all Batch 1 papers have a verified public full-text URL."
+  - "DEEP_READING_SELECTION: recorded per-paper reasons, mechanisms, topic roles, deep-reading questions, evaluation families, coverage roles, full-text status, 19 important exclusions, and explicit phase boundaries without full-paper reading or idea generation."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -61,5 +73,108 @@ corpus_audit:
       source: "reports/cross-venue-corpus-audit-report.json / links_and_follow_up"
       statement: "396 official external targets are retained as not_fetched, 13 official link labels remain unclassified, and three ASE records retain UNCLASSIFIED_TITLE_AND_ABSTRACT for FIELD_MAPPING reconciliation."
   human_decisions_pending: []
-next_phase: FIELD_MAPPING
-last_updated: "2026-07-24T11:31:56Z"
+field_mapping:
+  evidence:
+    claim_type: direct_evidence
+    source: "synthesis/field-mapping-summary.json"
+    source_locator: "input, venue_record_counts, primary_domain_counts, topic_cluster_counts, intersections, uncertainty, and classification_confidence_counts"
+    statement: "All 988 records have a field-mapping assignment backed by their official title-and-abstract locator; primary-domain counts sum to 988 and the venue counts remain 321, 211, 210, and 246."
+  conclusion:
+    claim_type: agent_inference
+    source: "reports/field-mapping-report.md"
+    source_locator: "Primary-domain matrix, Concentration and diffusion signals, Shared mechanisms, Similar labels, and Uncertainty and boundary audit"
+    statement: "The field map is sufficiently complete and explicit about uncertainty to enter DEEP_READING_SELECTION; no deep reading, idea generation, gap judgment, or prior-art attack was performed."
+  outputs:
+    - "synthesis/field-mapping-taxonomy.yaml"
+    - "synthesis/field-mapping-paper-assignments.jsonl"
+    - "synthesis/field-mapping-summary.json"
+    - "synthesis/cross-venue-topic-matrix.csv"
+    - "synthesis/field-mapping-evidence-index.json"
+    - "synthesis/deep-reading-topic-clusters.md"
+    - "reports/field-mapping-report.md"
+    - "scripts/build_field_mapping.js"
+  candidate_topic_clusters:
+    - AGENTIC_SOFTWARE_ENGINEERING
+    - LLM_ENABLED_TEST_ENGINEERING
+    - LLM_DEBUGGING_REPAIR
+    - LLM_SECURITY_ASSURANCE
+    - LLM_RELIABILITY_EVALUATION
+    - FUZZING_AND_INPUT_EXPLORATION
+    - FORMAL_AND_SPEC_DRIVEN_ASSURANCE
+    - ML_DL_SYSTEM_RELIABILITY
+    - GUI_WEB_MOBILE_AUTOMATION
+    - SUPPLY_CHAIN_AND_DEPENDENCY_ASSURANCE
+    - HUMAN_AI_DEVELOPER_WORK
+  non_blocking_uncertainty:
+    - claim_type: direct_evidence
+      source: "synthesis/field-mapping-summary.json / uncertainty"
+      statement: "One paper remains CROSS_CUTTING_OR_UNCERTAIN, 166 assignments are low-confidence, 84 retain tied-domain notes, and 252 official abstracts do not state a specific evaluation setting."
+    - claim_type: direct_evidence
+      source: "reports/cross-venue-corpus-audit-report.json / links_and_follow_up.by_venue"
+      statement: "No official program link is explicitly labeled artifact, code, or data; abstract-stated framework/tool/dataset contributions do not establish artifact availability."
+    - claim_type: agent_inference
+      source: "reports/field-mapping-report.md / Concentration and diffusion signals"
+      statement: "The one-venue 2025 versus three-venue 2026 comparison supports cross-venue diffusion signals but not a controlled temporal growth claim."
+  human_decisions_pending: []
+deep_reading_selection:
+  selected_count: 42
+  evidence:
+    claim_type: direct_evidence
+    source: "synthesis/deep-reading-selection.json"
+    source_locator: "mechanism_clusters, selected_papers, important_exclusions, summary, selection_self_check, and phase_boundary"
+    statement: "The plan contains 42 unique corpus papers, seven primary mechanism clusters with six papers each, and two 21-paper batches with three papers per cluster per batch."
+  conclusion:
+    claim_type: agent_inference
+    source: "reports/deep-reading-selection-report.md"
+    source_locator: "Mechanism coverage and batches, Viewpoint coverage, Access and uncertainty, and Readiness"
+    statement: "The balanced first batch can enter deep reading; no research idea, novelty claim, or final direction was generated or confirmed."
+  mechanism_coverage:
+    FAILURE_LOOPS_RECOVERY: 6
+    PLANNING_ACTION_TOOL_STOPPING: 6
+    TEST_EXECUTION_ANALYSIS_FEEDBACK: 6
+    STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION: 6
+    OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS: 6
+    DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS: 6
+    TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION: 6
+  reading_batches:
+    DEEP_READING_BATCH_1: 21
+    DEEP_READING_BATCH_2: 21
+  viewpoint_coverage:
+    EMPIRICAL_STUDY: 15
+    METHOD_WORK: 37
+    TRAINING_WORK: 7
+    COUNTEREXAMPLE_OR_CONTRADICTORY_EVIDENCE: 8
+  full_text_status:
+    OPEN_FULL_TEXT_CONFIRMED: 31
+    PUBLISHER_RECORD_ONLY: 3
+    NOT_LOCATED_AFTER_TARGETED_SEARCH: 8
+    batch_1_open_full_text_count: 21
+  important_exclusions:
+    count: 19
+    principal_categories:
+      - HUMAN_OR_ORGANIZATIONAL_STUDY
+      - MULTI_AGENT_ORGANIZATION
+      - PURE_SECURITY_OR_SAFETY
+      - EFFICIENCY_ONLY
+      - PURE_BENCHMARK_OR_EVALUATION
+      - PURE_RETRIEVAL_OR_PROMPT_CONTEXT_ENGINEERING
+      - REDUNDANT_SWE_BENCH_EVIDENCE
+    source: "synthesis/deep-reading-selection.json / important_exclusions"
+  non_blocking_uncertainty:
+    - claim_type: direct_evidence
+      source: "synthesis/deep-reading-selection.json / summary.full_text_status_counts"
+      statement: "Three selected papers currently have only a publisher record and eight public full texts were not located after targeted search; all eleven are in Batch 2."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-selection.json / selected_papers.selection_basis"
+      statement: "Official titles and abstracts were sufficient for all selection decisions; detailed method and result claims remain questions for deep reading."
+    - claim_type: agent_inference
+      source: "reports/deep-reading-selection-report.md / Readiness"
+      statement: "State understanding and decision control as a closed loop remains an observation relationship, not a selected idea or presumed direction."
+  outputs:
+    - "synthesis/deep-reading-selection.json"
+    - "reports/deep-reading-selection-report.md"
+    - "scripts/build_deep_reading_selection.js"
+    - "scripts/build_deep_reading_selection.test.js"
+  human_decisions_pending: []
+next_phase: DEEP_READING_BATCH_1
+last_updated: "2026-07-24T15:04:24Z"
