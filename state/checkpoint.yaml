@@ -1,10 +1,12 @@
 schema_version: 1
-current_phase: CORPUS_BUILT_ICSE2026
+current_phase: CORPUS_BUILT_FSE2026
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
   - CORPUS_BUILT_ICSE2026
   - CORPUS_BUILD_FSE2026
+  - CORPUS_BUILT_FSE2026
+  - CORPUS_BUILD_ISSTA2026
   - CORPUS_COMPLETENESS_AUDIT
   - DOMAIN_MAP
   - REPRESENTATIVE_PAPER_DEEP_READ
@@ -20,7 +22,11 @@ completed_items:
   - "CORPUS_BUILD_ICSE2026: recorded titles, authors, venue/track, official detail URLs, all 321 official abstracts, source locators and access times, provisional title-and-abstract taxonomy assignments, and access status in corpus/icse2026-research-track.jsonl."
   - "CORPUS_BUILD_ICSE2026: validated 100% official-list coverage, unique IDs, JSON/JSONL parseability, source fields, and title/title-plus-author/DOI duplicate checks; results are in corpus/icse2026-research-track-dedup-audit.json and reports/icse2026-corpus-build-report.json."
   - "CORPUS_BUILD_ICSE2026: no external artifact, code, or data links were listed by the official records; 130 DOI or preprint targets were retained but not fetched, which is non-blocking for the completed official-list corpus inventory."
+  - "CORPUS_BUILD_FSE2026: captured 211 official FSE 2026 Research Papers records from the official Accepted Papers listing and all 211 official per-paper detail pages."
+  - "CORPUS_BUILD_FSE2026: recorded titles, authors, venue/track, official detail URLs, all 211 official abstracts, source locators and access times, official DOI/publisher, paper, preprint, media, artifact, code, data, and unclassified-link fields, plus provisional title-and-abstract taxonomy assignments in corpus/fse2026-research-papers.jsonl."
+  - "CORPUS_BUILD_FSE2026: validated 100% official-list coverage, unique IDs and official event IDs, JSON/JSONL parseability, title/author/raw-link equality with the official baseline, source-field conflicts, and title/title-plus-author/DOI duplicate checks; results are in corpus/fse2026-research-papers-dedup-audit.json and reports/fse2026-research-papers-corpus-build-report.json."
+  - "CORPUS_BUILD_FSE2026: no official artifact, code, or data links were explicitly labelled; 187 external targets were retained but not fetched, and eight File Attached plus one Authorizer link remain unclassified by their official labels. These are non-blocking for the official-list corpus inventory."
 blockers: []
 human_decisions_pending: []
-next_phase: CORPUS_BUILD_FSE2026
-last_updated: "2026-07-24T09:18:13Z"
+next_phase: CORPUS_BUILD_ISSTA2026
+last_updated: "2026-07-24T09:59:42Z"

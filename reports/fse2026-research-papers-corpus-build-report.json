@@ -1,0 +1,1312 @@
+{
+  "venue_id": "FSE2026",
+  "scope": "FSE 2026 Research Papers only",
+  "claim_type": "direct_evidence",
+  "source_locator": "https://conf.researchr.org/track/fse-2026/fse-2026-research-papers / Accepted Papers tab",
+  "official_accepted_count": 211,
+  "local_corpus_record_count": 211,
+  "coverage": {
+    "numerator": 211,
+    "denominator": 211,
+    "percentage": 100
+  },
+  "coverage_validation": {
+    "method": "direct_evidence: compare each official accepted-paper event record with the locally generated corpus record; compare titles, ordered author strings, official link labels, and official DOI/pre-print fields without fetching external targets.",
+    "missing_official_event_records": [],
+    "local_records_not_in_official_baseline": [],
+    "title_mismatches": [],
+    "author_mismatches": [],
+    "duplicate_local_paper_ids": [],
+    "duplicate_local_official_event_ids": [],
+    "missing_official_links": [],
+    "source_conflicts": []
+  },
+  "fields": {
+    "title": 211,
+    "authors": 211,
+    "official_source": 211,
+    "official_detail_page": 211,
+    "doi_or_publisher_link": 39,
+    "paper_or_pdf_link": 9,
+    "preprint_link": 124,
+    "abstract": 211,
+    "artifact_or_media_link": 0,
+    "code_link": 0,
+    "data_link": 0,
+    "unclassified_official_link": 9
+  },
+  "unavailable_or_pending": {
+    "abstracts": [],
+    "official_detail_fetch_failures": [],
+    "papers": [
+      "FSE2026_a-tuple-oriented-sampling-method-for-generating-small-pairwise-covering-",
+      "FSE2026_a-wily-hare-has-three-havens-combating-programmable-logic-controller-att",
+      "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+      "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+      "FSE2026_accessrefinery-fast-mining-concise-access-control-intents-on-public-clou",
+      "FSE2026_acme-automated-clause-mapping-engine-for-testing-emerging-database-syste",
+      "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+      "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+      "FSE2026_adaptive-mutation-scheduling-with-deep-reinforcement-learning-for-smart-",
+      "FSE2026_agentic-verification-of-software-systems",
+      "FSE2026_aligning-with-human-coding-preferences-for-improving-code-generation",
+      "FSE2026_an-empirical-study-of-fuzz-harness-degradation",
+      "FSE2026_automated-detection-of-configuration-specific-security-vulnerabilities-v",
+      "FSE2026_automated-knowledge-aware-test-reuse",
+      "FSE2026_automated-repair-of-requirements-for-cyber-physical-systems-in-simulink-",
+      "FSE2026_automated-repair-of-tee-partitioning-issues-via-dsl-guided-and-llm-assis",
+      "FSE2026_automating-dockerfile-refactoring-to-multi-stage-builds",
+      "FSE2026_backportbench-a-multilingual-benchmark-for-automated-patch-backporting",
+      "FSE2026_balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-",
+      "FSE2026_bash-commenter-leveraging-syntax-aware-preference-optimization-to-reinfo",
+      "FSE2026_behind-defective-mobile-ar-apps-studying-reviews-and-bugs-of-android-ar-",
+      "FSE2026_beyond-language-boundaries-uncovering-programming-language-families-for-",
+      "FSE2026_binvariants-enhancing-fuzzing-of-closed-source-binary-executables-via-re",
+      "FSE2026_boosting-llms-for-mutation-generation",
+      "FSE2026_break-to-adapt-knowledge-based-updates-of-breaking-dependencies-in-javas",
+      "FSE2026_bringing-managed-language-support-to-webassembly-with-external-library-l",
+      "FSE2026_building-software-by-rolling-the-dice-a-qualitative-study-of-vibe-coding",
+      "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues",
+      "FSE2026_carbon-taxed-transformers-a-green-compression-pipeline-for-overgrown-lan",
+      "FSE2026_cascade-detecting-inconsistencies-between-code-and-documentation-with-au",
+      "FSE2026_cascaded-code-editing-large-small-model-collaboration-for-effective-and-",
+      "FSE2026_casting-a-spell-sentence-pairing-exploration-for-llm-limitation-breaking",
+      "FSE2026_certicoder-towards-misra-compliant-c-code-generation-with-llms",
+      "FSE2026_chaindelta-automatic-patch-based-exploit-generation-for-ethereum-with-fu",
+      "FSE2026_characterizing-and-mitigating-false-positive-bug-reports-in-the-linux-ke",
+      "FSE2026_characterizing-trust-boundary-vulnerabilities-in-tee-container-systems-a",
+      "FSE2026_chiseling-out-efficiency-structured-skeleton-supervision-for-efficient-c",
+      "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu",
+      "FSE2026_co-evolution-of-types-and-dependencies-towards-repository-level-type-inf",
+      "FSE2026_codecureagent-automatic-classification-and-repair-of-static-analysis-war",
+      "FSE2026_coding-in-a-bubble-evaluating-llms-in-resolving-context-adaptation-bugs-",
+      "FSE2026_comment-traps-how-defective-commented-out-code-augment-defects-in-ai-ass",
+      "FSE2026_compiling-code-llms-into-lightweight-executables",
+      "FSE2026_cost-effective-testing-of-mpc-compilers",
+      "FSE2026_cross-refactoring-type-test-program-migration-for-refactoring-engines",
+      "FSE2026_crossfit-demystifying-vm-callback-bugs-in-interpreters",
+      "FSE2026_crypformbench-benchmarking-formal-analysis-capability-of-large-language-",
+      "FSE2026_cufuzz-an-api-knowledge-graph-coverage-driven-fuzzing-framework-for-cuda",
+      "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+      "FSE2026_decode-dynamic-exploration-for-constraint-guided-vulnerability-discovery",
+      "FSE2026_denoising-fault-localization-with-test-line-proximity",
+      "FSE2026_deployability-centric-infrastructure-as-code-generation-fail-learn-refin",
+      "FSE2026_detecting-bugs-in-rust-compiler-fix-suggestions-via-constraint-violation",
+      "FSE2026_detecting-code-comment-inconsistencies-in-smart-contracts-by-combining-l",
+      "FSE2026_diverfps-generating-diverse-solutions-for-floating-point-smt-formulas",
+      "FSE2026_do-not-treat-code-as-natural-language-implications-for-repository-level-",
+      "FSE2026_dualcodedetect-zero-shot-llm-generated-code-detection-via-dual-channel-p",
+      "FSE2026_ducodemark-dual-purpose-code-dataset-watermarking-via-style-aware-waterm",
+      "FSE2026_efficientuicoder-a-bidirectional-token-compression-framework-for-efficie",
+      "FSE2026_eidolon-perform-noise-aware-fuzzing-on-fhe-libraries-via-equivalence-exp",
+      "FSE2026_empirical-insights-of-test-selection-metrics-under-multiple-testing-obje",
+      "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+      "FSE2026_evaluating-llm-based-regression-test-generation",
+      "FSE2026_evaluating-risk-and-confidence-in-performance-bounds-of-configuration-sa",
+      "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair",
+      "FSE2026_eventadl-open-box-anomaly-detection-and-localization-framework-for-event",
+      "FSE2026_exorcist-enabling-atomic-level-runtime-detection-of-spectre-attacks-usin",
+      "FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai",
+      "FSE2026_failing-with-purpose-dangling-coverage-guided-negative-test-generation-f",
+      "FSE2026_failure-based-testing-for-deep-reinforcement-learning-agents",
+      "FSE2026_fairness-testing-of-large-language-models-in-role-playing",
+      "FSE2026_feature-slice-matching-for-precise-bug-detection",
+      "FSE2026_flash-query-efficient-black-box-static-malware-evasion-through-transfera",
+      "FSE2026_fool-me-if-you-can-on-the-robustness-of-binary-code-similarity-detection",
+      "FSE2026_from-particles-to-perils-svgd-based-hazardous-scenario-generation-for-au",
+      "FSE2026_from-specifications-to-implementation-in-the-gen-ai-era-lessons-from-a-p",
+      "FSE2026_from-suspicious-signals-to-crashes-guiding-bug-driven-gui-testing-via-co",
+      "FSE2026_gadgethunter-region-based-neuro-symbolic-detection-of-java-deserializati",
+      "FSE2026_gaer-graph-auto-encoders-for-unsupervised-software-architecture-recovery",
+      "FSE2026_generalizing-test-cases-for-comprehensive-test-scenario-coverage",
+      "FSE2026_gpu-accelerated-flow-sensitive-pointer-analysis-for-c-c-programs",
+      "FSE2026_graphlocator-graph-guided-causal-reasoning-for-issue-localization",
+      "FSE2026_graphqlify-automated-and-type-safety-preserving-graphql-api-adoption",
+      "FSE2026_greclue-failure-indexing-with-graph-based-failure-representation-and-ent",
+      "FSE2026_guimigrator-semantics-preserving-transpilation-from-android-xml-to-compo",
+      "FSE2026_hallucinations-in-llm-based-code-summarization-unveiling-detection-and-m",
+      "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+      "FSE2026_how-low-can-you-go-the-data-light-se-challenge",
+      "FSE2026_icore-an-iterative-correlation-aware-retriever-for-bug-reproduction-test",
+      "FSE2026_improving-data-leakage-detection-in-machine-learning-notebooks-through-s",
+      "FSE2026_in-bugs-we-trust-on-measuring-the-randomness-of-a-fuzzer-benchmarking-ou",
+      "FSE2026_in-line-with-context-repository-level-code-generation-via-context-inlini",
+      "FSE2026_inde-llm-defending-against-jailbreak-attacks-in-llm-powered-systems-via-",
+      "FSE2026_influence-aware-bayesian-inspired-token-reweighting-for-improved-code-ge",
+      "FSE2026_intenttester-intent-driven-multi-agent-framework-for-cross-library-test-",
+      "FSE2026_interrogation-testing-of-chc-solvers",
+      "FSE2026_it-takes-two-option-aware-directed-greybox-fuzzing-for-vulnerability-poc",
+      "FSE2026_javascript-pointer-analysis-with-adaptive-heap-abstraction",
+      "FSE2026_knowledge-graph-driven-data-synthesis-for-low-resource-software-developm",
+      "FSE2026_large-language-models-for-opaque-predicate-resolution-a-universal-contro",
+      "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+      "FSE2026_llm-assisted-input-requirement-aware-differential-testing-of-array-progr",
+      "FSE2026_local-countering-surface-bias-in-code-evaluation-metrics",
+      "FSE2026_look-before-you-leap-context-sensitive-gui-grounding-for-boosting-automa",
+      "FSE2026_metarca-a-generalizable-root-cause-analysis-framework-for-cloud-native-s",
+      "FSE2026_mining-long-tail-bugs-identifying-rare-and-overlooked-issues-in-code",
+      "FSE2026_mitigating-the-risk-of-defects-and-improving-knowledge-distribution-with",
+      "FSE2026_mr-coupler-automated-metamorphic-test-generation-via-functional-coupling",
+      "FSE2026_multi-llm-persona-generation-for-virtual-focus-groups-in-software-engine",
+      "FSE2026_natural-language-focused-software-engineering-via-code-documentation-equ",
+      "FSE2026_nesa-relational-neuro-symbolic-static-program-analysis",
+      "FSE2026_neuron-guided-interpretation-of-code-llms-where-why-and-how",
+      "FSE2026_not-all-rags-are-created-equal-a-component-wise-empirical-study-for-soft",
+      "FSE2026_ocppuzz-specification-driven-fuzzing-of-charging-station-management-syst",
+      "FSE2026_odotest-an-automated-testing-approach-for-odometry-systems",
+      "FSE2026_odyssey-hunting-smart-contract-vulnerabilities-with-fine-grained-state-m",
+      "FSE2026_on-the-road-to-personalized-code-intelligence-portraiting-and-assisting-",
+      "FSE2026_one-size-does-not-fit-all-revisiting-code-context-engineering-for-reposi",
+      "FSE2026_phantom-rendering-detection-identifying-and-analyzing-unnecessary-ui-com",
+      "FSE2026_pig-leveraging-large-language-models-for-python-library-migrations",
+      "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+      "FSE2026_pocgen-generating-proof-of-concept-exploits-for-vulnerabilities-in-npm-p",
+      "FSE2026_ppatch-automated-vulnerability-unpatching",
+      "FSE2026_precondition-synthesis-for-deep-neural-networks-with-statistical-guarant",
+      "FSE2026_prognosticator-testing-source-to-source-code-translators-via-construct-o",
+      "FSE2026_project-level-c-to-rust-translation-via-pointer-knowledge-graphs",
+      "FSE2026_prooffusion-improving-neural-theorem-proving-via-adaptive-retrieval-augm",
+      "FSE2026_property-refinement-in-linear-temporal-logic-formal-semantics-and-algori",
+      "FSE2026_protocol-reverse-engineering-via-deep-transfer-learning",
+      "FSE2026_puzzlemark-implicit-jigsaw-learning-for-robust-code-dataset-watermarking",
+      "FSE2026_quanforge-a-mutation-testing-framework-for-quantum-neural-networks",
+      "FSE2026_rat-retrieval-augmented-testing-of-certificate-revocation-list-parsers-i",
+      "FSE2026_realbench-a-repo-level-code-generation-benchmark-aligned-with-real-world",
+      "FSE2026_recommending-usability-improvements-with-multimodal-large-language-model",
+      "FSE2026_red-teaming-llms-via-linguistic-aware-fuzzing",
+      "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+      "FSE2026_reducing-cost-of-llm-agents-with-trajectory-reduction",
+      "FSE2026_reducing-coverage-equivalent-inputs-in-grammar-based-fuzzing-by-avoiding",
+      "FSE2026_reducing-the-tcb-of-sgx-oriented-liboses-at-runtime",
+      "FSE2026_reflair-detecting-responsive-layout-reflow-issues-using-multimodal-gener",
+      "FSE2026_rega-model-based-safeguard-for-llms-via-representation-guided-abstractio",
+      "FSE2026_reporeasoner-evaluating-repository-level-code-reasoning-ability-of-long-",
+      "FSE2026_rethinking-the-evaluation-of-microservice-rca-with-a-fault-propagation-a",
+      "FSE2026_reward-free-code-alignment-from-pretrained-or-fine-tuned-llm-unpacking-t",
+      "FSE2026_satisfiability-solving-with-llms",
+      "FSE2026_sbridge-identifying-source-to-binary-function-similarity-via-cross-domai",
+      "FSE2026_scancoder-leveraging-human-attention-patterns-to-enhance-llms-for-code",
+      "FSE2026_semantics-guided-control-flow-reconstruction-for-firmware-binaries-via-s",
+      "FSE2026_small-is-beautiful-a-practical-and-efficient-log-parsing-framework",
+      "FSE2026_smartcoder-r1-towards-secure-and-explainable-smart-contract-generation-w",
+      "FSE2026_smartdispatch-dynamic-substitution-of-numpy-style-apis-on-heterogenous-c",
+      "FSE2026_smartifsyn-automated-information-flow-security-policy-synthesis-for-smar",
+      "FSE2026_smartrim-symbolic-execution-for-smart-contracts-powered-by-redundant-tra",
+      "FSE2026_snakecharmer-automatic-fuzzing-harness-generation-for-pure-and-hybrid-py",
+      "FSE2026_sound-termination-and-non-termination-analysis-of-c-programs-with-bit-pr",
+      "FSE2026_spectrum-based-failure-attribution-for-multi-agent-systems",
+      "FSE2026_speculate-generating-rest-api-specifications-using-llms",
+      "FSE2026_specweaver-end-to-end-http-api-specification-inference-across-multi-laye",
+      "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis",
+      "FSE2026_still-manual-automated-linter-configuration-via-dsl-based-llm-compilatio",
+      "FSE2026_structure-aware-delta-debugging-with-geometric-information-weights",
+      "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+      "FSE2026_swe-data-construction-automatically",
+      "FSE2026_swr-bench-assessing-llm-performance-in-real-world-code-review-comment-ge",
+      "FSE2026_testtailor-generating-high-coverage-tests-via-path-proximal-tests-with-l",
+      "FSE2026_the-interaction-of-complexity-and-provenance-in-code-review-decisions-ev",
+      "FSE2026_thought-is-all-you-need-smart-contract-vulnerability-detection-with-thou",
+      "FSE2026_tlr-codebase-level-c-memory-management-error-repair-with-large-language-",
+      "FSE2026_torai-multi-source-root-cause-analysis-for-blind-spots-in-the-microservi",
+      "FSE2026_towards-automated-crowdsourced-testing-via-personified-llm",
+      "FSE2026_towards-automated-smart-contract-generation-evaluation-benchmarking-and-",
+      "FSE2026_towards-secure-logging-characterizing-and-benchmarking-logging-code-secu",
+      "FSE2026_towards-the-localization-of-multi-root-cause-failures-in-microservice-sy",
+      "FSE2026_transagent-enhancing-llm-based-code-translation-via-fine-grained-executi",
+      "FSE2026_translibeval-demystify-large-language-models-capability-in-third-party-l",
+      "FSE2026_tsguard-automated-user-centric-incident-diagnosis-for-ai-workloads-in-th",
+      "FSE2026_tusr-a-test-unit-based-framework-for-repairing-obsolete-gui-test-scripts",
+      "FSE2026_typepro-boosting-llm-based-type-inference-via-inter-procedural-slicing",
+      "FSE2026_uncovering-similar-but-different-packages-in-pypi-and-potential-security",
+      "FSE2026_understanding-and-predicting-accepted-code-suggestions-in-ai-assisted-pr",
+      "FSE2026_understanding-binary-code-similarity-for-real-world-vulnerability-detect",
+      "FSE2026_understanding-code-similarity-across-instruction-set-architectures-an-em",
+      "FSE2026_understanding-performance-problems-in-cuda-programs",
+      "FSE2026_understanding-the-limitations-of-c-c-binary-third-party-library-detectio",
+      "FSE2026_understanding-detecting-and-repairing-real-world-in-context-learning-bas",
+      "FSE2026_unfulfilled-promises-llm-based-detection-of-os-compatibility-issues-in-i",
+      "FSE2026_unics-multilingual-code-search-via-unified-pseudocode-and-contrastive-tr",
+      "FSE2026_unleashing-hpc-application-performance-through-software-deployment-a-joi",
+      "FSE2026_unveiling-ai-driven-web-applications-insights-into-characteristics-funct",
+      "FSE2026_unveiling-the-fragility-of-binary-code-similarity-detection-via-targeted",
+      "FSE2026_v2e-validating-smart-contract-vulnerabilities-through-profit-driven-expl",
+      "FSE2026_validating-llm-generated-sql-queries-through-metamorphic-prompting",
+      "FSE2026_verifying-smart-contract-security-against-re-entrancy-attacks-through-re",
+      "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+      "FSE2026_verilogastbench-benchmark-construction-of-verilog-ast-dataset-with-dual-",
+      "FSE2026_vibr-automated-bug-replay-from-video-based-reports-using-vision-language",
+      "FSE2026_visionscratch-llm-based-automated-feedback-generation-using-code-produce",
+      "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+      "FSE2026_vulkey-automated-vulnerability-repair-guided-by-domain-specific-repair-p",
+      "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+      "FSE2026_webtestpilot-agentic-end-to-end-web-testing-against-natural-language-spe",
+      "FSE2026_when-shared-worlds-break-demystifying-defects-in-multi-user-extended-rea"
+    ],
+    "artifacts_code_data": [
+      "FSE2026_a-grounded-theory-of-debugging-in-professional-software-engineering-prac",
+      "FSE2026_a-tuple-oriented-sampling-method-for-generating-small-pairwise-covering-",
+      "FSE2026_a-wily-hare-has-three-havens-combating-programmable-logic-controller-att",
+      "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+      "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+      "FSE2026_accessrefinery-fast-mining-concise-access-control-intents-on-public-clou",
+      "FSE2026_acme-automated-clause-mapping-engine-for-testing-emerging-database-syste",
+      "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+      "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+      "FSE2026_adaptive-mutation-scheduling-with-deep-reinforcement-learning-for-smart-",
+      "FSE2026_agentbound-securing-execution-boundaries-of-ai-agents",
+      "FSE2026_agentic-verification-of-software-systems",
+      "FSE2026_aligning-with-human-coding-preferences-for-improving-code-generation",
+      "FSE2026_an-empirical-study-of-fuzz-harness-degradation",
+      "FSE2026_automated-detection-of-configuration-specific-security-vulnerabilities-v",
+      "FSE2026_automated-knowledge-aware-test-reuse",
+      "FSE2026_automated-repair-of-requirements-for-cyber-physical-systems-in-simulink-",
+      "FSE2026_automated-repair-of-tee-partitioning-issues-via-dsl-guided-and-llm-assis",
+      "FSE2026_automating-dockerfile-refactoring-to-multi-stage-builds",
+      "FSE2026_backportbench-a-multilingual-benchmark-for-automated-patch-backporting",
+      "FSE2026_balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-",
+      "FSE2026_bash-commenter-leveraging-syntax-aware-preference-optimization-to-reinfo",
+      "FSE2026_behind-defective-mobile-ar-apps-studying-reviews-and-bugs-of-android-ar-",
+      "FSE2026_beyond-language-boundaries-uncovering-programming-language-families-for-",
+      "FSE2026_binvariants-enhancing-fuzzing-of-closed-source-binary-executables-via-re",
+      "FSE2026_boosting-llms-for-mutation-generation",
+      "FSE2026_break-to-adapt-knowledge-based-updates-of-breaking-dependencies-in-javas",
+      "FSE2026_bringing-managed-language-support-to-webassembly-with-external-library-l",
+      "FSE2026_building-software-by-rolling-the-dice-a-qualitative-study-of-vibe-coding",
+      "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues",
+      "FSE2026_carbon-taxed-transformers-a-green-compression-pipeline-for-overgrown-lan",
+      "FSE2026_cascade-detecting-inconsistencies-between-code-and-documentation-with-au",
+      "FSE2026_cascaded-code-editing-large-small-model-collaboration-for-effective-and-",
+      "FSE2026_casting-a-spell-sentence-pairing-exploration-for-llm-limitation-breaking",
+      "FSE2026_certicoder-towards-misra-compliant-c-code-generation-with-llms",
+      "FSE2026_chaindelta-automatic-patch-based-exploit-generation-for-ethereum-with-fu",
+      "FSE2026_characterizing-and-mitigating-false-positive-bug-reports-in-the-linux-ke",
+      "FSE2026_characterizing-trust-boundary-vulnerabilities-in-tee-container-systems-a",
+      "FSE2026_chiseling-out-efficiency-structured-skeleton-supervision-for-efficient-c",
+      "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu",
+      "FSE2026_co-evolution-of-types-and-dependencies-towards-repository-level-type-inf",
+      "FSE2026_codecureagent-automatic-classification-and-repair-of-static-analysis-war",
+      "FSE2026_coding-in-a-bubble-evaluating-llms-in-resolving-context-adaptation-bugs-",
+      "FSE2026_comment-traps-how-defective-commented-out-code-augment-defects-in-ai-ass",
+      "FSE2026_compiling-code-llms-into-lightweight-executables",
+      "FSE2026_cost-effective-testing-of-mpc-compilers",
+      "FSE2026_cross-refactoring-type-test-program-migration-for-refactoring-engines",
+      "FSE2026_crossfit-demystifying-vm-callback-bugs-in-interpreters",
+      "FSE2026_crypformbench-benchmarking-formal-analysis-capability-of-large-language-",
+      "FSE2026_cufuzz-an-api-knowledge-graph-coverage-driven-fuzzing-framework-for-cuda",
+      "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+      "FSE2026_decode-dynamic-exploration-for-constraint-guided-vulnerability-discovery",
+      "FSE2026_denoising-fault-localization-with-test-line-proximity",
+      "FSE2026_deployability-centric-infrastructure-as-code-generation-fail-learn-refin",
+      "FSE2026_detecting-bugs-in-rust-compiler-fix-suggestions-via-constraint-violation",
+      "FSE2026_detecting-code-comment-inconsistencies-in-smart-contracts-by-combining-l",
+      "FSE2026_diverfps-generating-diverse-solutions-for-floating-point-smt-formulas",
+      "FSE2026_do-not-treat-code-as-natural-language-implications-for-repository-level-",
+      "FSE2026_dualcodedetect-zero-shot-llm-generated-code-detection-via-dual-channel-p",
+      "FSE2026_ducodemark-dual-purpose-code-dataset-watermarking-via-style-aware-waterm",
+      "FSE2026_efficientuicoder-a-bidirectional-token-compression-framework-for-efficie",
+      "FSE2026_eidolon-perform-noise-aware-fuzzing-on-fhe-libraries-via-equivalence-exp",
+      "FSE2026_empirical-insights-of-test-selection-metrics-under-multiple-testing-obje",
+      "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+      "FSE2026_evaluating-llm-based-regression-test-generation",
+      "FSE2026_evaluating-risk-and-confidence-in-performance-bounds-of-configuration-sa",
+      "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair",
+      "FSE2026_eventadl-open-box-anomaly-detection-and-localization-framework-for-event",
+      "FSE2026_exorcist-enabling-atomic-level-runtime-detection-of-spectre-attacks-usin",
+      "FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai",
+      "FSE2026_failing-with-purpose-dangling-coverage-guided-negative-test-generation-f",
+      "FSE2026_failure-based-testing-for-deep-reinforcement-learning-agents",
+      "FSE2026_fairness-testing-of-large-language-models-in-role-playing",
+      "FSE2026_feature-slice-matching-for-precise-bug-detection",
+      "FSE2026_flash-query-efficient-black-box-static-malware-evasion-through-transfera",
+      "FSE2026_fool-me-if-you-can-on-the-robustness-of-binary-code-similarity-detection",
+      "FSE2026_from-particles-to-perils-svgd-based-hazardous-scenario-generation-for-au",
+      "FSE2026_from-specifications-to-implementation-in-the-gen-ai-era-lessons-from-a-p",
+      "FSE2026_from-suspicious-signals-to-crashes-guiding-bug-driven-gui-testing-via-co",
+      "FSE2026_gadgethunter-region-based-neuro-symbolic-detection-of-java-deserializati",
+      "FSE2026_gaer-graph-auto-encoders-for-unsupervised-software-architecture-recovery",
+      "FSE2026_generalizing-test-cases-for-comprehensive-test-scenario-coverage",
+      "FSE2026_gpu-accelerated-flow-sensitive-pointer-analysis-for-c-c-programs",
+      "FSE2026_graphlocator-graph-guided-causal-reasoning-for-issue-localization",
+      "FSE2026_graphqlify-automated-and-type-safety-preserving-graphql-api-adoption",
+      "FSE2026_greclue-failure-indexing-with-graph-based-failure-representation-and-ent",
+      "FSE2026_guimigrator-semantics-preserving-transpilation-from-android-xml-to-compo",
+      "FSE2026_hallucinations-in-llm-based-code-summarization-unveiling-detection-and-m",
+      "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+      "FSE2026_how-low-can-you-go-the-data-light-se-challenge",
+      "FSE2026_icore-an-iterative-correlation-aware-retriever-for-bug-reproduction-test",
+      "FSE2026_improving-data-leakage-detection-in-machine-learning-notebooks-through-s",
+      "FSE2026_in-bugs-we-trust-on-measuring-the-randomness-of-a-fuzzer-benchmarking-ou",
+      "FSE2026_in-line-with-context-repository-level-code-generation-via-context-inlini",
+      "FSE2026_inde-llm-defending-against-jailbreak-attacks-in-llm-powered-systems-via-",
+      "FSE2026_influence-aware-bayesian-inspired-token-reweighting-for-improved-code-ge",
+      "FSE2026_intenttester-intent-driven-multi-agent-framework-for-cross-library-test-",
+      "FSE2026_interrogation-testing-of-chc-solvers",
+      "FSE2026_it-takes-two-option-aware-directed-greybox-fuzzing-for-vulnerability-poc",
+      "FSE2026_javascript-pointer-analysis-with-adaptive-heap-abstraction",
+      "FSE2026_knowledge-graph-driven-data-synthesis-for-low-resource-software-developm",
+      "FSE2026_large-language-models-for-opaque-predicate-resolution-a-universal-contro",
+      "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+      "FSE2026_llm-assisted-input-requirement-aware-differential-testing-of-array-progr",
+      "FSE2026_local-countering-surface-bias-in-code-evaluation-metrics",
+      "FSE2026_look-before-you-leap-context-sensitive-gui-grounding-for-boosting-automa",
+      "FSE2026_metarca-a-generalizable-root-cause-analysis-framework-for-cloud-native-s",
+      "FSE2026_mining-long-tail-bugs-identifying-rare-and-overlooked-issues-in-code",
+      "FSE2026_mitigating-prompt-induced-cognitive-biases-in-general-purpose-ai-for-sof",
+      "FSE2026_mitigating-the-risk-of-defects-and-improving-knowledge-distribution-with",
+      "FSE2026_mr-coupler-automated-metamorphic-test-generation-via-functional-coupling",
+      "FSE2026_multi-llm-persona-generation-for-virtual-focus-groups-in-software-engine",
+      "FSE2026_natural-language-focused-software-engineering-via-code-documentation-equ",
+      "FSE2026_nesa-relational-neuro-symbolic-static-program-analysis",
+      "FSE2026_neuron-guided-interpretation-of-code-llms-where-why-and-how",
+      "FSE2026_not-all-rags-are-created-equal-a-component-wise-empirical-study-for-soft",
+      "FSE2026_ocppuzz-specification-driven-fuzzing-of-charging-station-management-syst",
+      "FSE2026_odotest-an-automated-testing-approach-for-odometry-systems",
+      "FSE2026_odyssey-hunting-smart-contract-vulnerabilities-with-fine-grained-state-m",
+      "FSE2026_on-the-road-to-personalized-code-intelligence-portraiting-and-assisting-",
+      "FSE2026_one-size-does-fit-all-exploring-model-fusion-for-software-engineering-ta",
+      "FSE2026_one-size-does-not-fit-all-revisiting-code-context-engineering-for-reposi",
+      "FSE2026_phantom-rendering-detection-identifying-and-analyzing-unnecessary-ui-com",
+      "FSE2026_pig-leveraging-large-language-models-for-python-library-migrations",
+      "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+      "FSE2026_pocgen-generating-proof-of-concept-exploits-for-vulnerabilities-in-npm-p",
+      "FSE2026_ppatch-automated-vulnerability-unpatching",
+      "FSE2026_precondition-synthesis-for-deep-neural-networks-with-statistical-guarant",
+      "FSE2026_prognosticator-testing-source-to-source-code-translators-via-construct-o",
+      "FSE2026_project-level-c-to-rust-translation-via-pointer-knowledge-graphs",
+      "FSE2026_prooffusion-improving-neural-theorem-proving-via-adaptive-retrieval-augm",
+      "FSE2026_property-refinement-in-linear-temporal-logic-formal-semantics-and-algori",
+      "FSE2026_protocol-reverse-engineering-via-deep-transfer-learning",
+      "FSE2026_puzzlemark-implicit-jigsaw-learning-for-robust-code-dataset-watermarking",
+      "FSE2026_quanforge-a-mutation-testing-framework-for-quantum-neural-networks",
+      "FSE2026_rat-retrieval-augmented-testing-of-certificate-revocation-list-parsers-i",
+      "FSE2026_realbench-a-repo-level-code-generation-benchmark-aligned-with-real-world",
+      "FSE2026_recommending-usability-improvements-with-multimodal-large-language-model",
+      "FSE2026_red-teaming-llms-via-linguistic-aware-fuzzing",
+      "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+      "FSE2026_reducing-cost-of-llm-agents-with-trajectory-reduction",
+      "FSE2026_reducing-coverage-equivalent-inputs-in-grammar-based-fuzzing-by-avoiding",
+      "FSE2026_reducing-the-tcb-of-sgx-oriented-liboses-at-runtime",
+      "FSE2026_reflair-detecting-responsive-layout-reflow-issues-using-multimodal-gener",
+      "FSE2026_rega-model-based-safeguard-for-llms-via-representation-guided-abstractio",
+      "FSE2026_reporeasoner-evaluating-repository-level-code-reasoning-ability-of-long-",
+      "FSE2026_rethinking-the-evaluation-of-microservice-rca-with-a-fault-propagation-a",
+      "FSE2026_revealing-regressions-a-comparative-study-of-state-capture-strategies-in",
+      "FSE2026_reward-free-code-alignment-from-pretrained-or-fine-tuned-llm-unpacking-t",
+      "FSE2026_satisfiability-solving-with-llms",
+      "FSE2026_sbridge-identifying-source-to-binary-function-similarity-via-cross-domai",
+      "FSE2026_scancoder-leveraging-human-attention-patterns-to-enhance-llms-for-code",
+      "FSE2026_semantics-guided-control-flow-reconstruction-for-firmware-binaries-via-s",
+      "FSE2026_small-is-beautiful-a-practical-and-efficient-log-parsing-framework",
+      "FSE2026_smartcoder-r1-towards-secure-and-explainable-smart-contract-generation-w",
+      "FSE2026_smartdispatch-dynamic-substitution-of-numpy-style-apis-on-heterogenous-c",
+      "FSE2026_smartifsyn-automated-information-flow-security-policy-synthesis-for-smar",
+      "FSE2026_smartrim-symbolic-execution-for-smart-contracts-powered-by-redundant-tra",
+      "FSE2026_snakecharmer-automatic-fuzzing-harness-generation-for-pure-and-hybrid-py",
+      "FSE2026_sound-termination-and-non-termination-analysis-of-c-programs-with-bit-pr",
+      "FSE2026_spectrum-based-failure-attribution-for-multi-agent-systems",
+      "FSE2026_speculate-generating-rest-api-specifications-using-llms",
+      "FSE2026_specweaver-end-to-end-http-api-specification-inference-across-multi-laye",
+      "FSE2026_sqlifuzz-uncovering-sql-injection-in-any-web-applications",
+      "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis",
+      "FSE2026_still-manual-automated-linter-configuration-via-dsl-based-llm-compilatio",
+      "FSE2026_structure-aware-delta-debugging-with-geometric-information-weights",
+      "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+      "FSE2026_swe-data-construction-automatically",
+      "FSE2026_swr-bench-assessing-llm-performance-in-real-world-code-review-comment-ge",
+      "FSE2026_testtailor-generating-high-coverage-tests-via-path-proximal-tests-with-l",
+      "FSE2026_the-interaction-of-complexity-and-provenance-in-code-review-decisions-ev",
+      "FSE2026_thought-is-all-you-need-smart-contract-vulnerability-detection-with-thou",
+      "FSE2026_three-heads-are-better-than-one-a-multi-perspective-reasoning-framework-",
+      "FSE2026_tlr-codebase-level-c-memory-management-error-repair-with-large-language-",
+      "FSE2026_torai-multi-source-root-cause-analysis-for-blind-spots-in-the-microservi",
+      "FSE2026_towards-automated-crowdsourced-testing-via-personified-llm",
+      "FSE2026_towards-automated-smart-contract-generation-evaluation-benchmarking-and-",
+      "FSE2026_towards-secure-logging-characterizing-and-benchmarking-logging-code-secu",
+      "FSE2026_towards-the-localization-of-multi-root-cause-failures-in-microservice-sy",
+      "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+      "FSE2026_transagent-enhancing-llm-based-code-translation-via-fine-grained-executi",
+      "FSE2026_translibeval-demystify-large-language-models-capability-in-third-party-l",
+      "FSE2026_tsguard-automated-user-centric-incident-diagnosis-for-ai-workloads-in-th",
+      "FSE2026_tusr-a-test-unit-based-framework-for-repairing-obsolete-gui-test-scripts",
+      "FSE2026_two-level-adaptation-for-budget-constrained-continuous-dynamic-dependenc",
+      "FSE2026_typepro-boosting-llm-based-type-inference-via-inter-procedural-slicing",
+      "FSE2026_uncovering-similar-but-different-packages-in-pypi-and-potential-security",
+      "FSE2026_understanding-and-predicting-accepted-code-suggestions-in-ai-assisted-pr",
+      "FSE2026_understanding-binary-code-similarity-for-real-world-vulnerability-detect",
+      "FSE2026_understanding-code-similarity-across-instruction-set-architectures-an-em",
+      "FSE2026_understanding-performance-problems-in-cuda-programs",
+      "FSE2026_understanding-the-limitations-of-c-c-binary-third-party-library-detectio",
+      "FSE2026_understanding-detecting-and-repairing-real-world-in-context-learning-bas",
+      "FSE2026_unfulfilled-promises-llm-based-detection-of-os-compatibility-issues-in-i",
+      "FSE2026_unics-multilingual-code-search-via-unified-pseudocode-and-contrastive-tr",
+      "FSE2026_unleashing-hpc-application-performance-through-software-deployment-a-joi",
+      "FSE2026_unveiling-ai-driven-web-applications-insights-into-characteristics-funct",
+      "FSE2026_unveiling-the-fragility-of-binary-code-similarity-detection-via-targeted",
+      "FSE2026_v2e-validating-smart-contract-vulnerabilities-through-profit-driven-expl",
+      "FSE2026_validating-llm-generated-sql-queries-through-metamorphic-prompting",
+      "FSE2026_verifying-smart-contract-security-against-re-entrancy-attacks-through-re",
+      "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+      "FSE2026_verilogastbench-benchmark-construction-of-verilog-ast-dataset-with-dual-",
+      "FSE2026_vibr-automated-bug-replay-from-video-based-reports-using-vision-language",
+      "FSE2026_visionscratch-llm-based-automated-feedback-generation-using-code-produce",
+      "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+      "FSE2026_vulkey-automated-vulnerability-repair-guided-by-domain-specific-repair-p",
+      "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+      "FSE2026_webtestpilot-agentic-end-to-end-web-testing-against-natural-language-spe",
+      "FSE2026_when-shared-worlds-break-demystifying-defects-in-multi-user-extended-rea"
+    ],
+    "unclassified_official_links": [
+      {
+        "paper_id": "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/185/Accelerating-Policy-Synthesis-in-Large-Scale-MDPs-via-Hierarchical-Adaptive-Refinemen"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/92/Active-Learning-of-Symbolic-Automata-for-Reactive-Programs-via-Dynamic-Symbolic-Mappe"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/54/Evaluating-LLM-based-Regression-Test-Generation"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/164/LinkAnchor-An-Autonomous-LLM-Based-Agent-for-Issue-to-Commit-Link-Recovery"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/4/PlayCoder-Making-LLM-Generated-GUI-Code-Playable"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_property-refinement-in-linear-temporal-logic-formal-semantics-and-algori",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/50/Property-Refinement-in-Linear-Temporal-Logic-Formal-Semantics-and-Algorithms-for-Sof"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/162/Verifying-Structural-Robustness-of-Deep-Neural-Network"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+        "links": [
+          {
+            "label": "File Attached",
+            "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/59/VulInstruct-Teaching-LLMs-Root-Cause-Reasoning-for-Vulnerability-Detection-via-Secur"
+          }
+        ]
+      },
+      {
+        "paper_id": "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+        "links": [
+          {
+            "label": "Authorizer link",
+            "url": "https://scholar.google.com/citations?user=0cbAxZQAAAAJ&hl=en"
+          }
+        ]
+      }
+    ],
+    "external_link_targets_not_fetched": [
+      {
+        "paper_id": "FSE2026_a-grounded-theory-of-debugging-in-professional-software-engineering-prac",
+        "url": "https://dl.acm.org/doi/10.1145/3797077"
+      },
+      {
+        "paper_id": "FSE2026_a-grounded-theory-of-debugging-in-professional-software-engineering-prac",
+        "url": "https://doi.org/10.1145/3797077"
+      },
+      {
+        "paper_id": "FSE2026_a-grounded-theory-of-debugging-in-professional-software-engineering-prac",
+        "url": "https://cseweb.ucsd.edu/~mcoblenz/assets/pdf/fse2026-debugging.pdf"
+      },
+      {
+        "paper_id": "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+        "url": "https://doi.org/10.1145/3808203"
+      },
+      {
+        "paper_id": "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+        "url": "https://arxiv.org/abs/2506.17792"
+      },
+      {
+        "paper_id": "FSE2026_accelerating-policy-synthesis-in-large-scale-mdps-via-hierarchical-adapt",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/185/Accelerating-Policy-Synthesis-in-Large-Scale-MDPs-via-Hierarchical-Adaptive-Refinemen"
+      },
+      {
+        "paper_id": "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+        "url": "https://doi.org/10.1145/3797108"
+      },
+      {
+        "paper_id": "FSE2026_accessdroid-detecting-screen-reader-accessibility-issues-in-android-appl",
+        "url": "https://www.researchgate.net/publication/407755629_AccessDroid_Detecting_Screen_Reader_Accessibility_Issues_in_Android_Applications_via_Semantics_Trees"
+      },
+      {
+        "paper_id": "FSE2026_accessrefinery-fast-mining-concise-access-control-intents-on-public-clou",
+        "url": "https://doi.org/10.1145/3797087"
+      },
+      {
+        "paper_id": "FSE2026_accessrefinery-fast-mining-concise-access-control-intents-on-public-clou",
+        "url": "https://xjtu-netverify.github.io/papers/AccessRefinery/accessrefinery_final_version.pdf"
+      },
+      {
+        "paper_id": "FSE2026_acme-automated-clause-mapping-engine-for-testing-emerging-database-syste",
+        "url": "https://doi.org/10.1145/3797134"
+      },
+      {
+        "paper_id": "FSE2026_acme-automated-clause-mapping-engine-for-testing-emerging-database-syste",
+        "url": "https://yuanchengjiang.github.io/docs/acme.pdf"
+      },
+      {
+        "paper_id": "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+        "url": "https://doi.org/10.1145/3808154"
+      },
+      {
+        "paper_id": "FSE2026_active-learning-of-symbolic-automata-for-reactive-programs-via-dynamic-s",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/92/Active-Learning-of-Symbolic-Automata-for-Reactive-Programs-via-Dynamic-Symbolic-Mappe"
+      },
+      {
+        "paper_id": "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+        "url": "https://doi.org/10.1145/3808142"
+      },
+      {
+        "paper_id": "FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c",
+        "url": "https://arxiv.org/abs/2506.08980"
+      },
+      {
+        "paper_id": "FSE2026_agentbound-securing-execution-boundaries-of-ai-agents",
+        "url": "https://dl.acm.org/doi/10.1145/3808103"
+      },
+      {
+        "paper_id": "FSE2026_agentbound-securing-execution-boundaries-of-ai-agents",
+        "url": "https://doi.org/10.1145/3808103"
+      },
+      {
+        "paper_id": "FSE2026_agentbound-securing-execution-boundaries-of-ai-agents",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/14/AgentBound-Securing-Execution-Boundaries-of-AI-Agents"
+      },
+      {
+        "paper_id": "FSE2026_agentic-verification-of-software-systems",
+        "url": "https://arxiv.org/pdf/2511.17330"
+      },
+      {
+        "paper_id": "FSE2026_an-empirical-study-of-fuzz-harness-degradation",
+        "url": "https://arxiv.org/abs/2505.06177"
+      },
+      {
+        "paper_id": "FSE2026_automated-detection-of-configuration-specific-security-vulnerabilities-v",
+        "url": "https://doi.org/10.1145/3808126"
+      },
+      {
+        "paper_id": "FSE2026_automated-detection-of-configuration-specific-security-vulnerabilities-v",
+        "url": "https://arxiv.org/abs/2606.25863"
+      },
+      {
+        "paper_id": "FSE2026_automated-repair-of-requirements-for-cyber-physical-systems-in-simulink-",
+        "url": "https://arxiv.org/abs/2606.03870"
+      },
+      {
+        "paper_id": "FSE2026_automated-repair-of-tee-partitioning-issues-via-dsl-guided-and-llm-assis",
+        "url": "http://arxiv.org/abs/2605.22087"
+      },
+      {
+        "paper_id": "FSE2026_backportbench-a-multilingual-benchmark-for-automated-patch-backporting",
+        "url": "https://arxiv.org/abs/2512.01396"
+      },
+      {
+        "paper_id": "FSE2026_balancing-latency-and-accuracy-of-code-completion-via-local-cloud-model-",
+        "url": "https://arxiv.org/abs/2603.05974"
+      },
+      {
+        "paper_id": "FSE2026_behind-defective-mobile-ar-apps-studying-reviews-and-bugs-of-android-ar-",
+        "url": "https://drive.google.com/file/d/1cnBhyxRXdj2xBSRZ8rK8m-i1FWWdIK0R/view?usp=sharing"
+      },
+      {
+        "paper_id": "FSE2026_beyond-language-boundaries-uncovering-programming-language-families-for-",
+        "url": "https://arxiv.org/abs/2512.19509"
+      },
+      {
+        "paper_id": "FSE2026_binvariants-enhancing-fuzzing-of-closed-source-binary-executables-via-re",
+        "url": "https://futures.cs.utah.edu/papers/26FSE-c.pdf"
+      },
+      {
+        "paper_id": "FSE2026_break-to-adapt-knowledge-based-updates-of-breaking-dependencies-in-javas",
+        "url": "https://nesa.zju.edu.cn/download/auto_20260423_yifan-2026fse.pdf"
+      },
+      {
+        "paper_id": "FSE2026_bringing-managed-language-support-to-webassembly-with-external-library-l",
+        "url": "https://doi.org/10.1145/3808182"
+      },
+      {
+        "paper_id": "FSE2026_bringing-managed-language-support-to-webassembly-with-external-library-l",
+        "url": "https://arxiv.org/abs/2606.21919"
+      },
+      {
+        "paper_id": "FSE2026_building-software-by-rolling-the-dice-a-qualitative-study-of-vibe-coding",
+        "url": "https://arxiv.org/abs/2512.22418"
+      },
+      {
+        "paper_id": "FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues",
+        "url": "https://arxiv.org/abs/2510.18270"
+      },
+      {
+        "paper_id": "FSE2026_carbon-taxed-transformers-a-green-compression-pipeline-for-overgrown-lan",
+        "url": "https://arxiv.org/abs/2604.25903"
+      },
+      {
+        "paper_id": "FSE2026_cascade-detecting-inconsistencies-between-code-and-documentation-with-au",
+        "url": "https://arxiv.org/abs/2604.19400"
+      },
+      {
+        "paper_id": "FSE2026_cascaded-code-editing-large-small-model-collaboration-for-effective-and-",
+        "url": "https://arxiv.org/abs/2604.19201"
+      },
+      {
+        "paper_id": "FSE2026_casting-a-spell-sentence-pairing-exploration-for-llm-limitation-breaking",
+        "url": "https://arxiv.org/abs/2512.21236"
+      },
+      {
+        "paper_id": "FSE2026_characterizing-and-mitigating-false-positive-bug-reports-in-the-linux-ke",
+        "url": "https://arxiv.org/abs/2605.07678"
+      },
+      {
+        "paper_id": "FSE2026_characterizing-trust-boundary-vulnerabilities-in-tee-container-systems-a",
+        "url": "https://doi.org/10.1145/3808159"
+      },
+      {
+        "paper_id": "FSE2026_characterizing-trust-boundary-vulnerabilities-in-tee-container-systems-a",
+        "url": "https://arxiv.org/pdf/2508.20962"
+      },
+      {
+        "paper_id": "FSE2026_chiseling-out-efficiency-structured-skeleton-supervision-for-efficient-c",
+        "url": "https://arxiv.org/abs/2606.06821"
+      },
+      {
+        "paper_id": "FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu",
+        "url": "https://arxiv.org/abs/2509.17314"
+      },
+      {
+        "paper_id": "FSE2026_codecureagent-automatic-classification-and-repair-of-static-analysis-war",
+        "url": "https://doi.org/10.1145/3808140"
+      },
+      {
+        "paper_id": "FSE2026_coding-in-a-bubble-evaluating-llms-in-resolving-context-adaptation-bugs-",
+        "url": "https://arxiv.org/abs/2601.06497"
+      },
+      {
+        "paper_id": "FSE2026_compiling-code-llms-into-lightweight-executables",
+        "url": "https://arxiv.org/abs/2603.29813"
+      },
+      {
+        "paper_id": "FSE2026_cost-effective-testing-of-mpc-compilers",
+        "url": "https://mariachris.github.io/Pubs/FSE-2026-MPC.pdf"
+      },
+      {
+        "paper_id": "FSE2026_crypformbench-benchmarking-formal-analysis-capability-of-large-language-",
+        "url": "https://doi.org/10.1145/3808184"
+      },
+      {
+        "paper_id": "FSE2026_crypformbench-benchmarking-formal-analysis-capability-of-large-language-",
+        "url": "http://arxiv.org/abs/2606.25561"
+      },
+      {
+        "paper_id": "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+        "url": "https://doi.org/10.1145/3797110"
+      },
+      {
+        "paper_id": "FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb",
+        "url": "https://github.com/lucky20020327/DeepK/blob/main/Debugging_Engine_Enhanced_by_Prior_Knowledge.pdf"
+      },
+      {
+        "paper_id": "FSE2026_denoising-fault-localization-with-test-line-proximity",
+        "url": "https://doi.org/10.1145/3808110"
+      },
+      {
+        "paper_id": "FSE2026_denoising-fault-localization-with-test-line-proximity",
+        "url": "https://raw.githubusercontent.com/smythi93/pwfl/refs/heads/main/paper.pdf"
+      },
+      {
+        "paper_id": "FSE2026_deployability-centric-infrastructure-as-code-generation-fail-learn-refin",
+        "url": "https://arxiv.org/abs/2506.05623"
+      },
+      {
+        "paper_id": "FSE2026_do-not-treat-code-as-natural-language-implications-for-repository-level-",
+        "url": "https://doi.org/10.1145/3797144"
+      },
+      {
+        "paper_id": "FSE2026_do-not-treat-code-as-natural-language-implications-for-repository-level-",
+        "url": "https://arxiv.org/abs/2602.11671"
+      },
+      {
+        "paper_id": "FSE2026_ducodemark-dual-purpose-code-dataset-watermarking-via-style-aware-waterm",
+        "url": "https://arxiv.org/abs/2604.10611"
+      },
+      {
+        "paper_id": "FSE2026_efficientuicoder-a-bidirectional-token-compression-framework-for-efficie",
+        "url": "https://arxiv.org/abs/2509.12159"
+      },
+      {
+        "paper_id": "FSE2026_empirical-insights-of-test-selection-metrics-under-multiple-testing-obje",
+        "url": "https://metricsbenchmark.github.io/FSE_ID1421_Camera_Ready.pdf"
+      },
+      {
+        "paper_id": "FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis",
+        "url": "https://arxiv.org/abs/2604.24212"
+      },
+      {
+        "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+        "url": "https://doi.org/10.1145/3808129"
+      },
+      {
+        "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+        "url": "https://arxiv.org/abs/2501.11086"
+      },
+      {
+        "paper_id": "FSE2026_evaluating-llm-based-regression-test-generation",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/54/Evaluating-LLM-based-Regression-Test-Generation"
+      },
+      {
+        "paper_id": "FSE2026_evaluating-risk-and-confidence-in-performance-bounds-of-configuration-sa",
+        "url": "https://www.se.cs.uni-saarland.de/publications/docs/WMS+26.pdf"
+      },
+      {
+        "paper_id": "FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair",
+        "url": "https://arxiv.org/abs/2605.17475"
+      },
+      {
+        "paper_id": "FSE2026_eventadl-open-box-anomaly-detection-and-localization-framework-for-event",
+        "url": "https://www.amazon.science/publications/eventadl-open-box-anomaly-detection-and-localization-framework-for-events-in-cloud-based-service-systems"
+      },
+      {
+        "paper_id": "FSE2026_failure-based-testing-for-deep-reinforcement-learning-agents",
+        "url": "https://doi.org/10.1145/3808185"
+      },
+      {
+        "paper_id": "FSE2026_failure-based-testing-for-deep-reinforcement-learning-agents",
+        "url": "https://arxiv.org/pdf/2606.31372"
+      },
+      {
+        "paper_id": "FSE2026_fairness-testing-of-large-language-models-in-role-playing",
+        "url": "https://arxiv.org/pdf/2411.00585"
+      },
+      {
+        "paper_id": "FSE2026_feature-slice-matching-for-precise-bug-detection",
+        "url": "https://doi.org/10.1145/3797080"
+      },
+      {
+        "paper_id": "FSE2026_feature-slice-matching-for-precise-bug-detection",
+        "url": "https://arxiv.org/abs/2512.24858"
+      },
+      {
+        "paper_id": "FSE2026_fool-me-if-you-can-on-the-robustness-of-binary-code-similarity-detection",
+        "url": "https://arxiv.org/abs/2602.12681"
+      },
+      {
+        "paper_id": "FSE2026_from-particles-to-perils-svgd-based-hazardous-scenario-generation-for-au",
+        "url": "https://arxiv.org/abs/2604.18918"
+      },
+      {
+        "paper_id": "FSE2026_from-specifications-to-implementation-in-the-gen-ai-era-lessons-from-a-p",
+        "url": "http://people.ece.ubc.ca/mjulia/publications/2026_AI_In_SE_FSE.pdf"
+      },
+      {
+        "paper_id": "FSE2026_gadgethunter-region-based-neuro-symbolic-detection-of-java-deserializati",
+        "url": "https://kaixuanli-ecnu.github.io/papers/kaixuan-FSE26_GadgetHunter.pdf"
+      },
+      {
+        "paper_id": "FSE2026_graphqlify-automated-and-type-safety-preserving-graphql-api-adoption",
+        "url": "https://arxiv.org/pdf/2604.15465"
+      },
+      {
+        "paper_id": "FSE2026_guimigrator-semantics-preserving-transpilation-from-android-xml-to-compo",
+        "url": "https://arxiv.org/pdf/2409.16656"
+      },
+      {
+        "paper_id": "FSE2026_hallucinations-in-llm-based-code-summarization-unveiling-detection-and-m",
+        "url": "https://doi.org/10.1145/3808139"
+      },
+      {
+        "paper_id": "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+        "url": "https://doi.org/10.1145/3808120"
+      },
+      {
+        "paper_id": "FSE2026_how-do-developers-interact-with-ai-an-exploratory-study-on-modeling-deve",
+        "url": "https://arxiv.org/abs/2604.16393"
+      },
+      {
+        "paper_id": "FSE2026_how-low-can-you-go-the-data-light-se-challenge",
+        "url": "https://arxiv.org/pdf/2512.13524"
+      },
+      {
+        "paper_id": "FSE2026_icore-an-iterative-correlation-aware-retriever-for-bug-reproduction-test",
+        "url": "https://arxiv.org/abs/2604.19224"
+      },
+      {
+        "paper_id": "FSE2026_in-bugs-we-trust-on-measuring-the-randomness-of-a-fuzzer-benchmarking-ou",
+        "url": "https://nimgnoeseel.github.io/assets/pdf/concordance-paper.pdf"
+      },
+      {
+        "paper_id": "FSE2026_in-line-with-context-repository-level-code-generation-via-context-inlini",
+        "url": "https://arxiv.org/abs/2601.00376"
+      },
+      {
+        "paper_id": "FSE2026_intenttester-intent-driven-multi-agent-framework-for-cross-library-test-",
+        "url": "https://arxiv.org/pdf/2606.25588"
+      },
+      {
+        "paper_id": "FSE2026_interrogation-testing-of-chc-solvers",
+        "url": "https://mariachris.github.io/Pubs/FSE-2026-CHC.pdf"
+      },
+      {
+        "paper_id": "FSE2026_javascript-pointer-analysis-with-adaptive-heap-abstraction",
+        "url": "https://cs.au.dk/~amoeller/papers/aha/paper.pdf"
+      },
+      {
+        "paper_id": "FSE2026_knowledge-graph-driven-data-synthesis-for-low-resource-software-developm",
+        "url": "https://doi.org/10.1145/3808133"
+      },
+      {
+        "paper_id": "FSE2026_knowledge-graph-driven-data-synthesis-for-low-resource-software-developm",
+        "url": "https://arxiv.org/abs/2512.00380"
+      },
+      {
+        "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "url": "https://doi.org/10.1145/3808191"
+      },
+      {
+        "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "url": "https://arxiv.org/abs/2508.12232"
+      },
+      {
+        "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/164/LinkAnchor-An-Autonomous-LLM-Based-Agent-for-Issue-to-Commit-Link-Recovery"
+      },
+      {
+        "paper_id": "FSE2026_linkanchor-an-autonomous-llm-based-agent-for-issue-to-commit-link-recove",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/164/LinkAnchor-An-Autonomous-LLM-Based-Agent-for-Issue-to-Commit-Link-Recovery"
+      },
+      {
+        "paper_id": "FSE2026_llm-assisted-input-requirement-aware-differential-testing-of-array-progr",
+        "url": "https://jhe16.github.io/files/FSE26.pdf"
+      },
+      {
+        "paper_id": "FSE2026_local-countering-surface-bias-in-code-evaluation-metrics",
+        "url": "https://doi.org/10.1145/3797089"
+      },
+      {
+        "paper_id": "FSE2026_local-countering-surface-bias-in-code-evaluation-metrics",
+        "url": "https://arxiv.org/abs/2509.15397"
+      },
+      {
+        "paper_id": "FSE2026_metarca-a-generalizable-root-cause-analysis-framework-for-cloud-native-s",
+        "url": "https://arxiv.org/abs/2603.02032"
+      },
+      {
+        "paper_id": "FSE2026_mining-long-tail-bugs-identifying-rare-and-overlooked-issues-in-code",
+        "url": "https://doi.org/10.1145/3797071"
+      },
+      {
+        "paper_id": "FSE2026_mining-long-tail-bugs-identifying-rare-and-overlooked-issues-in-code",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/115/Mining-Long-Tail-Bugs-Identifying-Rare-and-Overlooked-Issues-in-Code"
+      },
+      {
+        "paper_id": "FSE2026_mitigating-prompt-induced-cognitive-biases-in-general-purpose-ai-for-sof",
+        "url": "https://doi.org/10.1145/3808115"
+      },
+      {
+        "paper_id": "FSE2026_mitigating-prompt-induced-cognitive-biases-in-general-purpose-ai-for-sof",
+        "url": "https://doi.org/10.48550/arXiv.2604.16756"
+      },
+      {
+        "paper_id": "FSE2026_mitigating-the-risk-of-defects-and-improving-knowledge-distribution-with",
+        "url": "https://users.encs.concordia.ca/~pcr/paper/Sofia_Change_Safety_Ratio.pdf"
+      },
+      {
+        "paper_id": "FSE2026_mr-coupler-automated-metamorphic-test-generation-via-functional-coupling",
+        "url": "https://arxiv.org/abs/2604.10126"
+      },
+      {
+        "paper_id": "FSE2026_natural-language-focused-software-engineering-via-code-documentation-equ",
+        "url": "https://arxiv.org/pdf/2606.22247"
+      },
+      {
+        "paper_id": "FSE2026_neuron-guided-interpretation-of-code-llms-where-why-and-how",
+        "url": "https://arxiv.org/abs/2512.19980"
+      },
+      {
+        "paper_id": "FSE2026_not-all-rags-are-created-equal-a-component-wise-empirical-study-for-soft",
+        "url": "https://arxiv.org/abs/2605.14503"
+      },
+      {
+        "paper_id": "FSE2026_ocppuzz-specification-driven-fuzzing-of-charging-station-management-syst",
+        "url": "https://doi.org/10.1145/3797091"
+      },
+      {
+        "paper_id": "FSE2026_ocppuzz-specification-driven-fuzzing-of-charging-station-management-syst",
+        "url": "https://softsec.skku.edu/report/FSE_2026/ocppuzz_preprint.pdf"
+      },
+      {
+        "paper_id": "FSE2026_on-the-road-to-personalized-code-intelligence-portraiting-and-assisting-",
+        "url": "https://arxiv.org/abs/2605.29372"
+      },
+      {
+        "paper_id": "FSE2026_one-size-does-fit-all-exploring-model-fusion-for-software-engineering-ta",
+        "url": "https://dl.acm.org/doi/10.1145/3808198"
+      },
+      {
+        "paper_id": "FSE2026_one-size-does-fit-all-exploring-model-fusion-for-software-engineering-ta",
+        "url": "https://doi.org/10.1145/3808198"
+      },
+      {
+        "paper_id": "FSE2026_phantom-rendering-detection-identifying-and-analyzing-unnecessary-ui-com",
+        "url": "https://mathieu0905.github.io/papers/hapray_fse.pdf"
+      },
+      {
+        "paper_id": "FSE2026_pig-leveraging-large-language-models-for-python-library-migrations",
+        "url": "https://prl.korea.ac.kr/papers/fse26-pig.pdf"
+      },
+      {
+        "paper_id": "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+        "url": "https://arxiv.org/pdf/2604.19742"
+      },
+      {
+        "paper_id": "FSE2026_playcoder-making-llm-generated-gui-code-playable",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/4/PlayCoder-Making-LLM-Generated-GUI-Code-Playable"
+      },
+      {
+        "paper_id": "FSE2026_pocgen-generating-proof-of-concept-exploits-for-vulnerabilities-in-npm-p",
+        "url": "https://arxiv.org/abs/2506.04962"
+      },
+      {
+        "paper_id": "FSE2026_prognosticator-testing-source-to-source-code-translators-via-construct-o",
+        "url": "https://futures.cs.utah.edu/papers/26FSE-a.pdf"
+      },
+      {
+        "paper_id": "FSE2026_prooffusion-improving-neural-theorem-proving-via-adaptive-retrieval-augm",
+        "url": "https://manqing-zhang.github.io/publications/fse26.pdf"
+      },
+      {
+        "paper_id": "FSE2026_property-refinement-in-linear-temporal-logic-formal-semantics-and-algori",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/50/Property-Refinement-in-Linear-Temporal-Logic-Formal-Semantics-and-Algorithms-for-Sof"
+      },
+      {
+        "paper_id": "FSE2026_protocol-reverse-engineering-via-deep-transfer-learning",
+        "url": "https://doi.org/10.1145/3797124"
+      },
+      {
+        "paper_id": "FSE2026_puzzlemark-implicit-jigsaw-learning-for-robust-code-dataset-watermarking",
+        "url": "https://arxiv.org/abs/2604.27677"
+      },
+      {
+        "paper_id": "FSE2026_quanforge-a-mutation-testing-framework-for-quantum-neural-networks",
+        "url": "https://arxiv.org/abs/2604.20706"
+      },
+      {
+        "paper_id": "FSE2026_rat-retrieval-augmented-testing-of-certificate-revocation-list-parsers-i",
+        "url": "https://github.com/secsoftware/preprint/blob/main/2026-FSE-RAT-preprint.pdf"
+      },
+      {
+        "paper_id": "FSE2026_recommending-usability-improvements-with-multimodal-large-language-model",
+        "url": "https://arxiv.org/abs/2604.25420"
+      },
+      {
+        "paper_id": "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+        "url": "https://doi.org/10.1145/3808179"
+      },
+      {
+        "paper_id": "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+        "url": "https://arxiv.org/abs/2509.09192"
+      },
+      {
+        "paper_id": "FSE2026_redef-do-code-language-models-truly-understand-code-changes-for-just-in-",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/143/ReDef-Do-Code-Language-Models-Truly-Understand-Code-Changes-for-Just-in-Time-Softwar"
+      },
+      {
+        "paper_id": "FSE2026_reducing-cost-of-llm-agents-with-trajectory-reduction",
+        "url": "https://arxiv.org/abs/2509.23586"
+      },
+      {
+        "paper_id": "FSE2026_reducing-coverage-equivalent-inputs-in-grammar-based-fuzzing-by-avoiding",
+        "url": "https://drive.google.com/file/d/1ZCezmqjSuQYkBl_ZQqIQ3WH9F3JsaNnL/view?usp=sharing"
+      },
+      {
+        "paper_id": "FSE2026_reflair-detecting-responsive-layout-reflow-issues-using-multimodal-gener",
+        "url": "https://doi.org/10.1145/3808136"
+      },
+      {
+        "paper_id": "FSE2026_reflair-detecting-responsive-layout-reflow-issues-using-multimodal-gener",
+        "url": "https://seal.ics.uci.edu/publications/2026_FSE.pdf"
+      },
+      {
+        "paper_id": "FSE2026_rega-model-based-safeguard-for-llms-via-representation-guided-abstractio",
+        "url": "https://arxiv.org/pdf/2506.01770"
+      },
+      {
+        "paper_id": "FSE2026_rethinking-the-evaluation-of-microservice-rca-with-a-fault-propagation-a",
+        "url": "https://arxiv.org/abs/2510.04711"
+      },
+      {
+        "paper_id": "FSE2026_revealing-regressions-a-comparative-study-of-state-capture-strategies-in",
+        "url": "https://dl.acm.org/doi/10.1145/3797107"
+      },
+      {
+        "paper_id": "FSE2026_revealing-regressions-a-comparative-study-of-state-capture-strategies-in",
+        "url": "https://doi.org/10.1145/3797107"
+      },
+      {
+        "paper_id": "FSE2026_satisfiability-solving-with-llms",
+        "url": "https://arxiv.org/abs/2605.28602"
+      },
+      {
+        "paper_id": "FSE2026_sbridge-identifying-source-to-binary-function-similarity-via-cross-domai",
+        "url": "https://arxiv.org/pdf/2606.28058"
+      },
+      {
+        "paper_id": "FSE2026_small-is-beautiful-a-practical-and-efficient-log-parsing-framework",
+        "url": "https://arxiv.org/abs/2601.22590"
+      },
+      {
+        "paper_id": "FSE2026_smartrim-symbolic-execution-for-smart-contracts-powered-by-redundant-tra",
+        "url": "https://doi.org/10.1145/3797074"
+      },
+      {
+        "paper_id": "FSE2026_smartrim-symbolic-execution-for-smart-contracts-powered-by-redundant-tra",
+        "url": "https://ku-formal.github.io/assets/pdf/fse26-smartrim.pdf"
+      },
+      {
+        "paper_id": "FSE2026_snakecharmer-automatic-fuzzing-harness-generation-for-pure-and-hybrid-py",
+        "url": "https://futures.cs.utah.edu/papers/26FSE-b.pdf"
+      },
+      {
+        "paper_id": "FSE2026_sound-termination-and-non-termination-analysis-of-c-programs-with-bit-pr",
+        "url": "https://github.com/negarfathi/Athena/blob/master/Paper.pdf"
+      },
+      {
+        "paper_id": "FSE2026_spectrum-based-failure-attribution-for-multi-agent-systems",
+        "url": "https://arxiv.org/abs/2509.13782"
+      },
+      {
+        "paper_id": "FSE2026_sqlifuzz-uncovering-sql-injection-in-any-web-applications",
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3808149"
+      },
+      {
+        "paper_id": "FSE2026_stepfly-agentic-troubleshooting-guide-automation-for-incident-diagnosis",
+        "url": "https://arxiv.org/pdf/2510.10074"
+      },
+      {
+        "paper_id": "FSE2026_still-manual-automated-linter-configuration-via-dsl-based-llm-compilatio",
+        "url": "https://github.com/idiomaticrefactoring/idiomaticrefactoring/blob/main/assets/pdf/FSE_2026_ConfigGen_camera_ready%20(4).pdf"
+      },
+      {
+        "paper_id": "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+        "url": "https://doi.org/10.1145/3808100"
+      },
+      {
+        "paper_id": "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+        "url": "https://compsec.postech.ac.kr/assets/publications/lee:swarmbox.pdf"
+      },
+      {
+        "paper_id": "FSE2026_swarmbox-a-plug-and-play-drone-swarm-framework-for-streamlined-developme",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/8/SwarmBox-A-Plug-and-Play-Drone-Swarm-Framework-for-Streamlined-Development-and-Compr"
+      },
+      {
+        "paper_id": "FSE2026_the-interaction-of-complexity-and-provenance-in-code-review-decisions-ev",
+        "url": "https://doi.org/10.1145/3808165"
+      },
+      {
+        "paper_id": "FSE2026_the-interaction-of-complexity-and-provenance-in-code-review-decisions-ev",
+        "url": "https://www.zora.uzh.ch/entities/publication/5919cd1a-1eef-4274-aec0-80ab3ed3cbf4"
+      },
+      {
+        "paper_id": "FSE2026_three-heads-are-better-than-one-a-multi-perspective-reasoning-framework-",
+        "url": "https://dl.acm.org/doi/10.1145/3808197"
+      },
+      {
+        "paper_id": "FSE2026_three-heads-are-better-than-one-a-multi-perspective-reasoning-framework-",
+        "url": "https://doi.org/10.1145/3808197"
+      },
+      {
+        "paper_id": "FSE2026_tlr-codebase-level-c-memory-management-error-repair-with-large-language-",
+        "url": "https://jumormt.github.io/data/fse26_tlr.pdf"
+      },
+      {
+        "paper_id": "FSE2026_torai-multi-source-root-cause-analysis-for-blind-spots-in-the-microservi",
+        "url": "https://arxiv.org/pdf/2604.13522"
+      },
+      {
+        "paper_id": "FSE2026_torai-multi-source-root-cause-analysis-for-blind-spots-in-the-microservi",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/64/TORAI-Multi-Source-Root-Cause-Analysis-for-Blind-Spots-in-the-Microservice-Service-C"
+      },
+      {
+        "paper_id": "FSE2026_towards-automated-crowdsourced-testing-via-personified-llm",
+        "url": "https://arxiv.org/abs/2603.24160"
+      },
+      {
+        "paper_id": "FSE2026_towards-automated-smart-contract-generation-evaluation-benchmarking-and-",
+        "url": "https://arxiv.org/abs/2503.01098"
+      },
+      {
+        "paper_id": "FSE2026_towards-secure-logging-characterizing-and-benchmarking-logging-code-secu",
+        "url": "https://arxiv.org/pdf/2604.20211"
+      },
+      {
+        "paper_id": "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3808130"
+      },
+      {
+        "paper_id": "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+        "url": "https://doi.org/10.1145/3808130"
+      },
+      {
+        "paper_id": "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+        "url": "https://dl.acm.org/doi/pdf/10.1145/3808130"
+      },
+      {
+        "paper_id": "FSE2026_toxishield-promoting-inclusive-developer-communication-through-real-time",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/56/ToxiShield-Promoting-Inclusive-Developer-Communication-through-Real-Time-Toxicity-Fi"
+      },
+      {
+        "paper_id": "FSE2026_translibeval-demystify-large-language-models-capability-in-third-party-l",
+        "url": "https://arxiv.org/abs/2509.12087"
+      },
+      {
+        "paper_id": "FSE2026_tsguard-automated-user-centric-incident-diagnosis-for-ai-workloads-in-th",
+        "url": "https://arxiv.org/abs/2506.01481"
+      },
+      {
+        "paper_id": "FSE2026_two-level-adaptation-for-budget-constrained-continuous-dynamic-dependenc",
+        "url": "https://www.researchgate.net/publication/404051008_Two-Level_Adaptation_for_Budget-Constrained_Continuous_Dynamic_Dependence_Analysis"
+      },
+      {
+        "paper_id": "FSE2026_two-level-adaptation-for-budget-constrained-continuous-dynamic-dependenc",
+        "url": "http://chapering.github.io/pubs/fse26.pdf"
+      },
+      {
+        "paper_id": "FSE2026_typepro-boosting-llm-based-type-inference-via-inter-procedural-slicing",
+        "url": "https://arxiv.org/abs/2604.02702"
+      },
+      {
+        "paper_id": "FSE2026_uncovering-similar-but-different-packages-in-pypi-and-potential-security",
+        "url": "https://arxiv.org/pdf/2606.29785"
+      },
+      {
+        "paper_id": "FSE2026_understanding-and-predicting-accepted-code-suggestions-in-ai-assisted-pr",
+        "url": "https://arxiv.org/abs/2601.21379"
+      },
+      {
+        "paper_id": "FSE2026_understanding-binary-code-similarity-for-real-world-vulnerability-detect",
+        "url": "https://arxiv.org/abs/2606.28870"
+      },
+      {
+        "paper_id": "FSE2026_understanding-code-similarity-across-instruction-set-architectures-an-em",
+        "url": "https://github.com/lxtqa/ISAsimilarity/raw/main/ArchCode.pdf"
+      },
+      {
+        "paper_id": "FSE2026_understanding-detecting-and-repairing-real-world-in-context-learning-bas",
+        "url": "https://arxiv.org/abs/2501.09310"
+      },
+      {
+        "paper_id": "FSE2026_unics-multilingual-code-search-via-unified-pseudocode-and-contrastive-tr",
+        "url": "https://doi.org/10.1145/3797067"
+      },
+      {
+        "paper_id": "FSE2026_unics-multilingual-code-search-via-unified-pseudocode-and-contrastive-tr",
+        "url": "https://arxiv.org/pdf/2606.27747"
+      },
+      {
+        "paper_id": "FSE2026_unveiling-ai-driven-web-applications-insights-into-characteristics-funct",
+        "url": "https://cosunshine.github.io/files/unveiling_AI-driven_security.pdf"
+      },
+      {
+        "paper_id": "FSE2026_v2e-validating-smart-contract-vulnerabilities-through-profit-driven-expl",
+        "url": "https://arxiv.org/abs/2604.13611"
+      },
+      {
+        "paper_id": "FSE2026_verifying-smart-contract-security-against-re-entrancy-attacks-through-re",
+        "url": "https://kartiknagar.github.io/publication/fse26/fse26.pdf"
+      },
+      {
+        "paper_id": "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+        "url": "https://hocdot.github.io/assets/papers/duong2026verifying.pdf"
+      },
+      {
+        "paper_id": "FSE2026_verifying-structural-robustness-of-deep-neural-network",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/162/Verifying-Structural-Robustness-of-Deep-Neural-Network"
+      },
+      {
+        "paper_id": "FSE2026_verilogastbench-benchmark-construction-of-verilog-ast-dataset-with-dual-",
+        "url": "https://shiyiyanqin.github.io/papers/VerilogASTBench__FSE2026_Preprint.pdf"
+      },
+      {
+        "paper_id": "FSE2026_vulinstruct-teaching-llms-root-cause-reasoning-for-vulnerability-detecti",
+        "url": "https://conf.researchr.org/details/fse-2026/fse-2026-research-papers/59/VulInstruct-Teaching-LLMs-Root-Cause-Reasoning-for-Vulnerability-Detection-via-Secur"
+      },
+      {
+        "paper_id": "FSE2026_vulkey-automated-vulnerability-repair-guided-by-domain-specific-repair-p",
+        "url": "https://arxiv.org/abs/2605.01769"
+      },
+      {
+        "paper_id": "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+        "url": "https://doi.org/10.1145/3797150"
+      },
+      {
+        "paper_id": "FSE2026_walletruth-visual-oriented-software-testing-for-web3-wallet-browser-exte",
+        "url": "https://scholar.google.com/citations?user=0cbAxZQAAAAJ&hl=en"
+      },
+      {
+        "paper_id": "FSE2026_webtestpilot-agentic-end-to-end-web-testing-against-natural-language-spe",
+        "url": "https://arxiv.org/abs/2602.11724"
+      }
+    ]
+  },
+  "source_conflicts": [],
+  "deduplication": {
+    "audit_file": "corpus/fse2026-research-papers-dedup-audit.json",
+    "exact_normalized_title_duplicates": 0,
+    "normalized_title_and_author_duplicates": 0,
+    "doi_duplicates": 0,
+    "title_variant_candidates": 0,
+    "co_listed_formal_and_preprint_versions": 29,
+    "unresolved_preprint_formal_correspondence": 95
+  },
+  "taxonomy": {
+    "status": "initial taxonomy retained",
+    "rationale": "config/research_scope.yaml restricts taxonomy revision to the domain-map phase; records contain provisional title-and-abstract categories.",
+    "unclassified_title_and_abstract": []
+  },
+  "follow_up_verification": [
+    "Resolve DOI and proceedings pages, abstracts, and formal/preprint version links from publisher and author sources.",
+    "Classify official Media Attached targets before treating them as artifacts, code, or data.",
+    "Check author identity and title variants with publisher/preprint records once those sources are added."
+  ]
+}

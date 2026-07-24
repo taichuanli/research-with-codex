@@ -1,8 +1,36 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-const OFFICIAL_URL = 'https://conf.researchr.org/track/icse-2026/icse-2026-research-track';
 const ACCESSED_AT = new Date().toISOString();
+
+const VENUE_CONFIGS = Object.freeze({
+  ICSE2026: Object.freeze({
+    venue_id: 'ICSE2026',
+    conference: 'ICSE',
+    year: 2026,
+    conference_edition: 'icse-2026',
+    official_track: 'Research Track',
+    display_name: 'ICSE 2026 Research Track',
+    official_url: 'https://conf.researchr.org/track/icse-2026/icse-2026-research-track',
+    file_stem: 'icse2026-research-track',
+  }),
+  FSE2026: Object.freeze({
+    venue_id: 'FSE2026',
+    conference: 'FSE',
+    year: 2026,
+    conference_edition: 'fse-2026',
+    official_track: 'Research Papers',
+    display_name: 'FSE 2026 Research Papers',
+    official_url: 'https://conf.researchr.org/track/fse-2026/fse-2026-research-papers',
+    file_stem: 'fse2026-research-papers',
+  }),
+});
+
+function resolveVenueConfig(venueId = 'ICSE2026') {
+  const config = VENUE_CONFIGS[venueId];
+  if (!config) throw new Error(`Unsupported venue configuration: ${venueId}`);
+  return config;
+}
 
 function decodeHtml(value) {
   return value
@@ -24,7 +52,7 @@ function extractAttr(tag, name) {
   return match ? decodeHtml(match[1]) : null;
 }
 
-function parseOfficialTrackPage(html) {
+function parseOfficialTrackPage(html, officialTrack = resolveVenueConfig().official_track) {
   const overviewStart = html.search(/id="event-overview"/i);
   const callStart = html.search(/id="Call-for-Papers"/i);
   const section = html.slice(overviewStart >= 0 ? overviewStart : 0, callStart >= 0 ? callStart : html.length);
@@ -33,7 +61,7 @@ function parseOfficialTrackPage(html) {
   for (const rowMatch of section.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)) {
     const row = rowMatch[0];
     const trackMatch = row.match(/<div\s+class="prog-track">([\s\S]*?)<\/div>/i);
-    if (!trackMatch || textFromHtml(trackMatch[1]) !== 'Research Track') continue;
+    if (!trackMatch || textFromHtml(trackMatch[1]) !== officialTrack) continue;
 
     const titleMatch = row.match(/<a\b[^>]*data-event-modal="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
     if (!titleMatch) continue;
@@ -49,16 +77,19 @@ function parseOfficialTrackPage(html) {
     let doi_url = null;
     let preprint_url = null;
     let media_url = null;
+    const official_links = [];
     for (const linkMatch of row.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
       const href = extractAttr(linkMatch[1], 'href');
       const label = textFromHtml(linkMatch[2]);
-      if (!href) continue;
-      if (label === 'DOI' || /doi\.org\//i.test(href)) doi_url = href;
+      if (!href || !/\bpublication-link\b/i.test(linkMatch[1])) continue;
+      official_links.push({ label, url: href });
       if (label === 'Pre-print') preprint_url = href;
+      else if (label === 'DOI' || /doi\.org\//i.test(href)) doi_url = href;
       if (label === 'Media Attached') media_url = href;
     }
     const paper = { official_event_id, title, authors, doi_url, preprint_url };
     if (media_url) paper.media_url = media_url;
+    if (official_links.length) paper.official_links = official_links;
     papers.set(official_event_id, paper);
   }
 
@@ -85,8 +116,8 @@ function parseOfficialEventDetails(payload) {
     const href = extractAttr(linkMatch[1], 'href');
     const label = textFromHtml(linkMatch[2]);
     if (!href) continue;
-    if (label === 'DOI' || /doi\.org\//i.test(href)) doi_url = href;
     if (label === 'Pre-print') preprint_url = href;
+    else if (label === 'DOI' || /doi\.org\//i.test(href)) doi_url = href;
     if (label === 'Media Attached') media_url = href;
   }
   const detailLink = [...modal.value.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)]
@@ -113,10 +144,10 @@ function modalRequestFromPage(html) {
   return { action_url: decodeHtml(formMatch[2]), action_name: actionMatch[1], event_input_name: eventInput[1], fields };
 }
 
-async function fetchOfficialEventDetails(paper, request) {
+async function fetchOfficialEventDetails(paper, request, config) {
   const form = new FormData();
   for (const field of request.fields) form.append(field.name, field.value);
-  form.append('context', 'icse-2026');
+  form.append('context', config.conference_edition);
   form.append(request.event_input_name, paper.official_event_id);
   form.append(request.action_name, '1');
   form.append('__ajax_runtime_request__', 'event-modal-loader');
@@ -147,45 +178,55 @@ function classifyPaperText(title, abstract) {
   return 'UNCLASSIFIED_TITLE_AND_ABSTRACT';
 }
 
-function canonicalRecord(paper) {
+function canonicalRecord(paper, config = resolveVenueConfig(), accessedAt = ACCESSED_AT) {
   const doi = paper.doi_url && paper.doi_url.match(/doi\.org\/([^?#]+)$/i);
+  const officialLinks = paper.official_links || [];
+  const urlsFor = (pattern) => officialLinks.filter((link) => pattern.test(link.label)).map((link) => link.url);
+  const pdfUrls = urlsFor(/^(paper|pdf)$/i);
+  const publicationUrls = urlsFor(/^link to publication$/i);
+  const artifactUrls = urlsFor(/artifact/i);
+  const codeUrls = urlsFor(/^(code|source code|repository)$/i);
+  const dataUrls = urlsFor(/^(data|dataset)$/i);
+  const knownLink = (link) => /^(doi|pre-print|media attached|paper|pdf|link to publication|code|source code|repository|data|dataset)$/i.test(link.label) || /artifact/i.test(link.label) || /doi\.org\//i.test(link.url);
+  const unclassifiedOfficialLinks = officialLinks.filter((link) => !knownLink(link));
   const sourceRecords = [
     {
       source_type: 'official_program',
-      url: OFFICIAL_URL,
-      accessed_at: ACCESSED_AT,
+      url: config.official_url,
+      accessed_at: accessedAt,
       source_locator: `Accepted Papers / official event ${paper.official_event_id}`,
-      supports: 'direct_evidence: official Research Track inclusion, title, authors, and listed external links',
+      supports: `direct_evidence: official ${config.official_track} inclusion, title, authors, and listed external links`,
       access_status: 'accessed',
     },
   ];
-  if (paper.official_detail_url) sourceRecords.push({ source_type: 'official_detail', url: paper.official_detail_url, accessed_at: ACCESSED_AT, source_locator: `official event ${paper.official_event_id} / All Details`, supports: 'direct_evidence: official abstract and listed external links', access_status: 'accessed' });
-  if (paper.doi_url) sourceRecords.push({ source_type: 'official_program_link', url: paper.doi_url, accessed_at: ACCESSED_AT, source_locator: `official event ${paper.official_event_id} / DOI link`, supports: 'direct_evidence: DOI or publisher target listed by official program', access_status: 'not_fetched' });
-  if (paper.preprint_url) sourceRecords.push({ source_type: 'official_program_link', url: paper.preprint_url, accessed_at: ACCESSED_AT, source_locator: `official event ${paper.official_event_id} / Pre-print link`, supports: 'direct_evidence: accessible preprint target listed by official program', access_status: 'not_fetched' });
-  if (paper.media_url) sourceRecords.push({ source_type: 'official_program_link', url: paper.media_url, accessed_at: ACCESSED_AT, source_locator: `official event ${paper.official_event_id} / Media Attached link`, supports: 'direct_evidence: media target listed by official program', access_status: 'not_fetched' });
+  if (paper.official_detail_url) sourceRecords.push({ source_type: 'official_detail', url: paper.official_detail_url, accessed_at: accessedAt, source_locator: `official event ${paper.official_event_id} / All Details`, supports: 'direct_evidence: official abstract and listed external links', access_status: 'accessed' });
+  for (const link of officialLinks) sourceRecords.push({ source_type: 'official_program_link', url: link.url, accessed_at: accessedAt, source_locator: `official event ${paper.official_event_id} / ${link.label || 'unlabelled'} link`, supports: `direct_evidence: ${link.label || 'unlabelled'} target listed by official program`, access_status: 'not_fetched' });
 
   return {
-    paper_id: `ICSE2026_${slugify(paper.title)}`,
+    paper_id: `${config.venue_id}_${slugify(paper.title)}`,
     official_event_id: paper.official_event_id,
     title: paper.title,
     authors: paper.authors,
-    venue: { venue_id: 'ICSE2026', conference: 'ICSE', year: 2026, official_track: 'Research Track' },
+    venue: { venue_id: config.venue_id, conference: config.conference, year: config.year, official_track: config.official_track },
     publication: {
       doi: doi ? doi[1] : null,
       publisher_url: paper.doi_url,
-      pdf_url: null,
+      pdf_url: pdfUrls[0] || null,
+      paper_url: publicationUrls[0] || null,
       preprint_url: paper.preprint_url,
-      artifact_url: null,
-      code_urls: [],
-      data_urls: [],
+      artifact_url: artifactUrls[0] || null,
+      code_urls: codeUrls,
+      data_urls: dataUrls,
       media_url: paper.media_url || null,
+      officially_listed_links: officialLinks,
+      unclassified_official_link_urls: unclassifiedOfficialLinks,
     },
     abstract: paper.abstract || null,
     abstract_status: paper.abstract ? 'verified_from_official_event_details' : (paper.detail_fetch_error || 'not_present_in_official_event_details; pending publisher, author, or preprint verification'),
     source_records: sourceRecords,
     corpus_status: {
       inclusion_status: 'included',
-      decision_reason: 'direct_evidence: listed under Accepted Papers with track label Research Track on the official ICSE 2026 Research Track page',
+      decision_reason: `direct_evidence: listed under Accepted Papers with track label ${config.official_track} on the official ${config.display_name} page`,
       taxonomy_categories: [classifyPaperText(paper.title, paper.abstract)],
       taxonomy_assignment: {
         claim_type: 'agent_inference',
@@ -200,9 +241,11 @@ function canonicalRecord(paper) {
       official_listing: 'verified',
       authors: paper.authors.length ? 'verified_from_official_listing' : 'missing_from_official_listing',
       official_detail: paper.official_detail_url ? 'verified' : (paper.detail_fetch_error || 'not_verified'),
-      publication_link: paper.doi_url ? 'listed_by_official_program_not_fetched' : 'not_listed',
+      publication_link: paper.doi_url || pdfUrls.length || publicationUrls.length ? 'listed_by_official_program_not_fetched' : 'not_listed',
       preprint_or_paper_link: paper.preprint_url ? 'listed_by_official_program_not_fetched' : 'not_listed',
-      artifact_code_data: paper.media_url ? 'media_link_listed_by_official_program_not_classified' : 'not_listed',
+      artifact_code_data: artifactUrls.length || codeUrls.length || dataUrls.length
+        ? 'listed_by_official_program_not_fetched'
+        : (unclassifiedOfficialLinks.length || paper.media_url ? 'official_links_listed_by_program_not_classified' : 'not_listed'),
       abstract: paper.abstract ? 'verified_from_official_event_details' : 'not_verified',
     },
     notes: 'This corpus-build record intentionally does not contain a paper card, deep reading, cross-conference synthesis, or research-gap judgment.',
@@ -243,19 +286,65 @@ function duplicateAudit(records) {
   };
 }
 
+function coverageAudit(officialPapers, records) {
+  const recordsByEvent = new Map(records.map((record) => [record.official_event_id, record]));
+  const officialEventIds = new Set(officialPapers.map((paper) => paper.official_event_id));
+  const missing_official_event_records = officialPapers
+    .filter((paper) => !recordsByEvent.has(paper.official_event_id))
+    .map((paper) => ({ official_event_id: paper.official_event_id, title: paper.title }));
+  const local_records_not_in_official_baseline = records
+    .filter((record) => !officialEventIds.has(record.official_event_id))
+    .map((record) => ({ paper_id: record.paper_id, official_event_id: record.official_event_id, title: record.title }));
+  const title_mismatches = [];
+  const author_mismatches = [];
+  const source_conflicts = [];
+  const missing_official_links = [];
+
+  for (const officialPaper of officialPapers) {
+    const record = recordsByEvent.get(officialPaper.official_event_id);
+    if (!record) continue;
+    if (officialPaper.title !== record.title) title_mismatches.push({ paper_id: record.paper_id, official_value: officialPaper.title, local_value: record.title });
+    if (JSON.stringify(officialPaper.authors) !== JSON.stringify(record.authors)) author_mismatches.push({ paper_id: record.paper_id, official_value: officialPaper.authors, local_value: record.authors });
+
+    const officialLinks = officialPaper.official_links || [];
+    const retainedLinks = record.publication.officially_listed_links || [];
+    const missingLinks = officialLinks.filter((officialLink) => !retainedLinks.some((retainedLink) => retainedLink.label === officialLink.label && retainedLink.url === officialLink.url));
+    if (missingLinks.length) missing_official_links.push({ paper_id: record.paper_id, links: missingLinks });
+
+    const officialDoi = officialLinks.find((link) => link.label === 'DOI' || (link.label !== 'Pre-print' && /doi\.org\//i.test(link.url)));
+    const officialPreprint = officialLinks.find((link) => link.label === 'Pre-print');
+    if ((officialDoi?.url || null) !== (record.publication.publisher_url || null)) source_conflicts.push({ paper_id: record.paper_id, field: 'publisher_url', official_value: officialDoi?.url || null, local_value: record.publication.publisher_url || null });
+    if ((officialPreprint?.url || null) !== (record.publication.preprint_url || null)) source_conflicts.push({ paper_id: record.paper_id, field: 'preprint_url', official_value: officialPreprint?.url || null, local_value: record.publication.preprint_url || null });
+  }
+
+  const duplicates = (values) => [...new Set(values.filter((value, index) => values.indexOf(value) !== index))];
+  return {
+    method: 'direct_evidence: compare each official accepted-paper event record with the locally generated corpus record; compare titles, ordered author strings, official link labels, and official DOI/pre-print fields without fetching external targets.',
+    missing_official_event_records,
+    local_records_not_in_official_baseline,
+    title_mismatches,
+    author_mismatches,
+    duplicate_local_paper_ids: duplicates(records.map((record) => record.paper_id)),
+    duplicate_local_official_event_ids: duplicates(records.map((record) => record.official_event_id)),
+    missing_official_links,
+    source_conflicts,
+  };
+}
+
 async function main() {
-  const response = await fetch(OFFICIAL_URL);
+  const config = resolveVenueConfig(process.argv[2] || 'ICSE2026');
+  const response = await fetch(config.official_url);
   if (!response.ok) throw new Error(`Official source fetch failed: ${response.status} ${response.statusText}`);
   const html = await response.text();
-  const accepted = parseOfficialTrackPage(html);
-  if (!accepted.length) throw new Error('No Research Track papers parsed from the official source.');
+  const accepted = parseOfficialTrackPage(html, config.official_track);
+  if (!accepted.length) throw new Error(`No ${config.official_track} papers parsed from the official source.`);
   const modalRequest = modalRequestFromPage(html);
   const detailed = [];
   for (let index = 0; index < accepted.length; index += 4) {
     const batch = accepted.slice(index, index + 4);
     const results = await Promise.all(batch.map(async (paper) => {
       try {
-        return { ...paper, ...(await fetchOfficialEventDetails(paper, modalRequest)) };
+        return { ...paper, ...(await fetchOfficialEventDetails(paper, modalRequest, config)) };
       } catch (error) {
         return { ...paper, detail_fetch_error: `official_event_details_fetch_failed: ${error.message}` };
       }
@@ -263,53 +352,62 @@ async function main() {
     detailed.push(...results);
     process.stderr.write(`Fetched official details for ${Math.min(index + batch.length, accepted.length)}/${accepted.length} papers\n`);
   }
-  const records = detailed.map(canonicalRecord);
+  const records = detailed.map((paper) => canonicalRecord(paper, config));
   const paperIds = new Set(records.map((record) => record.paper_id));
   if (paperIds.size !== records.length) throw new Error('Generated paper_id collision; manual resolution required.');
+  const coverageValidation = coverageAudit(accepted, records);
+  if (coverageValidation.missing_official_event_records.length || coverageValidation.local_records_not_in_official_baseline.length || coverageValidation.title_mismatches.length || coverageValidation.author_mismatches.length || coverageValidation.duplicate_local_official_event_ids.length) {
+    throw new Error('Official-list coverage validation failed; inspect generated parsing inputs before writing corpus artifacts.');
+  }
 
   const root = path.resolve(__dirname, '..');
   const corpusDir = path.join(root, 'corpus');
   await fs.mkdir(corpusDir, { recursive: true });
-  await fs.writeFile(path.join(corpusDir, 'icse2026-research-track.jsonl'), `${records.map((record) => JSON.stringify(record)).join('\n')}\n`);
-  await fs.writeFile(path.join(corpusDir, 'icse2026-research-track-official-baseline.json'), `${JSON.stringify({
-    venue_id: 'ICSE2026',
-    official_track: 'Research Track',
-    source: { url: OFFICIAL_URL, accessed_at: ACCESSED_AT, source_locator: 'Accepted Papers tab', access_status: 'accessed_http_200' },
+  await fs.writeFile(path.join(corpusDir, `${config.file_stem}.jsonl`), `${records.map((record) => JSON.stringify(record)).join('\n')}\n`);
+  await fs.writeFile(path.join(corpusDir, `${config.file_stem}-official-baseline.json`), `${JSON.stringify({
+    venue_id: config.venue_id,
+    official_track: config.official_track,
+    source: { url: config.official_url, accessed_at: ACCESSED_AT, source_locator: 'Accepted Papers tab', access_status: 'accessed_http_200' },
     accepted_paper_count: accepted.length,
     accepted_papers: detailed,
   }, null, 2)}\n`);
   const dedupAudit = duplicateAudit(records);
-  await fs.writeFile(path.join(corpusDir, 'icse2026-research-track-dedup-audit.json'), `${JSON.stringify(dedupAudit, null, 2)}\n`);
+  await fs.writeFile(path.join(corpusDir, `${config.file_stem}-dedup-audit.json`), `${JSON.stringify(dedupAudit, null, 2)}\n`);
 
   const report = {
-    venue_id: 'ICSE2026',
-    scope: 'ICSE 2026 Research Track only',
+    venue_id: config.venue_id,
+    scope: `${config.display_name} only`,
     claim_type: 'direct_evidence',
-    source_locator: `${OFFICIAL_URL} / Accepted Papers tab`,
+    source_locator: `${config.official_url} / Accepted Papers tab`,
     official_accepted_count: accepted.length,
     local_corpus_record_count: records.length,
     coverage: { numerator: records.length, denominator: accepted.length, percentage: (records.length / accepted.length) * 100 },
+    coverage_validation: coverageValidation,
     fields: {
       title: records.filter((record) => record.title).length,
       authors: records.filter((record) => record.authors.length).length,
       official_source: records.filter((record) => record.source_records.length).length,
       official_detail_page: records.filter((record) => record.access_and_verification.official_detail === 'verified').length,
       doi_or_publisher_link: records.filter((record) => record.publication.publisher_url).length,
+      paper_or_pdf_link: records.filter((record) => record.publication.paper_url || record.publication.pdf_url).length,
       preprint_link: records.filter((record) => record.publication.preprint_url).length,
       abstract: records.filter((record) => record.abstract).length,
       artifact_or_media_link: records.filter((record) => record.publication.artifact_url || record.publication.media_url).length,
       code_link: records.filter((record) => record.publication.code_urls.length).length,
       data_link: records.filter((record) => record.publication.data_urls.length).length,
+      unclassified_official_link: records.filter((record) => record.publication.unclassified_official_link_urls.length).length,
     },
     unavailable_or_pending: {
       abstracts: records.filter((record) => !record.abstract).map((record) => record.paper_id),
       official_detail_fetch_failures: records.filter((record) => record.access_and_verification.official_detail !== 'verified').map((record) => ({ paper_id: record.paper_id, status: record.access_and_verification.official_detail })),
+      papers: records.filter((record) => !record.publication.paper_url && !record.publication.pdf_url).map((record) => record.paper_id),
       artifacts_code_data: records.filter((record) => !record.publication.artifact_url && !record.publication.code_urls.length && !record.publication.data_urls.length).map((record) => record.paper_id),
+      unclassified_official_links: records.filter((record) => record.publication.unclassified_official_link_urls.length).map((record) => ({ paper_id: record.paper_id, links: record.publication.unclassified_official_link_urls })),
       external_link_targets_not_fetched: records.flatMap((record) => record.source_records.filter((source) => source.access_status === 'not_fetched').map((source) => ({ paper_id: record.paper_id, url: source.url }))),
     },
-    source_conflicts: [],
+    source_conflicts: coverageValidation.source_conflicts,
     deduplication: {
-      audit_file: 'corpus/icse2026-research-track-dedup-audit.json',
+      audit_file: `corpus/${config.file_stem}-dedup-audit.json`,
       exact_normalized_title_duplicates: dedupAudit.exact_normalized_title_duplicates.length,
       normalized_title_and_author_duplicates: dedupAudit.normalized_title_and_author_duplicates.length,
       doi_duplicates: dedupAudit.doi_duplicates.length,
@@ -320,10 +418,10 @@ async function main() {
     taxonomy: { status: 'initial taxonomy retained', rationale: 'config/research_scope.yaml restricts taxonomy revision to the domain-map phase; records contain provisional title-and-abstract categories.', unclassified_title_and_abstract: records.filter((record) => record.corpus_status.taxonomy_categories.includes('UNCLASSIFIED_TITLE_AND_ABSTRACT')).map((record) => record.paper_id) },
     follow_up_verification: ['Resolve DOI and proceedings pages, abstracts, and formal/preprint version links from publisher and author sources.', 'Classify official Media Attached targets before treating them as artifacts, code, or data.', 'Check author identity and title variants with publisher/preprint records once those sources are added.'],
   };
-  await fs.writeFile(path.join(root, 'reports', 'icse2026-corpus-build-report.json'), `${JSON.stringify(report, null, 2)}\n`);
-  process.stdout.write(`${JSON.stringify({ official_accepted_count: accepted.length, local_corpus_record_count: records.length, report: 'reports/icse2026-corpus-build-report.json' })}\n`);
+  await fs.writeFile(path.join(root, 'reports', `${config.file_stem}-corpus-build-report.json`), `${JSON.stringify(report, null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify({ official_accepted_count: accepted.length, local_corpus_record_count: records.length, report: `reports/${config.file_stem}-corpus-build-report.json` })}\n`);
 }
 
 if (require.main === module) main().catch((error) => { console.error(error.stack || error); process.exitCode = 1; });
 
-module.exports = { parseOfficialTrackPage, parseOfficialEventDetails, classifyPaperText, duplicateAudit };
+module.exports = { resolveVenueConfig, parseOfficialTrackPage, parseOfficialEventDetails, canonicalRecord, classifyPaperText, duplicateAudit, coverageAudit };
