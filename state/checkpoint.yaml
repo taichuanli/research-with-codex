@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DEEP_READING_COMPLETED
+current_phase: CROSS_PAPER_SYNTHESIZED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -22,6 +22,8 @@ phase_catalog:
   - DEEP_READING_COMPLETED
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
+  - CROSS_PAPER_SYNTHESIZED
+  - IDEA_SEEDING
   - IDEA_GENERATION
   - PRIOR_ART_ATTACK
   - DIRECTION_NARROWING
@@ -64,6 +66,10 @@ completed_items:
   - "DEEP_READING_BATCH_2: completed a 42-row cross-paper comparison of signal source, availability, offline/online use, affected decisions, causal status, validation, assumptions, failure boundaries, and reusable assets."
   - "DEEP_READING_BATCH_2: updated all seven mechanism-cluster syntheses on the basis of 42 cards and preserved cross-cluster contradictions, evidence gaps, value shifts, and version/data inconsistencies without generating a research idea."
   - "DEEP_READING_BATCH_2: fully read six targeted dLLM manuscripts and limited transferable evidence to token/block commitment granularity, arbitrary-location infilling, and diffusion-native outcome training; no repository-agent control or general autoregressive-superiority claim was found."
+  - "CROSS_PAPER_SYNTHESIS: created a 42-row unified mechanism matrix covering signal, availability, affected decision, online/offline use, causal status, feedback channels, validation, assumptions, failure boundaries, assets, and access-weighted evidence."
+  - "CROSS_PAPER_SYNTHESIS: organized the evidence-acquisition, state-localization, action-selection, and intent-validation chain; preserved six cross-paper contradictions and identified missing connections without selecting a preferred direction."
+  - "CROSS_PAPER_SYNTHESIS: recorded shared assumptions, evidence weaknesses, reusable assets, and nine research pressure points, each limited to the observed tension, closest work, unresolved question, and evidence needed."
+  - "CROSS_PAPER_SYNTHESIS: retained dLLMs as an adjacent observation axis for commitment granularity, infilling, and diffusion-native training; no core-cluster promotion, AR-superiority claim, complete idea, method, or experiment was produced."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -575,5 +581,198 @@ deep_reading_completed:
     source_locator: "Phase boundary"
     statement: "Deep reading is complete and ready for CROSS_PAPER_SYNTHESIS. No final research idea, method proposal, novelty claim, prior-art attack, or direction narrowing was generated in this phase."
   human_decisions_pending: []
-next_phase: CROSS_PAPER_SYNTHESIS
-last_updated: "2026-07-25T05:47:18Z"
+cross_paper_synthesis:
+  status: completed
+  phase_completed: CROSS_PAPER_SYNTHESIZED
+  next_phase: IDEA_SEEDING
+  paper_count: 42
+  mechanism_cluster_count: 7
+  pressure_point_count: 9
+  outputs:
+    - "synthesis/cross-paper-synthesis.md"
+    - "synthesis/unified-mechanism-matrix.csv"
+    - "synthesis/dllm-adjacent-watchlist.md"
+  evidence:
+    claim_type: direct_evidence
+    source: "synthesis/unified-mechanism-matrix.csv"
+    source_locator: "42 data rows; signal_source through source_locator"
+    statement: "Every selected paper is compared on observable signal, signal timing, affected action, use mode, causal status, feedback channels, validation, assumptions, failure boundary, reusable assets, and access-weighted evidence."
+  mechanism_chain:
+    evidence_acquisition:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Failure and recovery chain / Stage 1"
+      statement: "Execution, tests, program analysis, formal feedback, histories, traces, and model internals provide evidence, but acquisition can fail before reasoning and prospective selection of which evidence to obtain remains rare."
+    state_localization:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Failure and recovery chain / Stage 2"
+      statement: "Runtime, location, proof, memory, and predictive representations make state actionable, but factual completeness, causal correctness, and corruption detection are usually assumed rather than directly tested."
+    action_selection:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Failure and recovery chain / Stage 3"
+      statement: "Twenty-seven works consume a focal signal online or deploy a learned policy online, yet action attribution and transfer across valid alternatives, models, and scaffolds remain weak."
+    intent_validation:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Failure and recovery chain / Stage 4"
+      statement: "Tests, builds, formal checks, coverage, gold patches, and judgments close useful proxy loops, but no reviewed work closes all four stages with independently validated user intent."
+  contradictions:
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 1"
+      statement: "Targeted runtime state and iterations can improve outcomes while unrestricted execution and incomplete selected tests can be neutral or harmful."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 2"
+      statement: "A checkable test, build, proof, or model-checking endpoint can improve reliability without establishing intended semantics."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 3"
+      statement: "High confidence, coherent simulation, or endpoint agreement does not uniquely identify correct reasoning."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 4"
+      statement: "Memory has two-sided risk: retaining noise and deleting weakly scored but useful evidence can both reduce outcomes."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 5"
+      statement: "More search, diversity, or reasoning can hurt, while targeted iterations improve outcomes within some tested ranges."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Cross-paper contradictions / item 6"
+      statement: "Endpoint-supervised process training can improve behavior without proving intermediate fidelity or cross-scaffold transfer."
+  shared_assumptions:
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Shared hidden assumptions / items 1-2"
+      statement: "Task proxies encode intended outcomes, and failures reproduce stably enough for traces, tests, slices, and builds to remain comparable."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Shared hidden assumptions / items 3-4"
+      statement: "Derived state is faithful enough for the next decision, and historical experience remains relevant after repository, framework, model, language, or time shift."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Shared hidden assumptions / items 5-6"
+      statement: "Endpoint rewards provide useful local credit, and host models can invoke, interpret, and stop using control affordances at the right time."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Shared hidden assumptions / item 7"
+      statement: "Cost and outcome comparisons remain meaningful across unequal contexts, models, parallelism, tool overhead, and validation scope."
+  evidence_gaps:
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Principal evidence weaknesses"
+      statement: "Prospective evidence acquisition, representation-fidelity interventions, and independent root-cause/action labels are sparse."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Principal evidence weaknesses"
+      statement: "Intent-aware validation and explicit handling of alternative valid solutions remain unresolved."
+    - claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Principal evidence weaknesses"
+      statement: "Cross-framework, cross-model, cross-language, temporal, and repeated-run transfer is unevenly tested."
+    - claim_type: direct_evidence
+      source: "synthesis/unified-mechanism-matrix.csv"
+      source_locator: "evidence_access and evidence_weight"
+      statement: "Seven papers have artifact-plus-abstract evidence and one has abstract-only evidence, preventing manuscript-level sampling, statistics, ablation, and threat audits for those works."
+  reusable_assets:
+    claim_type: direct_evidence
+    source: "synthesis/cross-paper-synthesis.md"
+    source_locator: "Reusable assets"
+    statement: "The corpus contributes trace parsers and datasets, fault injectors, runtime/debugging tools, test and oracle pipelines, formal controllers, memory schemas, signal implementations, and training data or models, subject to each card's availability and version notes."
+  pressure_points:
+    - pressure_point_id: SELECTIVE_EVIDENCE_ACQUISITION
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P1"
+      statement: "Scoped feedback helps while unrestricted access can hurt; whether acquisition value is predictable before a tool or test call lacks prospective evidence."
+    - pressure_point_id: REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P2"
+      statement: "Dynamic state is valuable once available, but reproduction and coverage often fail before localization or action selection can be assessed."
+    - pressure_point_id: DERIVED_STATE_FIDELITY
+      confidence: moderate_high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P3"
+      statement: "Derived representations improve endpoints without establishing that retained or generated facts are complete and causally faithful."
+    - pressure_point_id: MEMORY_FALSE_RETENTION_VS_DELETION
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P4"
+      statement: "The joint decision cost of retaining distracting evidence and deleting useful evidence is not estimated in one common setting."
+    - pressure_point_id: DIAGNOSIS_TO_ACTION_VALIDITY
+      confidence: moderate
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P5"
+      statement: "Taxonomies and root-cause narratives are not independently linked to actions that repair intended behavior rather than only pass tests."
+    - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P6"
+      statement: "The relationship among confidence, reversibility, action granularity, and the right time to commit, backtrack, or stop is not transferable across current studies."
+    - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P7"
+      statement: "Accepted patches, builds, specifications, and proofs can remain wrong, underspecified, or over-constrained relative to intended semantics."
+    - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P8"
+      statement: "Predictive confidence and progress signals are not reliably calibrated to the value or recoverability of a particular next action."
+    - pressure_point_id: ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+      confidence: high
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P9"
+      statement: "Process-training gains remain entangled with endpoint labels, gold exposure, data volume, formatting, model capacity, and scaffold-specific correlations."
+  evidence_confidence:
+    access_counts:
+      full_text_high: 34
+      artifact_plus_official_abstract_moderate: 7
+      official_abstract_only_low: 1
+    higher_confidence:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Evidence-confidence summary"
+      statement: "Non-monotonic feedback value, proxy-versus-intent divergence, and the unverified fidelity of derived state have convergent full-text positive and negative evidence."
+    moderate_confidence:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Evidence-confidence summary"
+      statement: "AgentInspect, Deductive Steering, PingFL, SpecGuru, AttnCompress, CausalRepair, and SWE-PDB have inspectable mechanisms or partial results but no accessible manuscript."
+    low_confidence:
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Evidence-confidence summary"
+      statement: "RISC-V RCA's reported accuracy, MCTS contribution, dataset protocol, and failure distribution remain abstract-only claims."
+  dllm_axis:
+    status: adjacent_observation_axis
+    claim_type: agent_inference
+    source: "synthesis/dllm-adjacent-watchlist.md"
+    source_locator: "CROSS_PAPER_SYNTHESIS disposition"
+    statement: "Only commitment granularity, arbitrary-location infilling, and diffusion-native outcome training are retained as real intersections; agent-level feedback transfer is absent and no AR-superiority or final-direction claim is supported."
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-25"
+    source_locator: "Ruby YAML/CSV/card/report phase audit; node --test scripts/*.test.js; git diff --check"
+    statement: "Both YAML files parsed; the matrix matched all 42 cards, seven clusters of six, 27 online-or-deployed uses, and the 34/7/1 access split; the report contained the four-stage chain, six contradictions, and nine pressure points; phase and next-phase fields agreed; all 18 repository tests passed; and tracked diffs had no whitespace errors."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "synthesis/cross-paper-synthesis.md"
+    source_locator: "Phase conclusion"
+    statement: "CROSS_PAPER_SYNTHESIS is complete and the evidence base is ready for IDEA_SEEDING; no complete research idea, method, experiment, novelty claim, prior-art attack, or direction narrowing was produced."
+  human_decisions_pending: []
+next_phase: IDEA_SEEDING
+last_updated: "2026-07-25T15:23:33Z"

@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-25T01:47:18-04:00"
+last_reviewed_at: "2026-07-25T11:13:44-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: DEEP_READING_COMPLETED
-  next_phase: CROSS_PAPER_SYNTHESIS
+  current_phase: CROSS_PAPER_SYNTHESIZED
+  next_phase: IDEA_SEEDING
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -135,4 +135,31 @@ deep_reading_progress:
     synthesis_path: "synthesis/deep-reading-complete-synthesis.md"
     comparison_path: "synthesis/cross-paper-comparison.csv"
     adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
-  phase_boundary: "All 42 selected papers have structured evidence cards and a seven-cluster complete-reading synthesis. Eight Batch 2 cards are necessarily bounded by unavailable manuscripts. No final research idea, complete method proposal, novelty claim, prior-art attack, or later-phase direction work was performed; CROSS_PAPER_SYNTHESIS has not started."
+  phase_boundary: "All 42 selected papers have structured evidence cards and a seven-cluster complete-reading synthesis. Eight Batch 2 cards are necessarily bounded by unavailable manuscripts. CROSS_PAPER_SYNTHESIS is complete, but no final research idea, complete method proposal, novelty claim, prior-art attack, or later-phase direction work was performed."
+
+cross_paper_synthesis:
+  status: completed
+  phase_completed: CROSS_PAPER_SYNTHESIZED
+  next_phase: IDEA_SEEDING
+  paper_count: 42
+  mechanism_cluster_count: 7
+  pressure_point_count: 9
+  evidence_access:
+    full_text: 34
+    artifact_plus_official_abstract: 7
+    official_abstract_only: 1
+  inputs:
+    cards_path: "cards/"
+    batch_1_synthesis_path: "synthesis/deep-reading-batch-1-synthesis.md"
+    complete_synthesis_path: "synthesis/deep-reading-complete-synthesis.md"
+    comparison_path: "synthesis/cross-paper-comparison.csv"
+    adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
+  outputs:
+    synthesis_path: "synthesis/cross-paper-synthesis.md"
+    unified_matrix_path: "synthesis/unified-mechanism-matrix.csv"
+  mechanism_chain:
+    - EVIDENCE_ACQUISITION
+    - STATE_LOCALIZATION
+    - ACTION_SELECTION
+    - INTENT_VALIDATION
+  phase_boundary: "Mechanism synthesis, contradictions, assumptions, evidence gaps, reusable assets, nine research pressure points, and the adjacent dLLM disposition are complete. No complete research idea, method, or experiment was generated."
