@@ -1,0 +1,82 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_specguru-hierarchical-llm-driven-api-points-to-specification-generation-"
+title: "SpecGuru: Hierarchical LLM-Driven API Points-to Specification Generation with Self-Validation"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Shuangxiang Kan", "Yuekang Li", "Xiao Cheng", "Yulei Sui"]
+  corpus_locator: "corpus/icse2026-research-track.jsonl / line 256 / official event 5d3563da-2a70-4ca9-8425-f00dac02b083"
+  full_text_url: null
+  artifact_url: "https://github.com/SVF-tools/SpecGuru"
+  version_reviewed: "Official abstract plus artifact commit 73da89e, 21 October 2025; no manuscript located"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Client static analysis needs API points-to summaries, but complex implementation code, dependencies, and edge cases make manual or existing inference incomplete."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Analyzing functions independently loses callees, while passing full call chains to an LLM is large and difficult to validate."
+  claim_type: author_claim
+  source_locator: "Official abstract; artifact / RQ1.py header"
+technical_mechanisms:
+  - statement: "SpecGuru traverses a call hierarchy bottom-up, generates reduced C function bodies encoding alias relations, and reuses validated callee summaries when processing callers."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+  - statement: "The artifact synthesizes C tests, compiles/runs each against original and reduced functions, retries failed summaries, and retains the candidate with the broadest validated alias set."
+    claim_type: direct_evidence
+    source_locator: "Artifact / get_summaries_with_LLM.py, dynamic_test.py, and parser"
+assumptions:
+  - statement: "Generated tests cover the points-to behavior that matters, and agreement on those tests makes a reduced body safe to substitute higher in the call graph."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact / dynamic_test.py"
+evaluation:
+  datasets:
+    - statement: "The official abstract evaluates 15 third-party C libraries; the artifact packages their source/configuration datasets."
+      claim_type: direct_evidence
+      source_locator: "Official abstract; artifact / Dataset"
+  baselines:
+    - statement: "Spectre and c-summary are the reported specification-inference baselines; complete-source analysis is the downstream reference."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  metrics:
+    - statement: "The reported outcomes are number of generated specifications and agreement of downstream points-to analysis; artifact code also logs attempts, tokens, and generation/test time."
+      claim_type: author_claim
+      source_locator: "Official abstract; artifact / files.py and get_summaries_with_LLM.py"
+  ablations:
+    - statement: "Artifact entry points compare isolated functions, complete call chains, bottom-up summaries, and bottom-up plus differential testing; no result files are packaged."
+      claim_type: direct_evidence
+      source_locator: "Artifact / RQ1.py and RQ2-3.py"
+  main_results:
+    - statement: "The authors report 21% more specifications than Spectre, 46% more than c-summary, and downstream analysis comparable to complete source."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+conclusion_evidence:
+  - statement: "Validation feedback is used online to reject and regenerate summaries, but the available artifact does not establish that self-generated tests prevent semantic error propagation outside observed inputs."
+    claim_type: agent_inference
+    source_locator: "Artifact / get_summaries_with_LLM.py and dynamic_test.py"
+limitations:
+  - statement: "No manuscript or packaged outputs were located; experiments require proprietary LLM APIs and Clang, and the scope is C points-to behavior."
+    claim_type: agent_inference
+    source_locator: "Artifact README; access audit"
+failure_modes:
+  - statement: "A wrong summary can pass weak generated tests and then become trusted context for callers; the repository mentions RANSAC in the RQ2 header but no RANSAC implementation was found outside that comment."
+    claim_type: direct_evidence
+    source_locator: "Artifact / RQ2-3.py header; repository-wide source search; dynamic_test.py"
+reusable_artifacts:
+  - statement: "The repository contains parsers, 15 library snapshots, prompts, summary/test generation, differential execution, and experiment drivers."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/SVF-tools/SpecGuru at commit 73da89e"
+within_cluster_difference:
+  - statement: "SpecGuru uses execution as an incremental representation gate, unlike PingFL's localization verifier and PatchDiff's benchmark auditor."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its conceptual value remains high for representation validation, but evidential value is lower because the manuscript, outputs, and stated RANSAC component cannot be audited."
+  claim_type: agent_inference
+  source_locator: "Access audit; artifact source search"
+evidence_gaps:
+  - statement: "Summary false-positive rates, generated-test adequacy, error propagation by depth, exact RANSAC role, and comparisons under equal LLM budgets remain unresolved."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact scope"

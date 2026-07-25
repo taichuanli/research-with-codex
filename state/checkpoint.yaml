@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DEEP_READING_BATCH_1_COMPLETED
+current_phase: DEEP_READING_COMPLETED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -19,6 +19,7 @@ phase_catalog:
   - DEEP_READING_BATCH_1
   - DEEP_READING_BATCH_1_COMPLETED
   - DEEP_READING_BATCH_2
+  - DEEP_READING_COMPLETED
   - REPRESENTATIVE_PAPER_DEEP_READ
   - CROSS_PAPER_SYNTHESIS
   - IDEA_GENERATION
@@ -58,6 +59,11 @@ completed_items:
   - "DEEP_READING_BATCH_1: recorded paper-level problems, prior-method limitations, mechanisms, assumptions, datasets, baselines, metrics, ablations, result locators, limitations, failure modes, artifacts, within-cluster differences, and relevance reassessments using the required claim types."
   - "DEEP_READING_BATCH_1: synthesized online versus offline intervention, signal-to-decision evidence, shared assumptions, empirical/method consistency, contradictions, and unresolved evidence in synthesis/deep-reading-batch-1-synthesis.md."
   - "DEEP_READING_BATCH_1: created a nine-paper cross-domain dLLM watchlist without adding a new equal-weight cluster or claiming superiority over autoregressive models."
+  - "DEEP_READING_BATCH_2: completed structured evidence cards for all 21 assigned papers, with exactly three papers per mechanism cluster; 13 cards use full manuscripts, seven use official abstracts plus inspectable artifacts, and one uses an official abstract and publisher record only."
+  - "DEEP_READING_BATCH_2: re-evaluated all five Batch 1 findings and explicitly overturned the literal offline-prevalence claim, strongly supported three findings with sharper boundaries, and replaced a universal recovery bottleneck with a staged constraint chain."
+  - "DEEP_READING_BATCH_2: completed a 42-row cross-paper comparison of signal source, availability, offline/online use, affected decisions, causal status, validation, assumptions, failure boundaries, and reusable assets."
+  - "DEEP_READING_BATCH_2: updated all seven mechanism-cluster syntheses on the basis of 42 cards and preserved cross-cluster contradictions, evidence gaps, value shifts, and version/data inconsistencies without generating a research idea."
+  - "DEEP_READING_BATCH_2: fully read six targeted dLLM manuscripts and limited transferable evidence to token/block commitment granularity, arbitrary-location infilling, and diffusion-native outcome training; no repository-agent control or general autoregressive-superiority claim was found."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -69,13 +75,16 @@ corpus_audit:
   conclusion:
     claim_type: agent_inference
     source: "reports/cross-venue-corpus-audit-report.json / phase_gate"
+    source_locator: "phase_gate"
     statement: "No corpus-integrity, scope, source-traceability, or cross-venue duplicate signal blocks entry to FIELD_MAPPING."
   non_blocking_follow_up:
     - claim_type: direct_evidence
       source: "reports/cross-venue-corpus-audit-report.json / schema_and_classification_audit"
+      source_locator: "schema_and_classification_audit"
       statement: "ICSE 2026 lacks three optional publication keys present in the other corpora; the merged index normalizes them to null or empty arrays."
     - claim_type: direct_evidence
       source: "reports/cross-venue-corpus-audit-report.json / links_and_follow_up"
+      source_locator: "links_and_follow_up"
       statement: "396 official external targets are retained as not_fetched, 13 official link labels remain unclassified, and three ASE records retain UNCLASSIFIED_TITLE_AND_ABSTRACT for FIELD_MAPPING reconciliation."
   human_decisions_pending: []
 field_mapping:
@@ -113,12 +122,15 @@ field_mapping:
   non_blocking_uncertainty:
     - claim_type: direct_evidence
       source: "synthesis/field-mapping-summary.json / uncertainty"
+      source_locator: "uncertainty"
       statement: "One paper remains CROSS_CUTTING_OR_UNCERTAIN, 166 assignments are low-confidence, 84 retain tied-domain notes, and 252 official abstracts do not state a specific evaluation setting."
     - claim_type: direct_evidence
       source: "reports/cross-venue-corpus-audit-report.json / links_and_follow_up.by_venue"
+      source_locator: "links_and_follow_up.by_venue"
       statement: "No official program link is explicitly labeled artifact, code, or data; abstract-stated framework/tool/dataset contributions do not establish artifact availability."
     - claim_type: agent_inference
       source: "reports/field-mapping-report.md / Concentration and diffusion signals"
+      source_locator: "Concentration and diffusion signals"
       statement: "The one-venue 2025 versus three-venue 2026 comparison supports cross-venue diffusion signals but not a controlled temporal growth claim."
   human_decisions_pending: []
 deep_reading_selection:
@@ -168,12 +180,15 @@ deep_reading_selection:
   non_blocking_uncertainty:
     - claim_type: direct_evidence
       source: "synthesis/deep-reading-selection.json / summary.full_text_status_counts"
+      source_locator: "summary.full_text_status_counts"
       statement: "Three selected papers currently have only a publisher record and eight public full texts were not located after targeted search; all eleven are in Batch 2."
     - claim_type: agent_inference
       source: "synthesis/deep-reading-selection.json / selected_papers.selection_basis"
+      source_locator: "selected_papers.selection_basis"
       statement: "Official titles and abstracts were sufficient for all selection decisions; detailed method and result claims remain questions for deep reading."
     - claim_type: agent_inference
       source: "reports/deep-reading-selection-report.md / Readiness"
+      source_locator: "Readiness"
       statement: "State understanding and decision control as a closed loop remains an observation relationship, not a selected idea or presumed direction."
   outputs:
     - "synthesis/deep-reading-selection.json"
@@ -337,5 +352,228 @@ deep_reading_batch_1:
     source_locator: "Stage boundary"
     statement: "All required Batch 1 reading, paper cards, cluster synthesis, contradiction tracking, and adjacent dLLM reconnaissance are complete, so the workspace can enter DEEP_READING_BATCH_2 without generating a research idea in this phase."
   human_decisions_pending: []
-next_phase: DEEP_READING_BATCH_2
-last_updated: "2026-07-24T17:21:57Z"
+deep_reading_batch_2:
+  status: completed
+  completed_count: 21
+  mechanism_cluster_count: 7
+  papers_per_cluster: 3
+  paper_ids:
+    - ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea
+    - ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a
+    - ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-
+    - ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-
+    - ISSTA2026_steering-tree-of-thought-reasoning-via-deductive-verification
+    - ICSE2026_saint-service-level-integration-test-generation-with-program-analysis-an
+    - ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud
+    - ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method
+    - ICSE2026_specguru-hierarchical-llm-driven-api-points-to-specification-generation-
+    - FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai
+    - ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar
+    - ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack
+    - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+    - ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe
+    - ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+    - ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based
+    - ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning
+    - ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au
+    - ICSE2026_sealign-alignment-training-for-software-engineering-agent
+    - ISSTA2026_swe-pdb-teaching-llms-to-leverage-debugging-tools-via-agentic-training
+    - ISSTA2026_seer-self-enhancing-chain-of-thought-compression-for-reasoning-models
+  mechanism_coverage:
+    FAILURE_LOOPS_RECOVERY: 3
+    PLANNING_ACTION_TOOL_STOPPING: 3
+    TEST_EXECUTION_ANALYSIS_FEEDBACK: 3
+    STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION: 3
+    OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS: 3
+    DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS: 3
+    TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION: 3
+  evidence_access:
+    full_paper: 13
+    artifact_plus_official_abstract: 7
+    official_abstract_only: 1
+  evidence:
+    claim_type: direct_evidence
+    source: "cards/*.yaml"
+    source_locator: "21 cards with phase=DEEP_READING_BATCH_2 and reading_status=deep_read"
+    statement: "Every assigned Batch 2 paper has a structured source-located card. Thirteen cards use a full manuscript, seven use an official abstract plus an inspectable official/author artifact, and RISC-V RCA uses an official abstract and publisher record only."
+  access_audit:
+    claim_type: direct_evidence
+    source: "card metadata, official records, OpenAlex, Crossref, artifact packages, and publisher endpoints checked 2026-07-25"
+    source_locator: "Batch 2 card metadata.evidence_access; artifact package inventories; IEEE endpoint checks"
+    statement: "No additional manuscript was found for AgentInspect, Deductive Steering, PingFL, SpecGuru, AttnCompress, CausalRepair, SWE-PDB, or RISC-V RCA; the two available IEEE PDF endpoints returned publisher anti-automation responses and did not provide readable papers."
+  outputs:
+    - "cards/"
+    - "synthesis/deep-reading-complete-synthesis.md"
+    - "synthesis/cross-paper-comparison.csv"
+    - "synthesis/dllm-adjacent-watchlist.md"
+  human_decisions_pending: []
+deep_reading_completed:
+  status: completed
+  completed_count: 42
+  completed_batches:
+    DEEP_READING_BATCH_1: 21
+    DEEP_READING_BATCH_2: 21
+  mechanism_cluster_count: 7
+  papers_per_cluster: 6
+  evidence:
+    claim_type: direct_evidence
+    source: "cards/*.yaml; synthesis/cross-paper-comparison.csv"
+    source_locator: "all cards have reading_status=deep_read; comparison has 42 data rows"
+    statement: "The complete reading set has 42 selected papers, with six cards per mechanism cluster and 21 cards in each batch; the comparison table records all requested signal, timing, use, decision, causal, validation, assumption, failure-boundary, and asset fields."
+  batch_1_finding_reassessment:
+    offline_diagnosis_vs_online_intervention:
+      disposition: overturned_and_narrowed
+      evidence:
+        claim_type: agent_inference
+        source: "synthesis/deep-reading-complete-synthesis.md"
+        source_locator: "Reassessment 1; cross-paper-comparison.csv / use_mode"
+        statement: "The literal prevalence claim is overturned: 27 of 42 works consume a signal online or deploy an offline-trained policy online. The narrower claim that clean prospective causal evidence for choosing a better future action is scarce remains supported."
+    more_tests_retrieval_tools_or_reasoning_can_hurt:
+      disposition: strongly_supported_with_boundary_conditions
+      evidence:
+        claim_type: agent_inference
+        source: "synthesis/deep-reading-complete-synthesis.md"
+        source_locator: "Reassessment 2; To Run, ExpeRepair, APR Traceability, both SEER, TraceCoder, EvidenT, and Code-MUE cards"
+        statement: "The non-monotonic-return finding is supported across execution, retrieval, memory, sampling, and reasoning length, while targeted iterations and more probes can help when the signal, timing, context capacity, and validation oracle are aligned."
+    validation_proxy_vs_task_intent:
+      disposition: strongly_supported_and_broadened
+      evidence:
+        claim_type: agent_inference
+        source: "synthesis/deep-reading-complete-synthesis.md"
+        source_locator: "Reassessment 3; PatchDiff, To Run, SAINT, EvidenT, CES, Code-MUE, and formal-method cards"
+        statement: "Tests, formal checks, coherent execution reasoning, and task intent can diverge; the stable boundary is an executable or checkable proxy versus intended semantics, not a blanket failure of testing or formal methods."
+    representation_fidelity_assumption:
+      disposition: strongly_supported_and_sharpened
+      evidence:
+        claim_type: agent_inference
+        source: "synthesis/deep-reading-complete-synthesis.md"
+        source_locator: "Reassessment 4; Watson, ExpeRepair, ReinFix, AttnCompress, Atropos, CausalRepair, Code-MUE, SpecGuru, SEAlign, and state cards"
+        statement: "State, memory, and evidence representations commonly assume they are faithful enough for the next decision without directly testing factual completeness, causal correctness, or corruption robustness; Watson supplies direct counterevidence to unique reconstruction."
+    recovery_bottleneck:
+      disposition: narrowed_to_staged_constraint_chain
+      evidence:
+        claim_type: agent_inference
+        source: "synthesis/deep-reading-complete-synthesis.md"
+        source_locator: "Reassessment 5; APR Traceability, EvidenT, ADI, PingFL, TraceCoder, RustForger, CausalRepair, ReinFix, PatchDiff, and To Run cards"
+        statement: "No universal dominant bottleneck remains. Recovery is constrained in sequence by evidence acquisition, state/localization, action selection, and intent-aligned validation; the binding constraint is task- and trajectory-stage-specific."
+  seven_cluster_findings:
+    FAILURE_LOOPS_RECOVERY:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 1"
+      statement: "Four studies diagnose loops or injected failures and two alter recovery actions; visible repetition is a symptom that can arise from missing reproducible evidence, hidden runtime state, non-actionable feedback, or poor rollback."
+    PLANNING_ACTION_TOOL_STOPPING:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 2"
+      statement: "External checkers can prune, repair, or backtrack actions when the state/action language is well defined, but controlled execution access shows that more tool use is not generally better; selective invocation remains unresolved."
+    TEST_EXECUTION_ANALYSIS_FEEDBACK:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 3"
+      statement: "Test and probe relevance matters more consistently than count, but coverage and generated-test adequacy remain the critical limits; several online mechanisms lack manuscript-level outcome evidence."
+    STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 4"
+      statement: "Typed, refreshed state is more defensible than undifferentiated context, yet both retrieval and compression show non-monotonic value; even the strongest evidence-rebuilding loop validates build state rather than runtime intent."
+    OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 5"
+      statement: "AdaDec and Atropos provide the strongest signal-to-action evidence, whereas most other signals rank, reject, or reconstruct after the decision; confidence is not correctness because consensus or reconstruction can be wrong."
+    DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 6"
+      statement: "The stronger evidence improves repair context and action ingredients, not independently correct root-cause explanations; the abstract-only RISC-V RCA is retained as diagnosis evidence rather than made artificially symmetric with online repair."
+    TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION:
+      claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Seven mechanism clusters / 7"
+      statement: "Fine-grained process controls can improve endpoint outcomes, but intermediate labels mostly originate from tests or gold patches; endpoint success does not establish rationale/value fidelity and scaffold transfer is weakly supported."
+  contradictions_and_pressure_points:
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Cross-cluster contradictions and pressure points"
+      statement: "Targeted iterative feedback can improve outcomes while unrestricted execution is neutral or harmful, so iteration count alone is not explanatory."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Cross-cluster contradictions and pressure points"
+      statement: "Formal validity can be irrelevant to user intent when the encoding is unfaithful, and endpoint-coherent reasoning is not uniquely identifiable as correct reasoning."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Cross-cluster contradictions and pressure points"
+      statement: "Memory selection has two-sided risk: retaining noise harms decisions and deleting weakly scored evidence can also harm decisions; no study estimates both costs together."
+  shared_assumptions:
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Shared assumptions"
+      statement: "Tests, checkers, builds, and developer patches adequately encode intended tasks and outcomes."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Shared assumptions"
+      statement: "Failures and the resulting traces, slices, reduced inputs, and build feedback reproduce stably enough to compare across decisions."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Shared assumptions"
+      statement: "Compressed or derived state is faithful enough for the next action, and historical trajectories remain relevant under model, framework, repository, and tool-interface shift."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Shared assumptions"
+      statement: "Endpoint rewards can assign useful credit to intermediate reasoning and actions, and cost-outcome comparisons remain meaningful across unequal system configurations."
+  evidence_gaps:
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Evidence gaps before cross-paper synthesis"
+      statement: "Prospective policies that choose which signal, tool, or test to acquire are rare compared with fixed-signal consumption or fixed-budget comparisons."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Evidence gaps before cross-paper synthesis"
+      statement: "Representation-fidelity interventions, independent root-cause/action labels, and intent-aware validation beyond tests, encodings, builds, or oracle patches are largely absent."
+    - claim_type: agent_inference
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Evidence gaps before cross-paper synthesis"
+      statement: "Cross-framework, cross-model, cross-language, and temporal transfer remains weakly tested, while eight Batch 2 cards lack manuscript-level sampling, statistical, ablation, and threat evidence."
+  dllm_watchlist:
+    status: targeted_reading_completed
+    watchlist_count: 9
+    targeted_full_read_count: 6
+    targeted_full_read_papers:
+      - CodeFusion
+      - Block Diffusion
+      - d1
+      - Fast-dLLM
+      - DiffuCoder
+      - Dream 7B
+    abstract_only_watch_papers:
+      - Diffusion of Thoughts
+      - LLaDA
+      - Seed Diffusion
+    evidence:
+      claim_type: direct_evidence
+      source: "synthesis/dllm-adjacent-watchlist.md"
+      source_locator: "Batch 2 targeted full reading; Watch status"
+      statement: "Six dLLM manuscripts were read in full and three remain abstract-level reconnaissance; the watchlist is adjacent to, not part of, the 42-paper SE corpus."
+    conclusion:
+      claim_type: agent_inference
+      source: "synthesis/dllm-adjacent-watchlist.md"
+      source_locator: "Cross-paper verdict on the five dLLM axes"
+      statement: "Token/block commitment granularity, arbitrary-location infilling, and diffusion-native outcome training have real mechanism evidence. No reviewed dLLM paper demonstrates test/tool feedback driving denoising revision or repository-agent decisions, and no general advantage over autoregressive models is supported."
+  version_and_data_consistency_issues:
+    - claim_type: direct_evidence
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Version, access, and data consistency audit"
+      statement: "AttnCompress's compressed average is 53.17% versus an uncompressed 55.17% artifact average; SEER compression has a 236/261 percentage inconsistency and an official-title/manuscript-title mismatch."
+    - claim_type: direct_evidence
+      source: "synthesis/deep-reading-complete-synthesis.md"
+      source_locator: "Version, access, and data consistency audit"
+      statement: "SpecGuru's stated RANSAC role is not implemented in the inspected artifact; Atropos extrapolates one RepairAgent target-model run; Repair Ingredients has a Kai/Kevin Huang mismatch; and Code-MUE has an official/manuscript apostrophe mismatch."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "synthesis/deep-reading-complete-synthesis.md"
+    source_locator: "Phase boundary"
+    statement: "Deep reading is complete and ready for CROSS_PAPER_SYNTHESIS. No final research idea, method proposal, novelty claim, prior-art attack, or direction narrowing was generated in this phase."
+  human_decisions_pending: []
+next_phase: CROSS_PAPER_SYNTHESIS
+last_updated: "2026-07-25T05:47:18Z"

@@ -1,0 +1,82 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_steering-tree-of-thought-reasoning-via-deductive-verification"
+title: "Steering Tree-of-Thought Reasoning via Deductive Verification"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Haoliang Cheng", "Enyi Tang", "Shuoxiao Zhang", "Jiahe Mao", "Yanling Fu", "Zhiyuan Ma", "Keyu Cui", "Yuchuan Liu", "Yu Tian", "Xinyu Gao", "Haibin Wang"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 172 / official event 414ba45a-a835-4761-9da5-c41ce1487080"
+  full_text_url: null
+  artifact_url: "https://doi.org/10.5281/zenodo.21031774"
+  version_reviewed: "Official abstract plus Deductive Steering artifact deposited 29 June 2026; no manuscript located"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Tree-of-Thought search uses heuristic LLM self-evaluation, which can prune correct paths or spend tokens exploring logically invalid ones."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Backtracking alone does not make path selection reliable when the same model generates and judges its reasoning."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+technical_mechanisms:
+  - statement: "Each candidate contains a natural-language thought and an SMT encoding; a solver tests whether it follows from accumulated constraints, then counterexamples drive refinement or search backtracking."
+    claim_type: author_claim
+    source_locator: "Official event abstract"
+  - statement: "The artifact implements sampling, deductive evaluation, counterexample guidance, exploration, backtrack optimization, task adapters, traces, and switches that disable three components."
+    claim_type: direct_evidence
+    source_locator: "Zenodo artifact / README; core, deductive_steering, smt, and tasks directories"
+assumptions:
+  - statement: "The LLM's SMT encoding is faithful enough that solver validity transfers back to the natural-language step and original task intent."
+    claim_type: agent_inference
+    source_locator: "Official abstract / candidate generator and deductive evaluator"
+evaluation:
+  datasets:
+    - statement: "The official abstract reports five benchmarks spanning fault localization, program synthesis, loop invariants, and a mathematical extension; the artifact names Defects4J and LoopInv316 but omits full result tables."
+      claim_type: author_claim
+      source_locator: "Official event abstract; artifact README / Tasks and unsupported claims"
+  baselines:
+    - statement: "The abstract describes comparison with ToT-style baselines; exact baseline configurations are unavailable without the manuscript."
+      claim_type: author_claim
+      source_locator: "Official event abstract"
+  metrics:
+    - statement: "Accuracy and token consumption are the reported outcomes; artifact traces also expose solver and search statistics."
+      claim_type: author_claim
+      source_locator: "Official event abstract; artifact README / Output"
+  ablations:
+    - statement: "The artifact can disable sampling selection, deductive verification, or counterexample guidance, but explicitly does not package the full-scale Tables 2-5 results."
+      claim_type: direct_evidence
+      source_locator: "Artifact README / Ablation Experiments and Paper Claims NOT Supported"
+  main_results:
+    - statement: "The official abstract reports 11.4-17.2 percentage-point accuracy gains and 27-45% token reductions across the five benchmarks."
+      claim_type: author_claim
+      source_locator: "Official event abstract"
+conclusion_evidence:
+  - statement: "Solver outcomes do alter candidate choice online, but available evidence cannot separate solver value from encoding quality or verify the paper's full comparisons."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact README and module implementation"
+limitations:
+  - statement: "No manuscript or packaged full-scale outputs were located; reproducing Defects4J is estimated by the artifact at about 46 hours of API calls."
+    claim_type: direct_evidence
+    source_locator: "Artifact README / Paper Claims NOT Supported"
+failure_modes:
+  - statement: "A satisfiable or entailed mistranslation can be formally valid yet irrelevant or wrong for the source problem; the solver cannot detect that representation error."
+    claim_type: agent_inference
+    source_locator: "Official abstract / candidate encoding and solver check"
+reusable_artifacts:
+  - statement: "The artifact provides a modular controller, SMT integration, examples, batch scripts, configuration switches, and detailed traces."
+    claim_type: direct_evidence
+    source_locator: "Zenodo artifact / README and project tree"
+within_cluster_difference:
+  - statement: "Deductive Steering makes candidate pruning online and externally checkable, unlike To Run's observational policy question, but covers only tasks expressible in the chosen logic."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "The mechanism remains relevant, but confidence is lower than screening because the central encoding-fidelity assumption and full result tables could not be audited."
+  claim_type: agent_inference
+  source_locator: "Official abstract; artifact README"
+evidence_gaps:
+  - statement: "Needed evidence includes encoding-error rates, manual semantic audits, failure-by-formalizability, compute-matched search baselines, and packaged full results."
+    claim_type: agent_inference
+    source_locator: "Artifact access audit and official abstract"

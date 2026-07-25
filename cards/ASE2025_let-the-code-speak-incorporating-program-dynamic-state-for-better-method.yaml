@@ -1,0 +1,82 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ASE2025_let-the-code-speak-incorporating-program-dynamic-state-for-better-method"
+title: "Let the Code Speak: Incorporating Program Dynamic State for Better Method-Level Fault Localization"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "ASE 2025 Research Papers"
+  authors: ["Yihao Qin", "Shangwen Wang", "Bo Lin", "Xin Peng", "Sheng Ouyang", "Liqian Chen", "Xiaoguang Mao"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://doi.org/10.1109/ASE63991.2025.00072"
+  artifact_url: "https://github.com/IntHelloWorld/PingFL"
+  version_reviewed: "IEEE publisher record plus official PingFL repository commit 4fdc067, 30 August 2025; publisher manuscript unavailable"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Static-code-only LLM fault localization lacks concrete runtime state and can hallucinate suspicious methods."
+  claim_type: author_claim
+  source_locator: "Official publisher/event abstract"
+prior_methods_insufficient:
+  statement: "Existing LLM fault localizers do not iteratively verify nominated methods through print debugging."
+  claim_type: author_claim
+  source_locator: "Official publisher/event abstract"
+technical_mechanisms:
+  - statement: "PingFL combines a fault-localization agent with repository, test, stack-trace, and call-graph tools and a print-debugging agent that inserts probes to verify suspected behavior across rounds."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+  - statement: "The repository implements candidate-priority graphs, tool schemas, separate agent prompts, execution verification, and configurations removing the PD agent, stack trace, suspected issue, test code/output, or thought."
+    claim_type: direct_evidence
+    source_locator: "Artifact / src, config, MethodCallGraphBuilder, and test directories"
+assumptions:
+  - statement: "Inserted prints expose state causally relevant to the fault, and text passed between the two LLM agents faithfully communicates the suspicion and evidence."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact prompts and agent workflow"
+evaluation:
+  datasets:
+    - statement: "The official abstract reports 812 Defects4J 2.0.1 bugs; the artifact includes the corresponding bug/test mapping and preprocessing pipeline."
+      claim_type: author_claim
+      source_locator: "Official abstract; artifact / dataset/all_bugs.csv and README"
+  baselines:
+    - statement: "The official abstract compares LLM-based and traditional cross-project localization methods; exact tables are unavailable."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  metrics:
+    - statement: "Top-k localization, cost, and time are reported in the abstract; artifact scripts compute rankings from generated debug records."
+      claim_type: author_claim
+      source_locator: "Official abstract; artifact / evaluate.py"
+  ablations:
+    - statement: "Seven repository configurations expose intended removals of the print-debugging agent and individual evidence channels, but packaged result outputs are absent."
+      claim_type: direct_evidence
+      source_locator: "Artifact / config/*.yml"
+  main_results:
+    - statement: "The authors report Top-1 localization for 450 of 812 bugs, 41-122% improvement over LLM baselines, and mean cost/time of $0.22 and 104.62 seconds; print debugging accounts for $0.07 and 51.62 seconds."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+conclusion_evidence:
+  - statement: "Dynamic state is consumed online to verify and reprioritize locations, but without the manuscript/results the causal contribution and failure distribution cannot be independently audited."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact workflow and ablation configs"
+limitations:
+  - statement: "Publisher full text and experiment outputs were not accessible; evidence is Java/Defects4J-specific and requires reproducible failing tests and instrumentation."
+    claim_type: agent_inference
+    source_locator: "Access audit; artifact README and dataset"
+failure_modes:
+  - statement: "Missing or misleading failing tests, state not reached by probes, and text-level miscommunication between agents can preserve a false suspicion."
+    claim_type: agent_inference
+    source_locator: "Artifact workflow, prompts, and preprocessing requirements"
+reusable_artifacts:
+  - statement: "The repository provides the two-agent implementation, prompts, Defects4J mapping, call-graph builder, ablation configs, and evaluation scripts."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/IntHelloWorld/PingFL at commit 4fdc067"
+within_cluster_difference:
+  - statement: "PingFL directly uses runtime state for localization, unlike PatchDiff's post-hoc evaluation; it validates a suspected location rather than a completed patch or specification."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "The mechanism remains highly relevant, but the evidence rating is lower than selection expected because manuscript-level ablations and statistical details are unavailable."
+  claim_type: agent_inference
+  source_locator: "Access audit; artifact configs"
+evidence_gaps:
+  - statement: "Full ablation results, probe precision, root-cause correctness beyond location, non-Java transfer, and downstream repair impact remain unverified."
+    claim_type: agent_inference
+    source_locator: "Official abstract and artifact scope"

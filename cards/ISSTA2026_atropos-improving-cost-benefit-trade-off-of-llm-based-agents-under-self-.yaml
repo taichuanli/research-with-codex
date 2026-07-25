@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-"
+title: "Atropos: Improving Cost-Benefit Trade-off of LLM-based Agents under Self-Consistency with Early Termination and Model Hotswap"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Naryeong Kim", "Shin Yoo"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2604.15075"
+  version_reviewed: "arXiv:2604.15075v1, 16 April 2026, 17 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "Self-consistency spends full-model cost on trajectories that will ultimately fail, while cheap source models cannot match stronger target-model outcomes."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1"
+prior_methods_insufficient:
+  statement: "Completed-trajectory correctness prediction and voting confidence arrive too late to terminate or migrate a partial inference."
+  claim_type: author_claim
+  source_locator: "Sections 1-3.1"
+technical_mechanisms:
+  - statement: "Atropos converts partial reasoning/tool trajectories into Semantic Flow Graphs whose nodes encode action identity, arguments, and reasoning embeddings, then trains a GCN failure classifier."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.2; Figures 2-3"
+  - statement: "A predicted failure can terminate a parallel trajectory or trigger context migration from a cheaper source model to a stronger target model; a sequential variant switches remaining ensemble samples."
+    claim_type: direct_evidence
+    source_locator: "Section 3.3; Figure 3"
+assumptions:
+  - statement: "Agent-specific endpoint labels make partial graph patterns predictive under future tasks/models, and migrated weak-model context helps rather than anchors the stronger model."
+    claim_type: agent_inference
+    source_locator: "Sections 3.1-3.3 and 6"
+evaluation:
+  datasets:
+    - statement: "AutoFL uses Defects4J plus BugsInPy, AutoCodeRover uses 500 SWE-bench Lite tasks, and RepairAgent uses 605 Defects4J bugs with ten-sample self-consistency."
+      claim_type: direct_evidence
+      source_locator: "Section 4; Table 1"
+  baselines:
+    - statement: "Majority class, vote confidence, Lachesis, source-only, and target-only configurations are compared for Llama-3/GPT-4o, Mixtral/GPT-4, and GPT-3.5/GPT-4o pairs."
+      claim_type: direct_evidence
+      source_locator: "Sections 4-5"
+  metrics:
+    - statement: "Accuracy, AUROC, AUPR, FPR@95, task endpoint performance, rescued/destructive outcomes, and relative monetary cost are reported."
+      claim_type: direct_evidence
+      source_locator: "Section 4; Tables 2-5; Figures 4-8"
+  ablations:
+    - statement: "The paper varies truncation/hotswap point, labeling criterion, graph components, parallel versus sequential operation, and agent/model pair."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.4"
+  main_results:
+    - statement: "Full-trajectory prediction reaches up to 0.93 accuracy and AUROC; ACR midpoint partial graphs reach 0.85 accuracy/AUROC."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.2; Table 2; Figures 4-5"
+    - statement: "Parallel hotswap retains 74.35% of AutoFL target performance at 23.90% cost and 77.67% of ACR performance at 83.28% cost."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 4"
+    - statement: "RepairAgent's reported 78.92% target performance at 64.73% cost extrapolates ten-sample GPT-4o performance from one target-model run."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 4 and extrapolation note"
+conclusion_evidence:
+  - statement: "Partial state prediction causally triggers termination or model switching and outcomes are measured after intervention, making this strong online control evidence with agent-specific labels."
+    claim_type: agent_inference
+    source_locator: "Sections 3.3 and 5.2-5.3"
+limitations:
+  - statement: "Graph vocabularies and labels differ by agent, ACR excludes reproduction cost, RepairAgent target outcomes are extrapolated, and the study uses historical trajectories to train predictors."
+    claim_type: direct_evidence
+    source_locator: "Sections 4, 5.3, and 6, Threats to Validity"
+failure_modes:
+  - statement: "Very early graphs lack discriminating actions; false alarms can destructively switch correct trajectories, while late switches preserve costly weak-model commitments."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.2-5.3; Figures 5 and 8"
+reusable_artifacts:
+  - statement: "The paper releases source-model results, graph construction, trained predictors, and evaluation artifacts."
+    claim_type: direct_evidence
+    source_locator: "Section 5.2 footnote; artifact statement"
+within_cluster_difference:
+  - statement: "Atropos is the only paper in this cluster whose learned signal directly changes an agent/model action; Watson is post-hoc and Code-MUE primarily ranks or rejects completed candidates."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its relevance remains high, but cross-agent transfer and RepairAgent evidence are weaker than the headline suggests."
+  claim_type: agent_inference
+  source_locator: "Table 4; Sections 5.3 and 6"
+evidence_gaps:
+  - statement: "Prospective cross-repository drift, calibrated decision costs, comparison with simple partial-test signals, and non-extrapolated repair hotswaps remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6"

@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud"
+title: "Are “Solved Issues” in SWE-bench Really Solved Correctly? An Empirical Study"
+primary_mechanism_cluster: TEST_EXECUTION_ANALYSIS_FEEDBACK
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["You Wang", "Michael Pradel", "Zhongxin Liu"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://doi.org/10.1145/3744916.3764576"
+  version_reviewed: "ACM manuscript, DOI 10.1145/3744916.3764576, 13 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "SWE-bench labels patches correct using incomplete tests, so plausible patches can satisfy the harness while violating developer expectations."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Running only benchmark-selected tests or generic test generators misses repository tests and patch-specific behavioral differences."
+  claim_type: author_claim
+  source_locator: "Sections 1-3 and 4.2.3"
+technical_mechanisms:
+  - statement: "The study first reruns every available developer test, then PatchDiff identifies functions affected differently by generated and oracle patches, collects call traces, generates focused tests, repairs them, and filters invalid discrepancies."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.2; Figure 2"
+  - statement: "A stratified manual audit compares issue text, repository behavior, developer tests, generated tests, and oracle patches to classify suspicious patches as correct, incorrect, or uncertain."
+    claim_type: direct_evidence
+    source_locator: "Section 4.3; Tables 7-8"
+assumptions:
+  - statement: "The oracle patch is a useful differential reference, although valid alternative implementations may intentionally behave differently and the issue may underspecify that difference."
+    claim_type: agent_inference
+    source_locator: "Sections 3.2, 4.3, and 5"
+evaluation:
+  datasets:
+    - statement: "The study evaluates 877 plausible patches produced by CodeStory, LearnByInteract, and OpenHands on 500 SWE-bench Verified tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 1"
+  baselines:
+    - statement: "PatchDiff is compared with Pynguin, CoverUp, and LIBRO and is also run with alternative underlying LLMs."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2.2-4.2.3; Tables 4-6"
+  metrics:
+    - statement: "Invalid-plausible rate, resolution-rate drop, suspicious-patch yield, API cost, discrepancy categories, and manual correctness are reported."
+      claim_type: direct_evidence
+      source_locator: "Section 4; Tables 1-8"
+  ablations:
+    - statement: "The study varies zero, one, or two test-repair iterations and four LLM backends."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2; Tables 3-4"
+  main_results:
+    - statement: "Running all developer tests finds 7.8% of plausible patches incorrect and lowers reported resolution by 4.5 percentage points on average."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 2"
+    - statement: "PatchDiff flags 260 of 877 patches (29.6%); among 77 manually inspected suspicious patches, 22 are certainly incorrect and 51 remain uncertain."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2-4.3; Tables 3 and 8"
+    - statement: "Extrapolation estimates 11.0% incorrect plausible patches and 6.4 percentage points of resolution inflation, conditional on the sampled audit and uncertainty treatment."
+      claim_type: direct_evidence
+      source_locator: "Section 4.3, Answers to RQ3"
+conclusion_evidence:
+  - statement: "Additional targeted tests reveal real benchmark false positives, yet divergent behavior is often ambiguous rather than proof of incorrectness; test feedback needs an intent model."
+    claim_type: agent_inference
+    source_locator: "Sections 4.2-5"
+limitations:
+  - statement: "PatchDiff depends on an oracle patch, supports the studied Python repositories, uses one principal LLM, and manually audits only 30% of suspicious cases."
+    claim_type: direct_evidence
+    source_locator: "Section 5, Threats to Validity"
+failure_modes:
+  - statement: "Similar-but-divergent implementations and patches that change extra behavior dominate discrepancies; underspecified issues make 66.2% of audited suspicious patches indeterminate."
+    claim_type: direct_evidence
+    source_locator: "Section 4.3; Tables 7-8"
+reusable_artifacts:
+  - statement: "Code, generated tests, patches, and study data are released."
+    claim_type: direct_evidence
+    source_locator: "Section 6; https://github.com/ZJU-CTAG/PatchDiff"
+within_cluster_difference:
+  - statement: "PatchDiff evaluates feedback validity offline, whereas PingFL and SpecGuru use execution online to verify localization or generated specifications."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is higher than screening expected because it directly quantifies both test-suite false positives and the large residual ambiguity of stronger differential feedback."
+  claim_type: agent_inference
+  source_locator: "Tables 2, 3, and 8"
+evidence_gaps:
+  - statement: "Patch validation without a developer oracle, explicit intent elicitation, non-Python replication, and causal use of PatchDiff inside an agent remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6"

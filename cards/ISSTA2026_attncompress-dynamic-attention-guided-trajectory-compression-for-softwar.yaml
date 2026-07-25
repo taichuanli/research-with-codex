@@ -1,0 +1,88 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar"
+title: "AttnCompress: Dynamic Attention-Guided Trajectory Compression for Software Engineering Agents"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Zhengran Zeng", "Yixin Li", "Rui Xie", "Wei Ye", "Shikun Zhang"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 16 / official event 93d772e0-b7f1-4c19-9823-5f67a28fc3d6"
+  full_text_url: null
+  artifact_url: "https://github.com/ZZR0/AttnCompress"
+  version_reviewed: "Official abstract plus artifact commit 30c7abe, 30 January 2026; no manuscript located"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Long trial-and-error trajectories exceed context and cost budgets, while static pruning can destroy code/log structure or remove evidence whose relevance changes over time."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Random, generic linguistic, summarization, and observation-mask compression use fixed or mismatched relevance rules."
+  claim_type: author_claim
+  source_locator: "Official abstract; artifact result/analysis_results_table1.csv"
+technical_mechanisms:
+  - statement: "AttnCompress segments trajectories at proxy-model perplexity spikes, ranks blocks using proxy attention to the current reasoning, protects a recent tail, and rolls compression forward so old blocks can be rescored or recalled."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+  - statement: "The artifact implements the compression service and rolling trajectory analyzer inside Trae Agent and packages raw trajectories plus table-rendering scripts."
+    claim_type: direct_evidence
+    source_locator: "Artifact / code/attn_compress, code/trae_agent, result"
+assumptions:
+  - statement: "A separate proxy model's token attention and perplexity boundaries faithfully identify evidence needed by another agent model for later decisions."
+    claim_type: agent_inference
+    source_locator: "Official abstract / relevance estimation; artifact implementation"
+evaluation:
+  datasets:
+    - statement: "The artifact evaluates 200-task configurations on SWE-bench Verified and includes Multi-SWE-bench Flash trajectories."
+      claim_type: direct_evidence
+      source_locator: "Artifact README; result/analysis_results_table1.csv and table3_by_lang.csv"
+  baselines:
+    - statement: "Skip/uncompressed, random, LLMLingua, LLM summary, observation masking, and an AgentDiet-style method are compared across three agent models."
+      claim_type: direct_evidence
+      source_locator: "Artifact / result/analysis_results_table1.csv"
+  metrics:
+    - statement: "Pass rate, input/output/cache tokens, total cost, steps, kept percentage, extra compression tokens, and turn-cap rate are packaged."
+      claim_type: direct_evidence
+      source_locator: "Artifact / result/analysis.py and analysis_results_table1.csv"
+  ablations:
+    - statement: "The artifact varies proxy model and layer, attention ratio, segmentation, recent-token protection, and rolling re-evaluation."
+      claim_type: direct_evidence
+      source_locator: "Artifact / result/analysis_results_table2.csv"
+  main_results:
+    - statement: "The official abstract reports a 53.17% average pass rate with 26.1% fewer tokens and 35.1% lower cost than prior compression baselines."
+      claim_type: author_claim
+      source_locator: "Official event abstract"
+    - statement: "Artifact Table 1 shows AttnCompress pass rates of 71.5%, 43.5%, and 44.5% versus uncompressed 72.5%, 46.5%, and 46.5%; 53.17% is the compressed average, below the 55.17% uncompressed average."
+      claim_type: direct_evidence
+      source_locator: "Artifact / result/analysis_results_table1.csv"
+    - statement: "On the 100-task Qwen-30B ablation, removing rolling re-evaluation drops pass rate from 44% to 37%."
+      claim_type: direct_evidence
+      source_locator: "Artifact / result/analysis_results_table2.csv"
+conclusion_evidence:
+  - statement: "Dynamic rescoring has outcome-linked ablation evidence, but compression trades a small absolute success loss against cost and does not prove that retained blocks are semantically faithful."
+    claim_type: agent_inference
+    source_locator: "Artifact Tables 1-2"
+limitations:
+  - statement: "No manuscript was located; full reproduction is estimated at about $2,000, 500 GB, and two months, and the proxy/agent model relationship is not independently calibrated."
+    claim_type: direct_evidence
+    source_locator: "Artifact README"
+failure_modes:
+  - statement: "Proxy-attention mismatch can irreversibly discard low-attention evidence, while large blocks or no rolling update make relevance stale."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact Table 2"
+reusable_artifacts:
+  - statement: "The repository provides integration code, compression service, raw trajectories, result scripts, and cross-language tables."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/ZZR0/AttnCompress at commit 30c7abe"
+within_cluster_difference:
+  - statement: "AttnCompress controls which trajectory state remains visible, but unlike ExpeRepair and EvidenT it neither validates memory facts nor preserves explicit negative evidence."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its mechanism is relevant, but its value is lower than the abstract suggests: the artifact shows a cost-quality trade-off rather than accuracy preservation relative to no compression."
+  claim_type: agent_inference
+  source_locator: "Artifact / analysis_results_table1.csv"
+evidence_gaps:
+  - statement: "Missing evidence includes manuscript protocol, block-retention precision/recall, counterfactual restoration tests, semantic failure analysis, and matched uncompressed cost-quality curves."
+    claim_type: agent_inference
+    source_locator: "Access audit; artifact Tables 1-3"

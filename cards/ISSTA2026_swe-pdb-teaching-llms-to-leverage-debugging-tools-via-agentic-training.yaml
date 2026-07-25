@@ -1,0 +1,82 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_swe-pdb-teaching-llms-to-leverage-debugging-tools-via-agentic-training"
+title: "SWE-PDB: Teaching LLMs to Leverage Debugging Tools via Agentic Training"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Jiaxing Liu", "Xing Hu", "Xin Xia"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 173 / official event c9b53d39-8f33-4e8b-ae5a-d4d9214250d3"
+  full_text_url: null
+  artifact_url: "https://github.com/p81sunshine/swe-pdb"
+  version_reviewed: "Official abstract plus artifact commit f48669e, 5 March 2026; no manuscript located"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Debuggers expose concrete runtime state, but long, stateful command sequences cause base models to underuse or disrupt interactive debugging."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Prompt-only agents have not been trained on structured PDB workflows or rewarded for strategic debugger use."
+  claim_type: author_claim
+  source_locator: "Official abstract"
+technical_mechanisms:
+  - statement: "SWE-PDB synthesizes and filters multi-turn debugging trajectories, applies agentic SFT, then performs PPO/GRPO-style agentic RL with rule-based test rewards."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+  - statement: "The artifact implements a PDB environment with breakpoint/step/state/rewrite observations, Qwen3 SFT scripts, and PPO training with GRPO advantage estimation and up to 80 environment steps."
+    claim_type: direct_evidence
+    source_locator: "Artifact / swe-pdb-agent/debug_gym, sft, rl/examples/swe-pdb"
+assumptions:
+  - statement: "Synthetic trajectories reflect productive real debugging, rule-based test reward induces meaningful tool strategy, and the debugger's observed run covers the bug's causal state."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact training/evaluation workflow"
+evaluation:
+  datasets:
+    - statement: "The artifact packages CaniEdit (106), DebugBench (1,128), HumanEval Buggy (136), MBPP Buggy (255), Mini Nightmare (12), Synthetic Debug (102), and SWE-bench evaluation support."
+      claim_type: direct_evidence
+      source_locator: "Artifact README and swe-pdb-agent/data"
+  baselines:
+    - statement: "The abstract states diverse base/model/tool comparisons, but exact baseline identities and complete tables are unavailable."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  metrics:
+    - statement: "Task accuracy, interaction efficiency, and meaningful debugger use are stated outcomes; environment reward is based on tests."
+      claim_type: author_claim
+      source_locator: "Official abstract; artifact environment reward code"
+  ablations:
+    - statement: "The artifact includes a 14B rewrite-only RL script and separate SFT/RL stages, but packaged ablation results are absent."
+      claim_type: direct_evidence
+      source_locator: "Artifact / rl/examples/swe-pdb and README"
+  main_results:
+    - statement: "The authors report 38.0% SWE-bench Verified accuracy for SWE-PDB-14B with complete test suites, more than three times the base-model result."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+conclusion_evidence:
+  - statement: "The learned policy consumes PDB state online, but without the manuscript it is not possible to isolate SFT, RL, debugger access, complete-test access, or additional interaction budget."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact structure"
+limitations:
+  - statement: "No manuscript/result tables were located; the system is Python/PDB-specific, training requires multiple GPUs, and test reward may encourage suite-specific behavior."
+    claim_type: agent_inference
+    source_locator: "Artifact README; access audit"
+failure_modes:
+  - statement: "Stateful breakpoint/control-flow mistakes, long trajectories, and debugger observations from unrepresentative executions can waste steps or reinforce a wrong hypothesis."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact environment"
+reusable_artifacts:
+  - statement: "The repository includes SFT train/test parquet files, 14,470 RL trajectories, six task families, the debugger environment, and 4B/8B/14B training scripts."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/p81sunshine/swe-pdb at commit f48669e; artifact README and data files"
+within_cluster_difference:
+  - statement: "SWE-PDB specializes training on executable debugger state, more concrete than SEAlign's generic endpoint-labeled actions but less broadly transferable; SEER does not train tool use."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its potential relevance is high, but evidential confidence is lower than screening because headline gains and component effects cannot be independently audited."
+  claim_type: agent_inference
+  source_locator: "Access audit; artifact contents"
+evidence_gaps:
+  - statement: "Full result/ablation tables, tool-free matched controls, hidden-test robustness, command-level credit assignment, non-Python transfer, and real repository failure analysis are missing."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact scope"

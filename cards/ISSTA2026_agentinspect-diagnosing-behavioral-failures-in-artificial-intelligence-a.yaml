@@ -1,0 +1,85 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a"
+title: "AgentInspect: Diagnosing Behavioral Failures in Artificial Intelligence Agents"
+primary_mechanism_cluster: FAILURE_LOOPS_RECOVERY
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Ruchira Manke", "Mohammad Wardat", "Foutse Khomh", "Hridesh Rajan"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 7 / official event 0c821c5b-6ed7-4f54-8a69-44e4f4d3f44c"
+  full_text_url: null
+  artifact_url: "https://doi.org/10.5281/zenodo.21482543"
+  version_reviewed: "Official abstract plus replication package deposited 25 June 2026; no manuscript located after exact-title searches"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Stochastic tool-using agents can silently fail under abnormal external-tool behavior, while ordinary software coverage and output-only tests do not characterize their behavioral robustness."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Existing agent evaluators do not combine agent-specific coverage, abnormal tool-response simulation, and deterministic trajectory-level failure detection."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+technical_mechanisms:
+  - statement: "AgentInspect generates inputs against agent-specific coverage criteria, captures tool exchanges, substitutes error, incomplete, absent, delayed, or inconsistent responses, and labels six trajectory failure categories."
+    claim_type: author_claim
+    source_locator: "Official event abstract"
+  - statement: "The artifact contains 35 LangChain agents, baseline and five perturbed trajectory sets, label workbooks, prompts, and comparison tables for repetitive reasoning, tool crashes/failures, invalid invocation, ReAct violations, and unsupported inference."
+    claim_type: direct_evidence
+    source_locator: "Zenodo artifact / Agent_Benchmark, Trajectory_Benchmark, Labeling, and Results"
+assumptions:
+  - statement: "The six labels and deterministic comparison rules adequately represent consequential behavioral failure, and synthetic tool responses resemble operational faults."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact Results/Table_1_RQ1.xlsx and labeling workbooks"
+evaluation:
+  datasets:
+    - statement: "The artifact benchmark contains 35 GitHub-derived LangChain agents and 30 labeled trajectories per agent/setting in the principal result tables."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Agent_Benchmark/35_Agents.xlsx; Results/Table_3_RQ3.xlsx"
+  baselines:
+    - statement: "AgentInspect is compared with AgentEvals and Galileo under real, simulated, and hybrid tool-response settings."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Results/Comparison_Baseline.xlsx and Comparison_Simulated_Hybrid.xlsx"
+  metrics:
+    - statement: "The supplied tables report true/false positives and negatives by failure category and agent, newly exposed faulty trajectories, category coverage, and annotator Cohen's kappa."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Results/Table_1_RQ1.xlsx; Labeling/Labeling_Cohen_Kappa.xlsx"
+  ablations:
+    - statement: "Artifact ablations vary prompt, test-suite size, and input set for selected agents."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Ablation directory"
+  main_results:
+    - statement: "The official abstract states high precision and recall and reports that simulated responses expose failures absent with real responses; the manuscript-level aggregate statistics could not be independently checked."
+      claim_type: author_claim
+      source_locator: "Official event abstract"
+    - statement: "Artifact Table 3 records new faulty trajectories for every perturbation class and many agents that had zero baseline faults; labeling kappa reaches 0.91-1.00 after the reported 25-30% coding iterations."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Results/Table_3_RQ3.xlsx; Labeling/Labeling_Cohen_Kappa.xlsx"
+conclusion_evidence:
+  - statement: "This is strong fault-injection and offline diagnosis evidence, but it does not test whether a diagnosed class selects a successful recovery action."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact contents"
+limitations:
+  - statement: "No public manuscript was located, so sampling, statistical tests, category construction, external validity, and the paper's complete threats analysis remain unverifiable from the artifact."
+    claim_type: agent_inference
+    source_locator: "Full-text access audit; artifact contents"
+failure_modes:
+  - statement: "Injected incomplete or absent responses often induce inference-without-evidence, while error and delayed responses also expose repetitive reasoning and invocation/format failures."
+    claim_type: direct_evidence
+    source_locator: "Artifact / Results/Table_1_RQ1.xlsx and Table_3_RQ3.xlsx"
+reusable_artifacts:
+  - statement: "The replication package contributes agent implementations, captured trajectories, fault simulations, labels, prompts, and ablation workbooks."
+    claim_type: direct_evidence
+    source_locator: "Zenodo artifact directory tree"
+within_cluster_difference:
+  - statement: "AgentInspect broadens failure diagnosis beyond code repair and causally injects tool faults, but its intervention target is the test environment rather than the agent's recovery policy."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is lower than screening expected for recovery control but higher for testing whether failure signals remain visible under abnormal tool behavior."
+  claim_type: agent_inference
+  source_locator: "Artifact Tables 1-3; missing manuscript audit"
+evidence_gaps:
+  - statement: "Needed evidence includes manuscript-level protocol details, non-LangChain replication, real incident frequencies, severity/outcome validation, and a diagnosis-to-recovery experiment."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact scope"

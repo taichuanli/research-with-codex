@@ -1,0 +1,84 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_saint-service-level-integration-test-generation-with-program-analysis-an"
+title: "SAINT: Service-level Integration Test Generation with Program Analysis and LLM-based Agents"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Rangeet Pan", "Raju Pavuluri", "Ruikai Huang", "Tyler Stennett", "Rahul Krishna", "Alessandro Orso", "Saurabh Sinha"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2511.13305"
+  version_reviewed: "Public author manuscript, 12 pages, downloaded 24 July 2026"
+  evidence_access: full_paper
+research_problem:
+  statement: "REST test generators often require incomplete OpenAPI files, miss code/database semantics, and fail to construct meaningful multi-endpoint scenarios."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Black-box fuzzing and specification-only LLM methods cannot reliably recover hidden endpoints, value constraints, or operation ordering from implementation code."
+  claim_type: author_claim
+  source_locator: "Sections 1-2 and 5"
+technical_mechanisms:
+  - statement: "Static analysis builds an endpoint model and operation-dependency graph from code, database access, path/value constraints, and inter-endpoint dependencies."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.3; Figures 2-3"
+  - statement: "Endpoint agents generate and repair requests and augment coverage; scenario agents extract use cases and execute plan, action, and reflection to repair request blocks and ordering."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.4-3.5; Figures 4-5"
+assumptions:
+  - statement: "Static endpoint/dependency models are sufficiently complete, and HTTP success plus coverage and response-based assertions approximate useful functional behavior."
+    claim_type: agent_inference
+    source_locator: "Sections 3.1-3.5 and 4.2"
+evaluation:
+  datasets:
+    - statement: "Eight Java services, including one proprietary application, cover systems with and without OpenAPI specifications and multiple persistence technologies."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Table 1"
+  baselines:
+    - statement: "Five LLMs are compared for SAINT generation, and EvoMaster is the principal automated service-test baseline."
+      claim_type: direct_evidence
+      source_locator: "Section 4.1; Figure 6"
+  metrics:
+    - statement: "Line, branch, database, reachability, operation-path, scenario structure, faults, cost, and a 41-developer survey are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1-4.2; Tables 2-4"
+  ablations:
+    - statement: "The ablation removes partial ordering, inter-procedural dependency extraction, value constraints, coverage augmentation, and repair components."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2.5; Table 5"
+  main_results:
+    - statement: "Relative to EvoMaster, SAINT's reported coverage differences range from -0.9 to +50.5 percentage points; partial ordering has the largest ablation effect."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2.1, Finding 2; Section 4.2.5; Table 5"
+    - statement: "More than 70% of surveyed developers rated generated tests clear, while about 66% would add them with little or no modification."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2.3; Figure 8"
+conclusion_evidence:
+  - statement: "Static state is used before generation and runtime responses revise requests online; component removal affects coverage, although the study does not isolate a learned stopping policy."
+    claim_type: agent_inference
+    source_locator: "Sections 3.4-3.5 and 4.2.5"
+limitations:
+  - statement: "Only eight Java applications and few expensive repetitions are used; unsupported frameworks/databases, incomplete specifications, and low branch reachability constrain generalization."
+    claim_type: direct_evidence
+    source_locator: "Section 6, Threats to Validity"
+failure_modes:
+  - statement: "Generated tests can hard-code state, omit setup/cleanup, and rely on weak status/raw-response assertions; scenario testing is less effective than endpoint testing for coverage."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2.2-4.2.3, Findings 4 and 6"
+reusable_artifacts:
+  - statement: "The paper releases pipeline code, prompts, subjects, and result material."
+    claim_type: direct_evidence
+    source_locator: "Section 4.1; artifact reference 47"
+within_cluster_difference:
+  - statement: "SAINT is a constructive online planner grounded in a program model, but its action outcome is test coverage/HTTP behavior rather than repository repair correctness."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its relevance is slightly narrower than screening because planning quality is mostly inferred from coverage and perception, yet the dependency and repair ablations supply genuine action-control evidence."
+  claim_type: agent_inference
+  source_locator: "Table 5; Sections 4.2.1-4.2.5"
+evidence_gaps:
+  - statement: "Mutation adequacy, semantic assertions, incorrect dependency-model interventions, longer scenarios, and direct comparison of plan/reflection policies remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4 and 6"

@@ -1,0 +1,84 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic"
+title: "Code-MUE: Measuring Code LLM' Uncertainty through Execution-based Semantic Interaction Graphs"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Xiaoning Ren", "Yinxing Xue", "Lei Ma", "Yuheng Huang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2607.12273"
+  version_reviewed: "Public manuscript downloaded 24 July 2026, 24 pages; manuscript title uses 'LLMs’' while the official index title above has a singular-apostrophe typo"
+  evidence_access: full_paper
+research_problem:
+  statement: "Black-box uncertainty metrics based on text or embeddings confuse syntactic diversity with semantic disagreement in generated code."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-3"
+prior_methods_insufficient:
+  statement: "White/gray-box confidence is unavailable for closed models, while lexical, embedding, length, and logit proxies do not represent executable behavior."
+  claim_type: author_claim
+  source_locator: "Sections 2-3; Figure 1"
+technical_mechanisms:
+  - statement: "Code-MUE samples programs, synthesizes half boundary and half nominal input-only probes, executes each sample, and builds a weighted graph from pairwise output/exception agreement."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.1-4.3; Figure 2"
+  - statement: "Normalized Von Neumann entropy of the semantic interaction graph measures dispersion; uncertainty supports rejection and eigenvector-centrality candidate selection without expected-output oracles."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.4 and 5.3"
+assumptions:
+  - statement: "The generated probes separate behaviorally meaningful hypotheses, semantic consensus correlates with correctness, and sandboxed outputs/exceptions adequately characterize code behavior."
+    claim_type: agent_inference
+    source_locator: "Sections 4.2-4.4 and 7"
+evaluation:
+  datasets:
+    - statement: "Eight open/closed models are tested on HumanEval, MBPP, QuixBugs repair, and CodeNet translation; MBPP/CodeNet use 200-task subsets."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1"
+  baselines:
+    - statement: "Lexical entropy, embedding dispersion, length variance, and a logit baseline are compared."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 2"
+  metrics:
+    - statement: "Spearman correlation with Pass@1, solved/unsolved AUROC, risk-coverage/AURC, reranking, overhead, and sampling/probe sensitivity are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.5"
+  ablations:
+    - statement: "The paper varies program samples N from 5 to 100 and probe inputs K from 4 to 20 and analyzes input-generation and timeout rules."
+      claim_type: direct_evidence
+      source_locator: "Section 5.5; Tables 3-6"
+  main_results:
+    - statement: "Correlations reach -0.987 and -0.985; Code-MUE has the strongest correlation broadly and best AUROC in 26 of 32 scenarios."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Table 2"
+    - statement: "More samples and probes improve signal with diminishing returns; reducing N from 100 to 25 changes aggregate correlation from -0.831 to -0.804."
+      claim_type: direct_evidence
+      source_locator: "Section 5.5; Tables 3-4"
+conclusion_evidence:
+  - statement: "The execution graph is a strong offline risk/reranking signal, but the paper does not test a repository agent that allocates tools or stops based on it."
+    claim_type: agent_inference
+    source_locator: "Sections 5.2-5.6"
+limitations:
+  - statement: "One task-model cell has only 40 instances; probe bias can merge distinct semantics, generation dominates cost, and execution is primarily function-level."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.2, 5.5, and 7, Threats to Validity"
+failure_modes:
+  - statement: "Low entropy can represent unanimous error under prompt ambiguity; a case has entropy 0.0485 and Pass@1 0 because all samples implement the same wrong interpretation."
+    claim_type: direct_evidence
+    source_locator: "Section 5.4, Overconfident Error case study"
+reusable_artifacts:
+  - statement: "The paper provides algorithms, probe rules, sandbox protocol, and a repository-level modular case study; artifact URL is stated in the manuscript."
+    claim_type: direct_evidence
+    source_locator: "Sections 4-6"
+within_cluster_difference:
+  - statement: "Code-MUE grounds confidence in behavior more directly than Watson's reconstructed text, but unlike Atropos it does not validate an online trajectory intervention."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value remains high for uncertainty measurement and is strengthened by explicit confident-wrong cases, but agent-control transfer remains untested."
+  claim_type: agent_inference
+  source_locator: "Sections 5.2-5.4"
+evidence_gaps:
+  - statement: "Calibration to task intent, sequential decision value, repository-state probes, adversarial probe adequacy, and comparison with direct tests under equal cost remain missing."
+    claim_type: agent_inference
+    source_locator: "Sections 5-7"

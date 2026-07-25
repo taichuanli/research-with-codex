@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_sealign-alignment-training-for-software-engineering-agent"
+title: "SEAlign: Alignment Training for Software Engineering Agent"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Kechi Zhang", "Huangzhao Zhang", "Ge Li", "Jinliang You", "Jia Li", "Yunfei Zhao", "Zhi Jin"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2503.18455"
+  version_reviewed: "arXiv:2503.18455 public manuscript, 12 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "Post-training on competitive code generation does not teach models to follow long, tool-mediated software-engineering workflows and avoid empty or looping trajectories."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3"
+prior_methods_insufficient:
+  statement: "Whole-response SFT/DPO treats mostly similar trajectories uniformly and cannot focus preference updates on a few high-impact workflow actions."
+  claim_type: author_claim
+  source_locator: "Sections 3-4"
+technical_mechanisms:
+  - statement: "SEAlign merges sampled agent trajectories into task-specific trees, labels leaves by final success, scores each node by its subtree success rate, and forms 983 sibling partial-trajectory pairs whose scores differ by more than 0.5."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2-4.3; Algorithm 1; Table 1"
+  - statement: "It first SFTs on filtered correct action sequences and then applies DPO only to critical partial-action pairs."
+    claim_type: direct_evidence
+    source_locator: "Section 4.4; Equations 3-5"
+assumptions:
+  - statement: "Endpoint test success and empirical subtree frequency provide an adequate preference label for the local action, despite downstream stochasticity and shared prefixes."
+    claim_type: agent_inference
+    source_locator: "Sections 4.2-4.4"
+evaluation:
+  datasets:
+    - statement: "Training trajectories come from OpenHands; evaluation uses SWE-bench Lite/Verified and HumanEvalFix, plus small application development and human ratings."
+      claim_type: direct_evidence
+      source_locator: "Sections 5 and 6"
+  baselines:
+    - statement: "Qwen2.5-Coder 7B/14B, agent training methods, open/closed SWE-bench systems, and transfer to AutoCodeRover are compared."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.3 and 6; Tables 2-4 and 8"
+  metrics:
+    - statement: "Resolved/pass rate, empty patch, stuck loop, invalid patch, data scaling, framework transfer, and human app-quality ratings are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 5-7"
+  ablations:
+    - statement: "The study removes SFT, fine-grained DPO, or fine-grained scoring, varies data size, compares whole-trajectory DPO, and adds on-policy data."
+      claim_type: direct_evidence
+      source_locator: "Section 6.3 and 7.2-7.3; Tables 5-7"
+  main_results:
+    - statement: "SEAlign-14B raises OpenHands resolution from 3.7% to 17.7% on Lite and from 2.8% to 21.8% on Verified while reducing empty and stuck trajectories."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1; Tables 2-3"
+    - statement: "SFT-only reaches 13.0% Lite, whole-trajectory DPO 5.3%, and the full critical-action method 17.7%."
+      claim_type: direct_evidence
+      source_locator: "Section 6.3; Table 5"
+    - statement: "The OpenHands-trained 14B model reaches 5.7% in AutoCodeRover versus 17.7% in OpenHands, indicating limited scaffold transfer."
+      claim_type: direct_evidence
+      source_locator: "Section 7.2; Table 8"
+conclusion_evidence:
+  - statement: "Critical-pair construction is offline and learned policy changes actions online; ablations connect fine-grained preferences to outcomes, but intermediate quality remains endpoint-derived."
+    claim_type: agent_inference
+    source_locator: "Sections 4.3-4.4 and 6.3"
+limitations:
+  - statement: "Trajectory collection and node scoring depend on one framework, benchmarks are endpoint-test based, dataset size is small, and cross-framework generalization is weak."
+    claim_type: direct_evidence
+    source_locator: "Sections 7.2 and 7.4, Threats to Validity"
+failure_modes:
+  - statement: "Preference labels can credit an action that merely lies on successful downstream branches; full-trajectory DPO dilutes sparse decision differences."
+    claim_type: agent_inference
+    source_locator: "Sections 4.3-4.4; Table 5"
+reusable_artifacts:
+  - statement: "Code and additional details are publicly linked by the paper."
+    claim_type: direct_evidence
+    source_locator: "Section 1, footnote 1"
+within_cluster_difference:
+  - statement: "SEAlign learns repository tool actions from partial-trajectory preferences; SWE-PDB trains a debugger-specific stateful policy, while SEER compresses reasoning text rather than tool actions."
+    claim_type: agent_inference
+    source_locator: "Sections 4-7; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value remains high for process supervision because critical-action ablations are strong, but the framework-specific and endpoint-derived labels narrow general claims."
+  claim_type: agent_inference
+  source_locator: "Tables 5 and 8"
+evidence_gaps:
+  - statement: "Independent action-quality labels, off-policy corrections, cross-agent transfer, stronger intent oracles, and prospective on-policy comparisons remain missing."
+    claim_type: agent_inference
+    source_locator: "Sections 4 and 7"

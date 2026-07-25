@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-24T13:21:57-04:00"
+last_reviewed_at: "2026-07-25T01:47:18-04:00"
 
 scope:
   venues:
@@ -99,9 +99,12 @@ deep_reading_selection:
   phase_boundary: "Reading plan only; no full-paper deep reading or research-idea generation was performed."
 
 deep_reading_progress:
-  status: batch_1_completed
-  current_phase: DEEP_READING_BATCH_1_COMPLETED
-  next_phase: DEEP_READING_BATCH_2
+  status: completed
+  current_phase: DEEP_READING_COMPLETED
+  next_phase: CROSS_PAPER_SYNTHESIS
+  completed_count: 42
+  mechanism_cluster_count: 7
+  papers_per_cluster: 6
   completed_batches:
     DEEP_READING_BATCH_1:
       status: completed
@@ -112,4 +115,24 @@ deep_reading_progress:
       synthesis_path: "synthesis/deep-reading-batch-1-synthesis.md"
       adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
       adjacent_watchlist_count: 9
-  phase_boundary: "Batch 1 full-paper reading and interim mechanism synthesis only; Batch 2 reading, research-idea generation, prior-art attack, and complete solution design were not performed."
+    DEEP_READING_BATCH_2:
+      status: completed
+      completed_count: 21
+      mechanism_cluster_count: 7
+      papers_per_cluster: 3
+      evidence_access:
+        full_paper: 13
+        artifact_plus_official_abstract: 7
+        official_abstract_only: 1
+      cards_path: "cards/"
+      synthesis_path: "synthesis/deep-reading-complete-synthesis.md"
+      comparison_path: "synthesis/cross-paper-comparison.csv"
+      adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
+      adjacent_watchlist_count: 9
+      adjacent_targeted_full_read_count: 6
+  complete_outputs:
+    cards_path: "cards/"
+    synthesis_path: "synthesis/deep-reading-complete-synthesis.md"
+    comparison_path: "synthesis/cross-paper-comparison.csv"
+    adjacent_watchlist_path: "synthesis/dllm-adjacent-watchlist.md"
+  phase_boundary: "All 42 selected papers have structured evidence cards and a seven-cluster complete-reading synthesis. Eight Batch 2 cards are necessarily bounded by unavailable manuscripts. No final research idea, complete method proposal, novelty claim, prior-art attack, or later-phase direction work was performed; CROSS_PAPER_SYNTHESIS has not started."

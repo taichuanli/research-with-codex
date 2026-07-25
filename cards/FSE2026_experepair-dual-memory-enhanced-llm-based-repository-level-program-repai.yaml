@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai"
+title: "ExpeRepair: Dual-Memory Enhanced LLM-based Repository-Level Program Repair"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "FSE 2026 Research Papers"
+  authors: ["Fangwen Mu", "Junjie Wang", "Lin Shi", "Song Wang", "Shoubin Li", "Qing Wang"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://doi.org/10.1145/3808181"
+  version_reviewed: "arXiv:2506.10484v2, 8 May 2026; PACMSE 3 FSE article FSE174, 23 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "Repository repair agents solve issues independently and use static prompts, failing to accumulate concrete past repairs and abstract reusable lessons."
+  claim_type: author_claim
+  source_locator: "Abstract; Section 1"
+prior_methods_insufficient:
+  statement: "Single memory or retrieval systems do not jointly supply task-specific demonstrations and maintained semantic guidance to reproduction and patch agents."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "Episodic memory stores successful reproduction and patch demonstrations with metadata; BM25 retrieves top-k examples for each role."
+    claim_type: direct_evidence
+    source_locator: "Sections 2.2-2.3"
+  - statement: "Semantic memory summarizes trajectories into capped insights and updates them with ADD, EDIT, and REMOVE before dynamically composing agent prompts."
+    claim_type: direct_evidence
+    source_locator: "Section 2.3; prompt in Figure 1"
+assumptions:
+  - statement: "LLM summaries preserve the causal repair lesson, lexical relevance predicts useful transfer, and successful endpoint repair makes the stored experience trustworthy."
+    claim_type: agent_inference
+    source_locator: "Sections 2.3 and 5.3-5.4"
+evaluation:
+  datasets:
+    - statement: "Evaluation uses 300 SWE-bench Lite and 500 SWE-bench Verified issues with an open-source multi-agent repair pipeline."
+      claim_type: direct_evidence
+      source_locator: "Section 3.1"
+  baselines:
+    - statement: "OpenHands, PatchPilot, Agentless-style methods, and multiple proprietary backbones are compared."
+      claim_type: direct_evidence
+      source_locator: "Sections 3.1-3.2; Table 1"
+  metrics:
+    - statement: "Pass@1, execution success rate, reproduction success rate, retrieval sensitivity, cost, and cumulative memory behavior are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 3-5"
+  ablations:
+    - statement: "The study removes the full, episodic, or semantic memory; compares BM25, embeddings, and hybrid retrieval; varies update operations, top-k, and insight count."
+      claim_type: direct_evidence
+      source_locator: "Sections 4 and 5.1-5.3; Table 2; Figures 2-4"
+  main_results:
+    - statement: "With Claude 3.5 Sonnet, memory raises Lite from 42.3% to 48.3% and Verified from 50.4% to 57.2%; Claude 4 Sonnet reaches 60.3% and 74.6%."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1-4.2; Tables 1-2"
+    - statement: "BM25 is best or tied; top-3 retrieval peaks at 48.3/57.2 while top-5 falls to 45.3/55.6, and more than about 15-20 insights plateaus or degrades."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1 and 5.3; Figures 2 and 4"
+    - statement: "Variants without REMOVE underperform because accumulated insights saturate context and introduce noise."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Figure 2"
+conclusion_evidence:
+  - statement: "Memory content changes online reproduction and patch prompts and ablations link it to outcomes, but individual memory statements are never independently checked for factual or causal fidelity."
+    claim_type: agent_inference
+    source_locator: "Sections 2.3, 4.2, and 5"
+limitations:
+  - statement: "Localization is deliberately not memorized because it lacks an automated oracle; results depend on Python SWE-bench, proprietary models, chronological/task ordering, and endpoint tests."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.4 and 5.5, Threats to Validity"
+failure_modes:
+  - statement: "Irrelevant demonstrations, obsolete or duplicated insights, and excessive context reduce repair success despite adding nominal experience."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.1-5.3"
+reusable_artifacts:
+  - statement: "The implementation, prompts, and memory pipeline are open sourced."
+    claim_type: direct_evidence
+    source_locator: "Abstract; https://github.com/ExpeRepair/ExpeRepair"
+within_cluster_difference:
+  - statement: "ExpeRepair learns cross-task memory, while EvidenT preserves within-task build evidence and AttnCompress discards low-ranked trajectory blocks without semantic summarization."
+    claim_type: agent_inference
+    source_locator: "Sections 2-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is higher than screening expected because sensitivity tests directly show non-monotonic memory value; its fidelity assumptions remain untested."
+  claim_type: agent_inference
+  source_locator: "Figures 2 and 4; Section 5.4"
+evidence_gaps:
+  - statement: "Per-memory correctness labels, counterfactual relevance, leakage-resistant chronological evaluation, and a validated localization memory are missing."
+    claim_type: agent_inference
+    source_locator: "Sections 2.3 and 5"

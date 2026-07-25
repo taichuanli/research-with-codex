@@ -1,0 +1,84 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-"
+title: "TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code"
+primary_mechanism_cluster: FAILURE_LOOPS_RECOVERY
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Jiangping Huang", "Wenguang Ye", "Weisong Sun", "Jian Zhang", "Mingyue Zhang", "Yang Liu"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2602.06875"
+  version_reviewed: "arXiv:2602.06875, 13 pages; ACM accepted-manuscript formatting"
+  evidence_access: full_paper
+research_problem:
+  statement: "Pass/fail-only repair gives little visibility into program state and lets iterative repair repeat ineffective patches or regress from better intermediate versions."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 2"
+prior_methods_insufficient:
+  statement: "Direct, CoT, planning, and prior iterative baselines are treated as black-box or stateless and lack runtime causal traces, task-local lessons, and rollback."
+  claim_type: author_claim
+  source_locator: "Sections 1-2 and 4.2.2"
+technical_mechanisms:
+  - statement: "Instrumentation, analysis, repair, and validation agents exchange structured artifacts; diagnostic print probes expose runtime values and an analysis agent proposes root causes and repair plans."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.5; Figure 2"
+  - statement: "Historical Lesson Learning records failed strategies within the current task, while the Rollback Mechanism accepts strict passed-test improvements and reverts regressions to the best known code."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.6-3.7; Algorithms 1-2"
+assumptions:
+  - statement: "Passed-test count is a monotone proxy for solution quality and inserted print probes preserve behavior relevant to the tests."
+    claim_type: agent_inference
+    source_locator: "Section 3.7; Algorithm 2; Section 4.6.2"
+evaluation:
+  datasets:
+    - statement: "Evaluation uses HumanEval, HumanEval+, ClassEval, and BigCodeBench Complete/Instruct with Python function- and class-level tasks."
+      claim_type: direct_evidence
+      source_locator: "Section 4.2.1"
+  baselines:
+    - statement: "Direct, CoT, Self-Planning, Self-Debugging, and Chain-of-Repair are evaluated with Gemini-2.5-Flash and Qwen-Plus."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2.2 and 4.3; Table 1"
+  metrics:
+    - statement: "Primary correctness is Pass@1; cost, attempts, preservation rate, and CrossHair behavioral equivalence are also reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2.3 and 4.6; Tables 1, 4-6"
+  ablations:
+    - statement: "The paper removes iterative repair, instrumentation, historical lessons, and rollback, and varies maximum attempts and patience."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.4-4.5; Figure 3; Table 2"
+  main_results:
+    - statement: "With Gemini, TraceCoder reaches 89.04% on BigCodeBench Complete and 90.72% average; removing iterative repair gives 53.77%, instrumentation 78.51%, rollback 84.55%, and historical lessons 86.75%."
+      claim_type: direct_evidence
+      source_locator: "Tables 1-2; Sections 4.3 and 4.5"
+    - statement: "Within the tested range, more attempts and patience improve Pass@1, while instrumentation preserves passing tests in 99.32-100% of cases and exceeds 97% CrossHair equivalence."
+      claim_type: direct_evidence
+      source_locator: "Figure 3; Sections 4.4 and 4.6.2; Tables 4-5"
+conclusion_evidence:
+  - statement: "Runtime state, task-local failed-action memory, and passed-test rollback are consumed online and component ablations connect them to final correctness, making this one of the batch's strongest recovery interventions."
+    claim_type: agent_inference
+    source_locator: "Algorithms 1-2; Tables 1-2"
+limitations:
+  - statement: "The tasks are bounded Python functions/classes, tests remain the progress oracle, instrumentation can miss silent semantic faults, and added agents increase tokens and latency."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.6.4 and 5, Threats to Validity"
+failure_modes:
+  - statement: "Wrong-answer defects without crashes remain harder because explicit runtime exceptions provide stronger localization evidence than subtle logical divergence."
+    claim_type: direct_evidence
+    source_locator: "Section 4.6.4; Table 7"
+reusable_artifacts:
+  - statement: "Code and experiment material are released in the TraceCoder repository."
+    claim_type: direct_evidence
+    source_locator: "Reference 48; https://github.com/CSMA-Research-Group/TraceCoder"
+within_cluster_difference:
+  - statement: "Unlike the two diagnostic studies, TraceCoder closes the loop from partial runtime state to accept/continue/rollback decisions, but only under a test-count objective."
+    claim_type: agent_inference
+    source_locator: "Sections 3.6-3.7; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its relevance remains high: the rollback and lesson ablations directly isolate recovery control, while the test-count oracle limits claims about semantic intent."
+  claim_type: agent_inference
+  source_locator: "Table 2; Sections 3.7 and 4.6"
+evidence_gaps:
+  - statement: "Repository-scale transfer, non-Python tools, independent semantic oracles, and a controller that distinguishes misleading test gains from true progress remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5"

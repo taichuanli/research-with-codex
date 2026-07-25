@@ -1,0 +1,88 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_seer-self-enhancing-chain-of-thought-compression-for-reasoning-models"
+title: "SEER: Self-Enhancing Chain-of-Thought Compression for Reasoning Models"
+primary_mechanism_cluster: TRAINING_PROCESS_SUPERVISION_POLICY_OPTIMIZATION
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Kerui Huang", "Shuhan Liu", "Xing Hu", "Tongtong Xu", "Lingfeng Bao", "Xin Xia"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 174 / paper_id"
+  full_text_url: null
+  artifact_url: "https://github.com/SEER-2026/SEER"
+  version_reviewed: "Public manuscript titled 'Reasoning Efficiently Through Adaptive Chain-of-Thought Compression: A Self-Optimizing Framework', 20 pages; official-title/version mismatch"
+  evidence_access: full_paper
+research_problem:
+  statement: "Reasoning models emit long, looping CoTs that hit token limits, add latency, and can make code-task accuracy unstable rather than improve it."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3"
+prior_methods_insufficient:
+  statement: "Prompt-only concision and generic token compression either reduce length weakly or remove reasoning needed for correctness."
+  claim_type: author_claim
+  source_locator: "Sections 2-3 and 5.1"
+technical_mechanisms:
+  - statement: "Best-of-N samples correct, non-looping CoTs and selects the shortest; a median-plus-alpha-MAD length cutoff then filters traces before SFT/LoRA."
+    claim_type: direct_evidence
+    source_locator: "Section 4; Figure 5"
+  - statement: "A strict repeated n-gram detector identifies degenerate loops, while evaluation separates reasoning length, compression, truncation, and pass@1."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1 and 5"
+assumptions:
+  - statement: "Shortest passing non-looping traces contain faithful and sufficient reasoning, and unit-test/label correctness is a reliable filter for training examples."
+    claim_type: agent_inference
+    source_locator: "Section 4.1"
+evaluation:
+  datasets:
+    - statement: "Main tasks are MathQA-Python, code search, and defect detection, with HumanEval/MBPP transfer and targeted HumanEval looping analyses."
+      claim_type: direct_evidence
+      source_locator: "Sections 3 and 5"
+  baselines:
+    - statement: "Short-CoT prompting, TokenSkip, LLMLingua-style methods, naive Best-of-N, and full SFT/PEFT controls are compared."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Tables 4 and 7"
+  metrics:
+    - statement: "Pass@1/accuracy, CoT tokens, compression rate, truncation, loop detection, latency, and retained reasoning ratio are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 3 and 5; Tables 1-7"
+  ablations:
+    - statement: "The paper varies Best-of-N from 1 to 5, removes length filtering or Best-of-N, varies MAD alpha, and compares SFT with LoRA."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.3-5.5; Tables 5 and 7"
+  main_results:
+    - statement: "Across three tasks, SEER averages 41.6% CoT compression while improving the reported task scores under a 16K limit."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 4"
+    - statement: "N=3 improves MathQA-Python accuracy over N=1, but N=5 provides no meaningful gain; stricter filtering raises compression from 26.44% to 42.58% while lowering accuracy from 74.40% to 72.76%."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 5"
+    - statement: "On HumanEval/129, failed generations are longer than successful ones; for the 7B model the reported failed median is 9,489 tokens."
+      claim_type: direct_evidence
+      source_locator: "Section 3.1.3; Figure 4"
+conclusion_evidence:
+  - statement: "Offline selection changes the learned length/loop policy and ablations show non-monotonic reasoning value, but the method does not decide online when a particular trace needs more reasoning."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5"
+limitations:
+  - statement: "Filtering can remove genuinely difficult long traces; tasks and models are limited, and endpoint correctness does not validate reasoning fidelity."
+    claim_type: direct_evidence
+    source_locator: "Section 7.2, Threats to Validity"
+failure_modes:
+  - statement: "The text reports 236/261 truncations as 90.4% looping, then calls the same figure 91.8% in prose/Finding 2; stronger compression can reduce accuracy."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1.2 versus Finding 2; Section 5.3"
+reusable_artifacts:
+  - statement: "The repository provides data processing, training configs, evaluation code, and loop-detection scripts."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/SEER-2026/SEER; public artifact"
+within_cluster_difference:
+  - statement: "SEER optimizes reasoning verbosity offline rather than tool-action quality; it supplies the cluster's clearest negative return from excessive process length."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is higher than screening expected for testing non-monotonic compute, but low for agent state control because no online trigger or external feedback is used."
+  claim_type: agent_inference
+  source_locator: "Figure 4; Table 5"
+evidence_gaps:
+  - statement: "Online per-instance stopping, causal loop intervention, faithful step labels, repository-agent transfer, and resolution of title/percentage inconsistencies remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 3-7 and version audit"

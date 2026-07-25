@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-"
+title: "To Run or Not to Run: Analyzing the Cost-Effectiveness of Code Execution in LLM-Based Program Repair"
+primary_mechanism_cluster: PLANNING_ACTION_TOOL_STOPPING
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Zhihao Lin", "Junhua Zhu", "Mingyi Zhou", "Xin Wang", "Zhensu Sun", "Renyu Yang", "David Lo", "Li Li"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2606.26978"
+  version_reviewed: "arXiv:2606.26978v1, 25 June 2026, 23 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "Generate-run-revise is standard in repair agents, but the marginal benefit, timing, and cost of execution feedback have not been isolated from other agent changes."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Prior trace studies are observational or change broad turn budgets, so they cannot estimate the effect of execution access alone."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "A trace study classifies test executions by timing and outcome, followed by controlled runs under Prohibited, Quota-1, Quota-3, Budget-Guided, and Unrestricted execution modes."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.1-3.4"
+  - statement: "Matched tasks and fixed agent/model configurations isolate execution access; transition analysis then examines localization, actionable reproduction feedback, validation, edits, and task complexity."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2-4.3; Tables 2-13"
+assumptions:
+  - statement: "Prompt/environment restrictions remove useful runtime feedback without materially changing the agent's other capabilities, and SWE-bench official tests represent the task outcome."
+    claim_type: agent_inference
+    source_locator: "Sections 3.2, 4.2.2, and 5"
+evaluation:
+  datasets:
+    - statement: "The study analyzes 7,745 public SWE-bench traces and runs 3,000 controlled attempts on 100 SWE-bench Lite plus 100 Verified instances."
+      claim_type: direct_evidence
+      source_locator: "Abstract; Sections 3.1-3.4"
+  baselines:
+    - statement: "Claude Code/Claude Sonnet 4.5, Codex/GPT-5.2-xhigh, and OpenCode/Qwen2.5-Coder-32B are each evaluated in all five modes."
+      claim_type: direct_evidence
+      source_locator: "Section 3.3; Table 2"
+  metrics:
+    - statement: "Resolve rate, paired transitions, Wilson intervals, McNemar tests, equivalence intervals, tokens, wall time, localization, execution actionability, edits, and official-test outcomes are measured."
+      claim_type: direct_evidence
+      source_locator: "Sections 3.4 and 4; Tables 2-13"
+  ablations:
+    - statement: "Execution quotas, budget guidance, zero-execution subsets, and a hard sandbox check whether residual commands or memorized patches explain Prohibited performance."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2.1-4.2.2; Tables 2-5"
+  main_results:
+    - statement: "Across six agent-benchmark cells, Prohibited versus Unrestricted differs by -3 to +1 percentage points and none is statistically significant; execution helps 29 and hurts 24 of 600 paired cases."
+      claim_type: direct_evidence
+      source_locator: "Tables 2-3 and 8; Sections 4.2-4.3"
+    - statement: "For Claude Code, Prohibited saves 56-62% of tokens and 48-54% of time; commercial-agent localization remains above 95% without execution."
+      claim_type: direct_evidence
+      source_locator: "Tables 6-7 and 9; Sections 4.2.3 and 4.3.1"
+    - statement: "In commercial-agent Fail-to-Fail cases, 81-100% of agent-selected validations pass although official evaluation fails; on Claude Code tasks with at least four gold hunks, Prohibited resolves 46.2% versus 23.1% Unrestricted."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.3.2-4.3.3; Tables 12-13"
+conclusion_evidence:
+  - statement: "Execution availability is a causal intervention here, and the paired negative cases directly refute monotonic claims that more tool feedback necessarily improves repair."
+    claim_type: agent_inference
+    source_locator: "Sections 3.2 and 4.2-4.3"
+limitations:
+  - statement: "Only 200 canonically ordered tasks and three contemporary configurations are controlled; most equivalence intervals are underpowered, and Prohibited can alter planning as well as remove feedback."
+    claim_type: direct_evidence
+    source_locator: "Section 5, Threats to Validity"
+failure_modes:
+  - statement: "Execution output can crowd the context, induce extra edits on complex tasks, and supply false reassurance when the selected tests do not encode official intent."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.2.1 and 4.3.2-4.3.3"
+reusable_artifacts:
+  - statement: "The paper releases classified traces, controlled-run data, prompts, and analysis material."
+    claim_type: direct_evidence
+    source_locator: "Section 3.4; artifact link"
+within_cluster_difference:
+  - statement: "This paper evaluates whether to execute rather than proposing a learned controller; its paired design is stronger causal evidence than SAINT's component comparison and broader than Deductive Steering's formalizable tasks."
+    claim_type: agent_inference
+    source_locator: "Sections 3-4; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is substantially higher than screening expected because it supplies direct positive and negative execution interventions, including a clear validation-intent mismatch."
+  claim_type: agent_inference
+  source_locator: "Tables 2, 8, 12, and 13"
+evidence_gaps:
+  - statement: "A prospective policy that predicts which execution, at what time, will change the correct action remains unevaluated."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6"

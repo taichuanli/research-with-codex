@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea"
+title: "Understanding Automated Program Repair Agents Through the Lens of Traceability: An Empirical Study"
+primary_mechanism_cluster: FAILURE_LOOPS_RECOVERY
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Ira Ceka", "Hailie Mitchell", "Saurabh Pujar", "Luca Buratti", "Shyam Ramji", "Junfeng Yang", "Gail Kaiser", "Baishakhi Ray"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2506.08311"
+  version_reviewed: "arXiv:2506.08311v2, 27 May 2026, 21 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "End-to-end SWE-bench scores conceal how APR agents reproduce issues, select regression tests, use tools, and produce patches that pass tests without matching intended behavior."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-3"
+prior_methods_insufficient:
+  statement: "Prior evaluations compare final resolution but do not align heterogeneous agent workflows or expose component-level bottlenecks against developer patches."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "The study normalizes full traces from AutoCodeRover, Agentless, SWE-Agent, OpenHands-CodeAct, and MASAI into a common flow graph spanning localization, reproduction, patching, and validation."
+    claim_type: direct_evidence
+    source_locator: "Section 3; Figure 1; Table 1"
+  - statement: "It combines patch-shape and clone analysis with trajectory-derived reproducer, regression-test, overfitting, and tool-use measurements."
+    claim_type: direct_evidence
+    source_locator: "Sections 4-7; Figures 3-6"
+assumptions:
+  - statement: "Trace artifacts from different implementations are comparable after normalization, and the available developer tests are a useful but incomplete semantic reference."
+    claim_type: agent_inference
+    source_locator: "Sections 3.1, 6.1, and 8, Threats to Validity"
+evaluation:
+  datasets:
+    - statement: "The evaluation covers 500 SWE-bench Verified tasks selected through a prior 93-developer annotation campaign, with focused experiments on a 50-task subset."
+      claim_type: direct_evidence
+      source_locator: "Section 3.2; Section 6.1.4"
+  baselines:
+    - statement: "Five agents, workflow versus open-process architectures, Claude-3.5-Sonnet versus GPT-4o backbones, and developer patches are compared."
+      claim_type: direct_evidence
+      source_locator: "Table 1; Sections 3.2-4"
+  metrics:
+    - statement: "Metrics include resolved tasks, patch size and edit distance, reproducer generation/trigger/resolution, overfitting, selected gold tests, and tool categories."
+      claim_type: direct_evidence
+      source_locator: "Sections 4-7"
+  ablations:
+    - statement: "Agentless varies 15 versus 40 samples, temperature 0.2/0.6/1.0, and the presence of localization context for reproducer generation."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1.4; Table 3"
+  main_results:
+    - statement: "Open-process patches can be up to 40 times larger than workflow patches; SWE-Agent overfitting is 17-26% versus 4-5% for Agentless in the main comparison."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.3 and 5.3; Findings 1-3"
+    - statement: "Agentless and SWE-Agent generate reproducers often, but only 41-57% trigger the bug; regression-test selection ranges from 4% gold-test use for MASAI to 45% for Agentless and 100% for AutoCodeRover."
+      claim_type: direct_evidence
+      source_locator: "Sections 6.1.3 and 6.2.3; Figure 5"
+    - statement: "Higher temperature increases distinct error types from 2.08 to 2.76 while lowering reproduction success; adding localization raises successful reproductions from 614 to 697 of 1,500 samples."
+      claim_type: direct_evidence
+      source_locator: "Section 6.1.4; Table 3"
+conclusion_evidence:
+  - statement: "The work identifies recovery prerequisites offline but does not causally evaluate its proposed shift-left testing or richer-tool interventions end to end."
+    claim_type: agent_inference
+    source_locator: "Sections 6-9"
+limitations:
+  - statement: "Several analyses use only Agentless and SWE-Agent, one scaling study uses 50 tasks, trace availability differs by architecture, and causal attribution between scaffolding and backbone remains limited."
+    claim_type: direct_evidence
+    source_locator: "Section 8, Threats to Validity"
+failure_modes:
+  - statement: "More diverse high-temperature sampling mostly discovers additional failure modes rather than successful reproducers, and self-generated reproducers can validate overfitted patches."
+    claim_type: direct_evidence
+    source_locator: "Sections 5.3 and 6.1.4"
+reusable_artifacts:
+  - statement: "The authors provide normalized traces and analysis artifacts for replication."
+    claim_type: direct_evidence
+    source_locator: "Section 9; paper artifact link"
+within_cluster_difference:
+  - statement: "Unlike TraceCoder, this paper diagnoses pipeline bottlenecks without using the diagnosis to choose the next repair action online; unlike AgentInspect, it studies normal APR runs rather than injected tool faults."
+    claim_type: agent_inference
+    source_locator: "Sections 3-7; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is higher than screening suggested for testing the more-compute hypothesis and locating recovery prerequisites, but lower as evidence for a recovery policy because proposed interventions are not executed."
+  claim_type: agent_inference
+  source_locator: "Sections 5-9"
+evidence_gaps:
+  - statement: "A randomized test-generation or tool-policy intervention, semantic oracles beyond available tests, and model/scaffold factorial controls remain missing."
+    claim_type: agent_inference
+    source_locator: "Sections 6-8"

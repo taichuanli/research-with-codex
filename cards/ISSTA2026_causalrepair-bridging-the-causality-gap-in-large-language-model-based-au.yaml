@@ -1,0 +1,85 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au"
+title: "CausalRepair: Bridging the Causality Gap in Large Language Model-based Automated Program Repair via Dual-Slicing"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Linhao Wu", "Yizhou Chen", "Zhen Yang", "Pengyu Xue", "Dan Hao"]
+  corpus_locator: "corpus/issta2026-research-papers.jsonl / line 38 / official event 2ac27f0b-5a03-40f6-8f73-3e546445425f"
+  full_text_url: null
+  artifact_url: "https://github.com/wLinHoo/CausalRepair"
+  version_reviewed: "Official abstract plus artifact commit 946e1db, 31 January 2026; no manuscript located"
+  evidence_access: artifact_plus_official_abstract
+research_problem:
+  statement: "Repair contexts contain ambiguous test code and static over-approximation, obscuring failure-relevant dependencies and misleading root-cause reasoning."
+  claim_type: author_claim
+  source_locator: "Official event abstract"
+prior_methods_insufficient:
+  statement: "Static retrieval includes unexecuted source noise and may omit test dependencies needed to explain a specific failure."
+  claim_type: author_claim
+  source_locator: "Official abstract"
+technical_mechanisms:
+  - statement: "CausalRepair defines minimal causal context operationally as context-aware static slices of failing tests plus execution-trace dynamic slices of source code."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+  - statement: "Artifact scripts inject slices/test information into a generate-validate-feedback loop, retain error messages across attempts, and augment plausible patches with alternative candidates."
+    claim_type: direct_evidence
+    source_locator: "Artifact / iterative_repair.py, augment_patches.py, utils/prompt.py"
+assumptions:
+  - statement: "Data/control dependencies in the two slices constitute the essential causal explanation and passing Defects4J tests plus patch review establishes semantic equivalence."
+    claim_type: agent_inference
+    source_locator: "Official abstract / minimal causal context; artifact validation workflow"
+evaluation:
+  datasets:
+    - statement: "The official abstract names Defects4J v1.2/v2.0 and Defects4J-Trans; artifact metadata packages single-function variants and slice/test information."
+      claim_type: direct_evidence
+      source_locator: "Official abstract; artifact / Defects4J"
+  baselines:
+    - statement: "ReinFix and TSAPR are named as principal baselines under a common DeepSeek-V3 backbone; full configurations are unavailable."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  metrics:
+    - statement: "Correct fixes and mean API cost are reported; artifact validation records plausible-test outcomes and repair duration."
+      claim_type: author_claim
+      source_locator: "Official abstract; artifact / iterative_repair.py"
+  ablations:
+    - statement: "The artifact exposes use_slice and test-case modes and iterative budgets, but no packaged manuscript ablation tables were located."
+      claim_type: direct_evidence
+      source_locator: "Artifact / iterative_repair.py and README"
+  main_results:
+    - statement: "The authors report 313 correct Defects4J fixes and $0.029 average repair cost."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+    - statement: "The artifact contains exactly 313 files under Results/correct_patches, matching the headline count but not independently validating semantic equivalence."
+      claim_type: direct_evidence
+      source_locator: "Artifact / Results/correct_patches directory count"
+conclusion_evidence:
+  - statement: "Slices directly alter online repair context, but accessible evidence does not isolate static versus dynamic slicing or demonstrate causal identification beyond dependency filtering."
+    claim_type: agent_inference
+    source_locator: "Official abstract; artifact implementation"
+limitations:
+  - statement: "No manuscript/results tables were located; the implementation centers single-function Java repair, uses external APIs/Slicer4J, and validates candidates primarily with Defects4J tests."
+    claim_type: agent_inference
+    source_locator: "Artifact README, metadata, and scripts"
+failure_modes:
+  - statement: "Dynamic slices omit dependencies not exercised by the failing run, static test slices may retain irrelevant context, and prompt shrinking truncates slice/test lines when over budget."
+    claim_type: direct_evidence
+    source_locator: "Artifact / iterative_repair.py shrink_prompt_if_needed and slice inputs"
+reusable_artifacts:
+  - statement: "The repository provides 313 claimed correct patches, slice/test metadata, prompts, iterative repair, validation, and patch-augmentation scripts."
+    claim_type: direct_evidence
+    source_locator: "https://github.com/wLinHoo/CausalRepair at commit 946e1db"
+within_cluster_difference:
+  - statement: "CausalRepair filters execution-specific dependencies before patching, whereas ReinFix retrieves donor/fix ingredients and RISC-V RCA does not perform repair in accessible evidence."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its contextual mechanism remains relevant, but evidential value is lower than the 313-fix headline because component causality and correctness audits are unavailable."
+  claim_type: agent_inference
+  source_locator: "Official abstract; artifact access audit"
+evidence_gaps:
+  - statement: "Full comparisons, dual-slice ablations, slice recall, root-cause labels, independent patch correctness, and multi-function/repository transfer remain missing."
+    claim_type: agent_inference
+    source_locator: "Access audit; artifact scope"

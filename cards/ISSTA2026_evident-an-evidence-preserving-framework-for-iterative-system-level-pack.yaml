@@ -1,0 +1,87 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack"
+title: "EvidenT: An Evidence-Preserving Framework for Iterative System-Level Package Repair"
+primary_mechanism_cluster: STATE_MEMORY_SPEC_CONSTRAINT_PRESERVATION
+reading_status: deep_read
+metadata:
+  venue: "ISSTA 2026 Research Papers"
+  authors: ["Chenyu Zhao", "Minghua Ma", "Shenglin Zhang", "Zeshun Huang", "Yongqian Sun", "Chetan Bansal", "Saravan Rajmohan", "Dan Pei"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://arxiv.org/pdf/2605.08621"
+  version_reviewed: "arXiv:2605.08621v1, 9 May 2026, 21 pages"
+  evidence_access: full_paper
+research_problem:
+  statement: "System package repair spans logs, recipes, archives, source, dependency constraints, and remote builds; agents lose or mix this evidence across iterations."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1 and 3"
+prior_methods_insufficient:
+  statement: "Project-level repair agents treat each attempt independently, lack package-level tools, and concatenate heterogeneous evidence without temporal or artifact structure."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "A controller fuses latest build feedback, complete edit history, cached deterministic findings, and retrieved architecture knowledge into fixed prompt slots with explicit negative evidence."
+    claim_type: direct_evidence
+    source_locator: "Section 4.2; Figure 2"
+  - statement: "A tool orchestrator localizes structures/dependencies, edits recipes/scripts/archives/source, and sends every iteration through a clean external build service."
+    claim_type: direct_evidence
+    source_locator: "Sections 4.3-4.4; Figure 1"
+assumptions:
+  - statement: "Build logs are stable and actionable enough to compare iterations, retrieved knowledge is applicable, and a successful build is an adequate repair endpoint."
+    claim_type: agent_inference
+    source_locator: "Sections 4.2, 5.6, and 6"
+evaluation:
+  datasets:
+    - statement: "The main benchmark has 219 reproduced RISC-V Open Build Service failures; transfer uses 79 aarch64 and 83 x86_64 packages."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1"
+  baselines:
+    - statement: "Bare LLM, Agentless, RepairAgent, CXXCrafter, and EvidenT without preserved evidence are compared under package-level inputs."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.1-5.2; Table 4"
+  metrics:
+    - statement: "Clean-build success, repair time/cost, iterations, tool calls, failure stages, artifact targets, and architecture transfer are reported."
+      claim_type: direct_evidence
+      source_locator: "Sections 3 and 5"
+  ablations:
+    - statement: "The paper removes actionable-log construction, knowledge context, dependency constraints, and structure localization and varies one to three iterations."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.4-5.5; Figure 3"
+  main_results:
+    - statement: "EvidenT repairs 118/219 RISC-V packages (53.88%) versus 42/219 (19.18%) without evidence preservation."
+      claim_type: direct_evidence
+      source_locator: "Section 5.2; Table 4"
+    - statement: "One to three iterations raises GPT-5-mini success from 28.77% to 53.88%; removing the four components lowers success to 29.68%, 32.42%, 35.62%, and 44.75%."
+      claim_type: direct_evidence
+      source_locator: "Sections 5.4-5.5; Figure 3"
+    - statement: "The framework reports 41.77% on aarch64 and 46.99% on x86_64 after changing ISA knowledge context."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 5"
+conclusion_evidence:
+  - statement: "Evidence is available after each build and directly constrains the next localization/edit action; ablations connect representation and iteration budget to build outcomes."
+    claim_type: agent_inference
+    source_locator: "Sections 4.2-4.4 and 5.4-5.5"
+limitations:
+  - statement: "Unstable/incomplete builds prevent comparable evidence; early invalid artifacts terminate repair; build success does not establish runtime functional correctness."
+    claim_type: direct_evidence
+    source_locator: "Section 5.6, Limitations and Design Trade-offs"
+failure_modes:
+  - statement: "Failures are associated more with insufficient or unusable evidence than systematic tool-order errors; inconsistent signatures prevent narrowing the target across iterations."
+    claim_type: direct_evidence
+    source_locator: "Section 5.6; tool-usage and trajectory analysis"
+reusable_artifacts:
+  - statement: "The paper contributes the package-failure datasets, evidence schema, modular tool architecture, and evaluation material."
+    claim_type: direct_evidence
+    source_locator: "Sections 3-5; artifact statement"
+within_cluster_difference:
+  - statement: "EvidenT preserves task-local external evidence with validation on every iteration, stronger fidelity grounding than ExpeRepair's summaries or AttnCompress's proxy attention."
+    claim_type: agent_inference
+    source_locator: "Sections 4-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value remains very high because evidence timing and action consumption are explicit, while build-only validation sharply bounds the semantic claim."
+  claim_type: agent_inference
+  source_locator: "Figure 3; Section 5.6"
+evidence_gaps:
+  - statement: "Runtime tests, controlled evidence-corruption experiments, cross-model replication, and root-cause labels separating correct diagnosis from lucky edits are missing."
+    claim_type: agent_inference
+    source_locator: "Sections 5-6"

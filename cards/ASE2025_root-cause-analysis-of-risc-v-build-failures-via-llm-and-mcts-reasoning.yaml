@@ -1,0 +1,79 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ASE2025_root-cause-analysis-of-risc-v-build-failures-via-llm-and-mcts-reasoning"
+title: "Root Cause Analysis of RISC-V Build Failures via LLM and MCTS Reasoning"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "ASE 2025 Research Papers"
+  authors: ["Weipeng Shuai", "Jie Liu", "Zhirou Ma", "Liangyi Kang", "Zehua Wang", "Shuai Wang", "Dan Ye", "Hui Li", "Wei Wang", "Jiaxin Zhu"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://doi.org/10.1109/ASE63991.2025.00227"
+  artifact_url: null
+  version_reviewed: "IEEE publisher record and official abstract only; no manuscript or artifact located"
+  evidence_access: official_abstract_only
+research_problem:
+  statement: "RISC-V migration build failures combine unstructured multi-phase logs, configuration, and environment evidence that conventional diagnostic tools do not semantically integrate."
+  claim_type: author_claim
+  source_locator: "Official publisher/event abstract"
+prior_methods_insufficient:
+  statement: "Rule-based or direct LLM diagnosis does not combine phase-aware anomaly detection, domain knowledge, and constrained multi-source search."
+  claim_type: author_claim
+  source_locator: "Official abstract"
+technical_mechanisms:
+  - statement: "RV-LAD template-filters logs and applies phase-aware few-shot LLM anomaly detection; MCTS-RCA searches explanations using a domain knowledge base and classification constraints."
+    claim_type: author_claim
+    source_locator: "Official abstract"
+assumptions:
+  - statement: "Log compression preserves root-cause evidence, the knowledge base covers relevant mechanisms, and classification-constrained MCTS traces correspond to true causes."
+    claim_type: agent_inference
+    source_locator: "Official abstract / method description"
+evaluation:
+  datasets:
+    - statement: "The authors report a curated set of 117 real RISC-V failures with logs, spec files, and repair records."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  baselines:
+    - statement: "Prior LLM-based and rule-based methods are reported as baselines, but identities and configurations could not be checked."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  metrics:
+    - statement: "Diagnosis accuracy and interpretability are the stated outcomes; annotation protocol and statistical measures are unavailable."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+  ablations:
+    - statement: "No ablation evidence could be accessed."
+      claim_type: direct_evidence
+      source_locator: "Full-text/artifact access audit"
+  main_results:
+    - statement: "The authors report 75.2% diagnosis accuracy and superiority over LLM and rule baselines."
+      claim_type: author_claim
+      source_locator: "Official abstract"
+conclusion_evidence:
+  - statement: "The accessible evidence supports only an offline root-cause classifier claim; it does not show that diagnosis selects or improves repair actions."
+    claim_type: agent_inference
+    source_locator: "Official abstract and access audit"
+limitations:
+  - statement: "Without a manuscript or artifact, dataset construction, label reliability, baseline fairness, causal contribution, failures, and threats to validity cannot be audited."
+    claim_type: agent_inference
+    source_locator: "Full-text/artifact access audit"
+failure_modes:
+  - statement: "Potential loss from log templates, knowledge-base omissions, and search rationalization is plausible but not empirically characterized in accessible evidence."
+    claim_type: agent_inference
+    source_locator: "Official abstract / method description"
+reusable_artifacts:
+  - statement: "A 117-case dataset is claimed, but no stable public data or code link was located."
+    claim_type: author_claim
+    source_locator: "Official abstract; access audit"
+within_cluster_difference:
+  - statement: "This work is diagnosis-only in accessible evidence, unlike ReinFix and CausalRepair, which feed inferred context into repair generation."
+    claim_type: agent_inference
+    source_locator: "Official abstract; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is markedly lower than screening expected because neither the claimed MCTS contribution nor downstream action value can be independently verified."
+  claim_type: agent_inference
+  source_locator: "Access audit; official abstract"
+evidence_gaps:
+  - statement: "The full paper, dataset, annotations, ablations, error taxonomy, calibration, and any diagnosis-to-repair evaluation are missing."
+    claim_type: agent_inference
+    source_locator: "Access audit"

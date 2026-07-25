@@ -1,0 +1,84 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe"
+title: "Watson: A Cognitive Observability Framework for the Reasoning of LLM-Powered Agents"
+primary_mechanism_cluster: OUTCOME_PROGRESS_UNCERTAINTY_SIGNALS
+reading_status: deep_read
+metadata:
+  venue: "ASE 2025 Research Papers"
+  authors: ["Benjamin Rombaut", "Sogol Masoumzadeh", "Kirill Vasilevski", "Dayi Lin", "Ahmed E. Hassan"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id"
+  full_text_url: "https://doi.org/10.1109/ASE63991.2025.00067"
+  version_reviewed: "IEEE author/publisher-formatted manuscript, 13 pages; DOI publisher record checked"
+  evidence_access: full_paper
+research_problem:
+  statement: "Fast-thinking agents expose actions and outputs but not the implicit reasoning needed to diagnose why a decision occurred."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections I-II"
+prior_methods_insufficient:
+  statement: "Prompting the primary model for explanations changes behavior or yields unsupported rationalization, while ordinary observability lacks cognitive traces."
+  claim_type: author_claim
+  source_locator: "Sections I-II"
+technical_mechanisms:
+  - statement: "Watson reconstructs multiple post-hoc reasoning traces using native fill-in-the-middle or repeated chain-of-thought with a surrogate model conditioned on the captured prompt and output."
+    claim_type: direct_evidence
+    source_locator: "Section III-B-C; Figure 3"
+  - statement: "Mask-based prompt attribution identifies influential components; an LLM judge filters traces for attribution consistency and another model summarizes accepted traces into hints."
+    claim_type: direct_evidence
+    source_locator: "Section III-D-E; Table I"
+assumptions:
+  - statement: "A surrogate can mirror the primary model, perturbation attribution identifies genuine decision factors, and judge-approved plausibility approximates faithful internal reasoning."
+    claim_type: agent_inference
+    source_locator: "Section III and Section V-C"
+evaluation:
+  datasets:
+    - statement: "Evaluation covers statistically sampled MMLU questions and valid-location subsets of AutoCodeRover and OpenHands on SWE-bench Lite."
+      claim_type: direct_evidence
+      source_locator: "Section IV-B-E"
+  baselines:
+    - statement: "Response-only self-reflection is compared with Watson-aided reflection; Qwen3 native thinking is separately compared with RepCoT reconstruction."
+      claim_type: direct_evidence
+      source_locator: "Section IV-E-F; Tables II-III"
+  metrics:
+    - statement: "Pass@1/pass@3, location accuracy, chi-square tests, confidence intervals, same-answer agreement, and judge-rated trace equivalence are reported."
+      claim_type: direct_evidence
+      source_locator: "Section IV-E-F"
+  ablations:
+    - statement: "Hints from full Watson traces are contrasted with answer-only hints, and FIM and RepCoT are run across repeated trials."
+      claim_type: direct_evidence
+      source_locator: "Section IV-D-E; Table II"
+  main_results:
+    - statement: "AutoCodeRover improves from 71/103 (68.9%) to 75/103 (72.8%) and OpenHands from 33/57 (57.9%) to 34/57 (59.6%); neither improvement is significant."
+      claim_type: direct_evidence
+      source_locator: "Section IV-E.2; Table III"
+    - statement: "When native and Watson Qwen3 runs return the same answer, only 212/307 traces (69.1%) are judged equivalent and 95/307 (30.9%) diverge."
+      claim_type: direct_evidence
+      source_locator: "Section IV-F"
+conclusion_evidence:
+  - statement: "Watson yields useful diagnostic hints, but its own comparison shows that endpoint agreement does not identify a unique reasoning path and therefore does not validate cognitive fidelity."
+    claim_type: agent_inference
+    source_locator: "Sections IV-E-F and V"
+limitations:
+  - statement: "Ten surrogate traces add post-hoc cost, FIM needs compatible models, coverage is non-exhaustive, and outcomes depend on surrogate, segmentation, attribution, and judge choices."
+    claim_type: direct_evidence
+    source_locator: "Section V-B-C"
+failure_modes:
+  - statement: "A plausible reconstruction can emphasize a different path from native reasoning, while judge bias can accept rationalizations or reject valid alternatives."
+    claim_type: agent_inference
+    source_locator: "Section IV-F; Section V-C"
+reusable_artifacts:
+  - statement: "The paper describes reusable FIM/RepCoT prompts, attribution, judge filtering, and reflection integration; public artifact availability was not established."
+    claim_type: direct_evidence
+    source_locator: "Section III; publication record"
+within_cluster_difference:
+  - statement: "Watson observes after the primary decision and influences only a later rerun, unlike Atropos's mid-trajectory predictor and Code-MUE's execution-grounded candidate signal."
+    claim_type: agent_inference
+    source_locator: "Sections III-IV; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is much higher than screening expected as counterevidence: it directly quantifies non-uniqueness in supposedly faithful reconstructed reasoning."
+  claim_type: agent_inference
+  source_locator: "Section IV-F"
+evidence_gaps:
+  - statement: "Internal-state ground truth, causal mediation, independent human fidelity labels, stronger judge controls, and online use without rerunning the agent are missing."
+    claim_type: agent_inference
+    source_locator: "Sections IV-V"

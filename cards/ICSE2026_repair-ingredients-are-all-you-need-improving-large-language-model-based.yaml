@@ -1,0 +1,84 @@
+schema_version: 1
+phase: DEEP_READING_BATCH_2
+paper_id: "ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based"
+title: "Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search"
+primary_mechanism_cluster: DEBUGGING_ROOT_CAUSE_REPAIR_DECISIONS
+reading_status: deep_read
+metadata:
+  venue: "ICSE 2026 Research Track"
+  authors: ["Jiayi Zhang", "Kevin Huang", "Jian Zhang", "Yang Liu", "Chunyang Chen"]
+  corpus_locator: "corpus/cross-venue-research-paper-index.jsonl / paper_id; corpus author record says Kevin Huang"
+  full_text_url: "https://arxiv.org/pdf/2506.23100"
+  version_reviewed: "arXiv:2506.23100 public manuscript, 12 pages; manuscript says Kai Huang while the official corpus record above says Kevin Huang"
+  evidence_access: full_paper
+research_problem:
+  statement: "LLM repair lacks context needed to infer root causes and fix actions, while traditional ingredient retrieval uses shallow code similarity or requires retraining."
+  claim_type: author_claim
+  source_locator: "Abstract; Sections 1-2"
+prior_methods_insufficient:
+  statement: "Existing methods retrieve either internal donor code or external fix patterns and do not use inferred root cause to guide historical repair retrieval."
+  claim_type: author_claim
+  source_locator: "Sections 1-2"
+technical_mechanisms:
+  - statement: "During reasoning, a ReAct agent optionally invokes dependency tools for variable, method, class, field, and library definitions to refine a root-cause explanation."
+    claim_type: direct_evidence
+    source_locator: "Section 3.1; Table 1; Figure 4"
+  - statement: "During solution generation, buggy code concatenated with the inferred root cause retrieves historical buggy/fixed/root-cause triples whose fix actions guide candidate patches and test validation."
+    claim_type: direct_evidence
+    source_locator: "Sections 3.2-3.3; Figures 5-7; Algorithm 1"
+assumptions:
+  - statement: "Perfect fault localization is available, the LLM's root-cause text is faithful, and embedding similarity of code-plus-cause retrieves transferable repair behavior."
+    claim_type: agent_inference
+    source_locator: "Section 4.2, Implementation; Sections 3.2-3.3"
+evaluation:
+  datasets:
+    - statement: "Defects4J v1.2/v2.0 cover single-line, single-hunk, single-function, and multi-function repair; recent RWB v1/v2 bugs test cutoff risk."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.1 and 5.1-5.4; Table 2"
+  baselines:
+    - statement: "Template, neural, direct LLM, ingredient-retrieval, and agentic APR baselines are compared with GPT-3.5/GPT-4o implementations."
+      claim_type: direct_evidence
+      source_locator: "Sections 4.2 and 5.1; Table 3"
+  metrics:
+    - statement: "Correct/plausible fixes, unique bugs, repair scenarios, and recent-bug correctness are reported."
+      claim_type: direct_evidence
+      source_locator: "Section 5; Tables 3-6"
+  ablations:
+    - statement: "The study removes internal or external ingredients and substitutes FitRepair-style code search or RAP-Gen-style pattern retrieval."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 5"
+  main_results:
+    - statement: "GPT-4o ReinFix correctly fixes 146 Defects4J v1.2 and 145 v2.0 bugs, 32 and 38 more than the strongest listed baselines."
+      claim_type: direct_evidence
+      source_locator: "Section 5.1; Table 3"
+    - statement: "Without ingredients it fixes 85 v1.2 bugs; internal-only fixes 116, external-only 108, and both 146."
+      claim_type: direct_evidence
+      source_locator: "Section 5.3; Table 5"
+conclusion_evidence:
+  - statement: "Retrieved evidence affects root-cause reasoning and repair actions online, and component ablations improve endpoint fixes; root-cause accuracy itself is not labeled or intervened on."
+    claim_type: agent_inference
+    source_locator: "Sections 3 and 5.3"
+limitations:
+  - statement: "The evaluation assumes perfect locations, relies on tests/manual patch classification, risks retrieval and model leakage, and centers Java Defects4J."
+    claim_type: direct_evidence
+    source_locator: "Section 4.2 and Section 6, Threats to Validity"
+failure_modes:
+  - statement: "Code-only or irrelevant ingredients can mislead the inferred root cause and retrieve an inapplicable fix; the paper illustrates this for substituted search strategies."
+    claim_type: direct_evidence
+    source_locator: "Section 5.3; Figure 10"
+reusable_artifacts:
+  - statement: "Prompts, tools, retrieval material, patches, and additional results are linked from the project site."
+    claim_type: direct_evidence
+    source_locator: "Section 1; https://sites.google.com/view/repairingredients"
+within_cluster_difference:
+  - statement: "ReinFix treats root cause as a retrieval key after assuming the location; CausalRepair narrows executable dependencies, while RISC-V RCA stops at diagnosis."
+    claim_type: agent_inference
+    source_locator: "Sections 3-5; companion Batch 2 cards"
+relevance_reassessment:
+  statement: "Its value is high for action-ingredient selection but lower for root-cause evidence because the inferred cause is never independently assessed."
+  claim_type: agent_inference
+  source_locator: "Sections 3.2 and 5.3"
+evidence_gaps:
+  - statement: "Joint localization, root-cause labels, counterfactual retrieval tests, no-history controls matched for context, and non-Java transfer remain open."
+    claim_type: agent_inference
+    source_locator: "Sections 4-6"
