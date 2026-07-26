@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: INDEPENDENT_DIRECTION_AUDIT
+current_phase: DIRECTION_REVISED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -35,6 +35,10 @@ phase_catalog:
   - DIRECTIONS_NARROWED
   - DIRECTION_NARROWING_FAILED
   - INDEPENDENT_DIRECTION_AUDIT
+  - DIRECTION_REVISION
+  - DIRECTION_REVISED
+  - DIRECTION_REVISION_FAILED
+  - INDEPENDENT_DIRECTION_REAUDIT
   - PILOT_DESIGN
 completed_items:
   - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
@@ -91,6 +95,10 @@ completed_items:
   - "DIRECTION_NARROWING: compared stagewise failure attribution, counterfactual evidence memory audit, and a unified code-agent causal trajectory auditing umbrella using symmetric research-question, novelty, contribution, executable-structure, rejection, transfer, and positive/negative-result criteria."
   - "DIRECTION_NARROWING: retained one finalist, FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES, only as conditional new causal evidence and a possible new phenomenon; killed the standalone memory audit as application transfer after targeted belief-update, truth-maintenance, attribution, corruption, and provenance checks; and rejected the merge for lacking one estimand."
   - "DIRECTION_NARROWING: saved directions/direction-narrowing-comparison.md, directions/novelty-boundary.md, and directions/minimum-kill-pilot.md with hard continue/kill thresholds; no pilot, implementation, task download, model call, training, or formal experiment was started."
+  - "INDEPENDENT_DIRECTION_AUDIT: ruled REVISE_BEFORE_PILOT and kept pilot_authorized false because the prior substitutions estimated overlapping downstream assistance rather than endogenous bottlenecks, used harmful controls in the primary contrast, lacked frozen native contracts and leak/intent rules, and underpowered transfer claims."
+  - "DIRECTION_REVISION: fixed the sole estimand as oracle-versus-untouched conditional total rescue effect on intent-valid repair at the same eligible executable checkpoint; removed endogenous bottleneck, root-cause, failure-cause, taxonomy, and transfer interpretations."
+  - "DIRECTION_REVISION: defined source-pinned native E/S/A/V contracts for SWE-agent and OpenHands, separate untouched, neutral-sham, mismatched, and oracle conditions, and pre-outcome provenance, leak, alternative-fix, intent, and inconclusive rules."
+  - "DIRECTION_REVISION: retained only a conditional code-agent applicability-boundary contribution, replaced the old full pilot with a feasibility-only kill boundary, recommended READY_FOR_REAUDIT, and did not authorize or begin pilot design, implementation, task download, model calls, training, or experiments."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1248,6 +1256,7 @@ direction_narrowing:
   status: completed
   phase_completed: DIRECTIONS_NARROWED
   next_phase: INDEPENDENT_DIRECTION_AUDIT
+  active_claim_status: superseded_by_direction_revision
   compared_direction_count: 3
   evidence:
     claim_type: direct_evidence
@@ -1323,7 +1332,7 @@ direction_narrowing:
 independent_direction_audit:
   status: completed
   phase_completed: INDEPENDENT_DIRECTION_AUDIT
-  next_phase: PILOT_DESIGN
+  next_phase: DIRECTION_REVISION
   finalist_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
   decision:
     outcome: REVISE_BEFORE_PILOT
@@ -1447,5 +1456,116 @@ independent_direction_audit:
     source_locator: "Audit record; Final reviewer conclusion"
     statement: "INDEPENDENT_DIRECTION_AUDIT is complete. Pilot design execution, implementation, task download, model call, training, formal experiment, commit, and push remain outside this phase."
   human_decisions_pending: []
-next_phase: PILOT_DESIGN
-last_updated: "2026-07-26T13:23:50Z"
+direction_revision:
+  status: completed
+  phase_completed: DIRECTION_REVISED
+  next_phase: INDEPENDENT_DIRECTION_REAUDIT
+  source_finalist: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+  revised_direction_id: FINALIST_NATIVE_INTERFACE_CONDITIONAL_RESCUE
+  recommendation:
+    outcome: READY_FOR_REAUDIT
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Phase boundary and internal recommendation"
+    statement: "A unique conditional external-assistance estimand, source-pinned native carrier contracts, and a leak-auditable intervention protocol can be stated coherently, so the bounded direction should receive an independent re-audit rather than be returned immediately to idea seeding."
+  pilot_authorized: false
+  research_question:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Revised research question and unique estimand"
+    statement: "At an exactly restored executable code-agent checkpoint, how much does replacing one native, model-visible E/S/A/V carrier with independently validated and leak-audited assistance change the probability of an intent-valid repair within a fixed continuation budget relative to untouched replay, and is that change distinguishable from neutral-carrier and mismatched-content effects?"
+  estimand:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Revised research question and unique estimand"
+    statement: "For interface j in E/S/A/V and eligible checkpoint C_i, tau_j(C_i) equals the intent-valid-repair probability under the oracle substitution minus the probability under untouched replay with the same checkpoint and continuation policy; the four-entry profile is one vector-valued external-assistance estimand."
+  estimand_exclusions:
+    - endogenous_causal_bottleneck
+    - original_failure_cause
+    - root_cause_identification
+    - failure_taxonomy
+    - mediator_identification
+  native_contracts:
+    status:
+      claim_type: agent_inference
+      source: "directions/direction-revision.md"
+      source_locator: "Cross-scaffold native contract"
+      statement: "The E/S/A/V contracts are operationally specified as direct substitutions of scaffold-defined model-visible or executable logical carriers, with downstream changes allowed and absent, hidden, dropped, fused, or non-round-trippable carriers excluded."
+    scaffold_sources:
+      SWE_AGENT:
+        commit: "3ea751c087f32b16e039a2233dd6eefecef325d5"
+        evidence:
+          claim_type: direct_evidence
+          source: "https://github.com/SWE-agent/SWE-agent/tree/3ea751c087f32b16e039a2233dd6eefecef325d5"
+          source_locator: "sweagent/types.py / StepOutput and HistoryItem; sweagent/agent/agents.py / DefaultAgent.add_step_to_history, forward, and handle_action"
+          statement: "SWE-agent records observations, visible thoughts, parsed actions, raw outputs, and tool-call encodings and executes actions after parsing; validation is distinguishable from evidence only through producing-action and repository-state provenance."
+      OPENHANDS_SOFTWARE_AGENT_SDK:
+        commit: "310989d306114efd0fcadbcbed9ff9c21d4a5963"
+        evidence:
+          claim_type: direct_evidence
+          source: "https://github.com/OpenHands/software-agent-sdk/tree/310989d306114efd0fcadbcbed9ff9c21d4a5963"
+          source_locator: "event/llm_convertible/action.py / ActionEvent; observation.py / ObservationEvent; tool/builtins/think.py / ThinkAction; finish.py / FinishAction; conversation/state.py / agent_state"
+          statement: "OpenHands exposes event-sourced observations, visible thought, parsed and raw tool actions, explicit think and finish actions, and generic runtime state; the generic agent_state field is not assumed policy-visible or comparable derived state."
+  intervention_controls:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Intervention conditions and primary contrasts"
+    statement: "Untouched replay is the primary comparator; neutral task-agnostic sham, reversible false or irrelevant mismatched control, and provenance-valid oracle substitution are separate conditions for each interface, with oracle-versus-untouched as the only primary contrast."
+  oracle_and_intent_audit:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Oracle provenance, leak audit, and intent adjudication"
+    statement: "E/S/A builders are blinded to developer patches, hidden validators, later-interface payloads, and future suffixes; V receives only a bounded redacted validator disclosure; payloads are frozen before hidden validation; two reviewers audit leakage and intent; alternative valid patches count; unresolved leakage or intent is inconclusive."
+  claims_removed_or_narrowed:
+    - "Removed causal bottleneck, dominant causal stage, endogenous mediator, original failure cause, root cause, and failure-taxonomy identification."
+    - "Removed the claim that matched visible loops establish comparability or reveal different causes."
+    - "Removed cross-scaffold, cross-model, cross-task, cross-language, and general-agent transfer from the estimand and feasibility pilot."
+    - "Retained no new causal method, replay/checkpoint method, intervention operator, recovery-window phenomenon, or novelty-first claim."
+  contribution_boundary:
+    claim_type: agent_inference
+    source: "directions/novelty-boundary.md"
+    source_locator: "Exact residual contribution; Why executable code matters, and its limit"
+    statement: "The sole residual is a conditional empirical applicability boundary for marginal benefit, carrier activation, and misinformation sensitivity of native assistance at exact executable code-agent checkpoints; executable repositories add joint state/action/outcome auditability but are substitutable by equally instrumented transactional environments."
+  contribution_gate:
+    claim_type: agent_inference
+    source: "directions/novelty-boundary.md"
+    source_locator: "Exact residual contribution; Positive and negative result boundary"
+    statement: "The direction exceeds fine component ablation only if semantic oracle effects survive sham and mismatch controls, native and intent audits, and strong CodeTracer/Coherence-style process plus DoVer/FALAT-style replay baselines; otherwise it is killed."
+  minimum_feasibility_boundary:
+    claim_type: agent_inference
+    source: "directions/minimum-kill-pilot.md"
+    source_locator: "Feasibility gates before outcome interpretation; Minimum data requirement; Direction-kill and inconclusive conditions"
+    statement: "The feasibility-only floor is 16 fully eligible checkpoints across at least four repositories and both scaffold classes, all four contracts and 13 conditions per checkpoint, and five independent continuations per condition; it cannot support transfer, while any future transfer design needs separate approval and at least the audited 48-checkpoint/eight-repository floor."
+  principal_unresolved_risks:
+    - claim_type: agent_inference
+      source: "directions/direction-revision.md"
+      source_locator: "Cross-scaffold native contract"
+      statement: "SWE-agent visible thought and action may not round-trip independently under every parser/history processor, and E/V share an observation carrier in both scaffolds, so eligible four-contract checkpoints may be rare."
+    - claim_type: agent_inference
+      source: "directions/direction-revision.md"
+      source_locator: "Oracle provenance, leak audit, and intent adjudication"
+      statement: "A validation payload informative enough to change behavior may still imply hidden expected behavior or localization, while a strictly redacted payload may have little rescue value."
+    - claim_type: agent_inference
+      source: "directions/novelty-boundary.md"
+      source_locator: "Exact residual contribution"
+      statement: "Even with valid contracts, reviewers may judge the four-way response matrix to be controlled component ablation already anticipated by recent replay and trajectory-diagnosis work."
+  outputs:
+    - "directions/direction-revision.md"
+    - "directions/novelty-boundary.md"
+    - "directions/minimum-kill-pilot.md"
+    - "directions/direction-narrowing-comparison.md"
+    - "config/research_scope.yaml"
+    - "state/checkpoint.yaml"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "Ruby YAML/phase/authorization/recommendation/recursive-claim and Markdown required-field/claim-label/ASCII/newline audits; pinned SWE-agent and OpenHands commit/symbol checks; node --test scripts/*.test.js; git diff --check; final git status --short"
+    statement: "Both YAML files parsed; scope and checkpoint agreed on DIRECTION_REVISED, INDEPENDENT_DIRECTION_REAUDIT, READY_FOR_REAUDIT, removed transfer, and pilot_authorized false; all revision statement records and Markdown list claims had allowed labels and sources; required artifacts, ASCII, and final newlines passed; pinned scaffold commits contained the cited event/action symbols; all 18 repository tests passed; diffs had no whitespace errors; and final status contained only the six intended uncommitted phase files."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md; directions/minimum-kill-pilot.md"
+    source_locator: "Phase boundary and internal recommendation; Status and phase boundary"
+    statement: "DIRECTION_REVISION is complete. No pilot design or execution, adapter implementation, task download, model call, training, formal experiment, commit, or push is included, and pilot_authorized remains false."
+  human_decisions_pending: []
+next_phase: INDEPENDENT_DIRECTION_REAUDIT
+last_updated: "2026-07-26T14:20:54Z"

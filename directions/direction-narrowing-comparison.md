@@ -1,5 +1,13 @@
 # DIRECTION_NARROWING Direction Comparison
 
+> `[agent_inference]` Historical status: this file records the pre-audit narrowing decision. Its
+> causal-bottleneck, failure-cause, dominant-stage, and transfer wording is not
+> an active claim after `DIRECTION_REVISION`; use
+> `directions/direction-revision.md` and `directions/novelty-boundary.md` for the
+> current research question, estimand, contracts, controls, and claim boundary.
+> Source: `reports/independent-direction-audit-report.md / Decision` and the
+> current revision artifacts.
+
 ## Phase contract and decision
 
 - `[direct_evidence]` This phase entered from `PRIOR_ART_CROSS_FIELD_ATTACKED` with exactly two carry-forward candidates, `IDEA_STAGEWISE_FAILURE_ATTRIBUTION` and `IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY`. Source: `state/checkpoint.yaml / prior_art_cross_field_attack.carry_forward`; `config/research_scope.yaml / prior_art_cross_field_attack`.

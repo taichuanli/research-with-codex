@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T03:01:00-04:00"
+last_reviewed_at: "2026-07-26T10:20:54-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: DIRECTIONS_NARROWED
-  next_phase: INDEPENDENT_DIRECTION_AUDIT
+  current_phase: DIRECTION_REVISED
+  next_phase: INDEPENDENT_DIRECTION_REAUDIT
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -281,6 +281,7 @@ direction_narrowing:
   status: completed
   phase_completed: DIRECTIONS_NARROWED
   next_phase: INDEPENDENT_DIRECTION_AUDIT
+  active_claim_status: superseded_by_direction_revision
   compared_direction_count: 3
   decisions:
     STAGEWISE_FAILURE_ATTRIBUTION_STANDALONE: FINALIST_NARROW
@@ -305,3 +306,56 @@ direction_narrowing:
     novelty_boundary_path: "directions/novelty-boundary.md"
     minimum_pilot_path: "directions/minimum-kill-pilot.md"
   phase_boundary: "Direction comparison, targeted novelty-boundary checks, and a kill-first pilot design are complete. One conditional finalist advances to independent direction audit; no pilot, implementation, task download, model call, training, or formal experiment was started."
+
+independent_direction_audit:
+  status: completed
+  phase_completed: INDEPENDENT_DIRECTION_AUDIT
+  next_phase: DIRECTION_REVISION
+  decision: REVISE_BEFORE_PILOT
+  pilot_authorized: false
+  outputs:
+    report_path: "reports/independent-direction-audit-report.md"
+    decision_package_path: "directions/independent-direction-audit-decision-package.md"
+  phase_boundary: "The independent audit required a single conditional-rescue estimand, native scaffold contracts, untouched replay as primary comparator, separate sham and mismatched controls, a frozen oracle/leak/intent protocol, and either a larger transfer design or removal of transfer claims. No pilot was authorized."
+
+direction_revision:
+  status: completed
+  phase_completed: DIRECTION_REVISED
+  next_phase: INDEPENDENT_DIRECTION_REAUDIT
+  source_finalist: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+  revised_direction_id: FINALIST_NATIVE_INTERFACE_CONDITIONAL_RESCUE
+  recommendation: READY_FOR_REAUDIT
+  pilot_authorized: false
+  research_question:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Revised research question and unique estimand"
+    statement: "At an exactly restored executable code-agent checkpoint, how much does replacing one native, model-visible E/S/A/V carrier with independently validated leak-audited assistance change the probability of an intent-valid repair within a fixed continuation budget relative to untouched replay, and is that change distinguishable from sham and mismatched-content effects?"
+  estimand:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Revised research question and unique estimand"
+    statement: "For interface j and eligible checkpoint C_i, tau_j(C_i) is P(intent-valid repair under oracle substitution j | C_i and frozen continuation policy) minus P(intent-valid repair under untouched replay | C_i and the same policy); it is a total external-assistance effect, not an endogenous causal-stage, bottleneck, root-cause, or failure-cause estimand."
+  contract_status:
+    claim_type: agent_inference
+    source: "directions/direction-revision.md"
+    source_locator: "Cross-scaffold native contract"
+    statement: "Pinned SWE-agent and OpenHands sources expose auditable observation, visible-thought, executable-action, and validator/finish carriers, but every checkpoint must be excluded when a carrier is absent, hidden, dropped, fused, non-round-trippable, or structurally invalid."
+  transfer_status: removed_from_estimand_and_minimum_pilot
+  contribution_boundary:
+    claim_type: agent_inference
+    source: "directions/novelty-boundary.md"
+    source_locator: "Exact residual contribution"
+    statement: "The only residual is a conditional empirical applicability-boundary result about marginal benefit, carrier activation, and misinformation sensitivity of native assistance at exact executable code-agent checkpoints; it collapses to fine component ablation if sham, mismatch, or strong process/replay baselines explain the result."
+  scaffold_contract_sources:
+    SWE_AGENT:
+      commit: "3ea751c087f32b16e039a2233dd6eefecef325d5"
+      source: "https://github.com/SWE-agent/SWE-agent"
+    OPENHANDS_SOFTWARE_AGENT_SDK:
+      commit: "310989d306114efd0fcadbcbed9ff9c21d4a5963"
+      source: "https://github.com/OpenHands/software-agent-sdk"
+  outputs:
+    revision_path: "directions/direction-revision.md"
+    novelty_boundary_path: "directions/novelty-boundary.md"
+    minimum_feasibility_boundary_path: "directions/minimum-kill-pilot.md"
+  phase_boundary: "The three bounded audit blockers were revised without pilot design or execution. The next phase may independently re-audit the estimand, contracts, controls, leak protocol, feasibility boundary, and residual contribution; pilot authorization remains false."
