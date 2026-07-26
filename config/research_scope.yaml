@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T10:20:54-04:00"
+last_reviewed_at: "2026-07-26T10:52:02-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: DIRECTION_REVISED
-  next_phase: INDEPENDENT_DIRECTION_REAUDIT
+  current_phase: DIRECTION_REAUDIT_FAILED
+  next_phase: IDEA_SEEDING
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -359,3 +359,42 @@ direction_revision:
     novelty_boundary_path: "directions/novelty-boundary.md"
     minimum_feasibility_boundary_path: "directions/minimum-kill-pilot.md"
   phase_boundary: "The three bounded audit blockers were revised without pilot design or execution. The next phase may independently re-audit the estimand, contracts, controls, leak protocol, feasibility boundary, and residual contribution; pilot authorization remains false."
+
+independent_direction_reaudit:
+  status: completed
+  phase_completed: DIRECTION_REAUDIT_FAILED
+  next_phase: IDEA_SEEDING
+  revised_direction_id: FINALIST_NATIVE_INTERFACE_CONDITIONAL_RESCUE
+  decision: RETURN_TO_IDEA_SEEDING
+  pilot_authorized: false
+  scores:
+    Novelty: 1
+    Rigor: 2
+    Relevance: 3
+    Verifiability_and_Transparency: 2
+    Feasibility: 2
+  fundamental_failure: novelty_disappeared_after_narrowing
+  contribution_judgment:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Does the narrowed question still produce publishable scientific knowledge?; Meaning of a significant positive result; Coverage by nearby causal probing, assistance, intervention, and robustness work"
+    statement: "After removing bottleneck, root-cause, stage, taxonomy, and transfer claims, the residual result is controlled assistance and robustness measurement rather than a scientific contribution that clearly exceeds component benchmarking."
+  identifiability_judgment:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Are E/S/A/V natural and cross-scaffold research objects?; Is the sole estimand identifiable?; Can intent-valid repair be established independently?"
+    statement: "E/S/A/V are auditable semantic roles on selected native events but not stable four-carrier objects; individual assistance effects require strong replay assumptions, their vector is not comparable, and the intent endpoint remains an adjudicated approximation for a selected task subset."
+  pilot_judgment:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Can the feasibility-only pilot kill or support the core claim?"
+    statement: "The feasibility boundary can kill engineering, leak, construct, gross-null, or fine-ablation failures, but its own pass condition cannot support contribution or novelty and therefore fails the mandatory pilot gate."
+  retained_pressure_points:
+    - REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+    - DERIVED_STATE_FIDELITY
+    - CHECKABLE_ACCEPTANCE_VS_INTENT
+    - ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+  outputs:
+    report_path: "reports/independent-direction-reaudit-report.md"
+    decision_package_path: "directions/independent-direction-reaudit-decision-package.md"
+  phase_boundary: "INDEPENDENT_DIRECTION_REAUDIT returned the revised direction to IDEA_SEEDING, kept pilot authorization false, generated no new idea, and did not begin pilot design, implementation, model calls, training, experiments, commit, or push."

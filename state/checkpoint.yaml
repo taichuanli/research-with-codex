@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DIRECTION_REVISED
+current_phase: DIRECTION_REAUDIT_FAILED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -39,6 +39,8 @@ phase_catalog:
   - DIRECTION_REVISED
   - DIRECTION_REVISION_FAILED
   - INDEPENDENT_DIRECTION_REAUDIT
+  - DIRECTION_REAUDIT_PASSED
+  - DIRECTION_REAUDIT_FAILED
   - PILOT_DESIGN
 completed_items:
   - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
@@ -99,6 +101,8 @@ completed_items:
   - "DIRECTION_REVISION: fixed the sole estimand as oracle-versus-untouched conditional total rescue effect on intent-valid repair at the same eligible executable checkpoint; removed endogenous bottleneck, root-cause, failure-cause, taxonomy, and transfer interpretations."
   - "DIRECTION_REVISION: defined source-pinned native E/S/A/V contracts for SWE-agent and OpenHands, separate untouched, neutral-sham, mismatched, and oracle conditions, and pre-outcome provenance, leak, alternative-fix, intent, and inconclusive rules."
   - "DIRECTION_REVISION: retained only a conditional code-agent applicability-boundary contribution, replaced the old full pilot with a feasibility-only kill boundary, recommended READY_FOR_REAUDIT, and did not authorize or begin pilot design, implementation, task download, model calls, training, or experiments."
+  - "INDEPENDENT_DIRECTION_REAUDIT: ruled RETURN_TO_IDEA_SEEDING because the narrowed contribution no longer exceeds controlled assistance benchmarking, E/S/A/V remain scaffold-specific semantic roles rather than stable comparable carriers, and the feasibility-only boundary cannot support the core scientific claim."
+  - "INDEPENDENT_DIRECTION_REAUDIT: kept pilot_authorized false, retained four existing research pressure points for later divergence, saved the independent report and decision package, and did not generate an idea, begin pilot design, implement, call models, train, experiment, commit, or push."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1567,5 +1571,129 @@ direction_revision:
     source_locator: "Phase boundary and internal recommendation; Status and phase boundary"
     statement: "DIRECTION_REVISION is complete. No pilot design or execution, adapter implementation, task download, model call, training, formal experiment, commit, or push is included, and pilot_authorized remains false."
   human_decisions_pending: []
-next_phase: INDEPENDENT_DIRECTION_REAUDIT
-last_updated: "2026-07-26T14:20:54Z"
+independent_direction_reaudit:
+  status: completed
+  phase_completed: DIRECTION_REAUDIT_FAILED
+  next_phase: IDEA_SEEDING
+  revised_direction_id: FINALIST_NATIVE_INTERFACE_CONDITIONAL_RESCUE
+  decision:
+    outcome: RETURN_TO_IDEA_SEEDING
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md; directions/independent-direction-reaudit-decision-package.md"
+    source_locator: "Decision; Mandatory pass-gate audit"
+    statement: "The revised direction fails all three mandatory pass gates: its contribution collapses to controlled assistance benchmarking, E/S/A/V do not form a stable identifiable cross-scaffold construct, and the feasibility-only boundary cannot support the core scientific claim."
+  pilot_authorized: false
+  scores:
+    Novelty:
+      score: 1
+      scale: 4
+      claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Five-dimensional score"
+    Rigor:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Five-dimensional score"
+    Relevance:
+      score: 3
+      scale: 4
+      claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Five-dimensional score"
+    Verifiability_and_Transparency:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Five-dimensional score"
+    Feasibility:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Five-dimensional score"
+  scientific_contribution:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Does the narrowed question still produce publishable scientific knowledge?; Meaning of a significant positive result"
+    statement: "The narrowed study can measure marginal utility, carrier or authority activation, and harm from wrong assistance at selected checkpoints, but it no longer yields a top-venue contribution that clearly exceeds assistance or component benchmarking."
+  contract_estimand_and_intent:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Are E/S/A/V natural and cross-scaffold research objects?; Is the sole estimand identifiable?; Can intent-valid repair be established independently?"
+    statement: "E and V share tool-observation carriers, S and A share assistant/action events, oracle regimes differ in information and timing, replay lacks a policy-drift gate, and the intent endpoint remains an adjudicated approximation for a selected explicit-task population."
+  prior_art_pressure:
+    claim_type: direct_evidence
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Coverage by nearby causal probing, assistance, intervention, and robustness work"
+    statement: "DoVer, FALAT, AgenTracer, AgentCheck, Auditing Provenance Sensitivity, Helpful Agent Meets Deceptive Judge, and Datura cover replay intervention, oracle action replacement, tool-response faults, source-authority sensitivity, misleading feedback, and tool-output manipulation."
+  pilot_assessment:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Can the feasibility-only pilot kill or support the core claim?"
+    statement: "The 16-checkpoint, 13-condition, five-repeat boundary can kill engineering or gross construct failures, but FEASIBILITY_ONLY_PASS explicitly supports no contribution or novelty and cannot satisfy the required scientific-support gate."
+  selection_assessment:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Selection bias from simultaneous four-contract eligibility"
+    statement: "Simultaneous E/S/A/V availability, leak-free oracle construction, and intent adjudicability select unusually transparent, repairable, assistance-ready trajectories and can seriously bias the eligible population."
+  top_rejection_reasons:
+    - claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 1"
+      statement: "Novelty collapses to assistance benchmarking after unsupported causal and transfer claims are removed."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 2"
+      statement: "The E/S/A/V profile is scaffold-specific and non-comparable because roles share carriers and differ in information strength, timing, and action cost."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-reaudit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 3"
+      statement: "Four-contract eligibility and intent adjudication select unusually transparent tasks and leave the endpoint partly subjective."
+  fundamental_failure:
+    category: novelty_disappeared_after_narrowing
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md"
+    source_locator: "Decision; Does the narrowed question still produce publishable scientific knowledge?"
+    statement: "Once bottleneck, root-cause, stage, taxonomy, and transfer claims are removed, the remaining result is a controlled assistance and robustness benchmark rather than a distinct scientific direction."
+  retained_pressure_points:
+    - pressure_point_id: REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P2"
+      statement: "Tool evidence can fail, become stale, or be over-trusted before derived-state analysis is meaningful."
+    - pressure_point_id: DERIVED_STATE_FIDELITY
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P3"
+      statement: "Plans, diagnoses, summaries, and other derived representations still lack stable truth and faithfulness contracts."
+    - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P7"
+      statement: "Executable acceptance and user intent remain separable and incompletely adjudicated."
+    - pressure_point_id: ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+      claim_type: agent_inference
+      source: "synthesis/cross-paper-synthesis.md"
+      source_locator: "Research pressure points / P9"
+      statement: "Process labels and intermediate controls remain coupled to endpoint supervision and scaffold representation."
+  outputs:
+    - "reports/independent-direction-reaudit-report.md"
+    - "directions/independent-direction-reaudit-decision-package.md"
+    - "config/research_scope.yaml"
+    - "state/checkpoint.yaml"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "YAML parse; phase, decision, score, authorization, output, and claim-label audit; Markdown required-section, ASCII, final-newline, and trailing-whitespace audit; git diff --check; final git status --short"
+    statement: "The re-audit artifacts and synchronized state were validated after editing; no pilot, implementation, experiment, commit, or push was performed."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "reports/independent-direction-reaudit-report.md; directions/independent-direction-reaudit-decision-package.md"
+    source_locator: "Final reviewer conclusion; Phase boundary"
+    statement: "INDEPENDENT_DIRECTION_REAUDIT is complete with RETURN_TO_IDEA_SEEDING. No new idea was generated and pilot authorization remains false."
+  human_decisions_pending: []
+next_phase: IDEA_SEEDING
+last_updated: "2026-07-26T14:52:16Z"
