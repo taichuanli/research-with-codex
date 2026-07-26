@@ -1,37 +1,178 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT"
-review_status: inconclusive
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Does local action credit measured from restored external state and filtered for sign agreement across scaffolds transfer better than endpoint-derived process reward?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Restore a pre-action environment, execute alternative actions under frozen continuation policies, validate effects, discard sign-unstable labels, and train on stable action pairs."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml / core_mechanism"
+  intervention_object:
+    statement: "Externally stateful single-agent tool and code-edit decisions used for offline credit and policy training."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Restored, cross-scaffold sign-stable labels should be more predictive and transferable than subtree frequency, trajectory preference, or single-scaffold siblings."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml / minimum_kill_validation"
 search_log:
   - searched_at: "2026-07-25"
-    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
-    query: "arXiv search for counterfactual agent credit assignment and sibling rollouts"
-    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22counterfactual%22%20AND%20all:%22agent%22%20AND%20all:%22credit%20assignment%22"
-    result: "Direct generic counterfactual-credit work was found, forcing the seed to external-state restoration and cross-scaffold sign consistency."
-    claim_type: agent_inference
+    query_families:
+      - "counterfactual credit assignment LLM agent sibling rollout"
+      - "exact checkpoint restoration per-decision credit language agent"
+      - "policy-conditioned counterfactual contribution tool output perturbation"
+      - "verified critical step alternative action outcome"
+      - "turn-level reward long-horizon tool agents"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22counterfactual%20credit%22%20OR%20all:%22step%20credit%20assignment%22)%20AND%20(all:%22LLM%20agent%22%20OR%20all:%22agentic%22)"
+    result:
+      statement: "The search found CRAFT, C3, CVT-RL, CSO, and TRACE. Together they cover sibling counterfactuals, exact checkpoint restoration, frozen continuation, semantic/tool interventions, verified outcome flips, and turn-level credit."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of arXiv:2606.29476v1, 2603.06859v2, 2606.05263v1, 2602.03412v2, and 2607.13988v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "reference chain to counterfactual RL and process reward models"
+      - "forward citations and later versions"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "C3 Sections 1-2; CVT-RL Section 2; CRAFT Section 6; arXiv version headers"
+    result:
+      statement: "Backward chaining recovered model-free counterfactual credit, Monte Carlo step rewards, and agent process supervision. All strongest direct threats are 2026 preprints with immature forward-citation records; C3 and CSO are already at v2."
+      claim_type: direct_evidence
+      source_locator: "source locators above"
 works:
-  - paper_id: "ARXIV_2606_29476"
-    citation: "CRAFT: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning. arXiv:2606.29476v1."
+  - paper_id: "ARXIV_2606_05263"
+    citation: "Meng. Policy-Conditioned Counterfactual Credit for Verifiable Reinforcement Learning of Long-Horizon Language Agents. arXiv:2606.05263v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.05263v1"
+    version_status: "recent_preprint_v1"
     relation: direct_coverage
-    assessment: "Directly covers the broad counterfactual sibling-rollout credit concept for agentic reinforcement learning."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2606.29476v1 / abstract"
-    required_action: narrow
+    body_evidence:
+      statement: "CVT-RL replaces selected actions with deletion, semantic, evidence, or tool-output interventions, completes branches with a frozen continuation policy, applies validity gating and doubly robust correction, and improves average success to 78.9% versus 71.8% compute-matched and 75.4% information-matched baselines."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.2-3.4 and 4.2-4.3; Figure 2; Tables 3-5"
+    coverage:
+      statement: "It directly covers policy-conditioned local causal credit in long-horizon single-agent tool environments with independent verifiers and matched counterfactual information."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not require exact external-state restoration across two scaffolds or filter labels by cross-scaffold sign."
+      claim_type: agent_inference
+      source_locator: "paper estimand and experiments"
+    required_action: reject
   - paper_id: "ARXIV_2603_06859"
-    citation: "Exact Is Easier: Credit Assignment for Cooperative LLM Agents. arXiv:2603.06859v2."
-    relation: partial_overlap
-    assessment: "Uses exact text-history restoration and alternative actions for per-decision credit in cooperative LLM agents; external single-agent environment state and scaffold invariance remain to be checked."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2603.06859v2 / abstract"
+    citation: "Chen et al. Exact Is Easier: Credit Assignment for Cooperative LLM Agents. arXiv:2603.06859v2, 2026."
+    stable_url: "https://arxiv.org/abs/2603.06859v2"
+    version_status: "recent_preprint_v2"
+    relation: direct_coverage
+    body_evidence:
+      statement: "C3 fixes complete history at each decision, restores a checkpoint, samples alternative actions under a frozen policy, computes leave-one-out advantages, and reports consistent gains across six benchmarks, two model families, and two topologies with 32% fewer training tokens."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2-5; Figure 1; main results and diagnostic tables"
+    coverage:
+      statement: "It directly covers exact restored per-decision causal measurement and transfer across models/topologies."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its exactness relies on observable deterministic text history in cooperative agents and explicitly excludes hidden external environment state."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2.1-2.3"
     required_action: narrow
-  - paper_id: "ARXIV_2607_16999"
-    citation: "Counterfactual Shapley Credit Assignment. arXiv:2607.16999v1."
-    relation: neighboring
-    assessment: "Provides causal Shapley credit for general reinforcement learning and increases the burden for any generic causal-credit claim."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2607.16999v1 / abstract"
+  - paper_id: "ARXIV_2606_29476"
+    citation: "Meng and Chen. CRAFT: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning. arXiv:2606.29476v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.29476v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "CRAFT derives signed counterfactual token importance from sibling rollout advantages, distinguishes harmful teacher-preferred actions, and reports gains across three agentic environments and four model scales with counterfactual ablations."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.1, 5.3, 6, and 7; Tables 1-4"
+    coverage:
+      statement: "It directly removes novelty from generic signed sibling-rollout counterfactual credit."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its sibling pool is a group-level state-marginal estimator rather than a fixed external-state intervention."
+      claim_type: direct_evidence
+      source_locator: "paper Section 3.1 limitations of the estimand"
+    required_action: reject
+  - paper_id: "ARXIV_2602_03412"
+    citation: "Li et al. Verified Critical Step Optimization for LLM Agents. arXiv:2602.03412v2, 2026."
+    stable_url: "https://arxiv.org/abs/2602.03412v2"
+    version_status: "recent_preprint_v2"
+    relation: direct_coverage
+    body_evidence:
+      statement: "CSO branches expert alternatives at failed decision points, verifies which actions flip the task outcome, and trains only on those preference pairs, outperforming trajectory and dense step-level baselines."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.2 and 4.3; Figure 2; Tables 1-4"
+    coverage:
+      statement: "It covers verified counterfactual action effects in long-horizon search-agent environments."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not test cross-scaffold sign stability."
+      claim_type: agent_inference
+      source_locator: "paper experiment design"
+    required_action: reject
+  - paper_id: "ICSE2026_SEALIGN"
+    citation: "Zhang et al. SEAlign: Alignment Training for Software Engineering Agent. ICSE 2026; arXiv:2503.18455."
+    stable_url: "https://arxiv.org/abs/2503.18455"
+    version_status: "formal_conference_paper"
+    relation: partial_overlap
+    body_evidence:
+      statement: "Critical-action training improves OpenHands performance but transfers poorly to AutoCodeRover, dropping from 17.7% to 5.7%."
+      claim_type: direct_evidence
+      source_locator: "cards/ICSE2026_sealign-alignment-training-for-software-engineering-agent.yaml / evaluation.main_results; paper Tables 5 and 8"
+    coverage:
+      statement: "It directly establishes scaffold dependence as a real failure mode for process supervision."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It diagnoses transfer but does not create restored cross-scaffold causal labels."
+      claim_type: agent_inference
+      source_locator: "card evidence_gaps"
     required_action: compare
 decision:
-  outcome: narrow
-  rationale: "Counterfactual credit is not retained as the novelty claim; only exact externally stateful restoration, cross-scaffold sign stability, and independent semantic validation remain."
-  claim_type: agent_inference
-  source_locator: "limited search above; idea card / tentative_novelty_delta"
+  outcome: KILL
+  most_damaging_work: "ARXIV_2606_05263"
+  rationale:
+    statement: "Counterfactual local credit, frozen continuations, exact restoration, verified action flips, and single-agent tool environments are directly occupied across CVT-RL, C3, CRAFT, and CSO. Cross-scaffold sign filtering is a straightforward data-selection rule atop these methods and is not a sufficient standalone delta."
+    claim_type: agent_inference
+    source_locator: "works above"
+  covered_problem:
+    statement: "Sparse endpoint credit and misleading credit for long-horizon agent actions are directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2606_05263; ARXIV_2606_29476; ARXIV_2602_03412"
+  covered_mechanism:
+    statement: "Sibling counterfactuals, restored checkpoints, frozen-policy branches, semantic/tool interventions, and outcome-flip verification are covered."
+    claim_type: agent_inference
+    source_locator: "all external works above"
+  covered_experiment:
+    statement: "Matched-compute causal controls, information-matched controls, multi-environment transfer, model-family transfer, and action-pair training are covered."
+    claim_type: agent_inference
+    source_locator: "CVT-RL Tables 3-5; C3 Section 5; CRAFT Tables 2-4; CSO Tables 1-4"
+  novelty_delta:
+    statement: "Exact restoration of hidden external state plus retaining only labels whose sign agrees across scaffolds remains unimplemented as one package, but the package is an obvious combination of occupied components and does not justify retaining the candidate."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_but_not_novel
+    statement: "Cross-scaffold sign agreement is measurable, but a positive result would be a filter ablation on top of existing counterfactual-credit methods."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation and overlap"
+  reviewer_rejection:
+    statement: "The likely rejection is insufficient delta from CVT-RL/C3/CRAFT, with any gain attributed to discarding noisy labels rather than a new credit estimator."
+    claim_type: agent_inference
+    source_locator: "direct-coverage works above"
+  confidence:
+    level: high
+    statement: "Multiple independent 2026 papers jointly cover every substantive component except the simple cross-scaffold sign filter."
+    claim_type: agent_inference
+    source_locator: "works above"
+  unverified_information:
+    - statement: "The recent preprints have not accumulated meaningful forward citations or independent replications."
+      claim_type: direct_evidence
+      source_locator: "OpenAlex and arXiv audit on 2026-07-25"
+  carry_forward_to_cross_field_attack: false

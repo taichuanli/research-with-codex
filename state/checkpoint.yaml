@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: IDEA_SEEDED
+current_phase: PRIOR_ART_DIRECT_ATTACKED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -28,6 +28,8 @@ phase_catalog:
   - IDEA_GENERATION
   - PRIOR_ART_ATTACK
   - PRIOR_ART_ATTACK_DIRECT
+  - PRIOR_ART_DIRECT_ATTACKED
+  - PRIOR_ART_ATTACK_CROSS_FIELD
   - DIRECTION_NARROWING
   - PILOT_DESIGN
 completed_items:
@@ -76,6 +78,9 @@ completed_items:
   - "IDEA_SEEDING: recorded for every seed its cross-paper evidence, closest reviewed work, pending novelty delta, object, intervention layer, mechanism, minimum kill test, three-way result interpretation, resources and cost, general-agent significance, risks, rejection reason, and five separate ranking dimensions."
   - "IDEA_SEEDING: performed only three narrow obvious-overlap searches and narrowed generic tool selection, counterfactual credit, and diffusion repair claims; systematic direct prior-art attack was not started."
   - "IDEA_SEEDING: retained no novelty claim, final direction, implementation, training run, or formal experiment; the ten candidates remain attackable seeds."
+  - "PRIOR_ART_ATTACK_DIRECT: decomposed and searched all ten candidates through multiple synonym families, inspected direct competitors and recent preprints in full text or the strongest available formal evidence, and audited backward references, forward citations, and later versions."
+  - "PRIOR_ART_ATTACK_DIRECT: recorded 43 closest-work entries and issued exactly one allowed decision per candidate: five KILL, one MERGE, two NARROW, one PIVOT, and one SURVIVES_DIRECT_ATTACK."
+  - "PRIOR_ART_ATTACK_DIRECT: retained four altered candidates for cross-field attack, saved ten complete ledgers and reports/prior-art-direct-attack-report.md, and did not generate a new candidate, select a direction, train a model, or run an experiment."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -995,5 +1000,138 @@ idea_seeding:
     source_locator: "Ruby YAML/schema/claim/ranking/ASCII audit; node --test scripts/*.test.js; git diff --check"
     statement: "All 27 phase-relevant YAML files parsed; ten idea cards matched ten ledgers, all nine pressure points, the 3/4/2/1 portfolio, the 3/4/3 risk split, exact summary hypotheses, and five separate rankings; all 18 repository tests passed; and no non-ASCII text, trailing whitespace, or tracked diff whitespace errors were found."
   human_decisions_pending: []
-next_phase: PRIOR_ART_ATTACK_DIRECT
-last_updated: "2026-07-25T16:44:37Z"
+prior_art_direct_attack:
+  status: completed
+  phase_completed: PRIOR_ART_DIRECT_ATTACKED
+  candidate_count: 10
+  closest_work_record_count: 43
+  evidence:
+    claim_type: direct_evidence
+    source: "ideas/prior-art/IDEA_*.yaml; reports/prior-art-direct-attack-report.md"
+    source_locator: "ten schema-2 ledgers / candidate_decomposition, search_log, works, and decision; report / Phase contract and evidence basis through Confidence and phase boundary"
+    statement: "All ten candidates have multi-family searches, body-located closest-work evidence, version or citation-chain checks, covered problem/mechanism/experiment fields, an exact novelty delta, falsifiability, reviewer rejection, confidence, and unverified information; every ledger records at least four damaging works."
+  decision_counts:
+    KILL: 5
+    MERGE: 1
+    NARROW: 2
+    PIVOT: 1
+    SURVIVES_DIRECT_ATTACK: 1
+  decisions:
+    IDEA_STAGEWISE_FAILURE_ATTRIBUTION:
+      outcome: SURVIVES_DIRECT_ATTACK
+      most_damaging_work: ARXIV_2607_09510
+      confidence: medium
+      carry_forward: true
+    IDEA_ORACLE_CONCURRENCE_TRAP:
+      outcome: KILL
+      most_damaging_work: ARXIV_2603_00039
+      confidence: high
+      carry_forward: false
+    IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION:
+      outcome: NARROW
+      most_damaging_work: ARXIV_2511_08325
+      confidence: medium
+      carry_forward: true
+    IDEA_DECISION_VALUE_EVIDENCE_ROUTING:
+      outcome: NARROW
+      most_damaging_work: ARXIV_2605_05701
+      confidence: high
+      carry_forward: true
+    IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY:
+      outcome: PIVOT
+      most_damaging_work: ARXIV_2605_20616
+      confidence: medium
+      carry_forward: true
+    IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE:
+      outcome: MERGE
+      most_damaging_work: EASE2026_CAUSAL_CLARITY
+      confidence: medium
+      carry_forward: false
+      merge_target: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL:
+      outcome: KILL
+      most_damaging_work: ARXIV_2604_23283
+      confidence: high
+      carry_forward: false
+    IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT:
+      outcome: KILL
+      most_damaging_work: ARXIV_2606_05263
+      confidence: high
+      carry_forward: false
+    IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION:
+      outcome: KILL
+      most_damaging_work: ARXIV_2605_05980
+      confidence: medium
+      carry_forward: false
+    IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR:
+      outcome: KILL
+      most_damaging_work: ARXIV_2606_28301
+      confidence: high
+      carry_forward: false
+  carry_forward:
+    count: 4
+    candidates:
+      - idea_id: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        absorbs: IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        novelty_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml; ideas/prior-art/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml"
+          source_locator: "decision.novelty_delta"
+          statement: "At one restored failure checkpoint, independently substitute evidence acquisition, derived state including diagnosis, next action, and validation while freezing earlier state, then test whether the rescue vector distinguishes identical visible loops and transfers across scaffolds."
+      - idea_id: IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        novelty_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+          source_locator: "decision.novelty_delta"
+          statement: "Estimate post-action rescue margin under a fixed continuation and rescue policy at the same checkpoint, then distinguish it from terminal success and Q(s,a), especially after compounding or irreversible edits."
+      - idea_id: IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        novelty_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+          source_locator: "decision.novelty_delta"
+          statement: "Use paired access and withholding branches to test whether a realized code-agent observation changes the best next action and independently validated outcome, discounted by measured acquisition and replay failure."
+      - idea_id: IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        novelty_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+          source_locator: "decision.novelty_delta"
+          statement: "Conduct a pre-method per-item remove, plausible-corrupt, and exact-restore audit that jointly prices false retention and false deletion under equal context budgets and tests existing policies against both."
+  conclusion:
+    claim_type: agent_inference
+    source: "reports/prior-art-direct-attack-report.md"
+    source_locator: "Decision audit; Candidate-by-candidate attack; Carry-forward novelty deltas"
+    statement: "Direct attack eliminates five candidates, merges one into the stagewise causal design, materially narrows two, and pivots one from a policy to an audit; four altered candidates should enter cross-field attack and none has confirmed novelty."
+  non_blocking_uncertainty:
+    - claim_type: direct_evidence
+      source: "ideas/prior-art/IDEA_*.yaml"
+      source_locator: "decision.confidence and decision.unverified_information"
+      statement: "No decision is low confidence; five are medium because several closest works are recent, exact residual label constructions remain untested, replay can be unstable, and independent causal diagnoses can be non-unique."
+    - claim_type: agent_inference
+      source: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml; ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml; ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+      source_locator: "decision.unverified_information"
+      statement: "Checkpoint restoration, continuation-policy dependence, and multi-item memory interactions remain construct-validity gates for the carried candidates."
+  outputs:
+    - "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+    - "ideas/prior-art/IDEA_ORACLE_CONCURRENCE_TRAP.yaml"
+    - "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+    - "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+    - "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+    - "ideas/prior-art/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml"
+    - "ideas/prior-art/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml"
+    - "ideas/prior-art/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml"
+    - "ideas/prior-art/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml"
+    - "ideas/prior-art/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+    - "reports/prior-art-direct-attack-report.md"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "Ruby YAML/schema/claim/decision/carry-forward/report/ASCII audit; HTTP checks for all unique stable URLs; node --test scripts/*.test.js; git diff --check"
+    statement: "All 22 phase-relevant YAML files parsed; ten idea IDs matched ten schema-2 complete ledgers; all 43 work records had citations, body evidence, locators, and valid URLs; every candidate had at least four works and exactly one allowed decision; decision counts and four carry-forward flags matched config, checkpoint, and report; all 40 unique stable URLs returned 2xx or 3xx after four stale links were corrected; the report had ten candidate sections and 40 uniquely labeled sourced bullets; all 18 repository tests passed; and no phase-file ASCII or whitespace error remained."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "reports/prior-art-direct-attack-report.md"
+    source_locator: "Confidence and phase boundary"
+    statement: "PRIOR_ART_ATTACK_DIRECT is complete; no cross-field attack, new idea generation, final direction selection, implementation, training, or formal experiment is included."
+  human_decisions_pending: []
+next_phase: PRIOR_ART_ATTACK_CROSS_FIELD
+last_updated: "2026-07-26T04:41:04Z"

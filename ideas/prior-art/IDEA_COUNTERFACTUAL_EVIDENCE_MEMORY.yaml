@@ -1,10 +1,163 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Can one policy jointly reduce harmful retained evidence and harmful deleted evidence under a fixed context budget?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Use remove, corrupt, and restore replays to estimate decision necessity and contradiction, retain provenance, and recall deleted evidence from reversible cold storage."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml / core_mechanism"
+  intervention_object:
+    statement: "Tool outputs, failures, edits, summaries, and negative findings exposed as operative long-horizon agent state."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Intervention-derived memory control should beat relevance, attention, summaries, recency, and uncompressed context on both distraction and deletion regressions."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM agent memory pruning counterfactual dropout"
+      - "agent memory forgetting corruption causal replay"
+      - "memory consolidation provenance harmful memory"
+      - "agent memory add update delete reinforcement learning"
+      - "plan removal replay pairing language agents"
+    sources: [arXiv, OpenAlex, ACL_Anthology]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22LLM%20agent%20memory%22%20OR%20all:%22language%20agent%20memory%22)%20AND%20(all:%22pruning%22%20OR%20all:%22forgetting%22%20OR%20all:%22corruption%22%20OR%20all:%22counterfactual%22)"
+    result:
+      statement: "The search found Auto-Dreamer, which already combines provenance, region rewriting, harmful-memory filtering, and counterfactual dropout reward; Memory-R1 formally learns ADD/UPDATE/DELETE/NOOP and distillation; A-MemGuard directly tests corrupted retained memory."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of arXiv:2605.20616v1, ACL 2026 Memory-R1, and arXiv:2510.02373v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward chain from Auto-Dreamer and Memory-R1"
+      - "forward citation and formal-version audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv, ACL_Anthology]
+    source_locator: "Auto-Dreamer Section 3 and references 30-43; https://doi.org/10.18653/v1/2026.acl-long.583"
+    result:
+      statement: "Backward chaining recovered A-MEM, Mem-alpha, UMEM, Mem0, ExpeL, and Memory-R1. Memory-R1 has an ACL 2026 formal version; most 2026 consolidation papers have no meaningful indexed forward-citation history yet."
+      claim_type: direct_evidence
+      source_locator: "source locators above; OpenAlex record W7166853358"
+works:
+  - paper_id: "ARXIV_2605_20616"
+    citation: "Ye et al. Auto-Dreamer: Learning Offline Memory Consolidation for Language Agents. arXiv:2605.20616v1, 2026."
+    stable_url: "https://arxiv.org/abs/2605.20616v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Auto-Dreamer rewrites provenance-linked memory regions, makes omission-based forgetting the default, and trains with a counterfactual utility term that randomly masks synthesized entries and measures downstream performance loss; it reports compact, stronger memory across ALFWorld, ScienceWorld, and WebArena and shows cases filtering wrong or contradictory entries."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3, 4.1-4.3, 5.2-5.5; Figure 2; Tables 1-2; case studies in Section 5.5"
+    coverage:
+      statement: "It directly covers counterfactual memory utility, provenance, forgetting, harmful retention, compactness, and cross-domain deployment."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its dropout is random over a replacement set rather than paired per-item remove/corrupt/restore, and deleted items are not exposed through an evaluated reversible recall policy."
+      claim_type: agent_inference
+      source_locator: "paper Equation 3 and Section 4.3; candidate core mechanism"
+    required_action: narrow
+  - paper_id: "ACL2026_MEMORY_R1"
+    citation: "Yan et al. Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning. ACL 2026. DOI:10.18653/v1/2026.acl-long.583."
+    stable_url: "https://doi.org/10.18653/v1/2026.acl-long.583"
+    version_status: "formal_conference_paper_after_arxiv_2508_19828"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Memory-R1 trains a manager over ADD, UPDATE, DELETE, and NOOP plus a memory-distilled answer agent; Table 1 reports gains over MemoryOS and A-Mem, and ablations show both manager and distillation contributions across LoCoMo with transfer to MSC and LongMemEval."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-4; Table 1; Figures 3-5; Appendix A case studies"
+    coverage:
+      statement: "It directly covers learned retention, update, deletion, and distractor filtering under downstream reward."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not identify causal per-item necessity or price false deletion by restoring removed evidence."
+      claim_type: agent_inference
+      source_locator: "paper reward design and memory operations"
+    required_action: narrow
+  - paper_id: "ARXIV_2510_02373"
+    citation: "Wei et al. A-MemGuard: A Proactive Defense Framework for LLM-Based Agent Memory. arXiv:2510.02373v1, 2025."
+    stable_url: "https://arxiv.org/abs/2510.02373v1"
+    version_status: "preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "A-MemGuard injects context-triggered malicious memory, detects divergent action paths with consensus, stores negative lessons separately, and reports over 95% attack-success reduction with small benign-utility cost."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 1, 3, and 5; Figure 1; main results tables"
+    coverage:
+      statement: "It directly covers corrupted retained memory, action corruption, provenance-like separation, and recovery from self-reinforcing memory errors."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It is a security defense and does not jointly optimize ordinary false retention and false deletion."
+      claim_type: agent_inference
+      source_locator: "paper threat model"
+    required_action: compare
+  - paper_id: "ARXIV_2606_22953"
+    citation: "Plans Don't Persist: Why Context Management Is Load Bearing for LLM Agents. arXiv:2606.22953v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.22953v1"
+    version_status: "recent_preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "The paper introduces replay pairing that holds actions and observations fixed while removing a plan, measures hidden-state divergence, and shows rapid loss of plan signal; it also reports that re-surfacing a stale plan does not restore missing working state."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.3, 6-9; Figure 1; Tables 1 and 8-9"
+    coverage:
+      statement: "It directly covers controlled memory removal and exposes limits of naive restoration."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "The main claim is representational and the authors explicitly leave stronger causal behavioral tests for future work."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 6 and 9"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: PIVOT
+  most_damaging_work: "ARXIV_2605_20616"
+  rationale:
+    statement: "The proposed memory-policy contribution is no longer defensible as stated: Auto-Dreamer already uses counterfactual memory utility with provenance and harmful-memory filtering, while Memory-R1 learns deletion and A-MemGuard covers corruption. The candidate may continue only as a causal audit of two-sided memory errors before any new policy claim."
+    claim_type: agent_inference
+    source_locator: "works above"
+  covered_problem:
+    statement: "Memory noise, excessive retention, forgetting, contradiction, and learned memory operations are directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_20616; ACL2026_MEMORY_R1; ARXIV_2510_02373"
+  covered_mechanism:
+    statement: "Counterfactual dropout, provenance-grounded consolidation, omission-based forgetting, ADD/UPDATE/DELETE policies, and corruption defenses are covered."
+    claim_type: agent_inference
+    source_locator: "same works"
+  covered_experiment:
+    statement: "Matched memory baselines, ablations, compactness, cross-domain transfer, poisoning, and controlled plan removal are covered."
+    claim_type: agent_inference
+    source_locator: "all works above"
+  novelty_delta:
+    statement: "A pre-method audit that applies per-item remove, semantically plausible corruption, and exact restore at the same checkpoint, jointly estimates false-retention and false-deletion action costs under an equal token budget, and tests whether any existing policy detects and reverses both error types."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_after_pivot
+    statement: "The pivot fails if item effects are unstable or non-additive enough to prevent reliable two-sided error estimates, or if Auto-Dreamer-style dropout already predicts both costs."
+    claim_type: agent_inference
+    source_locator: "candidate kill criteria and direct coverage"
+  reviewer_rejection:
+    statement: "The original method would be rejected as Auto-Dreamer plus explicit corruption and a cold store; only a rigorous common audit of false retention and deletion avoids that combination objection."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_20616; ARXIV_2510_02373"
+  confidence:
+    level: medium
+    statement: "The method overlap is strong, but per-item paired restoration and joint two-sided measurement remain untested in the closest bodies."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  unverified_information:
+    - statement: "Interaction effects among multiple weak memories may invalidate single-item causal scores."
+      claim_type: agent_inference
+      source_locator: "candidate maximum_risk"
+    - statement: "The rapidly growing 2026 memory literature has immature forward-citation indexing."
+      claim_type: direct_evidence
+      source_locator: "OpenAlex audit on 2026-07-25"
+  carry_forward_to_cross_field_attack: true

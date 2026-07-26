@@ -1,10 +1,159 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_ORACLE_CONCURRENCE_TRAP"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Does validator independence predict intended correctness better than the raw number of agreeing validators?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Estimate shared behavioral coverage or error dependence and compare redundant with orthogonal validators under matched budgets."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml / core_mechanism"
+  intervention_object:
+    statement: "Acceptance and stopping for generated patches, specifications, or plans."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Dependence-aware concurrence should expose a high-confidence false-acceptance region missed by validator count."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM judge correlated errors effective votes"
+      - "confounder-aware judge aggregation"
+      - "validator ensemble independence programmatic judges"
+      - "oracle diversity false acceptance code generation"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://api.openalex.org/works?search=confounder-aware%20aggregation%20LLM%20judges"
+    result:
+      statement: "The search found both a direct measurement paper on effective panel independence and CARE, which explicitly models shared confounders and evaluates synthesized executable programmatic judges."
+      claim_type: direct_evidence
+      source_locator: "OpenAlex query above; full texts of arXiv:2605.29800v1 and arXiv:2603.00039v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward and forward chain from Nine Judges and CARE"
+      - "later version and formal-publication audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "arXiv:2605.29800v1 / Section 2; arXiv:2603.00039v1 / Section 6; https://api.openalex.org/works?search=Replacing%20Judges%20with%20Juries"
+    result:
+      statement: "Backward chaining recovered PoLL and classical dependent-voter aggregation. OpenAlex recorded 14 citations for PoLL; CARE and Nine Judges were recent v1 preprints with no meaningful forward-citation record at the audit date."
+      claim_type: direct_evidence
+      source_locator: "source locators above; OpenAlex record W4396570275"
+works:
+  - paper_id: "ARXIV_2603_00039"
+    citation: "Zhao et al. CARE: Confounder-Aware Aggregation for Reliable LLM Evaluation. arXiv:2603.00039v1, 2026."
+    stable_url: "https://arxiv.org/abs/2603.00039v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "CARE explicitly models shared latent confounders among correlated judges, reports up to 26.8% aggregation-error reduction over baselines, and in Section 5.3 integrates 30 executable programmatic judges, reducing MAE by 15.2% versus majority vote."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3, 5.1, and 5.3; Figure 4; Tables 1-2"
+    coverage:
+      statement: "It directly covers dependence-aware aggregation and extends beyond LLM votes to executable programmatic judges."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not use developer intent labels for software patches or enumerate behavioral properties checked by each validator."
+      claim_type: agent_inference
+      source_locator: "paper Section 5 datasets; candidate research object"
+    required_action: reject
+  - paper_id: "ARXIV_2605_29800"
+    citation: "Kohli. Nine Judges, Two Effective Votes: Correlated Errors Undermine LLM Evaluation Panels. arXiv:2605.29800v1, 2026."
+    stable_url: "https://arxiv.org/abs/2605.29800v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Across nine judges from seven model families, the paper estimates only about 2.0-2.5 effective independent votes; panel accuracy falls 8-22 points below an independence null, and weighting methods close at most 11% of the gap."
+      claim_type: direct_evidence
+      source_locator: "paper Abstract; Sections 3-5; Tables 3-5; effective-sample-size and Condorcet-gap analyses"
+    coverage:
+      statement: "It directly establishes the candidate's central empirical law that nominal agreement overstates independent evidence."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its gold labels are human-annotated NLI judgments rather than intended correctness of generated software artifacts."
+      claim_type: agent_inference
+      source_locator: "paper Section 3.1"
+    required_action: reject
+  - paper_id: "ARXIV_2404_18796"
+    citation: "Verga et al. Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models. arXiv:2404.18796, 2024."
+    stable_url: "https://arxiv.org/abs/2404.18796"
+    version_status: "preprint_with_forward_citations"
+    relation: partial_overlap
+    body_evidence:
+      statement: "PoLL evaluates heterogeneous panels across six datasets, reports stronger human agreement than a single large judge, and frames panel composition as a means to reduce intra-model bias."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2.2 and 4.1-4.4; Tables 1-3"
+    coverage:
+      statement: "It covers the intervention of replacing one judge with a heterogeneous panel and measures agreement with humans."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not estimate effective independence and its positive conclusion is bounded by the later negative result in Nine Judges."
+      claim_type: agent_inference
+      source_locator: "ARXIV_2605_29800 / Section 2 comparison with PoLL"
+    required_action: compare
+  - paper_id: "ICSE2026_PATCHDIFF"
+    citation: "Wang, Pradel, and Liu. Are 'Solved Issues' in SWE-bench Really Solved Correctly? An Empirical Study. ICSE 2026. DOI:10.1145/3744916.3764576; arXiv:2503.15223v2."
+    stable_url: "https://arxiv.org/abs/2503.15223v2"
+    version_status: "formal_conference_paper_with_arxiv_v2"
+    relation: partial_overlap
+    body_evidence:
+      statement: "Developer tests expose 7.8% of plausible patches as incorrect, PatchDiff flags 29.6% as behaviorally divergent, and 51 of 77 audited suspicious cases remain uncertain."
+      claim_type: direct_evidence
+      source_locator: "cards/ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud.yaml / evaluation.main_results; paper Sections 4.1-4.3 and Tables 2, 3, and 8"
+    coverage:
+      statement: "It directly demonstrates false acceptance and the difficulty of obtaining intent truth for code patches."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It audits validators but does not propose a general dependence-aware aggregation estimator."
+      claim_type: agent_inference
+      source_locator: "paper method; CARE comparison"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: KILL
+  most_damaging_work: "ARXIV_2603_00039"
+  rationale:
+    statement: "The central law and mechanism are already occupied: Nine Judges quantifies the independence deficit, while CARE models shared confounders and already evaluates executable programmatic judges. Restricting the same idea to software artifacts and intent labels is an application, not a sufficient novelty delta."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2603_00039; ARXIV_2605_29800; ICSE2026_PATCHDIFF"
+  covered_problem:
+    statement: "Correlated evaluator agreement, diminishing panel returns, and confident shared mistakes are directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_29800"
+  covered_mechanism:
+    statement: "Effective-vote measurement, confounder-aware aggregation, and heterogeneous/programmatic judge selection are directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2603_00039; ARXIV_2404_18796"
+  covered_experiment:
+    statement: "Count-only versus dependence-aware aggregation with human references and executable programmatic judges is covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2603_00039 / Sections 5.1 and 5.3; ARXIV_2605_29800 / Sections 3-5"
+  novelty_delta:
+    statement: "Only a domain-specific measurement of checked behavioral-property overlap against independently adjudicated software intent remains; this is insufficient to retain the candidate as a standalone method or empirical law."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_but_not_novel
+    statement: "The software-domain hypothesis remains testable, but a falsifiable replication or domain transfer does not restore novelty."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation and direct coverage"
+  reviewer_rejection:
+    statement: "Reviewers would describe the work as CARE plus a software-validator dataset, with Nine Judges already establishing the headline phenomenon."
+    claim_type: agent_inference
+    source_locator: "direct-coverage works above"
+  confidence:
+    level: high
+    statement: "Two independent recent works cover the empirical law and the corrective mechanism, including executable programmatic judges."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2603_00039; ARXIV_2605_29800"
+  unverified_information:
+    - statement: "Whether CARE has a post-v1 peer-reviewed version is not established by the available records."
+      claim_type: direct_evidence
+      source_locator: "arXiv and OpenAlex version audit on 2026-07-25"
+  carry_forward_to_cross_field_attack: false

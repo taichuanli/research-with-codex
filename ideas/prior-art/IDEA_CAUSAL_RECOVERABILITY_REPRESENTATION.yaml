@@ -1,10 +1,181 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Do hidden states at live agent decision checkpoints encode action-conditional recoverability rather than only terminal correctness or task difficulty?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Label alternative-action rescue margins with checkpointed branch outcomes, learn an internal direction, and causally steer inspect, rollback, or stop decisions."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml / core_mechanism"
+  intervention_object:
+    statement: "Open-model hidden states immediately before tool, edit, rollback, or stop actions in single-agent trajectories."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "A recoverability direction should remain separable after task and action controls, transfer across repositories, and shift both the intended action and terminal outcome under activation intervention."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM agent recoverability hidden state probe activation steering"
+      - "coding agent failure direction residual stream steering"
+      - "agent early failure prediction hidden activation early abort"
+      - "latent control clarification tool abstain direct answer"
+      - "tool calling rescue stop avoid activation steering"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22activation%20steering%22%20AND%20(all:%22agent%22%20OR%20all:%22tool%22)%20AND%20(all:%22recoverability%22%20OR%20all:%22failure%22%20OR%20all:%22decision%22)"
+    result:
+      statement: "The search retrieved TACT's hidden-state drift axes and causal steering on coding agents, Multi-Head Latent Control's action heads, a recall-controlled hidden-state abort cascade, ASA's gated tool-action steering, and EAST's causal exploration steering."
+      claim_type: direct_evidence
+      source_locator: "arXiv query above; full texts of arXiv:2605.05980v1, 2607.14277v1, 2607.06503v2, 2602.04935v3, and 2406.00244v2"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward references from TACT, Multi-Head Latent Control, ASA, and EAST"
+      - "forward citations, later versions, and formal-publication audit"
+    sources: [paper_reference_lists, arXiv, OpenAlex]
+    source_locator: "arXiv version records for 2406.00244, 2602.04935, 2605.05980, 2607.06503, and 2607.14277; https://api.openalex.org/works?search=Multi-Head%20Latent%20Control%20Unified%20Interface%20LLM%20Agent%20Decision%20Making"
+    result:
+      statement: "Backward chaining connected the works to representation engineering, tool-use probes, agent monitors, and behavioral recovery controls. TACT and Multi-Head Latent Control remain recent v1 preprints, Doomed from the Start is v2, ASA is v3, and their recency leaves no mature forward-citation record."
+      claim_type: direct_evidence
+      source_locator: "source records above; papers' Related Work and version headers"
+works:
+  - paper_id: "ARXIV_2605_05980"
+    citation: "Sui et al. TACT: Mitigating Overthinking and Overacting in Coding Agents via Activation Steering. arXiv:2605.05980v1, 2026."
+    stable_url: "https://arxiv.org/abs/2605.05980v1"
+    version_status: "recent_preprint_v1_work_in_progress"
+    relation: direct_coverage
+    body_evidence:
+      statement: "TACT labels coding-agent steps as overthinking, overacting, or calibrated, extracts two approximately 0.9-AUC hidden-state drift axes at the reasoning-action boundary, and steers out-of-band activations toward the calibrated region. Across SWE-bench Verified, Terminal-Bench 2.0, and CLAW-Eval it reports average resolve-rate gains of 5.8 and 4.8 percentage points on two models and up to 26% fewer steps to resolution."
+      claim_type: direct_evidence
+      source_locator: "paper Abstract; Sections 1-2 and 4-5; Figures 1-2; main results and steering ablations"
+    coverage:
+      statement: "It directly covers a coding-agent internal failure representation, step-level labels, causal activation steering, cross-benchmark evaluation, and terminal outcome improvement."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its labels are behavioral drift classes rather than counterfactual action-specific rescue margins, and its rolling state depends on an LLM judge."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2.2-2.4 and limitations; candidate label definition"
+    required_action: reject
+  - paper_id: "ARXIV_2607_14277"
+    citation: "Ghasemabadi et al. Multi-Head Latent Control: A Unified Interface for LLM Agent Decision Making. arXiv:2607.14277v1, 2026."
+    stable_url: "https://arxiv.org/abs/2607.14277v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Two lightweight heads read hidden-state trajectories from a frozen backbone to decide model handoff and choose clarification, tool use, abstention, or direct answering. The paper reports up to 158.9% relative tool score gain and 65.5% fewer missed-required tool calls."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-4; Tables 3-5; Table 4 and accompanying analysis"
+    coverage:
+      statement: "It directly covers model-internal state as a deployed interface for choosing what an agent should do next."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "The heads are supervised with adequacy and resolution labels rather than counterfactual branch recovery, and the paper does not activation-steer a recoverability direction."
+      claim_type: agent_inference
+      source_locator: "paper Sections 3.1-3.3; candidate core mechanism"
+    required_action: reject
+  - paper_id: "ARXIV_2607_06503"
+    citation: "Ruan et al. Doomed from the Start: Early Abort of LLM Agent Episodes via a Recall-Controlled Probe Cascade. arXiv:2607.06503v2, 2026."
+    stable_url: "https://arxiv.org/abs/2607.06503v2"
+    version_status: "recent_preprint_v2"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Round-specific linear probes read agent hidden states to predict eventual failure from the first interaction round and drive a recall-controlled early-abort cascade. On TextCraft and WebShop with three models, the strongest settings save 60.2% and 54.9% of generated tokens at 90% success recall."
+      claim_type: direct_evidence
+      source_locator: "paper Abstract; Sections 2-5; Figure 1; Table 1 and complete savings matrix"
+    coverage:
+      statement: "It directly covers early latent prediction of empirically doomed trajectories and an online stop intervention."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its target is eventual binary failure under the observed policy, not whether a particular alternative action can rescue the current state."
+      claim_type: agent_inference
+      source_locator: "paper problem formulation; candidate action-conditional target"
+    required_action: reject
+  - paper_id: "ARXIV_2602_04935"
+    citation: "Wang et al. ASA: Backbone-Training-Free Representation Engineering for Tool-Calling Agents. arXiv:2602.04935v3, 2026."
+    stable_url: "https://arxiv.org/abs/2602.04935v3"
+    version_status: "preprint_v3"
+    relation: direct_coverage
+    body_evidence:
+      statement: "ASA combines hidden-state probes, signed gates, and activation directions to rescue missing tool-boundary entry, avoid harmful triggers, and prevent premature stopping. Its multi-turn controller reports probe AUCs of 0.962, 0.952, and 0.964 for rescue, hurt-avoidance, and stop-avoidance and applies repeated state-cascade interventions."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-7; Tables 3-6 and 11-14; Appendix K.3-K.5"
+    coverage:
+      statement: "It directly covers gated internal-state steering of rescue, continuation, abstention, and stop-related agent actions."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its rescue target is parser-defined tool execution, not environment-level recoverability under alternative agent actions."
+      claim_type: agent_inference
+      source_locator: "paper Section 3.1 and strict execution metrics"
+    required_action: reject
+  - paper_id: "ARXIV_2406_00244"
+    citation: "Rahn, D'Oro, and Bellemare. Controlling Large Language Model Agents with Entropic Activation Steering. arXiv:2406.00244v2, 2024."
+    stable_url: "https://arxiv.org/abs/2406.00244v2"
+    version_status: "preprint_v2"
+    relation: partial_overlap
+    body_evidence:
+      statement: "EAST derives an entropy-weighted activation direction immediately before agent decisions and causally shifts parsed high-level actions toward exploration; shuffled-vector controls fail, and directions transfer across task descriptions and to a second model."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 5-6; Figures 5-10; Table 1"
+    coverage:
+      statement: "It establishes that an internal action-level uncertainty direction can be causally steered in a sequential agent."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It studies language-rendered bandits rather than coding-agent failure recovery and does not use branch rescue labels."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2 and 4; candidate research object"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: KILL
+  most_damaging_work: "ARXIV_2605_05980"
+  rationale:
+    statement: "TACT already demonstrates hidden-state failure axes and causal activation steering in coding agents; Multi-Head Latent Control and Doomed from the Start cover actionable next-decision heads and latent early-failure stopping; ASA covers gated rescue and stop steering. Replacing their labels with a counterfactual branch rescue margin is a natural recombination, not a sufficient standalone novelty."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05980; ARXIV_2607_14277; ARXIV_2607_06503; ARXIV_2602_04935"
+  covered_problem:
+    statement: "Predicting agent failure or miscalibration from hidden states early enough to change a live coding or tool-using trajectory is covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05980; ARXIV_2607_06503"
+  covered_mechanism:
+    statement: "Linear hidden-state probes, contrastive failure directions, conditional gates, activation steering, and latent next-action heads are covered."
+    claim_type: agent_inference
+    source_locator: "all works above"
+  covered_experiment:
+    statement: "Causal action shifts, early stopping, tool-call rescue, cross-benchmark coding-agent success, and task/model transfer controls are covered."
+    claim_type: agent_inference
+    source_locator: "TACT main results; Multi-Head Tables 3-5; Doomed savings matrix; ASA Tables 3-6 and 11-14; EAST Figures 5-10"
+  novelty_delta:
+    statement: "Only the label construction remains: define an action-conditional rescue margin from checkpointed alternative branches, orthogonalize it against terminal difficulty and action identity, and test whether that specific direction improves recovery beyond TACT-style drift axes and existing latent action heads."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_but_not_novel
+    statement: "The rescue-margin representation is testable and fails if it is not separable, transferable, or causally effective, but falsifiability does not overcome the occupied probe-and-steer mechanism."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation and direct coverage"
+  reviewer_rejection:
+    statement: "Reviewers would describe the method as TACT with counterfactual labels, combined with a Doomed-style failure probe and ASA/Multi-Head action controller."
+    claim_type: agent_inference
+    source_locator: "direct-coverage works above"
+  confidence:
+    level: medium
+    statement: "The mechanism and coding-agent setting are directly occupied, but no verified paper uses the exact action-conditional rescue-margin label; several closest works are very recent preprints without mature citation scrutiny."
+    claim_type: agent_inference
+    source_locator: "version audit and uncovered fields above"
+  unverified_information:
+    - statement: "TACT is marked work in progress, and independent replication of its coding-agent activation effects was not located."
+      claim_type: direct_evidence
+      source_locator: "arXiv:2605.05980v1 version comment and citation audit"
+    - statement: "Whether branch-derived rescue labels yield a direction geometrically distinct from TACT, ASA, or terminal-failure probes has not been tested."
+      claim_type: agent_inference
+      source_locator: "cross-work comparison above"
+  carry_forward_to_cross_field_attack: false

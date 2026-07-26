@@ -1,10 +1,160 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Are terminal success, next-action advantage, and post-action recoverability empirically distinct calibration targets at the same agent checkpoint?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Restore checkpoints, branch over plausible actions and a fixed rescue policy, and compare calibration under terminal, action-value, and rescue-margin labels."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / core_mechanism"
+  intervention_object:
+    statement: "Tool, edit, stop, and rollback choices in single-agent trajectories."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Terminal-confidence estimators should be miscalibrated for action advantage and remaining rescue margin across agents and repositories."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM agent process reward action value next action"
+      - "step-wise promise progress process reward model"
+      - "Q-value language agent stepwise search"
+      - "critical step alternative action flips outcome"
+      - "agent recoverability recovery window calibration"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22process%20reward%20model%22%20OR%20all:%22step%20value%22%20OR%20all:%22action%20value%22)%20AND%20(all:%22LLM%20agent%22%20OR%20all:%22language%20agent%22)"
+    result:
+      statement: "The search found direct action-value and progress targets in QLASS and AgentPRM, outcome-flipping action branches in CSO, and an observational recovery-window construct in Failure as a Process."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of arXiv:2502.02584v1, 2511.08325v1, 2602.03412v2, and 2607.09510v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "reference and successor chain for action-value PRMs"
+      - "version and formal-publication audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "AgentPRM Appendix A and references; CSO Related Work; arXiv PDF version headers"
+    result:
+      statement: "Backward chaining recovered AgentRM, step-level Q-value models, Monte Carlo process supervision, and outcome-verified critical-step methods. CSO had advanced to v2; the other closest records remained recent preprints."
+      claim_type: direct_evidence
+      source_locator: "AgentPRM Appendix A Table 4; CSO Section 2; arXiv version headers"
+works:
+  - paper_id: "ARXIV_2511_08325"
+    citation: "Xi et al. AgentPRM: Process Reward Models for LLM Agents via Step-Wise Promise and Progress. arXiv:2511.08325v1, 2025."
+    stable_url: "https://arxiv.org/abs/2511.08325v1"
+    version_status: "preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "AgentPRM defines per-decision promise as success likelihood and progress through an advantage term, trains with TD estimation and GAE, and outperforms outcome and process-value baselines across WebShop, BabyAI, and TextCraft."
+      claim_type: direct_evidence
+      source_locator: "paper Section 3; Section 4.2; Table 1; Section 5.4 and Table 3; Appendix A Table 4"
+    coverage:
+      statement: "It directly covers the proposed distinction between terminal promise and local action progress/advantage."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not define remaining rescue budget after a bad action or compare all three targets at identical checkpoints."
+      claim_type: agent_inference
+      source_locator: "paper target definitions; candidate core mechanism"
+    required_action: narrow
+  - paper_id: "ARXIV_2502_02584"
+    citation: "Lin et al. QLASS: Boosting Language Agent Inference via Q-Guided Stepwise Search. arXiv:2502.02584v1, 2025."
+    stable_url: "https://arxiv.org/abs/2502.02584v1"
+    version_status: "preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "QLASS constructs exploration trees, propagates outcome rewards into Q(s,a) labels, trains a QNet, and uses predicted action values for stepwise inference on WebShop, SciWorld, and ALFWorld."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-5; Equation 7; Tables 1-3"
+    coverage:
+      statement: "It directly covers next-action value estimation and online consumption of that signal."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not separately calibrate terminal confidence or post-action recoverability."
+      claim_type: agent_inference
+      source_locator: "paper objective and evaluation"
+    required_action: narrow
+  - paper_id: "ARXIV_2602_03412"
+    citation: "Li et al. Verified Critical Step Optimization for LLM Agents. arXiv:2602.03412v2, 2026."
+    stable_url: "https://arxiv.org/abs/2602.03412v2"
+    version_status: "recent_preprint_v2"
+    relation: direct_coverage
+    body_evidence:
+      statement: "CSO restores candidate decision points, proposes alternative actions, retains steps where an alternative demonstrably flips failure to success, and trains on those verified action pairs; it reports gains on GAIA-Text and XBench-DeepSearch."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.2 and 4.3; Figure 2; Tables 1-4"
+    coverage:
+      statement: "It directly operationalizes high-impact next-action advantage using counterfactual outcome flips."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It selects binary pivotal actions rather than estimating a calibrated rescue margin after each action."
+      claim_type: agent_inference
+      source_locator: "paper Section 3.2; candidate novelty delta"
+    required_action: narrow
+  - paper_id: "ARXIV_2607_09510"
+    citation: "Zhao et al. Failure as a Process: An Anatomy of CLI Coding Agent Trajectories. arXiv:2607.09510v1, 2026."
+    stable_url: "https://arxiv.org/abs/2607.09510v1"
+    version_status: "recent_preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "The paper annotates decisive error, empirical loss of recoverability, and observability, finding a median one-step recovery window and large variation in successful versus failed recovery duration."
+      claim_type: direct_evidence
+      source_locator: "paper Sections II-E, II-G, III-A, and III-C; Figure 4; Table III"
+    coverage:
+      statement: "It directly defines and measures an empirical recovery window."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its recoverability is retrospective and observational, not an action-conditional calibrated target."
+      claim_type: direct_evidence
+      source_locator: "paper Threats to Validity / Internal validity"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: NARROW
+  most_damaging_work: "ARXIV_2511_08325"
+  rationale:
+    statement: "Terminal-versus-next-action value is no longer a defensible novelty claim: AgentPRM, QLASS, and CSO directly cover promise, progress, Q-values, and outcome-flipping action branches. Only the post-action rescue-margin target and a same-checkpoint three-way calibration comparison remain."
+    claim_type: agent_inference
+    source_locator: "works above"
+  covered_problem:
+    statement: "Sparse terminal reward misassigns local action credit and misguides stepwise decisions is directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2511_08325; ARXIV_2502_02584; ARXIV_2602_03412"
+  covered_mechanism:
+    statement: "TD/GAE progress models, Q(s,a) estimators, and counterfactual outcome-flip labels are covered."
+    claim_type: agent_inference
+    source_locator: "same works"
+  covered_experiment:
+    statement: "Step-value-guided inference and training across several interactive-agent benchmarks are covered."
+    claim_type: agent_inference
+    source_locator: "AgentPRM Table 1; QLASS Tables 2-3; CSO Table 1"
+  novelty_delta:
+    statement: "At identical code-agent checkpoints and under a predeclared fixed continuation/rescue policy and budget, estimate post-action rescue margin, then test whether it is distinct from both terminal-success probability and Q(s,a), especially after irreversible or compounding edits."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained
+    statement: "The narrowed claim fails if rescue margin collapses to Q-value/terminal confidence or is unstable under reasonable fixed rescue policies."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation narrowed by prior art"
+  reviewer_rejection:
+    statement: "Reviewers are likely to call the original three-way decomposition a relabeling of standard value and advantage functions; the narrowed work must isolate a policy-bounded reachability or rescue-margin quantity."
+    claim_type: agent_inference
+    source_locator: "direct coverage above"
+  confidence:
+    level: medium
+    statement: "Action value and progress are clearly covered, but recoverability depends on a policy-and-budget definition that direct papers do not standardize."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2607_09510; candidate maximum_risk"
+  unverified_information:
+    - statement: "The stability of rescue-margin labels across continuation policies is unverified and is a construct-validity gate, not assumed."
+      claim_type: agent_inference
+      source_locator: "candidate uncertainties"
+  carry_forward_to_cross_field_attack: true

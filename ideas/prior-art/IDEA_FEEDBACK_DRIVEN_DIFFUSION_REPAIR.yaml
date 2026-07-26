@@ -1,37 +1,183 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR"
-review_status: inconclusive
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Can executable feedback between diffusion denoising blocks identify committed code regions to remask and repair while preserving unaffected behavior?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Execute or analyze an intermediate program, localize implicated spans, selectively remask them and dependency-adjacent tokens, denoise again, and revalidate."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml / core_mechanism"
+  intervention_object:
+    statement: "Already committed code tokens in a pretrained masked or block diffusion code model."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Feedback-localized remasking should outperform random or no-feedback diffusion repair and compute-matched autoregressive editing on correctness, regressions, and preservation."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml / minimum_kill_validation"
 search_log:
   - searched_at: "2026-07-25"
-    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
-    query: "arXiv searches for diffusion language models, code repair, code infilling, and code editing"
-    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22diffusion%22%20AND%20all:%22code%20repair%22"
-    result: "A direct diffusion-repair paper and variable-length diffusion infilling work were found; the seed was narrowed to external feedback selecting committed regions for remasking."
-    claim_type: agent_inference
+    query_families:
+      - "diffusion code repair executable feedback selective remasking"
+      - "masked diffusion verifier-guided repair editing"
+      - "test-guided diffusion program repair"
+      - "compiler feedback diffusion language model code"
+      - "localized remasking code preservation"
+    sources: [arXiv, OpenAlex, NeurIPS]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22masked%20diffusion%22%20OR%20all:%22diffusion%20language%20model%22)%20AND%20(all:%22repair%22%20OR%20all:%22editing%22)%20AND%20(all:%22remasking%22%20OR%20all:%22verifier%22%20OR%20all:%22feedback%22)"
+    result:
+      statement: "The search found direct diffusion code repair, verifier/value-guided arbitrary-position remasking and low-reward repair, process-reward-guided remask/refine, stale-span detect/remask/repair with preservation, and context-robust remasking evaluated on code."
+      claim_type: direct_evidence
+      source_locator: "arXiv query above; full texts of arXiv:2508.11110v1, 2606.28301v1, 2507.08018v1, 2606.12807v1, and 2602.04096v3"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "process reward model block diffusion remask refine"
+      - "reward-guided masked diffusion sample editing"
+      - "backward and forward references from R3, MDM-VGB, diffusion code repair, DRR, and CORE"
+      - "later version and formal-publication audit"
+    sources: [arXiv, paper_reference_lists, OpenAlex, NeurIPS]
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22process-guided%22%20AND%20(all:%22block%20diffusion%22%20OR%20all:%22remask%22); arXiv version records for 2507.08018, 2508.11110, 2602.04096, 2606.12807, and 2606.28301"
+    result:
+      statement: "Backward chaining recovered ReMDM and ordinary masked infilling; R3 is an ICML 2025 MOSS workshop paper, the direct code-repair paper is a NeurIPS 2025 paper, CORE is v3, and the two June 2026 works remain v1 preprints with immature forward-citation records."
+      claim_type: direct_evidence
+      source_locator: "source records above; paper title pages, Related Work sections, and version headers"
 works:
-  - paper_id: "ARXIV_2508_11110"
-    citation: "Diffusion is a Code Repair Operator and Generator. arXiv:2508.11110v1."
+  - paper_id: "ARXIV_2606_28301"
+    citation: "Jeon, Vuong, and Tao. VGB for Masked Diffusion Model: Efficient Test-time Scaling for Reward Satisfaction and Sample Editing. arXiv:2606.28301v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.28301v1"
+    version_status: "recent_preprint_v1"
     relation: direct_coverage
-    assessment: "Directly covers generic last-mile code repair by adding noise to broken code and resuming diffusion."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2508.11110v1 / abstract"
-    required_action: narrow
-  - paper_id: "ARXIV_2602_01326"
-    citation: "DreamOn: Diffusion Language Models for Code Infilling Beyond Fixed-size Canvas. arXiv:2602.01326v1."
+    body_evidence:
+      statement: "MDM-VGB uses process-verifier value estimates to bias reveal and remask moves at arbitrary positions and starts from completed low-reward samples for repair. On Dyck editing it reaches 99.41% accuracy at 29.98 moves versus 25.64% at 127.63 moves for fixed-order autoregressive backtracking."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-5; Figures 1 and 7; Table 3"
+    coverage:
+      statement: "It directly covers verifier-guided remasking, arbitrary-location revision, repair of completed samples, and comparison with autoregressive backtracking."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its experiments use constraint and scientific domains rather than executable code tests, and its process verifier scores partial configurations rather than localizing test-failure dependencies."
+      claim_type: direct_evidence
+      source_locator: "paper Section 5 tasks and verifier definitions"
+    required_action: reject
+  - paper_id: "MOSS2025_R3"
+    citation: "Mounier and Ideahpour. Review, Remask, Refine (R3): Process-Guided Block Diffusion for Text Generation. MOSS at ICML 2025; arXiv:2507.08018v1."
+    stable_url: "https://arxiv.org/abs/2507.08018v1"
+    version_status: "formal_workshop_paper_arxiv_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "R3 reviews intermediate blocks with a process reward model, maps lower block scores to larger token-remasking proportions, generates refinements, rescoring and retaining the best window without retraining the base diffusion model. On a 127-question MATH subset it reports accuracy increasing from 29.13% to 42.52%."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 1 and 3-4; Algorithm 1; Table 1; title-page acceptance note"
+    coverage:
+      statement: "It implements the candidate's defining external-guidance-to-targeted-remasking-to-refinement loop."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its feedback is a mathematical process reward model at block granularity, not executable test or analyzer evidence localized to code spans."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.1 and 4.1"
+    required_action: reject
+  - paper_id: "NEURIPS2025_DIFFUSION_CODE_REPAIR"
+    citation: "Singh, Verbruggen, Le, and Gulwani. Diffusion is a Code Repair Operator and Generator. NeurIPS 2025; arXiv:2508.11110v1."
+    stable_url: "https://arxiv.org/abs/2508.11110v1"
+    version_status: "formal_conference_paper"
+    relation: direct_coverage
+    body_evidence:
+      statement: "The paper adds noise to broken code and resumes denoising for last-mile repair, evaluating Python, Excel, and PowerShell. It reports direct repair of 56.4-68.2% of Python and Excel snippets across noise levels."
+      claim_type: direct_evidence
+      source_locator: "paper Abstract; Sections 1 and 3-5; NeurIPS 2025 title-page footer; repair result tables"
+    coverage:
+      statement: "It directly eliminates novelty claims based on using a pretrained code diffusion model as a repair operator."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It injects synthetic noise rather than selecting revisions from live executable feedback."
+      claim_type: agent_inference
+      source_locator: "paper repair construction and candidate feedback mechanism"
+    required_action: reject
+  - paper_id: "ARXIV_2606_12807"
+    citation: "Zou et al. Detect, Remask, Repair: Diffusion Editing for Faithful Summarization of Evolving Contexts. arXiv:2606.12807v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.12807v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "DRR detects tokens no longer supported by updated evidence, remasks only selected spans, infills them with a masked diffusion model while fixing unmasked tokens, and evaluates faithfulness, speed, and normalized edit-distance preservation."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 1 and 3-4; Figures 1 and 3; Tables 1-3"
+    coverage:
+      statement: "It directly covers external-evidence localization, selective remasking, in-place repair, and untouched-region preservation."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It repairs evolving summaries rather than executable programs and trains a stale-token detector."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.1-3.2 and evaluation datasets"
+    required_action: reject
+  - paper_id: "ARXIV_2602_04096"
+    citation: "Zhai et al. CORE: Context-Robust Remasking for Diffusion Language Models. arXiv:2602.04096v3, 2026."
+    stable_url: "https://arxiv.org/abs/2602.04096v3"
+    version_status: "preprint_v3"
     relation: partial_overlap
-    assessment: "Directly advances variable-length diffusion code infilling; it does not claim external test feedback or feedback-localized remasking in the abstract."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2602.01326v1 / abstract"
-    required_action: narrow
-  - paper_id: "ARXIV_2506_20639"
-    citation: "DiffuCoder: Understanding and Improving Masked Diffusion Models for Code Generation. arXiv:2506.20639v2."
-    relation: neighboring
-    assessment: "Provides code-native generation-order and diffusion-RL evidence but uses completed-code rewards rather than external feedback during revision."
-    claim_type: direct_evidence
-    source_locator: "synthesis/dllm-adjacent-watchlist.md / DiffuCoder full reading"
+    body_evidence:
+      statement: "CORE perturbs surrounding context to identify brittle committed tokens, selectively remasks the most unstable positions, and uses compute-matched random and margin controls. It reports up to a 9.2% MBPP gain and over seven percentage points over margin remasking in one comparison."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-5; Algorithm 1; Tables 1-3; Figures 1-4"
+    coverage:
+      statement: "It covers training-free targeted remasking and code-domain evidence that revision-target selection, rather than remasking alone, drives gains."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its selection signal is model-internal context brittleness rather than external execution failure."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-4"
     required_action: compare
 decision:
-  outcome: narrow
-  rationale: "Reject generic diffusion repair or infilling claims; retain only external executable feedback causally choosing committed regions to remask and revalidate."
-  claim_type: agent_inference
-  source_locator: "limited search above; idea card / tentative_novelty_delta"
+  outcome: KILL
+  most_damaging_work: "ARXIV_2606_28301"
+  rationale:
+    statement: "MDM-VGB and R3 already occupy verifier/process-guided targeted remasking and repair, the NeurIPS paper directly occupies diffusion code repair, and DRR plus CORE occupy feedback localization, preservation, and code-targeted selection. Substituting executable test or analyzer scores into this established loop is a natural composition rather than a distinct candidate."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2606_28301; MOSS2025_R3; NEURIPS2025_DIFFUSION_CODE_REPAIR; ARXIV_2606_12807; ARXIV_2602_04096"
+  covered_problem:
+    statement: "Repairing low-quality committed outputs without full regeneration, including code, is directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2606_28301; NEURIPS2025_DIFFUSION_CODE_REPAIR; ARXIV_2606_12807"
+  covered_mechanism:
+    statement: "External score-guided review, selective or arbitrary-position remasking, diffusion infilling, candidate rescoring, and preservation constraints are covered."
+    claim_type: agent_inference
+    source_locator: "all works above"
+  covered_experiment:
+    statement: "Repair versus generation, fixed-order autoregressive backtracking, no-guidance diffusion, random or margin remasking, and preservation metrics are covered across formal languages, reasoning, summarization, and code."
+    claim_type: agent_inference
+    source_locator: "MDM-VGB Table 3; R3 Table 1; diffusion code repair Sections 4-5; DRR Tables 1-3; CORE Tables 1-3"
+  novelty_delta:
+    statement: "Only the feedback instantiation remains: feed executable test or analyzer failures into dependency-aware code-span localization between denoising blocks and measure hidden-test correctness plus untouched-behavior preservation. That delta is an application-level combination of occupied mechanisms."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_but_not_novel
+    statement: "The executable-feedback instantiation can fail against random remasking or a matched autoregressive editor, but a clean falsification test does not restore method novelty."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation and direct coverage"
+  reviewer_rejection:
+    statement: "Reviewers would describe the method as MDM-VGB or R3 with test reward, applied to the NeurIPS diffusion code-repair setting and using standard fault localization."
+    claim_type: agent_inference
+    source_locator: "direct-coverage works above"
+  confidence:
+    level: high
+    statement: "Both sides of the proposed intersection are directly implemented, and R3 already supplies the exact score-to-remask-to-refine control loop; the remaining change is the source and localization of the score."
+    claim_type: agent_inference
+    source_locator: "MOSS2025_R3; NEURIPS2025_DIFFUSION_CODE_REPAIR; ARXIV_2606_28301"
+  unverified_information:
+    - statement: "No retrieved paper was verified to run executable tests between denoising blocks on repository-level bugs; this absence is not treated as novelty evidence."
+      claim_type: agent_inference
+      source_locator: "search logs and AGENTS.md / Evidence and Claims"
+    - statement: "The practical compatibility of current code diffusion checkpoints with dependency-spanning remasking was not independently evaluated."
+      claim_type: agent_inference
+      source_locator: "candidate implementation requirement and closest-work limitations"
+  carry_forward_to_cross_field_attack: false

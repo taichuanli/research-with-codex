@@ -1,37 +1,160 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_DECISION_VALUE_EVIDENCE_ROUTING"
-review_status: inconclusive
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Which optional observation should an agent acquire when its value is defined by changing the best downstream action rather than reducing uncertainty alone?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Estimate paired with/without-observation action change and outcome advantage, discount it by acquisition reliability and cost, and route only positive-value calls."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml / core_mechanism"
+  intervention_object:
+    statement: "Optional tests, executions, analyzers, retrievals, or structured queries before the next agent action."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Action-mediated, reliability-aware routing should beat fixed access, relevance, entropy, and generic tool-choice baselines under equal budgets across two agent settings."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml / minimum_kill_validation"
 search_log:
   - searched_at: "2026-07-25"
-    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
-    query: "arXiv/OpenAlex searches for selective tool use, when to use tools, value of information, and LLM-agent tool selection"
-    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22tool%20selection%22%20AND%20all:%22LLM%20agent%22"
-    result: "Several tool-selection works were found; the seed was narrowed from generic tool choice to observation value mediated by downstream action change and evidence reliability."
-    claim_type: agent_inference
+    query_families:
+      - "value of information tool using LLM agent"
+      - "inference-time budget control search agent VOI"
+      - "adaptive tool invocation uncertainty cost agent"
+      - "when not to call tools clarification abstention"
+      - "epistemic necessity external tools"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22value%20of%20information%22%20AND%20(all:%22agent%22%20OR%20all:%22tool%22)"
+    result:
+      statement: "The search found two direct VOI controllers: one chooses retrieval/decomposition/commit actions by task-level marginal value, and one chooses information sources and stopping by belief-dependent VOI, signal quality, and live cost."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of arXiv:2605.05701v1 and arXiv:2603.30031v3"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward chain through Toolformer, When2Call, Self-Regulation"
+      - "formal and later-version audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv, ACL_Anthology]
+    source_locator: "arXiv:2605.05701v1 / Related Work; arXiv:2603.30031v3 / Section 2; https://doi.org/10.18653/v1/2025.naacl-long.174"
+    result:
+      statement: "Backward chaining confirmed dense prior art on when-to-call, tool necessity, assistance requests, and model/tool routing. When2Call has a formal NAACL 2025 version; TCA is at v3."
+      claim_type: direct_evidence
+      source_locator: "source locators above; PDF version headers"
 works:
-  - paper_id: "ARXIV_2606_06284"
-    citation: "ToolChoiceConfusion: Causal Minimal Tool Filtering for Reliable LLM Agents. arXiv:2606.06284v1."
-    relation: partial_overlap
-    assessment: "Selects a minimal next-step tool frontier from precondition-effect contracts; does not estimate the value of the returned observation through paired action changes."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2606.06284v1 / abstract"
+  - paper_id: "ARXIV_2605_05701"
+    citation: "Fang et al. Inference-Time Budget Control for LLM Search Agents. arXiv:2605.05701v1, 2026."
+    stable_url: "https://arxiv.org/abs/2605.05701v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "The controller assigns every feasible retrieval, decomposition, or answer-commit action a task-level VOI score using critic-derived value change, structure, cost normalization, budget penalty, and guards; four benchmarks, three backbones, and four budgets show aggregate gains, with search-time control dominant in ablation."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 1, 3, 4, and 6; Figure 2; main-results and ablation tables"
+    coverage:
+      statement: "It directly covers prospective per-state action allocation by marginal task value under hard tool and token budgets."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its VOI is a critic-based operational surrogate and does not label whether the returned observation causally changes the identity of the best next action."
+      claim_type: agent_inference
+      source_locator: "paper Section 4 VOI definition; candidate core mechanism"
     required_action: narrow
-  - paper_id: "ARXIV_2302_04761"
-    citation: "Toolformer: Language Models Can Teach Themselves to Use Tools. arXiv:2302.04761."
-    relation: partial_overlap
-    assessment: "Learns which APIs to call, when, and how from self-supervised language-model loss; generic when-to-call novelty is unavailable."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2302.04761 / abstract"
+  - paper_id: "ARXIV_2603_30031"
+    citation: "Di Gioia. Cognitive Friction: A Decision-Theoretic Framework for Bounded Deliberation in Tool-Using Agents. arXiv:2603.30031v3, 2026."
+    stable_url: "https://arxiv.org/abs/2603.30031v3"
+    version_status: "recent_preprint_v3"
+    relation: direct_coverage
+    body_evidence:
+      statement: "TCA selects which noisy information source to query and when to stop using rollout-estimated belief-dependent VOI, tool signal quality, congestion, and latency; controlled EMDG and NSTG experiments show selection and stopping must be optimized jointly."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.1-3.4 and 4.4-4.7; Equations 6-7; Tables 2-4"
+    coverage:
+      statement: "It directly covers VOI-based source choice, reliability through tool signal models, cost, and stopping."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its VOI is entropy reduction in synthetic belief-state environments rather than action-mediated value in code agents."
+      claim_type: direct_evidence
+      source_locator: "paper Section 3.4 and Section 4 environment definitions"
     required_action: narrow
-  - paper_id: "ARXIV_2604_19793"
-    citation: "SkillGraph: Graph Foundation Priors for LLM Agent Tool Sequence Recommendation. arXiv:2604.19793v1."
-    relation: neighboring
-    assessment: "Mines successful tool trajectories for selection and ordering; it increases prior-art density around tool routing but targets workflow precedence rather than observation value."
-    claim_type: agent_inference
-    source_locator: "https://arxiv.org/abs/2604.19793v1 / abstract"
+  - paper_id: "NAACL2025_WHEN2CALL"
+    citation: "Ross, Mahabaleshwarkar, and Suhara. When2Call: When (not) to Call Tools. NAACL 2025. DOI:10.18653/v1/2025.naacl-long.174."
+    stable_url: "https://doi.org/10.18653/v1/2025.naacl-long.174"
+    version_status: "formal_conference_paper"
+    relation: partial_overlap
+    body_evidence:
+      statement: "When2Call distinguishes direct answer, tool call, follow-up question, and inability, and reward-aware preference optimization materially improves the decision while retaining BFCL tool-call ability."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2-4; Tables 1-3"
+    coverage:
+      statement: "It removes generic novelty for deciding whether to call a tool, ask for missing information, or abstain."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not compare the value of alternative returned observations within a trajectory."
+      claim_type: agent_inference
+      source_locator: "paper task definition"
+    required_action: narrow
+  - paper_id: "ARXIV_2502_04576"
+    citation: "Min et al. Self-Regulation and Requesting Interventions. arXiv:2502.04576v1, 2025."
+    stable_url: "https://arxiv.org/abs/2502.04576v1"
+    version_status: "preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "The method treats help versus no-help as a state action, learns transition and process-reward models, and uses dynamic programming to select interventions under explicit usage budgets."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 4-6; Equations for help/no-help dynamic programming; Tables 2-4"
+    coverage:
+      statement: "It directly covers budgeted prospective intervention requests using estimated success improvement."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It routes assistance types rather than scoring the causal decision value and replay reliability of a returned observation."
+      claim_type: agent_inference
+      source_locator: "paper action space and candidate novelty delta"
     required_action: compare
 decision:
-  outcome: narrow
-  rationale: "Retain only prospective observation-value estimation with action mediation and reliability; reject any generic tool-selection, ordering, or efficiency claim."
-  claim_type: agent_inference
-  source_locator: "limited search above; idea card / tentative_novelty_delta"
+  outcome: NARROW
+  most_damaging_work: "ARXIV_2605_05701"
+  rationale:
+    statement: "Generic VOI routing, cost-aware source choice, when-to-call, and stopping are already directly covered. The candidate can retain only paired causal observation value defined through a changed best downstream action plus measured acquisition/replay reliability in software-agent environments."
+    claim_type: agent_inference
+    source_locator: "works above"
+  covered_problem:
+    statement: "Choosing whether and which tool or information source to query under a limited budget is covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05701; ARXIV_2603_30031; NAACL2025_WHEN2CALL"
+  covered_mechanism:
+    statement: "Task-level VOI scoring, entropy-based VOI, cost/reliability pricing, assistance policies, and call/stop classifiers are covered."
+    claim_type: agent_inference
+    source_locator: "all works above"
+  covered_experiment:
+    statement: "Fixed-budget routing across several backbones and benchmarks, plus component ablations for selection and stopping, is covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05701; ARXIV_2603_30031"
+  novelty_delta:
+    statement: "For optional code-agent evidence at a restored checkpoint, estimate from paired access/withholding branches whether the realized observation changes the argmax next action and improves independently validated outcome, then discount that effect by empirical acquisition/replay failure rather than model uncertainty alone."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained
+    statement: "The narrowed claim fails if paired labels are unstable, action change does not mediate outcome, or existing task-level VOI matches it out of repository."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation narrowed by prior art"
+  reviewer_rejection:
+    statement: "The likely rejection is that the method is Inference-Time Budget Control with software tools, unless returned-observation action mediation and replay reliability are directly isolated."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05701 coverage"
+  confidence:
+    level: high
+    statement: "Two 2026 papers directly occupy VOI-based action selection and source choice; the remaining causal mediation distinction is precise but narrow."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2605_05701; ARXIV_2603_30031"
+  unverified_information:
+    - statement: "Whether paired observation-value labels transfer across tool schemas remains unverified."
+      claim_type: agent_inference
+      source_locator: "candidate maximum_risk"
+  carry_forward_to_cross_field_attack: true

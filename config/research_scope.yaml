@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-25T12:44:37-04:00"
+last_reviewed_at: "2026-07-26T00:41:04-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: IDEA_SEEDED
-  next_phase: PRIOR_ART_ATTACK_DIRECT
+  current_phase: PRIOR_ART_DIRECT_ATTACKED
+  next_phase: PRIOR_ART_ATTACK_CROSS_FIELD
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -209,3 +209,38 @@ idea_seeding:
     summary_path: "ideas/idea-seeding-summary.yaml"
     prior_art_ledgers_path: "ideas/prior-art/"
   phase_boundary: "Ten falsifiable candidate seeds are recorded with no confirmed novelty, selected final direction, implementation, training, or formal experiment. Direct competitor attack is the next phase."
+
+prior_art_direct_attack:
+  status: completed
+  phase_completed: PRIOR_ART_DIRECT_ATTACKED
+  next_phase: PRIOR_ART_ATTACK_CROSS_FIELD
+  candidate_count: 10
+  decision_counts:
+    KILL: 5
+    MERGE: 1
+    NARROW: 2
+    PIVOT: 1
+    SURVIVES_DIRECT_ATTACK: 1
+  decisions:
+    IDEA_STAGEWISE_FAILURE_ATTRIBUTION: SURVIVES_DIRECT_ATTACK
+    IDEA_ORACLE_CONCURRENCE_TRAP: KILL
+    IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION: NARROW
+    IDEA_DECISION_VALUE_EVIDENCE_ROUTING: NARROW
+    IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY: PIVOT
+    IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE: MERGE
+    IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL: KILL
+    IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT: KILL
+    IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION: KILL
+    IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR: KILL
+  merge_target:
+    IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+  carry_forward_count: 4
+  carry_forward_to_cross_field_attack:
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+  outputs:
+    ledgers_path: "ideas/prior-art/IDEA_*.yaml"
+    audit_report_path: "reports/prior-art-direct-attack-report.md"
+  phase_boundary: "Direct competitors, close preprints, versions, references, and available forward citations were attacked for all ten seeds. Four altered candidates may enter cross-field attack; no novelty is confirmed, no new candidate was generated, and no experiment or direction selection was started."

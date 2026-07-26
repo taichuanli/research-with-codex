@@ -1,10 +1,161 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Does an explicit failure diagnosis causally mediate a correct repair action rather than merely correlate with endpoint success?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Compare fact-preserving paraphrases with correct, incomplete, and wrong causal substitutions, and gate action when the repair distribution lacks invariance or causal sensitivity."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml / core_mechanism"
+  intervention_object:
+    statement: "The derived diagnosis between runtime evidence or localization and a repair edit."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Diagnosis invariance/equivariance should predict independently validated repairs beyond token-matched context and direct repair controls."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM debugging causal actionable failure explanation repair"
+      - "program slice failure explanation downstream fix"
+      - "rationale faithfulness causal intervention action"
+      - "chain of thought corrupted step intervention training"
+      - "policy-conditioned semantic substitution tool output perturbation"
+    sources: [arXiv, OpenAlex, ACM_DL]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22rationale%20faithfulness%22%20OR%20all:%22chain-of-thought%20faithfulness%22%20OR%20all:%22causal%20explanation%22)%20AND%20(all:%22intervention%22%20OR%20all:%22action%22)%20AND%20all:%22language%20model%22"
+    result:
+      statement: "The search found an EQUISA workshop paper at EASE 2026 connecting causal/actionable failure explanations to downstream repair, FRIT's reasoning-step corruptions, and CVT-RL's semantic/evidence/tool interventions tied to verified success."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of DOI:10.1145/3816483.3816622, arXiv:2509.13334v1, and arXiv:2606.05263v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward and forward chain for CoT faithfulness"
+      - "formal and later-version audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "arXiv:2307.13702 / Sections 4-5; https://api.openalex.org/works?search=Measuring%20Faithfulness%20in%20Chain-of-Thought%20Reasoning"
+    result:
+      statement: "OpenAlex recorded 26 citations for Measuring Faithfulness and identified later intervention-oriented work such as Making Reasoning Matter. The failure-explanation work is an accepted EQUISA workshop paper at arXiv v2."
+      claim_type: direct_evidence
+      source_locator: "OpenAlex records W4385327568 and W7162084213; arXiv:2604.18309v2 comment and PDF version header"
+works:
+  - paper_id: "EASE2026_CAUSAL_CLARITY"
+    citation: "Porbeck, Adriano, and Giese. From Program Slices to Causal Clarity: Evaluating Faithful, Actionable LLM-Generated Failure Explanations via Context Partitioning and LLM-as-a-Judge. EQUISA workshop at EASE 2026. DOI:10.1145/3816483.3816622; arXiv:2604.18309v2."
+    stable_url: "https://arxiv.org/abs/2604.18309v2"
+    version_status: "formal_workshop_paper_with_arxiv_v2"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Across 12 translated defects, eight context modules, 93 configurations, and three models, the paper scores causal clarity and actionability, validates judge criteria with humans, and links explanation-score quartiles to downstream repair; low-quality explanations can underperform no explanation."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-5; Figure 1; Tables 1-3; RQ4 repair analysis"
+    coverage:
+      statement: "It directly covers causal/actionable failure explanations as first-class mediators and measures downstream fix utility."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It varies evidence context, not causal facts inside a fixed diagnosis, and its explanation-to-repair relation is not a matched mediation intervention."
+      claim_type: agent_inference
+      source_locator: "paper Section 4 design and RQ4"
+    required_action: narrow
+  - paper_id: "ARXIV_2509_13334"
+    citation: "Swaroop et al. FRIT: Using Causal Importance to Improve Chain-of-Thought Faithfulness. arXiv:2509.13334v1, 2025."
+    stable_url: "https://arxiv.org/abs/2509.13334v1"
+    version_status: "preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "FRIT intervenes on individual reasoning steps to create faithful/unfaithful pairs and trains on systematically corrupted chains, targeting whether reasoning causally influences answers."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-5; causal-importance construction; main results and ablations"
+    coverage:
+      statement: "It covers causal perturbation of an explicit rationale and outcome sensitivity."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It studies answer reasoning rather than executable repair actions under fixed program evidence."
+      claim_type: agent_inference
+      source_locator: "paper task and evaluation"
+    required_action: compare
+  - paper_id: "ARXIV_2307_13702"
+    citation: "Lanham et al. Measuring Faithfulness in Chain-of-Thought Reasoning. arXiv:2307.13702, 2023."
+    stable_url: "https://arxiv.org/abs/2307.13702"
+    version_status: "established_preprint_with_forward_citations"
+    relation: partial_overlap
+    body_evidence:
+      statement: "The paper measures faithfulness with early answering, adding mistakes, and paraphrasing interventions, and reports substantial task- and model-size variation rather than assuming generated reasoning is causal."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 2-4; Figures 4-7; Tables 2 and 4"
+    coverage:
+      statement: "It removes novelty from fact-preserving paraphrase and causal-rationale perturbation as generic faithfulness tests."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not test repair-action distributions or independent program behavior."
+      claim_type: agent_inference
+      source_locator: "paper tasks and limitations"
+    required_action: narrow
+  - paper_id: "ARXIV_2606_05263"
+    citation: "Meng. Policy-Conditioned Counterfactual Credit for Verifiable Reinforcement Learning of Long-Horizon Language Agents. arXiv:2606.05263v1, 2026."
+    stable_url: "https://arxiv.org/abs/2606.05263v1"
+    version_status: "recent_preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "CVT-RL separately applies deletion, neutral semantic paraphrase, evidence substitution, and tool-output perturbation, rolls out with a frozen continuation policy, and estimates contribution to verified success with validity gating and doubly robust correction."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.2-3.4 and 4.2-4.3; Figure 2; Tables 3-5"
+    coverage:
+      statement: "It covers controlled semantic and evidence substitutions tied to downstream agent outcomes."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its interventions target arbitrary selected steps rather than an independently grounded failure diagnosis as the state-to-action interface."
+      claim_type: agent_inference
+      source_locator: "paper intervention definitions"
+    required_action: narrow
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: MERGE
+  merge_target: "IDEA_STAGEWISE_FAILURE_ATTRIBUTION"
+  most_damaging_work: "EASE2026_CAUSAL_CLARITY"
+  rationale:
+    statement: "As a standalone direction, the candidate is squeezed between causal/actionable failure-explanation evaluation, generic rationale interventions, and counterfactual agent credit. Its only defensible role is the state-to-action cell inside the surviving four-stage oracle-substitution study."
+    claim_type: agent_inference
+    source_locator: "works above; IDEA_STAGEWISE_FAILURE_ATTRIBUTION novelty_delta"
+  covered_problem:
+    statement: "Whether failure explanations are causal, faithful, actionable, and useful for repair is directly covered."
+    claim_type: agent_inference
+    source_locator: "EASE2026_CAUSAL_CLARITY; ARXIV_2307_13702"
+  covered_mechanism:
+    statement: "Paraphrase, mistake, semantic-substitution, evidence-substitution, and frozen-continuation interventions are covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2307_13702; ARXIV_2509_13334; ARXIV_2606_05263"
+  covered_experiment:
+    statement: "Explanation-quality-to-repair analysis and causal reasoning perturbations with endpoint outcomes are covered."
+    claim_type: agent_inference
+    source_locator: "EASE2026_CAUSAL_CLARITY; ARXIV_2509_13334"
+  novelty_delta:
+    statement: "Within a four-stage replay matrix, hold code, location, evidence, and token budget fixed; replace only the derived diagnosis with fact-preserving paraphrases or controlled causal substitutions and measure the induced executable action distribution and hidden behavioral outcome."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above and merge target"
+  falsifiability:
+    status: retained_inside_merge
+    statement: "The merged cell fails if causal substitutions do not change actions more than paraphrases, or if direct repair performs equally well."
+    claim_type: agent_inference
+    source_locator: "candidate minimum_kill_validation"
+  reviewer_rejection:
+    statement: "A standalone paper would likely be rejected as rationale-faithfulness perturbation applied to debugging; merging it makes the diagnosis intervention one causal stage rather than the headline method."
+    claim_type: agent_inference
+    source_locator: "direct overlap above"
+  confidence:
+    level: medium
+    statement: "The standalone overlap is strong, while the exact executable action-distribution intervention remains absent from the closest direct bodies."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  unverified_information:
+    - statement: "Independent causal diagnoses for real bugs may be non-unique, so even the merged intervention can be inconclusive."
+      claim_type: agent_inference
+      source_locator: "candidate maximum_risk"
+  carry_forward_to_cross_field_attack: false

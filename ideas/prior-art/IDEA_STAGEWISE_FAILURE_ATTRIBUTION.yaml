@@ -1,10 +1,162 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_STAGEWISE_FAILURE_ATTRIBUTION"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Can replay interventions distinguish evidence-acquisition, state-construction, action-selection, and validation failures that produce similar visible coding-agent loops?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / falsifiable_hypothesis and research_object"
+  core_mechanism:
+    statement: "Restore a matched checkpoint and substitute one stage with an oracle or controlled degradation while holding earlier state fixed."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / core_mechanism"
+  intervention_object:
+    statement: "Replayable single-agent trajectories, their derived state, next action, and acceptance signal."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "A four-stage rescue matrix should predict recovery out of repository better than error counts or descriptive trace labels."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM agent failure attribution causal intervention trajectory"
+      - "coding agent failure process recovery unrecoverable root cause"
+      - "agent trajectory diagnosis oracle substitution rescue"
+      - "agent-environment failure taxonomy targeted optimization"
+    sources: [arXiv, OpenAlex]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22agent%20failure%22%20OR%20all:%22agent%20trajectory%22)%20AND%20(all:%22root%20cause%22%20OR%20all:%22failure%20mode%22)%20AND%20all:%22large%20language%20model%22"
+    result:
+      statement: "The search surfaced a July 2026 temporal failure-process study, Aegis, and several trace taxonomies; none reported a four-stage matched oracle-substitution matrix."
+      claim_type: direct_evidence
+      source_locator: "arXiv query above; full texts of arXiv:2607.09510v1 and arXiv:2508.19504v1"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward references from Failure as a Process"
+      - "forward citations and later versions of closest works"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "arXiv:2607.09510v1 / Related Work and references; https://api.openalex.org/works?search=Failure%20as%20a%20Process%20CLI%20Coding%20Agent%20Trajectories"
+    result:
+      statement: "Backward chaining recovered MAST, AgentLens, Beyond Resolution Rates, and prior coding-agent taxonomies. The closest paper was still v1 and too recent for meaningful indexed forward citations at the audit date."
+      claim_type: direct_evidence
+      source_locator: "arXiv:2607.09510v1 / Related Work and PDF version header; OpenAlex query above"
+works:
+  - paper_id: "ARXIV_2607_09510"
+    citation: "Zhao et al. Failure as a Process: An Anatomy of CLI Coding Agent Trajectories. arXiv:2607.09510v1, 2026."
+    stable_url: "https://arxiv.org/abs/2607.09510v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "The paper annotates 1,794 trajectories from three scaffolds and seven models with decisive-error, loss-of-recoverability, and observability times; it reports a median one-step recovery window and that 71% of successful runs recover from at least one error."
+      claim_type: direct_evidence
+      source_locator: "paper Sections II-E through III-C; Figure 4; Tables II-III; Findings 2 and 9"
+    coverage:
+      statement: "It directly covers failure as a temporal process, recovery windows, root-cause categories, and cross-scaffold variation."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its comparisons are explicitly observational and it does not replace individual stages while holding a checkpoint fixed."
+      claim_type: direct_evidence
+      source_locator: "paper Threats to Validity / Internal validity"
+    required_action: narrow
+  - paper_id: "ARXIV_2508_19504"
+    citation: "Song et al. Aegis: Taxonomy and Optimizations for Overcoming Agent-Environment Failures in LLM Agents. arXiv:2508.19504v1, 2025."
+    stable_url: "https://arxiv.org/abs/2508.19504v1"
+    version_status: "preprint_v1"
+    relation: partial_overlap
+    body_evidence:
+      statement: "Aegis localizes the first failed subtask in 142 failed tasks, separates exploration, exploitation, and resource failures, and evaluates matched environment optimizations that improve average success by 6.7-12.5%."
+      claim_type: direct_evidence
+      source_locator: "paper Table 1; Sections 3-6; Figure 10; Table 3"
+    coverage:
+      statement: "It links diagnosed failure classes to targeted interventions and endpoint rescue."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not compare oracle substitutions across evidence, state, action, and validation for the same failed checkpoint."
+      claim_type: agent_inference
+      source_locator: "paper Sections 4-6; candidate core mechanism"
+    required_action: compare
+  - paper_id: "ICSE2026_BEYOND_FINAL_CODE"
+    citation: "Chen, Ma, and Jiang. Beyond Final Code: A Process-Oriented Error Analysis of Software Development Agents in Real-World GitHub Scenarios. ICSE 2026. DOI:10.1145/3744916.3773140; arXiv:2503.12374v4."
+    stable_url: "https://arxiv.org/abs/2503.12374v4"
+    version_status: "formal_conference_paper_with_arxiv_v4"
+    relation: partial_overlap
+    body_evidence:
+      statement: "Resolution is almost unchanged between runs with and without any solving error (54.61% versus 54.42%), although larger error counts correlate with lower resolution and task difficulty remains confounded."
+      claim_type: direct_evidence
+      source_locator: "cards/ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm.yaml / evaluation.main_results; paper Table 3 and Figure 2"
+    coverage:
+      statement: "It demonstrates that visible error presence and count do not identify the causal failure stage."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It supplies taxonomy and association rather than stage-specific rescue interventions."
+      claim_type: agent_inference
+      source_locator: "paper method and card conclusion_evidence"
+    required_action: compare
+  - paper_id: "ISSTA2026_AGENTINSPECT"
+    citation: "Manke et al. AgentInspect: Diagnosing Behavioral Failures in Artificial Intelligence Agents. ISSTA 2026."
+    stable_url: "https://conf.researchr.org/details/issta-2026/issta-2026-research-papers/83/AgentInspect-Diagnosing-Behavioral-Failures-in-Artificial-Intelligence-Agents"
+    version_status: "formal_record_with_artifact_bounded_evidence"
+    relation: partial_overlap
+    body_evidence:
+      statement: "AgentInspect injects tool faults and measures whether agent-level failures become behaviorally visible, but the accessible evidence does not include later-stage oracle replacement."
+      claim_type: direct_evidence
+      source_locator: "cards/ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a.yaml / technical_mechanisms, evaluation, and evidence_gaps"
+    coverage:
+      statement: "It covers causal perturbation at the evidence/tool boundary."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "Its evidence access is artifact-bounded and does not establish a four-stage rescue matrix."
+      claim_type: agent_inference
+      source_locator: "card metadata.evidence_access and evidence_gaps"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: SURVIVES_DIRECT_ATTACK
+  most_damaging_work: "ARXIV_2607_09510"
+  rationale:
+    statement: "Direct work now covers temporal failure, recoverability windows, stage-adjacent taxonomies, and targeted environment rescue, but the defining matched four-stage oracle-substitution experiment remains uncovered. The candidate survives only as that causal design, not as a new taxonomy or recovery-window study."
+    claim_type: agent_inference
+    source_locator: "works above; candidate core_mechanism"
+  covered_problem:
+    statement: "Describing when coding-agent errors arise, become empirically unrecoverable, and differ by root cause or scaffold is covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2607_09510; ARXIV_2508_19504"
+  covered_mechanism:
+    statement: "Failure localization, tool-fault injection, and failure-class-specific environment optimization are covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2508_19504; ISSTA2026_AGENTINSPECT"
+  covered_experiment:
+    statement: "Large observational trajectory studies and targeted environment ablations are covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2607_09510; ARXIV_2508_19504; ICSE2026_BEYOND_FINAL_CODE"
+  novelty_delta:
+    statement: "At the same replayable failure checkpoint, independently substitute evidence acquisition, derived state, next action, and validation while freezing earlier state, then test whether the resulting rescue vector disambiguates identical visible loop signatures and transfers across scaffolds."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained
+    statement: "The claim fails if replay is unstable, stage effects are not separable, or descriptive trace features predict held-out rescue equally well."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / minimum_kill_validation"
+  reviewer_rejection:
+    statement: "The most likely rejection is that oracle substitutions are artificial and the work reduces to another taxonomy if rescue effects do not transfer beyond one harness."
+    claim_type: agent_inference
+    source_locator: "closest-work coverage and replay limitation"
+  confidence:
+    level: medium
+    statement: "The causal delta is clear, but the closest temporal-process paper appeared in July 2026 and forward-citation indexing is necessarily immature."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2607_09510 version and citation audit"
+  unverified_information:
+    - statement: "Whether proprietary coding-agent traces can be deterministically restored at all four stages is unverified."
+      claim_type: agent_inference
+      source_locator: "candidate replay requirement"
+    - statement: "No claim is made that absence of a retrieved oracle-substitution paper establishes novelty."
+      claim_type: agent_inference
+      source_locator: "AGENTS.md / Evidence and Claims"
+  carry_forward_to_cross_field_attack: true

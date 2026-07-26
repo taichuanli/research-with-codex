@@ -1,10 +1,160 @@
-schema_version: 1
+schema_version: 2
+phase: PRIOR_ART_ATTACK_DIRECT
 idea_id: "IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL"
-review_status: not_started
-search_log: []
-works: []
+review_status: complete
+candidate_decomposition:
+  research_question:
+    statement: "Should an agent increase validation, reduce action batch size, checkpoint, and rollback as action reversibility decreases?"
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml / falsifiable_hypothesis"
+  core_mechanism:
+    statement: "Estimate reversal success and recovery cost by action class and choose a reversibility-conditioned commit frontier."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml / core_mechanism"
+  intervention_object:
+    statement: "Read-only, editable, compensable, destructive, and externally committed tool actions."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml / research_object and intervention_layer"
+  experimental_claim:
+    statement: "Under equal interaction cost, reversibility-conditioned control should reduce unrecoverable regressions versus confidence or fixed-granularity controllers."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml / minimum_kill_validation"
+search_log:
+  - searched_at: "2026-07-25"
+    query_families:
+      - "LLM agent reversible irreversible actions rollback checkpoint"
+      - "tool agent compensable action transaction saga"
+      - "safe exploration agent irreversible action human approval"
+      - "LM emulated sandbox risky tool consequences"
+      - "agent rollback external world state"
+    sources: [arXiv, OpenAlex, ICLR]
+    source_locator: "https://export.arxiv.org/api/query?search_query=(all:%22reversible%20actions%22%20OR%20all:%22irreversible%20actions%22%20OR%20all:%22rollback%22)%20AND%20(all:%22LLM%20agent%22%20OR%20all:%22tool-using%20agent%22)"
+    result:
+      statement: "The search found Revisable by Design, which already formalizes an I/R/K/X reversibility taxonomy over external world state and implements earliest-conflict rollback, plus Safety Sentry's per-action irreversible-risk routing and ToolEmu's sandboxed consequence evaluation."
+      claim_type: direct_evidence
+      source_locator: "query above; full texts of arXiv:2604.23283v1, arXiv:2607.13594v1, and ICLR 2024 ToolEmu"
+  - searched_at: "2026-07-25"
+    query_families:
+      - "backward chain to saga, long-lived transactions, plan repair, and agent safety"
+      - "forward citations and version audit"
+    sources: [paper_reference_lists, OpenAlex, arXiv]
+    source_locator: "arXiv:2604.23283v1 / Sections 2 and 3.3; ICLR 2024 ToolEmu / references; https://api.openalex.org/works?search=Identifying%20the%20Risks%20of%20LM%20Agents%20with%20an%20LM-Emulated%20Sandbox"
+    result:
+      statement: "Backward chaining confirmed the saga/compensation and plan-repair foundations. ToolEmu is a formal ICLR 2024 paper at arXiv v2; Revisable by Design remained a recent v1 preprint."
+      claim_type: direct_evidence
+      source_locator: "source locators above; OpenAlex record W4387164935"
+works:
+  - paper_id: "ARXIV_2604_23283"
+    citation: "Zhai, Li, and Wang. Revisable by Design: A Theory of Streaming LLM Agent Execution. arXiv:2604.23283v1, 2026."
+    stable_url: "https://arxiv.org/abs/2604.23283v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "The paper separates epistemic from external world state, classifies actions as Idempotent, Reversible, Compensable, or Irreversible, proves unavoidable compensation/impossibility results, and evaluates earliest-conflict rollback on 1,008 StreamBench runs, matching full restart while wasting 14.6 times fewer completed steps."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3.2-7; Definitions 2-5; Proposition 1; Theorem 3; Section 7 results"
+    coverage:
+      statement: "It directly covers the candidate's environment-level reversibility variable, rollback point, compensation cost, and external-state boundary."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It reacts to user revisions and does not learn a proactive policy that jointly changes pre-commit validation depth and action chunk size."
+      claim_type: agent_inference
+      source_locator: "paper Sections 4 and 6; candidate core mechanism"
+    required_action: reject
+  - paper_id: "ARXIV_2607_13594"
+    citation: "Safety Sentry: Context-Aware Human Intervention via EXECUTE-ASK-REFUSE Routing. arXiv:2607.13594v1, 2026."
+    stable_url: "https://arxiv.org/abs/2607.13594v1"
+    version_status: "recent_preprint_v1"
+    relation: direct_coverage
+    body_evidence:
+      statement: "Safety Sentry routes each proposed tool action to execute, ask, or refuse using context and risk tolerance; its trigger taxonomy explicitly includes pure reads, reversible-link edits, unverified state, and irreversible high-impact actions, and the 4B guard reports 91.02% accuracy and 92.68% refusal recall."
+      claim_type: direct_evidence
+      source_locator: "paper Sections 3-4; Tables 1 and 4; Figure 4"
+    coverage:
+      statement: "It directly covers action-level granularity and escalated validation or human confirmation for irreversible actions."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It does not checkpoint, roll back, or estimate recovery cost."
+      claim_type: agent_inference
+      source_locator: "paper action space and limitations"
+    required_action: reject
+  - paper_id: "ICLR2024_TOOLEMU"
+    citation: "Ruan et al. Identifying the Risks of LM Agents with an LM-Emulated Sandbox. ICLR 2024; arXiv:2309.15817v2."
+    stable_url: "https://arxiv.org/abs/2309.15817v2"
+    version_status: "formal_conference_paper"
+    relation: partial_overlap
+    body_evidence:
+      statement: "ToolEmu emulates external tool state and action consequences over 36 high-stakes toolkits and 144 cases; 68.8% of detected failures are human-validated as realistic, and even the safest tested agent has failures in 23.9% of cases."
+      claim_type: direct_evidence
+      source_locator: "paper Abstract; Sections 3-4; Figures 1 and 5; main evaluation tables"
+    coverage:
+      statement: "It covers safe sandboxing, action-effect simulation, and independent consequence-based validation before real deployment."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It is an evaluation/red-teaming framework, not an online commit-and-rollback controller."
+      claim_type: direct_evidence
+      source_locator: "paper problem statement and Sections 3-4"
+    required_action: compare
+  - paper_id: "ICSE2026_TRACECODER"
+    citation: "Huang et al. TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code. ICSE 2026; arXiv:2602.06875."
+    stable_url: "https://arxiv.org/abs/2602.06875"
+    version_status: "formal_conference_paper"
+    relation: partial_overlap
+    body_evidence:
+      statement: "TraceCoder restores the best prior code state when iterations regress, and rollback removal lowers repair performance in its ablation."
+      claim_type: direct_evidence
+      source_locator: "cards/ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-.yaml / technical_mechanisms, evaluation.ablations, and conclusion_evidence"
+    coverage:
+      statement: "It directly covers checkpoint-based code rollback as an effective repair component."
+      claim_type: agent_inference
+      source_locator: "body_evidence above"
+    uncovered:
+      statement: "It assumes passed-test count identifies the best checkpoint and does not compare action reversibility classes."
+      claim_type: agent_inference
+      source_locator: "card assumptions and limitations"
+    required_action: compare
 decision:
-  outcome: pending
-  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
-  claim_type: agent_inference
-  source_locator: "IDEA_SEEDING phase boundary"
+  outcome: KILL
+  most_damaging_work: "ARXIV_2604_23283"
+  rationale:
+    statement: "Revisable by Design directly occupies reversibility classes, external-state rollback, compensation, and empirical adaptation cost; Safety Sentry already varies oversight at per-action irreversible-risk granularity. Adding validation depth and batching to this combination is an engineering composition rather than a standalone novelty."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2604_23283; ARXIV_2607_13594; ICLR2024_TOOLEMU"
+  covered_problem:
+    statement: "Irreversible external actions, costly compensation, and unsafe tool execution are directly covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2604_23283; ICLR2024_TOOLEMU"
+  covered_mechanism:
+    statement: "Reversibility taxonomy, rollback-point selection, compensation, per-action human escalation, and sandbox simulation are covered."
+    claim_type: agent_inference
+    source_locator: "all works above"
+  covered_experiment:
+    statement: "Matched rollback versus full restart, irreversible-action routing, and realistic consequence validation are covered."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2604_23283 / Section 7; ARXIV_2607_13594 / Section 4; ToolEmu / Section 4"
+  novelty_delta:
+    statement: "Only a factorial measurement of the interaction among reversibility, action chunk size, and validator depth remains, but it is not sufficient to support the proposed controller as a distinct candidate."
+    claim_type: agent_inference
+    source_locator: "uncovered fields above"
+  falsifiability:
+    status: retained_but_not_novel
+    statement: "The interaction is testable, but positive results would extend an occupied control law rather than establish the proposed novelty."
+    claim_type: agent_inference
+    source_locator: "candidate kill validation and direct coverage"
+  reviewer_rejection:
+    statement: "Reviewers would describe the method as Revisable by Design plus Safety Sentry and standard transactional checkpointing."
+    claim_type: agent_inference
+    source_locator: "direct-coverage works above"
+  confidence:
+    level: high
+    statement: "The closest paper uses the same external-state reversibility abstraction, taxonomy, rollback mechanism, and cost outcome."
+    claim_type: agent_inference
+    source_locator: "ARXIV_2604_23283"
+  unverified_information:
+    - statement: "Revisable by Design remains a v1 preprint and its StreamBench external validity has not been independently replicated."
+      claim_type: direct_evidence
+      source_locator: "paper version header and limitations"
+  carry_forward_to_cross_field_attack: false
