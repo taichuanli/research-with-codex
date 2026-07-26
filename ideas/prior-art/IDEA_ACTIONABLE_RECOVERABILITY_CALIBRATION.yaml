@@ -1,5 +1,5 @@
-schema_version: 2
-phase: PRIOR_ART_ATTACK_DIRECT
+schema_version: 3
+phase: PRIOR_ART_ATTACK_CROSS_FIELD
 idea_id: "IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION"
 review_status: complete
 candidate_decomposition:
@@ -158,3 +158,170 @@ decision:
       claim_type: agent_inference
       source_locator: "candidate uncertainties"
   carry_forward_to_cross_field_attack: true
+cross_field_attack:
+  attacked_at: "2026-07-26"
+  prior_delta:
+    statement: "The direct-attack remainder is a post-action rescue margin at the same checkpoint under a predeclared continuation/rescue policy and budget, separated from terminal confidence and ordinary task Q-values."
+    claim_type: direct_evidence
+    source_locator: "decision.novelty_delta above"
+  abstract_decomposition:
+    problem:
+      statement: "Estimate whether a state reached after an action remains inside a set from which a fixed or admissible policy can reach a designated acceptable set within a probability or budget threshold."
+      claim_type: agent_inference
+      source_locator: "candidate_decomposition above; Moldovan and Abbeel 2012 / Section 3.2; Eysenbach et al. 2017 / Section 4.1"
+    mechanism:
+      statement: "Treat successful rescue or return as an auxiliary reward or reachability event, evaluate its policy-conditioned value after each proposed action, and threshold that value to approve, abort, or switch to a recovery controller."
+      claim_type: agent_inference
+      source_locator: "Eysenbach et al. 2017 / Equation 1; Thananjeyan et al. 2021 / Equations III.1 and IV.1"
+  search_log:
+    - searched_at: "2026-07-26"
+      query_families:
+        - "return policy recoverable state safe exploration MDP"
+        - "reset policy Q irreversible state probability of return"
+        - "recovery policy risk critic safe set"
+        - "reachability controllability viability kernel recoverability"
+      sources: [OpenAlex, arXiv, IEEE, full_text]
+      source_locator: "https://api.openalex.org/works?search=return%20policy%20recoverable%20state%20reachability%20viability%20safe%20exploration%20reset%20policy; full texts for the four closest works below"
+      result:
+        statement: "The abstract problem is already treated as probabilistic returnability in safe exploration, reset-policy action value, recovery-set estimation, and reachability or viability analysis; decisive equations and experiments were inspected in the full papers."
+        claim_type: direct_evidence
+        source_locator: "Moldovan and Abbeel 2012 / Sections 3.2-4 and Figures 4-5; Eysenbach et al. 2017 / Sections 4-6; Thananjeyan et al. 2021 / Sections III-IV and experiments; Fisac et al. 2018 / Definitions 1-4 and Equation 7"
+  adjacent_terminology:
+    statement: "Adjacent fields call this returnability or reset value, reach-avoid or backward reachability value, recovery or safe set membership, controllability, robust controlled invariance, viability or discriminating kernel, and probability of rescue under a policy."
+    claim_type: agent_inference
+    source_locator: "closest_cross_field_works below"
+  maturity:
+    mathematical_form:
+      statement: "The quantity is standard. With rescue success as the auxiliary reward, the fixed-policy post-action rescue probability is a Q-function; with admissible policies it is a reachability or viability value whose level set defines recoverable states."
+      claim_type: agent_inference
+      source_locator: "Eysenbach et al. 2017 / Section 4.1 and Equation 1; Moldovan and Abbeel 2012 / Equation 3; Fisac et al. 2018 / Definitions 1-4 and Equations 6-7"
+    standard_algorithms:
+      statement: "Established algorithms include constrained safe exploration with a recall policy, learned reset-policy Q thresholds and early abort, safety critics with recovery-policy switching, and Hamilton-Jacobi reachability computation of invariant safe sets."
+      claim_type: direct_evidence
+      source_locator: "Moldovan and Abbeel 2012 / Algorithm 1; Eysenbach et al. 2017 / Algorithm 1; Thananjeyan et al. 2021 / Algorithm 1; Fisac et al. 2018 / Equation 7 and Section IV"
+    evaluation_protocols:
+      statement: "The literature evaluates return probability, irreversible-state avoidance, manual resets, task success versus constraint violations, safe-set intervention, and robust flight control in grid worlds, simulated Mars terrain, manipulation, navigation, and physical quadrotors."
+      claim_type: direct_evidence
+      source_locator: "Moldovan and Abbeel 2012 / Figures 4-5 and Table 1; Eysenbach et al. 2017 / Sections 5-6; Thananjeyan et al. 2021 / Figures 4-6; Fisac et al. 2018 / Sections V-VI"
+  closest_cross_field_works:
+    - paper_id: "ICML2012_SAFE_EXPLORATION_MDP"
+      citation: "Moldovan and Abbeel. Safe Exploration in Markov Decision Processes. ICML 2012; arXiv:1205.4810v3."
+      field: "safe exploration and planning"
+      stable_url: "https://arxiv.org/abs/1205.4810v3"
+      body_evidence:
+        statement: "Section 3.2, Equation 3 defines a delta-safe outbound policy by existence of a recall policy that returns to a home state with probability at least delta at the stopping time; Theorem 1 proves exact feasibility NP-hard, and Sections 4-5 evaluate a tractable conservative method in grid and Mars exploration."
+        claim_type: direct_evidence
+        source_locator: "Section 3.2, Equation 3 and Theorem 1; Algorithm 1; Figures 4-5"
+      overlap:
+        statement: "It directly formalizes probability of rescue after an arbitrary stopping point under an explicit return policy and threshold."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its home-state objective differs from successful code repair, but replacing the target set and horizon changes the task instantiation rather than the mathematical object."
+        claim_type: agent_inference
+        source_locator: "paper Equation 3; candidate prior_delta"
+    - paper_id: "ICLR2018_LEAVE_NO_TRACE"
+      citation: "Eysenbach et al. Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning. ICLR 2018; arXiv:1711.06782v1."
+      field: "reinforcement learning and reversibility"
+      stable_url: "https://arxiv.org/abs/1711.06782v1"
+      body_evidence:
+        statement: "Section 4 learns a reset policy with an auxiliary reset reward; Section 4.1 uses Q_reset(s,a) and Equation 1 to approve forward actions above a threshold and abort before irreversible states, then evaluates manual resets and unsafe actions in control tasks."
+        claim_type: direct_evidence
+        source_locator: "Sections 4-6; Equation 1; Algorithm 1"
+      overlap:
+        statement: "For a binary rescue reward, Q_reset(s,a) is precisely the policy-conditioned probability or discounted value of rescue after taking action a."
+        claim_type: agent_inference
+        source_locator: "paper Sections 4 and 4.1"
+      code_boundary:
+        statement: "Code-specific continuation budgets, test oracles, and edit semantics only specify the reset reward, transition process, and allowed policy."
+        claim_type: agent_inference
+        source_locator: "candidate prior_delta; paper MDP construction"
+    - paper_id: "RA_L2021_RECOVERY_RL"
+      citation: "Thananjeyan et al. Recovery RL: Safe Reinforcement Learning with Learned Recovery Zones. IEEE Robotics and Automation Letters, 2021; arXiv:2010.15920v2."
+      field: "safe reinforcement learning and robotics"
+      stable_url: "https://arxiv.org/abs/2010.15920v2"
+      body_evidence:
+        statement: "Sections III-IV define a fixed-policy safety critic as discounted future constraint-violation probability, threshold it into safe and recovery sets, and switch from a task policy to a recovery policy; simulation and physical-robot experiments compare task successes and violations."
+        claim_type: direct_evidence
+        source_locator: "Equations III.1 and IV.1-IV.4; Algorithm 1; Figures 4-6"
+      overlap:
+        statement: "It covers the complementary failure-probability version of a policy-conditioned rescue margin and the resulting recovery gate."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its constraints are physical safety events rather than semantic patch failure, but the critic and policy dependence are unchanged."
+        claim_type: agent_inference
+        source_locator: "paper Section III; candidate research object"
+    - paper_id: "TAC2019_GENERAL_SAFETY_FRAMEWORK"
+      citation: "Fisac et al. A General Safety Framework for Learning-Based Control in Uncertain Robotic Systems. IEEE Transactions on Automatic Control 64(7), 2019. DOI:10.1109/TAC.2018.2876389."
+      field: "control theory, reachability, and viability"
+      stable_url: "https://doi.org/10.1109/TAC.2018.2876389"
+      body_evidence:
+        statement: "Definitions 1-4 define robust controlled invariance, the maximal safe set, the discriminating kernel, and an optimal safe policy; Equation 7 computes the safety value through an HJI variational inequality, and later sections validate interventions on quadrotors."
+        claim_type: direct_evidence
+        source_locator: "Definitions 1-4; Equations 6-7; Sections V-VI"
+      overlap:
+        statement: "It supplies the mature set-valued and value-function generalization of whether a state remains recoverable or viable under bounded uncertainty."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Continuous dynamics and adversarial disturbances differ from repository transitions, but this does not leave a distinct recoverability definition."
+        claim_type: agent_inference
+        source_locator: "paper Sections III-IV; candidate abstract_decomposition"
+  transfer_assessment:
+    direct_transfer:
+      statement: "The narrowed code-agent target is a direct instantiation of reset-policy Q or finite-horizon reachability under a chosen rescue policy and acceptable terminal set. Calling it rescue margin does not create a different estimand."
+      claim_type: agent_inference
+      source_locator: "maturity and closest_cross_field_works above"
+    code_specific_structure:
+      statement: "Repositories offer cheap version-control snapshots, executable tests, inspectable diffs, and some externally irreversible actions. These features make labels easier to collect and stratify but do not alter the state, action, policy, horizon, or target-set terms of the standard formulation."
+      claim_type: agent_inference
+      source_locator: "candidate intervention_object and prior_delta; cross-field mathematical forms above"
+    general_environment_substitutability:
+      statement: "Any simulator or controlled robot task with a checkpoint, rescue controller, budget, and success set can substitute for the code environment in the claimed definition and calibration study."
+      claim_type: agent_inference
+      source_locator: "all four closest-work experiments"
+    residual_contribution:
+      primary_class: only_application_transfer
+      statement: "No new phenomenon, problem definition, mechanism, causal identification result, or applicability boundary is specified beyond measuring a mature recoverability value on software-agent trajectories."
+      claim_type: agent_inference
+      source_locator: "direct_transfer, code_specific_structure, and general_environment_substitutability above"
+    application_transfer_only:
+      value: true
+      statement: "A positive code-agent result would demonstrate the usefulness of a known reachability target in another domain, not establish a distinct research object."
+      claim_type: agent_inference
+      source_locator: "residual_contribution above"
+  minimum_pilot:
+    remains_direction_killing: true
+    design:
+      statement: "A small replay study could still test label stability across rescue policies and whether a reachability critic improves on terminal confidence, but it should be framed only as an implementation feasibility check."
+      claim_type: agent_inference
+      source_locator: "candidate falsifiability above; standard policy-dependence in closest works"
+    kill_criterion:
+      statement: "Empirically kill the transfer if rescue labels vary materially across reasonable policies or add no predictive value beyond terminal success and Q-values; even a positive pilot does not recover a cross-field novelty delta."
+      claim_type: agent_inference
+      source_locator: "candidate decision.falsifiability above; cross-field maturity"
+  decision:
+    outcome: KILL
+    most_damaging_work: "ICLR2018_LEAVE_NO_TRACE"
+    rationale:
+      statement: "Fixed-policy post-action rescue is already a reset or reachability Q-value, and admissible-policy rescue is already reachability or viability. Code supplies a convenient transition system and oracle but no non-substitutable mathematical or experimental structure."
+      claim_type: agent_inference
+      source_locator: "maturity and transfer_assessment above"
+    exact_delta:
+      statement: "No standalone delta remains; a code-agent implementation would be an application of established reachability or reset-value calibration."
+      claim_type: agent_inference
+      source_locator: "residual_contribution above"
+    confidence:
+      level: high
+      statement: "Multiple independent safe-RL and control traditions directly formalize both policy-conditioned rescue probability and recoverable sets, including action-level thresholding and mature evaluations."
+      claim_type: agent_inference
+      source_locator: "closest_cross_field_works above"
+    unverified_information:
+      - statement: "How to construct a Markov or belief-state representation for partially observed code-agent checkpoints remains unverified, but that is an estimation challenge inside the standard formulation."
+        claim_type: agent_inference
+        source_locator: "candidate maximum_risk; POMDP and fixed-policy assumptions above"
+      - statement: "A complete intent oracle for alternative valid patches is unavailable; changing the target set does not create a new recoverability quantity."
+        claim_type: agent_inference
+        source_locator: "synthesis/cross-paper-synthesis.md / P7"
+    carry_forward_to_direction_narrowing: false

@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T00:41:04-04:00"
+last_reviewed_at: "2026-07-26T01:18:20-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: PRIOR_ART_DIRECT_ATTACKED
-  next_phase: PRIOR_ART_ATTACK_CROSS_FIELD
+  current_phase: PRIOR_ART_CROSS_FIELD_ATTACKED
+  next_phase: DIRECTION_NARROWING
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -244,3 +244,35 @@ prior_art_direct_attack:
     ledgers_path: "ideas/prior-art/IDEA_*.yaml"
     audit_report_path: "reports/prior-art-direct-attack-report.md"
   phase_boundary: "Direct competitors, close preprints, versions, references, and available forward citations were attacked for all ten seeds. Four altered candidates may enter cross-field attack; no novelty is confirmed, no new candidate was generated, and no experiment or direction selection was started."
+
+prior_art_cross_field_attack:
+  status: completed
+  phase_completed: PRIOR_ART_CROSS_FIELD_ATTACKED
+  next_phase: DIRECTION_NARROWING
+  candidate_count: 4
+  decision_counts:
+    KILL: 2
+    MERGE: 0
+    NARROW: 2
+    PIVOT: 0
+    SURVIVES_CROSS_FIELD_ATTACK: 0
+  decisions:
+    IDEA_STAGEWISE_FAILURE_ATTRIBUTION: NARROW
+    IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION: KILL
+    IDEA_DECISION_VALUE_EVIDENCE_ROUTING: KILL
+    IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY: NARROW
+  application_transfer_eliminated:
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+  carry_forward_count: 2
+  carry_forward_to_direction_narrowing:
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+  outputs:
+    ledgers:
+      - "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+      - "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+      - "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+      - "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+    audit_report_path: "reports/prior-art-cross-field-attack-report.md"
+  phase_boundary: "Cross-field mechanisms and protocols were attacked for only the four direct-stage carry-forward candidates. Two application transfers were killed and two candidates were narrowed to code-specific causal-evidence or applicability-boundary claims; no direction was selected, no new idea was generated, and no experiment was designed or run."

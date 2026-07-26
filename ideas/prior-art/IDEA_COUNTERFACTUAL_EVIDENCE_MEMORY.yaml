@@ -1,5 +1,5 @@
-schema_version: 2
-phase: PRIOR_ART_ATTACK_DIRECT
+schema_version: 3
+phase: PRIOR_ART_ATTACK_CROSS_FIELD
 idea_id: "IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY"
 review_status: complete
 candidate_decomposition:
@@ -161,3 +161,174 @@ decision:
       claim_type: direct_evidence
       source_locator: "OpenAlex audit on 2026-07-25"
   carry_forward_to_cross_field_attack: true
+cross_field_attack:
+  attacked_at: "2026-07-26"
+  prior_delta:
+    statement: "The direct-attack pivot is a pre-method audit that removes, plausibly corrupts, and exactly restores individual memory items at one checkpoint to jointly measure false-retention and false-deletion action costs under equal context budgets."
+    claim_type: direct_evidence
+    source_locator: "decision.novelty_delta above"
+  abstract_decomposition:
+    problem:
+      statement: "Estimate the signed causal contribution, necessity, sufficiency, and corruption sensitivity of retained context items to a model decision or downstream loss."
+      claim_type: agent_inference
+      source_locator: "candidate_decomposition above; Covert et al. 2021 / Definitions 1-3; DeYoung et al. 2020 / Section 4.2"
+    mechanism:
+      statement: "Evaluate the same decision function on controlled subsets or plausible replacements of context, summarize individual or interacting marginal effects, and compare removing influential versus retaining sufficient evidence."
+      claim_type: agent_inference
+      source_locator: "Covert et al. 2021 / Sections 3-6; Balkir et al. 2022 / Sections 3-5; ContextCite / Sections 2-4"
+  search_log:
+    - searched_at: "2026-07-26"
+      query_families:
+        - "removal based explanation subset function feature ablation"
+        - "necessity sufficiency plausible perturbation text"
+        - "context attribution random ablation poisoning pruning"
+        - "belief revision contraction truth maintenance memory corruption"
+      sources: [OpenAlex, arXiv, JMLR, ACL_Anthology, Cambridge_Core, full_text]
+      source_locator: "https://api.openalex.org/works?search=remove%20corrupt%20restore%20context%20memory%20necessity%20sufficiency%20attribution%20belief%20revision; full texts for the four closest works below"
+      result:
+        statement: "Full-text inspection found mature removal, inclusion, necessity, sufficiency, plausible-perturbation, context-ablation, pruning, and poisoning protocols. Belief contraction, revision, and truth maintenance were identified as additional terminology, but were not used as decisive coverage without a matched behavioral audit."
+        claim_type: direct_evidence
+        source_locator: "Covert et al. 2021 / Sections 3-6; DeYoung et al. 2020 / Section 4.2; Balkir et al. 2022 / Sections 3-5; ContextCite / Sections 2-5; Falappa et al. 2011 DOI metadata and references"
+  adjacent_terminology:
+    statement: "Adjacent fields call this removal-based or perturbation-based attribution, leave-one-out or occlusion, necessity and sufficiency, comprehensiveness and sufficiency, context or data attribution, context poisoning robustness, and at a symbolic level belief contraction or revision and truth maintenance."
+    claim_type: agent_inference
+    source_locator: "closest_cross_field_works and search_log above"
+  maturity:
+    mathematical_form:
+      statement: "Subset functions, individual inclusion or removal effects, Shapley-style interaction-aware contributions, and causal necessity or sufficiency already provide mathematical forms for positive and negative context-item effects."
+      claim_type: direct_evidence
+      source_locator: "Covert et al. 2021 / Definitions 1-3 and Sections 5-7; Balkir et al. 2022 / Section 3"
+    standard_algorithms:
+      statement: "Standard procedures include leave-one-out deletion, high-value and low-value subset selection, random subset ablation with sparse linear surrogates, generative in-distribution perturbations, and deletion or retain-only tests."
+      claim_type: direct_evidence
+      source_locator: "Covert et al. 2021 / Table 1 and Sections 4-6; ContextCite / Algorithm 1; Balkir et al. 2022 / Sections 3-4; DeYoung et al. 2020 / Equations 1-2"
+    evaluation_protocols:
+      statement: "Mature protocols report top-k deletion effects, random-ablation prediction through LDS, comprehensiveness and sufficiency, plausible perturbation sensitivity, context-pruning task quality, and poison detection across multiple NLP tasks and models."
+      claim_type: direct_evidence
+      source_locator: "DeYoung et al. 2020 / Section 4.2 and seven-dataset benchmark; ContextCite / Definitions 2.2-2.3 and Sections 4-5; Balkir et al. 2022 / Sections 4-5"
+  closest_cross_field_works:
+    - paper_id: "JMLR2021_EXPLAINING_BY_REMOVING"
+      citation: "Covert, Lundberg, and Lee. Explaining by Removing: A Unified Framework for Model Explanation. JMLR 22, 2021; arXiv:2011.14878v2."
+      field: "model explanation and data attribution"
+      stable_url: "https://arxiv.org/abs/2011.14878v2"
+      body_evidence:
+        statement: "Definitions 1-3 formalize removal-based explanations and subset functions; Table 1 and Sections 4-6 cover individual removal, individual inclusion, Shapley values, and high- or low-value subset selection over arbitrary model behavior."
+        claim_type: direct_evidence
+        source_locator: "Definitions 1-3; Table 1; Sections 3-6"
+      overlap:
+        statement: "Removing an item and restoring or including it are two orientations of the same subset-function comparison, while signed marginal effects already distinguish helpful and harmful retained items."
+        claim_type: agent_inference
+        source_locator: "paper Sections 5-6; candidate prior_delta"
+      code_boundary:
+        statement: "The framework is model-behavior agnostic and does not itself distinguish a memory item tied to an obsolete repository snapshot from a currently true executable fact."
+        claim_type: agent_inference
+        source_locator: "paper Definition 1; candidate intervention_object"
+    - paper_id: "ACL2020_ERASER"
+      citation: "DeYoung et al. ERASER: A Benchmark to Evaluate Rationalized NLP Models. ACL 2020. DOI:10.18653/v1/2020.acl-main.408."
+      field: "NLP rationale evaluation"
+      stable_url: "https://doi.org/10.18653/v1/2020.acl-main.408"
+      body_evidence:
+        statement: "Section 4.2, Equations 1-2 define comprehensiveness by deleting the rationale and sufficiency by retaining only the rationale; the benchmark standardizes these and agreement metrics across seven NLP datasets."
+        claim_type: direct_evidence
+        source_locator: "Section 4.2; Equations 1-3; Tables 1-3"
+      overlap:
+        statement: "It supplies a mature two-sided deletion/retention evaluation that is structurally close to false deletion and false retention."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its endpoint is model prediction confidence and human rationale agreement, not the correctness of a next repository action under hidden behavioral validation."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 3-4; candidate prior_delta"
+    - paper_id: "ARXIV2024_CONTEXTCITE"
+      citation: "Cohen-Wang et al. ContextCite: Attributing Model Generation to Context. arXiv:2409.00729v2, 2024."
+      field: "language-model context attribution"
+      stable_url: "https://arxiv.org/abs/2409.00729v2"
+      body_evidence:
+        statement: "Definitions 2.2-2.3 evaluate top-k deletion and random context ablations through LDS; Algorithm 1 fits a sparse linear surrogate to random subsets; Sections 4-5 evaluate multiple models and tasks, context pruning, statement verification, and poison detection."
+        claim_type: direct_evidence
+        source_locator: "Sections 2.2-5; Definitions 2.2-2.3; Algorithm 1; Figures 3-6"
+      overlap:
+        statement: "It directly covers per-source context attribution, efficient multi-item ablation, removal-based pruning, and detection of harmful context."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its target is response probability and QA quality rather than a version-bound memory fact's effect on an executable next action and independently hidden program behavior."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 2 and 4-5; candidate prior_delta"
+    - paper_id: "NAACL2022_NECESSITY_SUFFICIENCY"
+      citation: "Balkir et al. Necessity and Sufficiency for Explaining Text Classifiers: A Case Study in Hate Speech Detection. NAACL 2022. DOI:10.18653/v1/2022.naacl-main.192."
+      field: "causal feature attribution and NLP robustness"
+      stable_url: "https://doi.org/10.18653/v1/2022.naacl-main.192"
+      body_evidence:
+        statement: "Sections 3-4 define intervention-based necessity and sufficiency and use a generative infilling model to make fluent, in-distribution replacements rather than deletion or masks; Section 5 evaluates the scores and error relations across hate-speech classifiers and datasets."
+        claim_type: direct_evidence
+        source_locator: "Sections 3-5; Figure 1; Tables 2-4"
+      overlap:
+        statement: "Plausible corruption and separate necessity/sufficiency scores are already operationalized as causal perturbation tests."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Program evidence admits stronger semantic checks than fluent text replacement because a fact can be tied to a repository version and executed, but the perturbation logic is not new."
+        claim_type: agent_inference
+        source_locator: "paper perturbation assumptions; candidate research object"
+  transfer_assessment:
+    direct_transfer:
+      statement: "Per-item remove, corrupt, and restore is largely a direct combination of mature removal attribution, necessity/sufficiency, and robustness testing. It cannot support a new attribution algorithm or generic memory-audit claim."
+      claim_type: agent_inference
+      source_locator: "maturity and closest_cross_field_works above"
+    code_specific_structure:
+      statement: "The only defensible non-generic structure is version-grounded executable memory: a tool result, edit claim, or negative finding can carry repository-snapshot provenance, be checked against current program state, and be evaluated by both the next executable action and hidden behavioral tests after exact checkpoint restoration."
+      claim_type: agent_inference
+      source_locator: "candidate intervention_object; synthesis/cross-paper-synthesis.md / P3-P4 and P7"
+    general_environment_substitutability:
+      statement: "Generic language and web-agent contexts can support the same subset and corruption tests. They do not necessarily provide exact versioned truth, deterministic environment restoration, or a second executable outcome oracle; the narrowed candidate must demonstrate that these properties change audit validity rather than merely the dataset."
+      claim_type: agent_inference
+      source_locator: "ContextCite Sections 2-5 and Appendix C.4; code_specific_structure above"
+    residual_contribution:
+      primary_class: new_applicability_boundary
+      conditional_secondary_class: new_causal_evidence
+      statement: "No new mechanism remains. The narrowly retained contribution is an applicability boundary for deletion-based attribution under evolving executable state, plus causal evidence about version-stale retention and useful deletion measured at both action and hidden-outcome levels."
+      claim_type: agent_inference
+      source_locator: "direct_transfer, code_specific_structure, and ContextCite Appendix C.4"
+    application_transfer_only:
+      value: false
+      statement: "The generic audit is application transfer, but the version-grounded two-endpoint validity question can avoid that label if it demonstrates failures not explained by standard context ablation; otherwise the candidate must be killed."
+      claim_type: agent_inference
+      source_locator: "residual_contribution and general_environment_substitutability above"
+  minimum_pilot:
+    remains_direction_killing: true
+    design:
+      statement: "At 30-50 restorable checkpoints, select provenance-linked memories whose truth changes across repository versions, compare exact remove, valid restore, and semantically plausible but program-false corruption, and measure both next-action change and hidden-test outcome under matched tokens."
+      claim_type: agent_inference
+      source_locator: "candidate minimum_kill_validation above, narrowed by closest-work coverage"
+    kill_criterion:
+      statement: "Kill if item truth cannot be independently checked, if effects are dominated by deletion artifacts or interactions, if action and hidden outcomes add no information beyond response-probability attribution, or if ContextCite-style ablation predicts both error costs equally well."
+      claim_type: agent_inference
+      source_locator: "ContextCite Appendix C.4; Covert et al. interaction boundary; candidate falsifiability above"
+  decision:
+    outcome: NARROW
+    most_damaging_work: "ARXIV2024_CONTEXTCITE"
+    rationale:
+      statement: "Removal, inclusion, plausible corruption, necessity/sufficiency, context pruning, and poison detection are mature, so the audit is not a new general method. Retain only the version-grounded executable-state validity boundary and dual action/hidden-outcome causal evidence."
+      claim_type: agent_inference
+      source_locator: "maturity and transfer_assessment above"
+    exact_delta:
+      statement: "Audit whether standard removal-based attribution remains valid when a code-agent memory item has snapshot-specific truth and downstream consequences at two levels: the next executable repository action and independently hidden behavioral correctness."
+      claim_type: agent_inference
+      source_locator: "code_specific_structure and residual_contribution above"
+    confidence:
+      level: medium
+      statement: "Coverage of the generic audit mechanisms is high confidence, but the exact version-grounded action-plus-hidden-outcome protocol was not found in the inspected bodies and its distinction from domain transfer is pilot-dependent."
+      claim_type: agent_inference
+      source_locator: "closest-work code boundaries and minimum_pilot"
+    unverified_information:
+      - statement: "Multi-item interactions may invalidate individual causal scores; ContextCite explicitly identifies redundant-source nonlinearity as a failure mode."
+        claim_type: agent_inference
+        source_locator: "ContextCite Appendix C.4; candidate maximum_risk"
+      - statement: "A complete body-level audit of formal AGM belief revision, truth-maintenance, and nonmonotonic state-estimation literature was not completed; those traditions are treated as terminology-level overlap, not evidence of absence or novelty."
+        claim_type: agent_inference
+        source_locator: "search_log; Falappa et al. 2011 DOI:10.1017/S0269888910000391 metadata"
+      - statement: "Whether hidden tests adequately distinguish a stale-memory-induced wrong action from an alternative valid fix remains unverified."
+        claim_type: agent_inference
+        source_locator: "synthesis/cross-paper-synthesis.md / P7"
+    carry_forward_to_direction_narrowing: true

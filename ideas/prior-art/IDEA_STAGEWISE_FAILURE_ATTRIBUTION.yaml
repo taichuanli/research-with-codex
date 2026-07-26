@@ -1,5 +1,5 @@
-schema_version: 2
-phase: PRIOR_ART_ATTACK_DIRECT
+schema_version: 3
+phase: PRIOR_ART_ATTACK_CROSS_FIELD
 idea_id: "IDEA_STAGEWISE_FAILURE_ATTRIBUTION"
 review_status: complete
 candidate_decomposition:
@@ -160,3 +160,174 @@ decision:
       claim_type: agent_inference
       source_locator: "AGENTS.md / Evidence and Claims"
   carry_forward_to_cross_field_attack: true
+cross_field_attack:
+  attacked_at: "2026-07-26"
+  prior_delta:
+    statement: "The direct-attack remainder is matched replacement of evidence acquisition, derived state, next action, and validation at one restored code-agent checkpoint, summarized as a rescue vector."
+    claim_type: direct_evidence
+    source_locator: "decision.novelty_delta above"
+  abstract_decomposition:
+    problem:
+      statement: "Attribute a sequential outcome to one of several intervenable mediators or mechanisms when observationally similar trajectories can arise from different causal paths."
+      claim_type: agent_inference
+      source_locator: "candidate_decomposition above; Geiger et al. 2025 / Sections 2.5 and 3.4.1; Bind et al. 2016 / Sections 2-5"
+    mechanism:
+      statement: "Restore a base state, replace one intermediate mechanism or mediator with a value from a controlled source run, and compare downstream outcomes while the remaining causal context is fixed."
+      claim_type: agent_inference
+      source_locator: "candidate_decomposition above; Geiger et al. 2025 / Definitions 44-48 and 52"
+  search_log:
+    - searched_at: "2026-07-26"
+      query_families:
+        - "mechanism replacement interchange intervention causal abstraction"
+        - "actual causality sequential decision trajectory Dec-POMDP"
+        - "sequential mediation longitudinal mediator intervention"
+        - "counterfactual long-horizon credit assignment action contribution"
+      sources: [OpenAlex, arXiv, JMLR, DOI_records, full_text]
+      source_locator: "https://api.openalex.org/works?search=interchange%20intervention%20sequential%20decision%20actual%20causality%20trajectory%20mediation; full texts for the four closest works below"
+      result:
+        statement: "The search connected the candidate to interchange interventions and causal mediation, actual-cause attribution in sequential decision processes, and counterfactual credit assignment; the decisive works were inspected beyond their abstracts."
+        claim_type: direct_evidence
+        source_locator: "Geiger et al. 2025 / Sections 2.5 and 3.4.1; Triantafyllou et al. 2022 / Sections 2.2, 3, and 5; Schug et al. 2023 / Sections 3-5; Bind et al. 2016 / Sections 2-5"
+  adjacent_terminology:
+    statement: "Adjacent fields call the problem interchange intervention or mechanism replacement, causal mediation and path-specific effects, actual causality or responsibility attribution in sequential decision processes, and counterfactual credit assignment."
+    claim_type: agent_inference
+    source_locator: "closest_cross_field_works below"
+  maturity:
+    mathematical_form:
+      statement: "The intervention itself is mathematically mature: causal abstraction defines simple, recursive, and distributed interchange interventions plus interchange-intervention accuracy, while mediation defines total, direct, and indirect effects."
+      claim_type: direct_evidence
+      source_locator: "Geiger et al. 2025 / Definitions 44-48 and 52"
+    standard_algorithms:
+      statement: "Sequential actual-cause search and counterfactual contribution estimators already assign responsibility or credit to actions in POMDP-like trajectories; the candidate does not supply a new identification formula or estimator beyond these families."
+      claim_type: agent_inference
+      source_locator: "Triantafyllou et al. 2022 / Definitions 3.1-3.7 and Section 5; Schug et al. 2023 / Sections 3-4"
+    evaluation_protocols:
+      statement: "Mature evaluations include interchange-intervention accuracy, simulated trajectory responsibility in Team Goofspiel, ground-truth policy-gradient comparisons on long-horizon key-to-door and task-interleaving problems, and longitudinal mediation applications with explicit identification assumptions."
+      claim_type: direct_evidence
+      source_locator: "Geiger et al. 2025 / Definition 48; Triantafyllou et al. 2022 / Section 5; Schug et al. 2023 / Sections 4-5; Bind et al. 2016 / Sections 4-5"
+  closest_cross_field_works:
+    - paper_id: "JMLR2025_CAUSAL_ABSTRACTION"
+      citation: "Geiger et al. Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability. JMLR 26, 2025; arXiv:2301.04709v4."
+      field: "causal abstraction and mechanistic interpretability"
+      stable_url: "https://jmlr.org/papers/v26/23-0058.html"
+      body_evidence:
+        statement: "Sections 2.5 and 3.4.1 define interchange, recursive interchange, and distributed interchange interventions, their accuracy, and total/direct/indirect effects; the paper explicitly casts causal mediation as an interchange-intervention analysis."
+        claim_type: direct_evidence
+        source_locator: "Definitions 44-48 and 52; Sections 2.5 and 3.4.1"
+      overlap:
+        statement: "Replacing one candidate stage with a controlled source value is an interchange intervention over a user-chosen high-level causal decomposition."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; candidate abstract_decomposition.mechanism"
+      code_boundary:
+        statement: "The paper intervenes on model mechanisms and does not define evidence, repository state, patch action, and validation as separately executable environment interfaces."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 2.5-3.5; candidate intervention_object above"
+    - paper_id: "AIES2022_ACTUAL_CAUSALITY_DECPOMDP"
+      citation: "Triantafyllou, Singla, and Radanovic. Actual Causality and Responsibility Attribution in Decentralized Partially Observable Markov Decision Processes. AIES 2022. DOI:10.1145/3514094.3534133."
+      field: "sequential decision making and actual causality"
+      stable_url: "https://doi.org/10.1145/3514094.3534133"
+      body_evidence:
+        statement: "Section 2.2 maps a fixed-policy Dec-POMDP trajectory to an SCM, Section 3 defines actual causes with counterfactual witnesses, and Section 5 compares causality and responsibility definitions on Team Goofspiel trajectories."
+        claim_type: direct_evidence
+        source_locator: "Sections 2.2, 3.1-3.7, and 5"
+      overlap:
+        statement: "It already formalizes ex-post causal attribution of sequential agent actions under partial observability and fixed policy context."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its intervention variables are agents' actions, not a typed chain spanning observation acquisition, derived internal state, code edit, and acceptance oracle."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 2-3; candidate prior_delta"
+    - paper_id: "NEURIPS2023_COCOA"
+      citation: "Schug et al. Would I Have Gotten That Reward? Long-Term Credit Assignment by Counterfactual Contribution Analysis. NeurIPS 2023; arXiv:2306.16803v2."
+      field: "reinforcement-learning credit assignment"
+      stable_url: "https://arxiv.org/abs/2306.16803v2"
+      body_evidence:
+        statement: "Sections 3-4 define counterfactual contribution coefficients that ask whether a reward would still occur under another action, and Sections 4-5 evaluate bias, variance, and learning on key-to-door and task-interleaving environments with dynamic-programming ground truth."
+        claim_type: direct_evidence
+        source_locator: "Sections 3-5; Figure 1 and long-horizon evaluation figures"
+      overlap:
+        statement: "It removes novelty from generic counterfactual assignment of delayed success to an earlier action."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "It attributes reward to actions rather than testing which external agent-interface stage must be replaced to rescue the same failed checkpoint."
+        claim_type: agent_inference
+        source_locator: "paper objective; candidate prior_delta"
+    - paper_id: "BIOSTATISTICS2016_LONGITUDINAL_MEDIATION"
+      citation: "Bind et al. Causal Mediation Analysis for Longitudinal Data with Exogenous Exposure. Biostatistics 17(1), 2016. DOI:10.1093/biostatistics/kxv029."
+      field: "causal inference and longitudinal mediation"
+      stable_url: "https://doi.org/10.1093/biostatistics/kxv029"
+      body_evidence:
+        statement: "Sections 2-4 derive natural direct and indirect effects for longitudinal mediators and apply them to environmental-health data; Section 5 limits identification to settings without time-varying exposure-mediator confounding and with finite mediators."
+        claim_type: direct_evidence
+        source_locator: "Sections 2-5"
+      overlap:
+        statement: "It establishes that separating effects along ordered intermediate stages is a mature mediation problem with nontrivial identification assumptions."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Its observational longitudinal setting lacks direct restoration and executable replacement of agent-interface stages, so it is a warning about identification rather than exact experimental coverage."
+        claim_type: agent_inference
+        source_locator: "paper Sections 2 and 5; candidate replay intervention"
+  transfer_assessment:
+    direct_transfer:
+      statement: "As a causal method, the proposal is a direct transfer of interchange intervention plus sequential attribution; a four-entry rescue vector is not a new causal formalism or standard algorithm."
+      claim_type: agent_inference
+      source_locator: "maturity and closest_cross_field_works above"
+    code_specific_structure:
+      statement: "The defensible code-specific structure is a versioned executable artifact: repository and tool state can be restored, evidence and patches can be independently injected, and a broader hidden validator can score behavior beyond the agent's visible stop signal. This creates externally checkable stage variables rather than latent proxies, although replay alone is not unique to code."
+      claim_type: agent_inference
+      source_locator: "synthesis/cross-paper-synthesis.md / P2, P5, and P7; candidate intervention_object above"
+    general_environment_substitutability:
+      statement: "A sufficiently instrumented simulator could reproduce the causal design. The remaining contribution therefore depends on showing that executable program structure and intent-bounded validation expose a repeatable code-agent phenomenon that generic trajectory attribution does not predict."
+      claim_type: agent_inference
+      source_locator: "closest-work code boundaries; synthesis/cross-paper-synthesis.md / P7"
+    residual_contribution:
+      primary_class: new_causal_evidence
+      conditional_secondary_class: new_phenomenon
+      statement: "No new problem definition or mechanism remains. The narrowed contribution is only causal evidence that observationally identical code-agent loops have distinct, cross-scaffold rescue vectors; if established, that is a new phenomenon measured with mature causal machinery."
+      claim_type: agent_inference
+      source_locator: "prior_delta; maturity; code_specific_structure above"
+    application_transfer_only:
+      value: false
+      statement: "The broad mechanism is transfer, but the narrowed claim is not merely rerunning an existing benchmark if it validates typed executable stages and independent intent outcomes; without both properties it collapses to application transfer and should be killed."
+      claim_type: agent_inference
+      source_locator: "code_specific_structure and general_environment_substitutability above"
+  minimum_pilot:
+    remains_direction_killing: true
+    design:
+      statement: "Use 30-50 deterministically restorable failures from two scaffolds, inject independently validated evidence, state/diagnosis, next-action, and validator substitutions at the same checkpoints, and compare rescue-vector prediction against trace labels on held-out repositories."
+      claim_type: agent_inference
+      source_locator: "candidate minimum_kill_validation above, narrowed by closest cross-field coverage"
+    kill_criterion:
+      statement: "Kill if restoration or intervention isolation fails, if stage effects are unstable or non-separable, if hidden validation cannot adjudicate alternative valid fixes, or if ordinary trajectory features predict held-out rescue equally well."
+      claim_type: agent_inference
+      source_locator: "candidate falsifiability above; longitudinal mediation identification boundary; Context-specific validation boundary in synthesis P7"
+  decision:
+    outcome: NARROW
+    most_damaging_work: "JMLR2025_CAUSAL_ABSTRACTION"
+    rationale:
+      statement: "Component replacement, mediation, sequential actual causality, and counterfactual credit are mature, so no new attribution mechanism survives. Preserve only an empirical causal study of typed, executable code-agent stages and cross-scaffold rescue-vector heterogeneity."
+      claim_type: agent_inference
+      source_locator: "maturity, closest_cross_field_works, and transfer_assessment above"
+    exact_delta:
+      statement: "At a versioned repository checkpoint, test whether independently validated substitutions of acquired evidence, explicit derived diagnosis/state, executable next patch or tool action, and acceptance signal yield stable rescue vectors that distinguish otherwise matching loops and transfer across scaffolds."
+      claim_type: agent_inference
+      source_locator: "code_specific_structure and residual_contribution above"
+    confidence:
+      level: medium
+      statement: "Coverage of the causal machinery is high confidence, but no inspected cross-field work used the exact four external code-agent interfaces and the construct validity of clean stage isolation remains unverified."
+      claim_type: agent_inference
+      source_locator: "closest-work code boundaries and minimum_pilot.kill_criterion"
+    unverified_information:
+      - statement: "Deterministic restoration of proprietary or asynchronous coding-agent state at all four interfaces has not been verified."
+        claim_type: agent_inference
+        source_locator: "candidate replay requirement"
+      - statement: "Independent intent adjudication for alternative valid patches remains unresolved; hidden tests are broader supervision, not complete user intent."
+        claim_type: agent_inference
+        source_locator: "synthesis/cross-paper-synthesis.md / P7"
+      - statement: "The search did not establish absence of an exact four-interface study and makes no novelty-first claim."
+        claim_type: agent_inference
+        source_locator: "AGENTS.md / Evidence and Claims"
+    carry_forward_to_direction_narrowing: true

@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: PRIOR_ART_DIRECT_ATTACKED
+current_phase: PRIOR_ART_CROSS_FIELD_ATTACKED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -30,6 +30,7 @@ phase_catalog:
   - PRIOR_ART_ATTACK_DIRECT
   - PRIOR_ART_DIRECT_ATTACKED
   - PRIOR_ART_ATTACK_CROSS_FIELD
+  - PRIOR_ART_CROSS_FIELD_ATTACKED
   - DIRECTION_NARROWING
   - PILOT_DESIGN
 completed_items:
@@ -81,6 +82,9 @@ completed_items:
   - "PRIOR_ART_ATTACK_DIRECT: decomposed and searched all ten candidates through multiple synonym families, inspected direct competitors and recent preprints in full text or the strongest available formal evidence, and audited backward references, forward citations, and later versions."
   - "PRIOR_ART_ATTACK_DIRECT: recorded 43 closest-work entries and issued exactly one allowed decision per candidate: five KILL, one MERGE, two NARROW, one PIVOT, and one SURVIVES_DIRECT_ATTACK."
   - "PRIOR_ART_ATTACK_DIRECT: retained four altered candidates for cross-field attack, saved ten complete ledgers and reports/prior-art-direct-attack-report.md, and did not generate a new candidate, select a direction, train a model, or run an experiment."
+  - "PRIOR_ART_ATTACK_CROSS_FIELD: decomposed the four direct-stage carry-forward deltas into adjacent-field problems and mechanisms, inspected 15 closest full-text works across causal inference, RL, planning, control, active sensing, feature acquisition, model explanation, and NLP, and recorded body-level definitions, assumptions, algorithms, and evaluations."
+  - "PRIOR_ART_ATTACK_CROSS_FIELD: issued exactly one decision per candidate: NARROW for stagewise failure attribution and counterfactual evidence memory audit, and KILL for actionable recoverability calibration and decision-value evidence routing because only application transfer remained."
+  - "PRIOR_ART_ATTACK_CROSS_FIELD: saved four schema-3 ledgers and reports/prior-art-cross-field-attack-report.md, retained two pilot-killable code-specific boundaries for direction narrowing, and did not revive a candidate, generate an idea, select a final direction, or begin an experiment."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1133,5 +1137,106 @@ prior_art_direct_attack:
     source_locator: "Confidence and phase boundary"
     statement: "PRIOR_ART_ATTACK_DIRECT is complete; no cross-field attack, new idea generation, final direction selection, implementation, training, or formal experiment is included."
   human_decisions_pending: []
-next_phase: PRIOR_ART_ATTACK_CROSS_FIELD
-last_updated: "2026-07-26T04:41:04Z"
+prior_art_cross_field_attack:
+  status: completed
+  phase_completed: PRIOR_ART_CROSS_FIELD_ATTACKED
+  next_phase: DIRECTION_NARROWING
+  candidate_count: 4
+  closest_work_record_count: 15
+  evidence:
+    claim_type: direct_evidence
+    source: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml; ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml; ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml; ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml; reports/prior-art-cross-field-attack-report.md"
+    source_locator: "four schema-3 ledgers / cross_field_attack; report / Phase contract through Confidence, uncertainty, and phase boundary"
+    statement: "All four eligible candidates have abstract problem and mechanism decompositions, adjacent terminology, mathematical, algorithmic, and evaluation maturity checks, body-located closest works, a direct-transfer test, code-specific and substitutability analyses, one allowed residual contribution class, a minimum pilot kill test, one unique decision, confidence, and unverified information."
+  decision_counts:
+    KILL: 2
+    MERGE: 0
+    NARROW: 2
+    PIVOT: 0
+    SURVIVES_CROSS_FIELD_ATTACK: 0
+  decisions:
+    IDEA_STAGEWISE_FAILURE_ATTRIBUTION:
+      outcome: NARROW
+      most_damaging_work: JMLR2025_CAUSAL_ABSTRACTION
+      residual_contribution_class: new_causal_evidence
+      confidence: medium
+      carry_forward: true
+    IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION:
+      outcome: KILL
+      most_damaging_work: ICLR2018_LEAVE_NO_TRACE
+      residual_contribution_class: only_application_transfer
+      confidence: high
+      carry_forward: false
+    IDEA_DECISION_VALUE_EVIDENCE_ROUTING:
+      outcome: KILL
+      most_damaging_work: JAIR2009_OPTIMAL_VOI
+      residual_contribution_class: only_application_transfer
+      confidence: high
+      carry_forward: false
+    IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY:
+      outcome: NARROW
+      most_damaging_work: ARXIV2024_CONTEXTCITE
+      residual_contribution_class: new_applicability_boundary
+      confidence: medium
+      carry_forward: true
+  carry_forward:
+    count: 2
+    candidates:
+      - idea_id: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        exact_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+          source_locator: "cross_field_attack.decision.exact_delta"
+          statement: "At a versioned repository checkpoint, test whether independently validated substitutions of acquired evidence, explicit derived diagnosis/state, executable next patch or tool action, and acceptance signal yield stable rescue vectors that distinguish otherwise matching loops and transfer across scaffolds."
+      - idea_id: IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        exact_delta:
+          claim_type: agent_inference
+          source: "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+          source_locator: "cross_field_attack.decision.exact_delta"
+          statement: "Audit whether standard removal-based attribution remains valid when a code-agent memory item has snapshot-specific truth and downstream consequences at two levels: the next executable repository action and independently hidden behavioral correctness."
+  application_transfer_eliminated:
+    - idea_id: IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      conclusion:
+        claim_type: agent_inference
+        source: "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+        source_locator: "cross_field_attack.transfer_assessment and decision"
+        statement: "Fixed-policy rescue margin is reset-policy Q or finite-horizon reachability, and the code environment changes only the transition system, target set, policy, and oracle."
+    - idea_id: IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      conclusion:
+        claim_type: agent_inference
+        source: "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+        source_locator: "cross_field_attack.transfer_assessment and decision"
+        statement: "Paired code-tool access is an empirical estimator and benchmark for mature decision-theoretic VOI, active sensing, or adaptive feature acquisition."
+  conclusion:
+    claim_type: agent_inference
+    source: "reports/prior-art-cross-field-attack-report.md"
+    source_locator: "Decision audit; four candidate sections; Application-transfer eliminations"
+    statement: "Cross-field attack kills two candidates that retain only software-domain implementations of mature concepts and narrows two to code-specific causal-evidence or applicability-boundary claims; two candidates may enter direction narrowing and neither has confirmed novelty."
+  non_blocking_uncertainty:
+    - claim_type: agent_inference
+      source: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml; ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+      source_locator: "cross_field_attack.decision.unverified_information"
+      statement: "Deterministic four-interface replay, independent intent adjudication, snapshot-specific memory truth, multi-item interactions, and added value beyond response-probability attribution remain construct-validity gates for the two narrowed candidates."
+    - claim_type: agent_inference
+      source: "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+      source_locator: "cross_field_attack.search_log and decision.unverified_information"
+      statement: "Formal AGM belief revision and truth-maintenance work was identified but not fully body-audited for a matched behavioral protocol, so it is terminology-level overlap rather than a novelty or absence claim."
+  outputs:
+    - "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+    - "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+    - "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+    - "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+    - "reports/prior-art-cross-field-attack-report.md"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "Ruby YAML/schema/claim/decision/carry-forward/report/state audit; HTTP checks for 20 new citation and search URLs; node --test scripts/*.test.js; phase-file ASCII/trailing-whitespace audit; git diff --check"
+    statement: "All six phase-relevant YAML files parsed; four schema-3 ledgers contained 15 closest-work records with stable citations, direct body evidence, and precise locators; the unique 2 KILL plus 2 NARROW decisions, confidence levels, residual classes, and two carry-forward flags matched config, checkpoint, and the report's four six-question candidate sections; all YAML statement records and report list claims used allowed labels; all 20 new citation or search URLs returned 2xx or 3xx; all 18 repository tests passed; and all seven phase files were ASCII with final newlines and no trailing whitespace while tracked diffs had no whitespace errors."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "reports/prior-art-cross-field-attack-report.md"
+    source_locator: "Confidence, uncertainty, and phase boundary"
+    statement: "PRIOR_ART_ATTACK_CROSS_FIELD is complete; no killed candidate was revived, no new idea or final direction was selected, and no pilot, implementation, training, or formal experiment was designed or run."
+  human_decisions_pending: []
+next_phase: DIRECTION_NARROWING
+last_updated: "2026-07-26T05:33:02Z"

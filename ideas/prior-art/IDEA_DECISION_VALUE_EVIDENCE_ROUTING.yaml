@@ -1,5 +1,5 @@
-schema_version: 2
-phase: PRIOR_ART_ATTACK_DIRECT
+schema_version: 3
+phase: PRIOR_ART_ATTACK_CROSS_FIELD
 idea_id: "IDEA_DECISION_VALUE_EVIDENCE_ROUTING"
 review_status: complete
 candidate_decomposition:
@@ -158,3 +158,154 @@ decision:
       claim_type: agent_inference
       source_locator: "candidate maximum_risk"
   carry_forward_to_cross_field_attack: true
+cross_field_attack:
+  attacked_at: "2026-07-26"
+  prior_delta:
+    statement: "The direct-attack remainder uses paired observation access and withholding to estimate whether a realized code-agent observation changes the argmax next action and improves an independently validated outcome after reliability and cost."
+    claim_type: direct_evidence
+    source_locator: "decision.novelty_delta above"
+  abstract_decomposition:
+    problem:
+      statement: "Choose which costly observation to acquire in a partially observed decision process when its value is the increase in maximum expected downstream utility after conditioning on the observation."
+      claim_type: agent_inference
+      source_locator: "candidate_decomposition above; Krause and Guestrin 2009 / Section 2"
+    mechanism:
+      statement: "Represent sensing or feature acquisition as an action, update the belief after the returned observation, compare the best achievable utility before and after observation, and select observations or stopping under cost or budget constraints."
+      claim_type: agent_inference
+      source_locator: "Krause and Guestrin 2009 / Equations 1-2 and Section 2.2; Janisch et al. 2019 / Problem Definition; Spaan and Lima 2009 / POMDP model"
+  search_log:
+    - searched_at: "2026-07-26"
+      query_families:
+        - "decision theoretic value of information costly observation"
+        - "active sensing POMDP observation action utility"
+        - "costly feature acquisition adaptive classification"
+        - "dynamic sensor selection belief state reward"
+      sources: [OpenAlex, JAIR, AAAI, ICAPS, full_text]
+      source_locator: "https://api.openalex.org/works?search=decision%20theoretic%20value%20information%20costly%20observation%20active%20sensing%20feature%20acquisition%20POMDP; full texts for the three closest works below"
+      result:
+        statement: "The search found established formulations for subset and adaptive VOI, POMDP active sensing, dynamic sensor selection, and costly feature acquisition; the decisive definitions, algorithms, and experiments were verified in the paper bodies."
+        claim_type: direct_evidence
+        source_locator: "Krause and Guestrin 2009 / Sections 2-6; Janisch et al. 2019 / Problem Definition and experiments; Spaan and Lima 2009 / POMDP model and experiments"
+  adjacent_terminology:
+    statement: "Adjacent fields call this decision-theoretic value of information, Bayesian experimental design, active sensing or sensor management, adaptive feature acquisition, conditional observation planning, and POMDP observation control."
+    claim_type: agent_inference
+    source_locator: "closest_cross_field_works below"
+  maturity:
+    mathematical_form:
+      statement: "Decision-theoretic VOI already defines an observation's worth through the maximum expected utility of the best action after conditioning on it, not merely entropy reduction; adaptive plans and explicit observation penalties or budgets are standard."
+      claim_type: direct_evidence
+      source_locator: "Krause and Guestrin 2009 / Equations 1-2, decision-theoretic VOI subsection, and Section 2.2"
+    standard_algorithms:
+      statement: "Established algorithms include dynamic programming for optimal conditional observation plans in chain graphical models, Q-learning over acquire-or-decide actions, and belief-state POMDP policies for nonmyopic sensor selection."
+      claim_type: direct_evidence
+      source_locator: "Krause and Guestrin 2009 / Sections 4.1-4.2 and Algorithms 1-3; Janisch et al. 2019 / Equations 1-5; Spaan and Lima 2009 / POMDP controller"
+    evaluation_protocols:
+      statement: "The literature reports utility-cost or accuracy-cost frontiers, fixed budgets, adaptive versus static or heuristic policies, and out-of-sample task performance on sensor networks, NLP and bioinformatics data, eight costly-feature datasets, and a physical ten-camera network."
+      claim_type: direct_evidence
+      source_locator: "Krause and Guestrin 2009 / Sections 6-7; Janisch et al. 2019 / Figure 2 and Tables 1-2; Spaan and Lima 2009 / Tables 1-2 and Figure 4"
+  closest_cross_field_works:
+    - paper_id: "JAIR2009_OPTIMAL_VOI"
+      citation: "Krause and Guestrin. Optimal Value of Information in Graphical Models. JAIR 35, 2009. DOI:10.1613/jair.2737."
+      field: "decision analysis and probabilistic graphical models"
+      stable_url: "https://doi.org/10.1613/jair.2737"
+      body_evidence:
+        statement: "Section 2, Equations 1-2 formalize open-loop subset and adaptive conditional-plan observation selection; the decision-theoretic subsection defines reward as maximum expected utility over actions after observation, Section 2.2 adds cost or budgets, and later sections provide algorithms, hardness results, and real-data evaluations."
+        claim_type: direct_evidence
+        source_locator: "Sections 2-4 and 6-7; Equations 1-2; Algorithms 1-4"
+      overlap:
+        statement: "Whether an observation changes the utility-maximizing action and improves expected outcome is the canonical decision-theoretic VOI objective."
+        claim_type: agent_inference
+        source_locator: "paper decision-theoretic VOI definition; candidate prior_delta"
+      code_boundary:
+        statement: "Paired code-agent replay can estimate an instance-level realized effect without a known probabilistic model, but it does not define a different value criterion."
+        claim_type: agent_inference
+        source_locator: "candidate paired-access design; paper Sections 2-4"
+    - paper_id: "AAAI2019_COSTLY_FEATURES_DRL"
+      citation: "Janisch, Pevny, and Lisy. Classification with Costly Features Using Deep Reinforcement Learning. AAAI 2019. DOI:10.1609/aaai.v33i01.33013959."
+      field: "adaptive feature acquisition and reinforcement learning"
+      stable_url: "https://doi.org/10.1609/aaai.v33i01.33013959"
+      body_evidence:
+        statement: "The Problem Definition casts each feature request or terminal classification as a POMDP action, gives acquisition cost as negative reward and misclassification as terminal loss in Equations 1-2, and evaluates cost-accuracy tradeoffs across eight public datasets."
+        claim_type: direct_evidence
+        source_locator: "Problem Definition; Equations 1-5; Figure 2; evaluation tables"
+      overlap:
+        statement: "It directly covers adaptive observation acquisition conditioned on observed values and downstream decision quality under cost."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Code-agent observations are structured tool results rather than static features, but the acquire-versus-act action space and utility-cost objective remain the same POMDP pattern."
+        claim_type: agent_inference
+        source_locator: "paper Problem Definition; candidate intervention_object"
+    - paper_id: "ICAPS2009_DYNAMIC_SENSOR_SELECTION"
+      citation: "Spaan and Lima. A Decision-Theoretic Approach to Dynamic Sensor Selection in Camera Networks. ICAPS 2009. DOI:10.1609/icaps.v19i1.13381."
+      field: "active sensing, planning, and robotics"
+      stable_url: "https://doi.org/10.1609/icaps.v19i1.13381"
+      body_evidence:
+        statement: "The paper models belief-dependent camera activation as a closed-loop nonmyopic POMDP, uses observation and transition models plus task rewards for coverage or uncertainty, and compares POMDP, QMDP, static, and heuristic selectors on a real ten-camera network."
+        claim_type: direct_evidence
+        source_locator: "Background and POMDP model; Dynamic sensor selection; Tables 1-2; Figure 4"
+      overlap:
+        statement: "It establishes mature active sensing where observations are noisy, source choice is adaptive, and utility is task-dependent rather than purely informational."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+      code_boundary:
+        statement: "Tests and analyzers offer different observation semantics and replay failure modes, but sensor observation models already represent reliability and action-dependent information."
+        claim_type: agent_inference
+        source_locator: "paper POMDP observation model; candidate reliability discount"
+  transfer_assessment:
+    direct_transfer:
+      statement: "The proposed routing rule is decision-theoretic VOI with code tools as sensing actions. Paired access and withholding is an empirical estimator or evaluation design for VOI, not a new problem definition or routing mechanism."
+      claim_type: agent_inference
+      source_locator: "maturity and closest_cross_field_works above"
+    code_specific_structure:
+      statement: "Code environments provide typed executable observations, measurable flakiness or replay failure, inspectable downstream edits, and hidden behavioral tests. These improve label auditability but map directly to observation models, action utilities, and validation rewards."
+      claim_type: agent_inference
+      source_locator: "candidate prior_delta; active-sensing formulations above; synthesis/cross-paper-synthesis.md / P1-P2"
+    general_environment_substitutability:
+      statement: "Robotics, sensor networks, medical diagnosis, web agents, or any instrumented POMDP can replace the code tools while preserving acquisition, belief update, argmax action change, cost, reliability, and outcome utility."
+      claim_type: agent_inference
+      source_locator: "Krause and Guestrin applications; Janisch et al. domains; Spaan and Lima experiment"
+    residual_contribution:
+      primary_class: only_application_transfer
+      statement: "No new phenomenon, formal problem, mechanism, causal estimand, or code-only applicability boundary remains; the exact paired protocol would benchmark mature VOI on software-agent data."
+      claim_type: agent_inference
+      source_locator: "direct_transfer, code_specific_structure, and general_environment_substitutability above"
+    application_transfer_only:
+      value: true
+      statement: "Independent hidden tests make utility measurement stronger but do not distinguish the routing principle from standard active sensing or adaptive feature acquisition."
+      claim_type: agent_inference
+      source_locator: "residual_contribution above"
+  minimum_pilot:
+    remains_direction_killing: true
+    design:
+      statement: "A 50-100 checkpoint paired-replay feasibility study could test whether observation effects are repeatable and whether a learned empirical VOI estimate beats always, never, and task-level VOI under equal cost."
+      claim_type: agent_inference
+      source_locator: "candidate minimum_kill_validation above, reduced after cross-field coverage"
+    kill_criterion:
+      statement: "Kill the transfer empirically if replay labels are unstable or standard VOI baselines match it; even a positive result cannot restore a non-transfer contribution without a code-specific decision structure absent from the current candidate."
+      claim_type: agent_inference
+      source_locator: "candidate falsifiability above; transfer_assessment"
+  decision:
+    outcome: KILL
+    most_damaging_work: "JAIR2009_OPTIMAL_VOI"
+    rationale:
+      statement: "Decision-mediated observation value, adaptive acquisition, noisy sensing, cost, and stopping are mature outside software engineering. The paired code replay is a measurement implementation of VOI, and code-specific supervision does not change the formal decision problem."
+      claim_type: agent_inference
+      source_locator: "maturity and transfer_assessment above"
+    exact_delta:
+      statement: "No standalone delta remains; at most there is a code-agent VOI benchmark with unusually auditable actions and outcomes."
+      claim_type: agent_inference
+      source_locator: "residual_contribution above"
+    confidence:
+      level: high
+      statement: "The closest work explicitly defines observation value through maximum expected action utility and includes adaptive, cost-aware, noisy, and real-system evaluations."
+      claim_type: agent_inference
+      source_locator: "closest_cross_field_works above"
+    unverified_information:
+      - statement: "The sample complexity and stability of realized per-checkpoint VOI labels for stochastic language agents remain unverified, but affect feasibility rather than novelty."
+        claim_type: agent_inference
+        source_locator: "candidate maximum_risk"
+      - statement: "No exhaustive search of every 2026 web-agent routing preprint was possible; the mature pre-LLM formal coverage is sufficient for the transfer decision."
+        claim_type: agent_inference
+        source_locator: "search_log and cross-field works"
+    carry_forward_to_direction_narrowing: false
