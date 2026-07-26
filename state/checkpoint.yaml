@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DIRECTIONS_NARROWED
+current_phase: INDEPENDENT_DIRECTION_AUDIT
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -1320,5 +1320,132 @@ direction_narrowing:
     source_locator: "Final direction portfolio; Phase boundary"
     statement: "DIRECTION_NARROWING is complete with one conditional finalist. No independent direction audit, pilot execution, implementation, task download, model call, training, formal experiment, commit, or push is included."
   human_decisions_pending: []
-next_phase: INDEPENDENT_DIRECTION_AUDIT
-last_updated: "2026-07-26T07:01:00Z"
+independent_direction_audit:
+  status: completed
+  phase_completed: INDEPENDENT_DIRECTION_AUDIT
+  next_phase: PILOT_DESIGN
+  finalist_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+  decision:
+    outcome: REVISE_BEFORE_PILOT
+    claim_type: agent_inference
+    source: "reports/independent-direction-audit-report.md; directions/independent-direction-audit-decision-package.md"
+    source_locator: "Decision; Five-dimensional score; Required revisions"
+    statement: "The finalist retains a narrow conditional empirical question, but novelty boundary, native four-interface intervention identification, and the declared minimum pilot are not sufficient for immediate pilot execution."
+  pilot_authorized: false
+  scores:
+    Novelty:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source_locator: "reports/independent-direction-audit-report.md / Five-dimensional score"
+    Rigor:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source_locator: "reports/independent-direction-audit-report.md / Five-dimensional score"
+    Relevance:
+      score: 3
+      scale: 4
+      claim_type: agent_inference
+      source_locator: "reports/independent-direction-audit-report.md / Five-dimensional score"
+    Verifiability_and_Transparency:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source_locator: "reports/independent-direction-audit-report.md / Five-dimensional score"
+    Feasibility:
+      score: 2
+      scale: 4
+      claim_type: agent_inference
+      source_locator: "reports/independent-direction-audit-report.md / Five-dimensional score"
+  independent_judgments:
+    novelty_boundary:
+      claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Independent novelty-boundary recheck"
+      statement: "The exact four-native-interface code-agent matrix remains a possible narrow residual, but trajectory diagnosis, replay, checkpoint rescue, counterfactual sufficiency, channel surgery, and diagnosis-driven repair are already covered in substantial part."
+    intervention_identifiability:
+      claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Interface identifiability audit"
+      statement: "The current E/S/A/V substitutions are overlapping downstream assistances and do not identify endogenous causal bottlenecks."
+    pilot_sufficiency:
+      claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Minimum pilot audit"
+      statement: "Twenty tasks, six repositories, 30-40 selected checkpoints, and three repeats are insufficient for the stated transfer and heterogeneity claim after nested clustering and oracle exclusions."
+  strengths:
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Positive and negative result value; Five-dimensional score"
+      statement: "The finalist targets an important evidence-to-recovery gap and has a detailed kill-first replay design."
+    - claim_type: direct_evidence
+      source: "directions/minimum-kill-pilot.md"
+      source_locator: "Executable checkpoint; Interventions; Controls and oracles"
+      statement: "The pilot specifies checkpoint manifests, untouched replay, harmful controls, hidden outcomes, and cluster-aware units."
+  weaknesses:
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Interface identifiability audit"
+      statement: "A dominant rescue effect can reflect external oracle assistance rather than the stage that caused the failure."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Independent novelty-boundary recheck"
+      statement: "Recent direct work makes an unqualified causal-replay or trajectory-diagnosis contribution unavailable."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Minimum pilot audit"
+      statement: "The minimum sample and hidden correctness protocol do not support the transfer claim."
+  top_rejection_reasons:
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 1"
+      statement: "Prior-art saturation: mature causal replay combined with code-agent process work leaves only a fine-grained interface ablation."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 2"
+      statement: "No causal identification: E/S/A/V treatments overlap in information, state, repository transition, and stopping effects and can leak gold information."
+    - claim_type: agent_inference
+      source: "reports/independent-direction-audit-report.md"
+      source_locator: "Three most likely top-venue rejection reasons / 3"
+      statement: "Insufficient pilot: the selected nested sample, three repeats, weak baseline, and incomplete intent oracle cannot support transfer."
+  required_revisions:
+    - revision_id: ESTIMAND_AND_NATIVE_CONTRACTS
+      status: required_before_experiment
+      claim_type: agent_inference
+      source: "directions/independent-direction-audit-decision-package.md"
+      source_locator: "Required bounded revisions / 1"
+      statement: "Define native E/S/A/V contracts per scaffold, rename the estimand to a conditional paired rescue effect unless a mediation argument is supplied, and remove unsupported causal-bottleneck wording."
+    - revision_id: PRIMARY_CONTRAST_AND_ORACLE_AUDIT
+      status: required_before_experiment
+      claim_type: agent_inference
+      source: "directions/independent-direction-audit-decision-package.md"
+      source_locator: "Required bounded revisions / 2"
+      statement: "Use untouched replay as the primary comparator; separate neutral sham and harmful controls; freeze oracle provenance, leak checks, intent adjudication, and inconclusive handling."
+    - revision_id: SAMPLE_BASELINES_AND_STATISTICS
+      status: required_for_transfer_claim
+      claim_type: agent_inference
+      source: "directions/independent-direction-audit-decision-package.md"
+      source_locator: "Required bounded revisions / 3"
+      statement: "Use at least five independent continuation repeats and at least 48 valid checkpoints across eight repositories, or remove transfer claims; add stronger trajectory and intervention baselines and predeclare hierarchical uncertainty and threshold sensitivity."
+  experiment_answerable_after_revision:
+    claim_type: agent_inference
+    source: "reports/independent-direction-audit-report.md"
+    source_locator: "Positive and negative result value; Required revisions before any experiment"
+    statement: "Replay rate, actual conditional rescue heterogeneity, repeatability, cross-configuration transfer, baseline margin, and a construct-validity negative result can be answered only after the estimand and oracle contract are fixed."
+  outputs:
+    - "reports/independent-direction-audit-report.md"
+    - "directions/independent-direction-audit-decision-package.md"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "YAML parse, report/package field audit, ASCII/final-newline/trailing-whitespace audit, and git diff --check"
+    statement: "The audit report and decision package are present with the required scores, strengths, weaknesses, independent judgments, rejection reasons, ruling, and bounded revisions; no direction artifact was changed to force a positive result."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "reports/independent-direction-audit-report.md"
+    source_locator: "Audit record; Final reviewer conclusion"
+    statement: "INDEPENDENT_DIRECTION_AUDIT is complete. Pilot design execution, implementation, task download, model call, training, formal experiment, commit, and push remain outside this phase."
+  human_decisions_pending: []
+next_phase: PILOT_DESIGN
+last_updated: "2026-07-26T13:23:50Z"
