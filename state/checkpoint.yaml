@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: CROSS_PAPER_SYNTHESIZED
+current_phase: IDEA_SEEDED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -24,8 +24,10 @@ phase_catalog:
   - CROSS_PAPER_SYNTHESIS
   - CROSS_PAPER_SYNTHESIZED
   - IDEA_SEEDING
+  - IDEA_SEEDED
   - IDEA_GENERATION
   - PRIOR_ART_ATTACK
+  - PRIOR_ART_ATTACK_DIRECT
   - DIRECTION_NARROWING
   - PILOT_DESIGN
 completed_items:
@@ -70,6 +72,10 @@ completed_items:
   - "CROSS_PAPER_SYNTHESIS: organized the evidence-acquisition, state-localization, action-selection, and intent-validation chain; preserved six cross-paper contradictions and identified missing connections without selecting a preferred direction."
   - "CROSS_PAPER_SYNTHESIS: recorded shared assumptions, evidence weaknesses, reusable assets, and nine research pressure points, each limited to the observed tension, closest work, unresolved question, and evidence needed."
   - "CROSS_PAPER_SYNTHESIS: retained dLLMs as an adjacent observation axis for commitment granularity, infilling, and diffusion-native training; no core-cluster promotion, AR-superiority claim, complete idea, method, or experiment was produced."
+  - "IDEA_SEEDING: generated ten falsifiable research seeds directly from the nine pressure points: three low-cost empirical laws, four state/action/feedback/recovery controls, two training or internal-representation directions, and one dLLM mechanism intersection."
+  - "IDEA_SEEDING: recorded for every seed its cross-paper evidence, closest reviewed work, pending novelty delta, object, intervention layer, mechanism, minimum kill test, three-way result interpretation, resources and cost, general-agent significance, risks, rejection reason, and five separate ranking dimensions."
+  - "IDEA_SEEDING: performed only three narrow obvious-overlap searches and narrowed generic tool selection, counterfactual credit, and diffusion repair claims; systematic direct prior-art attack was not started."
+  - "IDEA_SEEDING: retained no novelty claim, final direction, implementation, training run, or formal experiment; the ten candidates remain attackable seeds."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -774,5 +780,220 @@ cross_paper_synthesis:
     source_locator: "Phase conclusion"
     statement: "CROSS_PAPER_SYNTHESIS is complete and the evidence base is ready for IDEA_SEEDING; no complete research idea, method, experiment, novelty claim, prior-art attack, or direction narrowing was produced."
   human_decisions_pending: []
-next_phase: IDEA_SEEDING
-last_updated: "2026-07-25T15:23:33Z"
+idea_seeding:
+  status: completed
+  phase_completed: IDEA_SEEDED
+  next_phase: PRIOR_ART_ATTACK_DIRECT
+  candidate_count: 10
+  evidence:
+    claim_type: direct_evidence
+    source: "ideas/idea-seeding-summary.yaml; ideas/IDEA_*.yaml"
+    source_locator: "candidate_count, candidates, portfolio, criterion_rankings, and ten complete idea cards"
+    statement: "Ten candidate records map directly to the nine pressure points and contain every requested hypothesis, evidence, closest-work, pending-delta, mechanism, kill-test, interpretation, resource, generality, risk, rejection, and ranking field."
+  portfolio:
+    empirical_failure_laws:
+      count: 3
+      idea_ids:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    state_action_feedback_recovery:
+      count: 4
+      idea_ids:
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    training_or_internal_representation:
+      count: 2
+      idea_ids:
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    dllm_mechanism_intersection:
+      count: 1
+      idea_ids:
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    risk_distribution:
+      low: 3
+      medium: 4
+      high: 3
+  pressure_point_mapping:
+    IDEA_STAGEWISE_FAILURE_ATTRIBUTION:
+      - REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+      - DIAGNOSIS_TO_ACTION_VALIDITY
+    IDEA_ORACLE_CONCURRENCE_TRAP:
+      - CHECKABLE_ACCEPTANCE_VS_INTENT
+      - CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION:
+      - CONFIDENCE_PROGRESS_VS_CORRECTNESS
+      - ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    IDEA_DECISION_VALUE_EVIDENCE_ROUTING:
+      - SELECTIVE_EVIDENCE_ACQUISITION
+      - REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+      - CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY:
+      - DERIVED_STATE_FIDELITY
+      - MEMORY_FALSE_RETENTION_VS_DELETION
+    IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE:
+      - DERIVED_STATE_FIDELITY
+      - DIAGNOSIS_TO_ACTION_VALIDITY
+      - CHECKABLE_ACCEPTANCE_VS_INTENT
+    IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL:
+      - ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+      - CHECKABLE_ACCEPTANCE_VS_INTENT
+      - CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT:
+      - ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+      - ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION:
+      - CONFIDENCE_PROGRESS_VS_CORRECTNESS
+      - ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+      - ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR:
+      - DERIVED_STATE_FIDELITY
+      - ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+      - CHECKABLE_ACCEPTANCE_VS_INTENT
+  preliminary_attention_order:
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    - IDEA_ORACLE_CONCURRENCE_TRAP
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  criterion_rankings:
+    potential_contribution:
+      score_5:
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+      score_4:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    falsifiability:
+      score_5:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+      score_4:
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    difference_clarity:
+      score_4:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+      score_3:
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+      score_2:
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    pilot_feasibility:
+      score_5:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      score_4:
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      score_3:
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+      score_2:
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    robustness_to_model_or_benchmark_change:
+      score_5:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+      score_4:
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      score_3:
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+      score_2:
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  targeted_search_disposition:
+    claim_type: agent_inference
+    source: "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml; ideas/prior-art/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml; ideas/prior-art/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+    source_locator: "limited search logs, works, and narrow decisions"
+    statement: "Generic tool selection was narrowed against Toolformer/CMTF, generic counterfactual credit against CRAFT/C3, and generic diffusion repair against arXiv:2508.11110/DreamOn; all systematic ledgers remain incomplete."
+  principal_uncertainties:
+    - claim_type: agent_inference
+      source: "ideas/idea-seeding-summary.yaml"
+      source_locator: "major_uncertainties"
+      statement: "Direct competitors outside the 42-paper corpus may already cover value-of-information acquisition, reversibility-aware control, causal memory attribution, or diagnosis-to-action invariance."
+    - claim_type: agent_inference
+      source: "ideas/idea-seeding-summary.yaml"
+      source_locator: "major_uncertainties"
+      statement: "Counterfactual labels depend on deterministic checkpoint restoration, a fixed continuation policy, and independently valid outcomes."
+    - claim_type: agent_inference
+      source: "ideas/idea-seeding-summary.yaml"
+      source_locator: "major_uncertainties"
+      statement: "Intended-correctness and causal-diagnosis truth can remain inconclusive for alternative valid solutions, while cross-model, scaffold, language, and temporal robustness is unevaluated."
+    - claim_type: agent_inference
+      source: "ideas/idea-seeding-summary.yaml"
+      source_locator: "obvious_overlaps_and_early_elimination"
+      statement: "The counterfactual-credit and dLLM seeds are early rejection candidates; the internal-representation seed is gated on a stable recoverability target."
+  dllm_candidate:
+    count: 1
+    idea_id: IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    conclusion:
+      claim_type: agent_inference
+      source: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+      source_locator: "cross_paper_tension, tentative_novelty_delta, and decision"
+      statement: "The dLLM seed has a real commitment/remasking/infilling basis but survives only as external-feedback-selected remasking; no dLLM superiority or generic recovery claim is retained."
+  outputs:
+    - "ideas/idea-seeding-summary.yaml"
+    - "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+    - "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml"
+    - "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+    - "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+    - "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+    - "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml"
+    - "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml"
+    - "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml"
+    - "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml"
+    - "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+    - "ideas/prior-art/"
+    - "templates/idea-card.yaml"
+  phase_boundary:
+    claim_type: agent_inference
+    source: "ideas/idea-seeding-summary.yaml"
+    source_locator: "phase_boundary and self_check"
+    statement: "IDEA_SEEDING produced attackable candidate records only; novelty is unconfirmed and no final direction, implementation, model training, or formal experiment was started."
+  conclusion:
+    claim_type: agent_inference
+    source: "ideas/idea-seeding-summary.yaml"
+    source_locator: "candidate_count, criterion_rankings, obvious_overlaps_and_early_elimination, and phase_boundary"
+    statement: "The workspace can enter PRIOR_ART_ATTACK_DIRECT, beginning with obvious direct-coverage risks before spending effort on pilots."
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-25"
+    source_locator: "Ruby YAML/schema/claim/ranking/ASCII audit; node --test scripts/*.test.js; git diff --check"
+    statement: "All 27 phase-relevant YAML files parsed; ten idea cards matched ten ledgers, all nine pressure points, the 3/4/2/1 portfolio, the 3/4/3 risk split, exact summary hypotheses, and five separate rankings; all 18 repository tests passed; and no non-ASCII text, trailing whitespace, or tracked diff whitespace errors were found."
+  human_decisions_pending: []
+next_phase: PRIOR_ART_ATTACK_DIRECT
+last_updated: "2026-07-25T16:44:37Z"

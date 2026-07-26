@@ -1,0 +1,125 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_STAGEWISE_FAILURE_ATTRIBUTION"
+title: "Stagewise causal attribution of agent failure loops"
+status: prior_art_pending
+risk_tier: low
+candidate_family: empirical_failure_law
+source_pressure_points:
+  - pressure_point_id: REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+    relation: "Separates failure to obtain replayable evidence from later state, action, and validation failures."
+  - pressure_point_id: DIAGNOSIS_TO_ACTION_VALIDITY
+    relation: "Tests whether an observed diagnosis or loop signature identifies the action whose replacement rescues the run."
+falsifiable_hypothesis:
+  statement: "For fixed tasks and agents, the same observable loop signature will arise from multiple failure-chain stages, and staged oracle substitution at evidence acquisition, state construction, action choice, and validation will predict rescue better than error count or trace taxonomy alone."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / Failure and recovery chain; Research pressure points / P2 and P5"
+cross_paper_tension:
+  - statement: "Repeated errors and long traces correlate with failure, but the presence of any solving error has almost no aggregate resolution difference and task difficulty remains confounded."
+    claim_type: direct_evidence
+    source_locator: "cards/ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm.yaml / evaluation.main_results and conclusion_evidence"
+    supporting_paper_ids:
+      - ICSE2026_beyond-final-code-a-process-oriented-error-analysis-of-software-developm
+  - statement: "Reproducers trigger only 41-57% of bugs, whereas later runtime-state and rollback interventions improve outcomes once executable evidence exists."
+    claim_type: agent_inference
+    source_locator: "cards/ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea.yaml / evaluation.main_results; cards/FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis.yaml / conclusion_evidence; cards/ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-.yaml / conclusion_evidence"
+    supporting_paper_ids:
+      - ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea
+      - FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis
+      - ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-
+closest_existing_work:
+  - paper_id: ASE2025_understanding-software-engineering-agents-a-study-of-thought-action-resu
+    relationship: "Provides an observable trace taxonomy but no stage-targeted rescue intervention."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+  - paper_id: ISSTA2026_agentinspect-diagnosing-behavioral-failures-in-artificial-intelligence-a
+    relationship: "Causally injects tool faults but diagnoses outcomes without replacing later recovery decisions."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence"
+  - paper_id: ISSTA2026_understanding-automated-program-repair-agents-through-the-lens-of-tracea
+    relationship: "Locates reproduction, test, and tool prerequisites offline but does not estimate stage-specific rescue effects."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+tentative_novelty_delta:
+  statement: "The tentative delta is a causal rescue matrix over the four-stage mechanism chain, not another failure taxonomy; direct prior-art coverage remains pending."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / Failure and recovery chain; closest-work boundaries above"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Single-agent tool-use and code-agent trajectories with replayable environment checkpoints."
+  claim_type: agent_inference
+  source_locator: "pressure points P2 and P5; reusable trace assets in synthesis/cross-paper-synthesis.md"
+intervention_layer:
+  statement: "Failure diagnosis and causal replay across evidence acquisition, derived state, next action, and acceptance oracle."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / Failure and recovery chain"
+core_mechanism:
+  statement: "At matched checkpoints, substitute one stage with an oracle or controlled degraded variant while freezing earlier state, then attribute rescue and regression to the first stage whose replacement changes the outcome."
+  claim_type: agent_inference
+  source_locator: "P2 evidence-needed design plus P5 controlled-substitution requirement"
+minimum_kill_validation:
+  design: "Replay 40-60 failures from two agent scaffolds on at least two repositories; apply correct, missing, stale, and wrong variants at each of the four stages and compare rescue prediction with error count and existing trace labels."
+  kill_criterion: "Kill the direction if checkpoints cannot be replayed reliably, if stage interventions do not produce separable rescue effects, or if simple trace/error features predict rescue equally well out of repository."
+  claim_type: agent_inference
+  source_locator: "P2 evidence needed; Beyond Final Code and APR Traceability limitations"
+result_interpretation:
+  positive:
+    statement: "A positive result would establish that visible loops are non-identifying symptoms and provide a stage-level empirical law for choosing recovery interventions."
+    claim_type: agent_inference
+    source_locator: "hypothesis and minimum kill validation"
+  negative:
+    statement: "A negative result would favor simpler observable-taxonomy or error-count models and remove the need for stagewise causal attribution."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Agent-specific stage effects would support only a scoped diagnostic instrument, not a general failure law."
+    claim_type: agent_inference
+    source_locator: "Understanding Agents cross-agent confounding; AgentInspect scope limitations"
+requirements:
+  data:
+    statement: "Existing normalized traces plus 40-60 executable tasks with reproducible failures and broader hidden validation."
+    claim_type: agent_inference
+    source_locator: "reusable assets in the three closest cards"
+  models:
+    statement: "Two fixed contemporary agent backbones; no model training is required for the kill test."
+    claim_type: agent_inference
+    source_locator: "paired intervention design"
+  trajectories:
+    statement: "Approximately 400-700 checkpointed replays covering four stage substitutions and controls."
+    claim_type: agent_inference
+    source_locator: "40-60 tasks times staged variants"
+  tools:
+    statement: "Container replay, trace normalization, test/build runners, state/action injectors, and an expanded validation oracle."
+    claim_type: agent_inference
+    source_locator: "APR Traceability, ADI, TraceCoder, and PatchDiff reusable artifacts"
+  estimated_cost:
+    statement: "Low: roughly USD 500-2,000 in model/runtime cost plus one to two engineer-weeks, assuming existing replay assets are reusable."
+    claim_type: agent_inference
+    source_locator: "trajectory count above and existing artifact availability"
+general_agent_significance:
+  statement: "Any long-horizon agent can display the same repeated action after missing evidence, corrupt state, a bad policy, or a false stop signal; distinguishing these causes is scaffold-independent even when the concrete tools change."
+  claim_type: agent_inference
+  source_locator: "cross-paper four-stage chain and AgentInspect general tool-fault evidence"
+maximum_risk:
+  statement: "Exact replay may be impossible for nondeterministic agents, making the causal stage labels unstable."
+  claim_type: agent_inference
+  source_locator: "ADI and RustForger repeated-run limitations; P2 reproducibility boundary"
+likely_rejection_reason:
+  statement: "Reviewers may see the work as another taxonomy study unless the oracle substitutions identify causal, transferable rescue effects beyond descriptive trace features."
+  claim_type: agent_inference
+  source_locator: "closest-work boundaries and hypothesis"
+initial_assessment:
+  potential_contribution: {score: 4, rationale: "Turns a staged synthesis claim into a causal failure law.", claim_type: agent_inference, source_locator: "four-stage chain"}
+  falsifiability: {score: 5, rationale: "Each stage has an explicit substitution and kill condition.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "The delta from observational taxonomies is concrete, pending direct prior art.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 5, rationale: "Uses released traces and needs no training.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 5, rationale: "The stage decomposition is defined over agent-environment interfaces rather than one task score.", claim_type: agent_inference, source_locator: "general_agent_significance"}
+uncertainties:
+  - statement: "The smallest set of oracle substitutions that is both realistic and independently valid is unresolved."
+    claim_type: agent_inference
+    source_locator: "P2 and P7 evidence requirements"
+prior_art_ledger: "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+decision:
+  statement: "Retain as a low-cost seed for direct prior-art attack; do not promote before replay feasibility is established."
+  claim_type: agent_inference
+  source_locator: "initial_assessment, uncertainties, and minimum_kill_validation"

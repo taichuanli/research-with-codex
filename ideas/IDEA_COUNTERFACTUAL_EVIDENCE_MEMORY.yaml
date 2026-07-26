@@ -1,0 +1,124 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY"
+title: "Counterfactual memory control for false retention and false deletion"
+status: prior_art_pending
+risk_tier: medium
+candidate_family: state_memory_control
+source_pressure_points:
+  - pressure_point_id: DERIVED_STATE_FIDELITY
+    relation: "Measures whether retained memory facts preserve decision-relevant state."
+  - pressure_point_id: MEMORY_FALSE_RETENTION_VS_DELETION
+    relation: "Jointly prices distracting retained evidence and useful deleted evidence."
+falsifiable_hypothesis:
+  statement: "At a matched context budget, a memory policy supervised by paired remove, corrupt, and restore interventions will reduce both distraction-induced action errors and deletion-induced regressions relative to relevance, attention, summarization, and recency policies."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P3-P4"
+cross_paper_tension:
+  - statement: "ExpeRepair peaks at top-3 retrieval and degrades with more memories, while AttnCompress loses accuracy relative to uncompressed trajectories and can irreversibly discard low-scored evidence."
+    claim_type: direct_evidence
+    source_locator: "ExpeRepair card / evaluation.main_results; AttnCompress card / evaluation.main_results and failure_modes"
+    supporting_paper_ids:
+      - FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai
+      - ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar
+  - statement: "EvidenT improves with explicit current, historical, and negative evidence, yet no reviewed work estimates both false-retention and false-deletion costs in one setting."
+    claim_type: agent_inference
+    source_locator: "EvidenT card / evaluation.ablations; cross-paper synthesis / P4"
+    supporting_paper_ids:
+      - ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack
+closest_existing_work:
+  - paper_id: FSE2026_experepair-dual-memory-enhanced-llm-based-repository-level-program-repai
+    relationship: "Varies retrieval and insight count but does not label the necessity or factual correctness of individual memories."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+  - paper_id: ISSTA2026_attncompress-dynamic-attention-guided-trajectory-compression-for-softwar
+    relationship: "Dynamically rescales memory attention but lacks counterfactual restoration and loses to no compression on accuracy."
+    claim_type: agent_inference
+    source_locator: "card / evaluation.main_results and evidence_gaps"
+  - paper_id: ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack
+    relationship: "Preserves typed and negative evidence with strong ablations but does not inject corruption or estimate per-item necessity."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+tentative_novelty_delta:
+  statement: "The tentative delta is intervention-derived decision necessity with reversible cold storage and provenance, not a new retriever, compressor, or larger context window; direct coverage is pending."
+  claim_type: agent_inference
+  source_locator: "P3-P4 evidence needed"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Long-horizon single-agent evidence stores containing tool outputs, failures, edits, summaries, and negative findings."
+  claim_type: agent_inference
+  source_locator: "state/memory rows in unified mechanism matrix"
+intervention_layer:
+  statement: "Derived state construction and memory exposure before each next action."
+  claim_type: agent_inference
+  source_locator: "four-stage chain / Stage 2"
+core_mechanism:
+  statement: "Assign each evidence item a counterfactual necessity and contradiction score from remove/corrupt/restore replays, keep provenance and a reversible cold store, and expose a budgeted state that can recall items when new evidence changes their value."
+  claim_type: agent_inference
+  source_locator: "P3-P4 evidence needed; EvidenT temporal slots"
+minimum_kill_validation:
+  design: "At 100-150 trajectory checkpoints, perturb individual evidence blocks and compare next-action and final-outcome effects; deploy the resulting policy against uncompressed, recency, embedding, attention, and summary baselines under equal tokens."
+  kill_criterion: "Kill if necessity labels are unstable across plausible next actions, if recall does not rescue false deletions, or if the policy cannot match uncompressed accuracy while improving over compression baselines."
+  claim_type: agent_inference
+  source_locator: "P4 evidence needed and AttnCompress boundary"
+result_interpretation:
+  positive:
+    statement: "A positive result would show that memory errors are controllable through causal evidence necessity rather than proxy relevance alone."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would favor simple uncompressed or relevance-based memory and reject the intervention overhead."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Improvement only under severe compression would narrow the contribution to context-constrained agents rather than general state fidelity."
+    claim_type: agent_inference
+    source_locator: "AttnCompress cost-quality setting"
+requirements:
+  data:
+    statement: "Full trajectories with block-level evidence provenance and reproducible downstream actions; AttnCompress, ExpeRepair, and EvidenT assets are candidate sources."
+    claim_type: agent_inference
+    source_locator: "named cards / reusable_artifacts"
+  models:
+    statement: "One fixed agent plus a lightweight memory scorer for the kill test; a second backbone tests transfer."
+    claim_type: agent_inference
+    source_locator: "P3 transfer requirement"
+  trajectories:
+    statement: "Roughly 1,000-3,000 counterfactual state/action replays and 200-400 end-to-end evaluations."
+    claim_type: agent_inference
+    source_locator: "minimum validation design"
+  tools:
+    statement: "Trajectory segmenter, provenance ledger, corruption/restoration injector, context-budget controller, and hidden validators."
+    claim_type: agent_inference
+    source_locator: "core mechanism"
+  estimated_cost:
+    statement: "Medium: roughly USD 2,000-7,000 plus three to five engineer-weeks; existing trajectories reduce data-generation cost."
+    claim_type: agent_inference
+    source_locator: "trajectory estimate and artifact availability"
+general_agent_significance:
+  statement: "Every long-horizon agent must decide which observations remain operative state; false retention and deletion are interface-level errors independent of repository or benchmark."
+  claim_type: agent_inference
+  source_locator: "P4 and state-chain synthesis"
+maximum_risk:
+  statement: "Evidence necessity is action-policy dependent and combinatorial, so single-item interventions may miss interactions among weak clues."
+  claim_type: agent_inference
+  source_locator: "P3 causal-fidelity gap"
+likely_rejection_reason:
+  statement: "The method may be judged as costly context pruning unless it demonstrates causal state fidelity, two-sided error reduction, and transfer beyond one agent."
+  claim_type: agent_inference
+  source_locator: "scope exclusion and novelty delta"
+initial_assessment:
+  potential_contribution: {score: 4, rationale: "Addresses a convergent two-sided memory failure with a controllable mechanism.", claim_type: agent_inference, source_locator: "P4"}
+  falsifiability: {score: 5, rationale: "Remove/corrupt/restore interventions directly test the claimed mediator.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "Causal necessity is distinct from attention, retrieval, or compression score.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 4, rationale: "Released trajectories and compressors exist, though replay remains substantial.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 4, rationale: "The mechanism is general, but item values depend on policy and task stage.", claim_type: agent_inference, source_locator: "maximum_risk"}
+uncertainties:
+  - statement: "Prior work on causal context attribution and reversible memory outside software agents has not yet been attacked."
+    claim_type: agent_inference
+    source_locator: "IDEA_SEEDING limited-search boundary"
+prior_art_ledger: "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+decision:
+  statement: "Retain as a medium-risk seed with a strong pre-training kill test."
+  claim_type: agent_inference
+  source_locator: "initial_assessment and minimum_kill_validation"

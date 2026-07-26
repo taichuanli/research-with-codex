@@ -1,0 +1,128 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION"
+title: "Causal internal representation of action recoverability"
+status: prior_art_pending
+risk_tier: high
+candidate_family: internal_representation_and_control
+source_pressure_points:
+  - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    relation: "Targets action-conditional recoverability rather than terminal correctness."
+  - pressure_point_id: ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+    relation: "Requires causal activation intervention and cross-repository transfer, not endpoint correlation alone."
+  - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    relation: "Uses the representation to choose continue, inspect, rollback, or stop."
+falsifiable_hypothesis:
+  statement: "Open-weight LLM activations at agent decision checkpoints contain an action-conditional recoverability direction distinct from terminal correctness, and causal activation intervention along that direction will change inspect, rollback, or stop choices in the predicted direction."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P6, P8, and P9"
+cross_paper_tension:
+  - statement: "LAT identifies model-specific correctness directions for completed code, while Clotho and Code-MUE predict input or output risk without changing a live agent action."
+    claim_type: agent_inference
+    source_locator: "LAT, Clotho, and Code-MUE cards / conclusion_evidence"
+    supporting_paper_ids:
+      - ICSE2026_on-llms-internal-representation-of-code-correctness
+      - FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu
+      - ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+  - statement: "Atropos changes termination or hotswap from an external trajectory graph, and Watson shows that post-hoc reasoning reconstruction is not uniquely faithful."
+    claim_type: agent_inference
+    source_locator: "Atropos card / conclusion_evidence; Watson card / evaluation.main_results"
+    supporting_paper_ids:
+      - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+      - ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe
+closest_existing_work:
+  - paper_id: ICSE2026_on-llms-internal-representation-of-code-correctness
+    relationship: "Probes completed-code correctness and reranks candidates; it neither labels recoverability nor intervenes causally on agent actions."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms, conclusion_evidence, and evidence_gaps"
+  - paper_id: ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+    relationship: "Predicts endpoint failure from external graph features and intervenes, but does not identify or steer an internal recoverability representation."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms and evidence_gaps"
+  - paper_id: ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe
+    relationship: "Reconstructs reasoning after output and provides direct counterevidence to assuming representational faithfulness."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence"
+tentative_novelty_delta:
+  statement: "The tentative delta is causal control through a representation of action-specific rescue margin at live agent checkpoints, rather than another correctness probe or post-hoc explanation; direct prior art is pending."
+  claim_type: agent_inference
+  source_locator: "P8 evidence needed and closest-work boundaries"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Hidden states of an open-weight single-agent policy immediately before tool, edit, rollback, or stop decisions."
+  claim_type: agent_inference
+  source_locator: "P8 action-consumption requirement"
+intervention_layer:
+  statement: "Internal representation readout and activation steering at action selection."
+  claim_type: agent_inference
+  source_locator: "four-stage chain / Stage 3"
+core_mechanism:
+  statement: "Use counterfactual branch outcomes to label rescue margin, learn directions orthogonalized against terminal difficulty and action identity, then apply activation patching or steering and measure the induced action and outcome changes."
+  claim_type: agent_inference
+  source_locator: "P8 calibration requirement; LAT paired-direction mechanism"
+minimum_kill_validation:
+  design: "From 200-300 checkpointed states, fit cross-repository probes for terminal success, next-action advantage, and recoverability; perform blinded activation patching on a held-out repository and compare action shifts with random and difficulty-matched directions."
+  kill_criterion: "Kill if recoverability is not separable after controlling for task/action identity, if it does not transfer, or if steering fails to change the intended action and outcome."
+  claim_type: agent_inference
+  source_locator: "hypothesis and LAT failure boundaries"
+result_interpretation:
+  positive:
+    statement: "A positive result would supply rare causal evidence that a model-internal state can control agent recovery rather than merely predict endpoint difficulty."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would favor external trajectory/state estimators and reject internal recoverability steering."
+    claim_type: agent_inference
+    source_locator: "kill criterion and Atropos alternative"
+  ambiguous:
+    statement: "Probe accuracy without causal steering would support only an observational representation study and should not be promoted as a control method."
+    claim_type: agent_inference
+    source_locator: "P8 signal-to-action evidence requirement"
+requirements:
+  data:
+    statement: "Counterfactually labeled decision checkpoints with alternative actions, rescue attempts, and independent terminal validation."
+    claim_type: agent_inference
+    source_locator: "actionable-recoverability seed and P8"
+  models:
+    statement: "At least two open-weight 7B-14B models with hidden-state and activation-intervention access."
+    claim_type: agent_inference
+    source_locator: "cross-model transfer requirement"
+  trajectories:
+    statement: "Approximately 1,000-2,000 branch rollouts plus 300-600 activation-intervention runs."
+    claim_type: agent_inference
+    source_locator: "minimum validation design"
+  tools:
+    statement: "Open-model inference hooks, checkpoint/restore, probe controls, activation patching, and agent outcome harnesses."
+    claim_type: agent_inference
+    source_locator: "core mechanism"
+  estimated_cost:
+    statement: "High: roughly USD 3,000-12,000 and 4-10 A100-equivalent GPU-days for two model families."
+    claim_type: agent_inference
+    source_locator: "model and trajectory requirements"
+general_agent_significance:
+  statement: "A transferable recoverability state could support stopping and recovery across agent tasks without relying on benchmark-specific endpoint classifiers."
+  claim_type: agent_inference
+  source_locator: "P8 and P6"
+maximum_risk:
+  statement: "Linear probes may encode task identity or action templates, and activation steering may move language style without changing environmental decisions."
+  claim_type: agent_inference
+  source_locator: "LAT provenance/style confound and Watson fidelity counterevidence"
+likely_rejection_reason:
+  statement: "The most likely rejection is probe confounding or lack of causal/transfer evidence, reducing the work to another representation-correlation paper."
+  claim_type: agent_inference
+  source_locator: "maximum risk and P8 evidence standard"
+initial_assessment:
+  potential_contribution: {score: 5, rationale: "Would connect internal state to a consequential recovery action.", claim_type: agent_inference, source_locator: "P8"}
+  falsifiability: {score: 5, rationale: "Controls and activation interventions can directly reject the mechanism.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "Recoverability and causal steering differ from completed-code correctness probing.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 3, rationale: "Open models make it possible, but branch labels and activation runs are costly.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 3, rationale: "Transfer is required but internal directions are often model-specific.", claim_type: agent_inference, source_locator: "LAT limitations"}
+uncertainties:
+  - statement: "This seed depends on the low-cost actionable-recoverability study establishing a stable target before representation work is justified."
+    claim_type: agent_inference
+    source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / decision"
+prior_art_ledger: "ideas/prior-art/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml"
+decision:
+  statement: "Retain as a high-risk representation seed; attack only after the target construct survives the empirical pilot."
+  claim_type: agent_inference
+  source_locator: "initial_assessment and uncertainties"

@@ -1,0 +1,37 @@
+schema_version: 1
+idea_id: "IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR"
+review_status: inconclusive
+search_log:
+  - searched_at: "2026-07-25"
+    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
+    query: "arXiv searches for diffusion language models, code repair, code infilling, and code editing"
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22diffusion%22%20AND%20all:%22code%20repair%22"
+    result: "A direct diffusion-repair paper and variable-length diffusion infilling work were found; the seed was narrowed to external feedback selecting committed regions for remasking."
+    claim_type: agent_inference
+works:
+  - paper_id: "ARXIV_2508_11110"
+    citation: "Diffusion is a Code Repair Operator and Generator. arXiv:2508.11110v1."
+    relation: direct_coverage
+    assessment: "Directly covers generic last-mile code repair by adding noise to broken code and resuming diffusion."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2508.11110v1 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2602_01326"
+    citation: "DreamOn: Diffusion Language Models for Code Infilling Beyond Fixed-size Canvas. arXiv:2602.01326v1."
+    relation: partial_overlap
+    assessment: "Directly advances variable-length diffusion code infilling; it does not claim external test feedback or feedback-localized remasking in the abstract."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2602.01326v1 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2506_20639"
+    citation: "DiffuCoder: Understanding and Improving Masked Diffusion Models for Code Generation. arXiv:2506.20639v2."
+    relation: neighboring
+    assessment: "Provides code-native generation-order and diffusion-RL evidence but uses completed-code rewards rather than external feedback during revision."
+    claim_type: direct_evidence
+    source_locator: "synthesis/dllm-adjacent-watchlist.md / DiffuCoder full reading"
+    required_action: compare
+decision:
+  outcome: narrow
+  rationale: "Reject generic diffusion repair or infilling claims; retain only external executable feedback causally choosing committed regions to remask and revalidate."
+  claim_type: agent_inference
+  source_locator: "limited search above; idea card / tentative_novelty_delta"

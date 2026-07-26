@@ -1,0 +1,37 @@
+schema_version: 1
+idea_id: "IDEA_DECISION_VALUE_EVIDENCE_ROUTING"
+review_status: inconclusive
+search_log:
+  - searched_at: "2026-07-25"
+    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
+    query: "arXiv/OpenAlex searches for selective tool use, when to use tools, value of information, and LLM-agent tool selection"
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22tool%20selection%22%20AND%20all:%22LLM%20agent%22"
+    result: "Several tool-selection works were found; the seed was narrowed from generic tool choice to observation value mediated by downstream action change and evidence reliability."
+    claim_type: agent_inference
+works:
+  - paper_id: "ARXIV_2606_06284"
+    citation: "ToolChoiceConfusion: Causal Minimal Tool Filtering for Reliable LLM Agents. arXiv:2606.06284v1."
+    relation: partial_overlap
+    assessment: "Selects a minimal next-step tool frontier from precondition-effect contracts; does not estimate the value of the returned observation through paired action changes."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2606.06284v1 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2302_04761"
+    citation: "Toolformer: Language Models Can Teach Themselves to Use Tools. arXiv:2302.04761."
+    relation: partial_overlap
+    assessment: "Learns which APIs to call, when, and how from self-supervised language-model loss; generic when-to-call novelty is unavailable."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2302.04761 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2604_19793"
+    citation: "SkillGraph: Graph Foundation Priors for LLM Agent Tool Sequence Recommendation. arXiv:2604.19793v1."
+    relation: neighboring
+    assessment: "Mines successful tool trajectories for selection and ordering; it increases prior-art density around tool routing but targets workflow precedence rather than observation value."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2604.19793v1 / abstract"
+    required_action: compare
+decision:
+  outcome: narrow
+  rationale: "Retain only prospective observation-value estimation with action mediation and reliability; reject any generic tool-selection, ordering, or efficiency claim."
+  claim_type: agent_inference
+  source_locator: "limited search above; idea card / tentative_novelty_delta"

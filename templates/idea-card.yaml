@@ -1,16 +1,78 @@
 # Create one candidate idea record per idea under ideas/.
+schema_version: 1
+phase: IDEA_SEEDING
 idea_id: "IDEA_<SHORT_SLUG>"
-status: "proposed | narrowed | rejected | prior_art_pending"
-statement: null
-motivation: []
-target_context: null
-proposed_contribution: null
-supporting_basis: []
-scope_boundaries: []
-assumptions: []
-risks: []
+title: null
+status: "prior_art_pending | narrowed | rejected"
+risk_tier: "low | medium | high"
+candidate_family: null
+source_pressure_points:
+  - pressure_point_id: null
+    relation: null
+falsifiable_hypothesis:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+cross_paper_tension: []
+closest_existing_work: []
+tentative_novelty_delta:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+intervention_layer:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+core_mechanism:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+minimum_kill_validation:
+  design: null
+  kill_criterion: null
+  claim_type: agent_inference
+  source_locator: null
+result_interpretation:
+  positive: {statement: null, claim_type: agent_inference, source_locator: null}
+  negative: {statement: null, claim_type: agent_inference, source_locator: null}
+  ambiguous: {statement: null, claim_type: agent_inference, source_locator: null}
+requirements:
+  data: {statement: null, claim_type: agent_inference, source_locator: null}
+  models: {statement: null, claim_type: agent_inference, source_locator: null}
+  trajectories: {statement: null, claim_type: agent_inference, source_locator: null}
+  tools: {statement: null, claim_type: agent_inference, source_locator: null}
+  estimated_cost: {statement: null, claim_type: agent_inference, source_locator: null}
+general_agent_significance:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+maximum_risk:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+likely_rejection_reason:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
+initial_assessment:
+  potential_contribution: {score: null, rationale: null, claim_type: agent_inference, source_locator: null}
+  falsifiability: {score: null, rationale: null, claim_type: agent_inference, source_locator: null}
+  difference_clarity: {score: null, rationale: null, claim_type: agent_inference, source_locator: null}
+  pilot_feasibility: {score: null, rationale: null, claim_type: agent_inference, source_locator: null}
+  robustness_to_model_or_benchmark_change: {score: null, rationale: null, claim_type: agent_inference, source_locator: null}
+uncertainties: []
 prior_art_ledger: "ideas/prior-art/<idea id>.yaml"
-decision: null
+decision:
+  statement: null
+  claim_type: agent_inference
+  source_locator: null
 
-# Every entry in motivation and supporting_basis uses:
-# {statement, claim_type, source_locator, supporting_paper_ids}
+# Evidence-bearing entries in cross_paper_tension and closest_existing_work use
+# statement/relationship, claim_type, source_locator, and supporting paper IDs
+# where applicable. Scores are ordinal 1-5 and must not be collapsed into a
+# single total during IDEA_SEEDING.

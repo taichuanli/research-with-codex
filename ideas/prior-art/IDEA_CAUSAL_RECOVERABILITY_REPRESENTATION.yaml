@@ -1,0 +1,10 @@
+schema_version: 1
+idea_id: "IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION"
+review_status: not_started
+search_log: []
+works: []
+decision:
+  outcome: pending
+  rationale: "Systematic direct-competitor search is reserved for PRIOR_ART_ATTACK_DIRECT."
+  claim_type: agent_inference
+  source_locator: "IDEA_SEEDING phase boundary"

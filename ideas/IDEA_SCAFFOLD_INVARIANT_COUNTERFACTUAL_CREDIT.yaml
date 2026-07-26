@@ -1,0 +1,126 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT"
+title: "Scaffold-invariant counterfactual credit for externally stateful actions"
+status: narrowed
+risk_tier: high
+candidate_family: training_and_process_supervision
+source_pressure_points:
+  - pressure_point_id: ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+    relation: "Replaces endpoint-derived local credit with restored counterfactual action effects and explicitly tests scaffold transfer."
+  - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    relation: "Uses restorable decision checkpoints to compare heterogeneous tool, edit, stop, and rollback actions."
+falsifiable_hypothesis:
+  statement: "For single-agent externally stateful tool decisions, local credit measured by exact environment checkpoint restoration and retained only when its sign agrees across scaffolds will transfer better than subtree endpoint frequency, whole-trajectory preference, or single-scaffold sibling-rollout credit."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P6 and P9; targeted-search narrowing"
+cross_paper_tension:
+  - statement: "SEAlign's critical-action training beats whole-trajectory DPO but drops from 17.7% in OpenHands to 5.7% in AutoCodeRover, showing strong scaffold dependence."
+    claim_type: direct_evidence
+    source_locator: "cards/ICSE2026_sealign-alignment-training-for-software-engineering-agent.yaml / evaluation.main_results"
+    supporting_paper_ids:
+      - ICSE2026_sealign-alignment-training-for-software-engineering-agent
+  - statement: "ToolTrain, SEER, MCTS-Refine, and SWE-PDB derive intermediate supervision mainly from terminal tests, gold patches, or endpoint success rather than independent local action effects."
+    claim_type: agent_inference
+    source_locator: "synthesis/deep-reading-complete-synthesis.md / Seven mechanism clusters / 7"
+    supporting_paper_ids:
+      - ICSE2026_enhancing-issue-localization-agent-with-tool-interactive-training
+      - ICSE2026_seer-enhancing-chain-of-thought-code-generation-through-self-exploring-d
+      - ASE2025_mcts-refined-cot-high-quality-fine-tuning-data-for-llm-based-repository-
+      - ISSTA2026_swe-pdb-teaching-llms-to-leverage-debugging-tools-via-agentic-training
+closest_existing_work:
+  - paper_id: ICSE2026_sealign-alignment-training-for-software-engineering-agent
+    relationship: "Constructs sibling critical pairs from subtree endpoint frequency, but does not restore the same environment state for local interventions or require cross-scaffold sign agreement."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms, assumptions, and evaluation.main_results"
+  - external_id: "arXiv:2606.29476v1"
+    relationship: "CRAFT directly covers generic counterfactual sibling-rollout credit for agentic RL; the seed cannot retain that broad claim."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2606.29476v1 / abstract, checked 2026-07-25"
+  - external_id: "arXiv:2603.06859v2"
+    relationship: "C3 uses exact history restoration for per-decision credit in cooperative LLM agents; it overlaps checkpointed causal measurement but studies multi-agent text histories rather than single-agent external environment effects."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2603.06859v2 / abstract, checked 2026-07-25"
+tentative_novelty_delta:
+  statement: "After obvious-overlap narrowing, the only retained delta is exact restoration of externally state-changing single-agent environments plus cross-scaffold sign consistency and an independent semantic outcome; counterfactual credit itself is not novel."
+  claim_type: agent_inference
+  source_locator: "CRAFT and C3 abstract boundaries; SEAlign transfer result"
+  novelty_status: narrowed_high_risk_pending_direct_prior_art_attack
+research_object:
+  statement: "Checkpointable single-agent tool and code-edit decisions with measurable external state effects."
+  claim_type: agent_inference
+  source_locator: "P9 transfer requirement and narrowed delta"
+intervention_layer:
+  statement: "Offline action-credit construction and subsequent process-preference or policy training."
+  claim_type: agent_inference
+  source_locator: "training-cluster synthesis"
+core_mechanism:
+  statement: "Restore the exact pre-action environment, execute matched alternative actions under frozen continuation policies, validate local and terminal effects, discard credit whose sign changes across two scaffolds, then train only on stable action pairs."
+  claim_type: agent_inference
+  source_locator: "P9 causal-step perturbation requirement; SEAlign scaffold-transfer failure"
+minimum_kill_validation:
+  design: "Before training, sample 200-300 checkpoints from two scaffolds, compare restored action-effect labels with subtree-frequency and CRAFT-style sibling estimates, and test label sign agreement plus prediction of held-out action outcomes."
+  kill_criterion: "Kill before training if exact credits are not more stable or predictive, if sign agreement removes most useful data, or if CRAFT-style estimates already match cross-scaffold effects."
+  claim_type: agent_inference
+  source_locator: "targeted-search overlap and P9 evidence needed"
+result_interpretation:
+  positive:
+    statement: "A positive pre-training result would justify a later small policy-training study and isolate scaffold-stable action supervision."
+    claim_type: agent_inference
+    source_locator: "minimum kill validation"
+  negative:
+    statement: "A negative result would reject the direction because the generic counterfactual-credit space is already directly occupied."
+    claim_type: agent_inference
+    source_locator: "CRAFT overlap"
+  ambiguous:
+    statement: "Stable labels without policy-transfer gains would support an auditing artifact, not a training contribution."
+    claim_type: agent_inference
+    source_locator: "P9 process-fidelity versus transfer distinction"
+requirements:
+  data:
+    statement: "Trajectory checkpoints shared across two compatible agent scaffolds, alternative actions, and independent hidden outcome checks."
+    claim_type: agent_inference
+    source_locator: "SEAlign transfer and P9 evidence requirements"
+  models:
+    statement: "One open-weight 7B-14B policy for a later training pilot plus fixed behavior models for label construction."
+    claim_type: agent_inference
+    source_locator: "cost-bounded training seed"
+  trajectories:
+    statement: "At least 1,000 restored action branches for the kill test; a later retained set of several thousand stable pairs if the test passes."
+    claim_type: agent_inference
+    source_locator: "200-300 checkpoints times actions/scaffolds"
+  tools:
+    statement: "Exact environment checkpoint/restore, deterministic replay audit, cross-scaffold action normalization, and hidden semantic validators."
+    claim_type: agent_inference
+    source_locator: "narrowed core mechanism"
+  estimated_cost:
+    statement: "High: USD 5,000-20,000 plus roughly 4-12 A100-equivalent GPU-days if training proceeds; the pre-training kill test is materially cheaper."
+    claim_type: agent_inference
+    source_locator: "branch count and small-model training requirement"
+general_agent_significance:
+  statement: "If local credit survives changes in scaffold while holding environment state fixed, it addresses a general source of spurious process supervision in long-horizon agents."
+  claim_type: agent_inference
+  source_locator: "SEAlign transfer evidence and P9"
+maximum_risk:
+  statement: "Direct prior art may already cover restored single-agent counterfactual credit, and exact environment restoration may fail for stochastic external systems."
+  claim_type: agent_inference
+  source_locator: "CRAFT/C3 overlap and P2 reproducibility boundary"
+likely_rejection_reason:
+  statement: "The likely rejection is insufficient delta from CRAFT/C3 or gains attributable to cleaner data volume rather than cross-scaffold causal credit."
+  claim_type: agent_inference
+  source_locator: "targeted-search overlap and P9 confounds"
+initial_assessment:
+  potential_contribution: {score: 5, rationale: "Could resolve scaffold-specific endpoint credit if the narrowed delta survives.", claim_type: agent_inference, source_locator: "P9"}
+  falsifiability: {score: 4, rationale: "A cheap label-stability test precedes expensive training.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 2, rationale: "CRAFT and C3 create serious direct-overlap risk.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 2, rationale: "Exact cross-scaffold replay and later training are expensive.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 5, rationale: "Cross-scaffold agreement is itself the intended invariance target.", claim_type: agent_inference, source_locator: "hypothesis"}
+uncertainties:
+  - statement: "This is the most prior-art-threatened non-dLLM seed and should be attacked early."
+    claim_type: agent_inference
+    source_locator: "limited arXiv search and direct CRAFT overlap"
+prior_art_ledger: "ideas/prior-art/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml"
+decision:
+  statement: "Retain only as narrowed high-risk seed; reject immediately if direct attack finds external-state and cross-scaffold coverage."
+  claim_type: agent_inference
+  source_locator: "targeted-search closest work and tentative_novelty_delta"

@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-25T11:13:44-04:00"
+last_reviewed_at: "2026-07-25T12:44:37-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: CROSS_PAPER_SYNTHESIZED
-  next_phase: IDEA_SEEDING
+  current_phase: IDEA_SEEDED
+  next_phase: PRIOR_ART_ATTACK_DIRECT
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -163,3 +163,49 @@ cross_paper_synthesis:
     - ACTION_SELECTION
     - INTENT_VALIDATION
   phase_boundary: "Mechanism synthesis, contradictions, assumptions, evidence gaps, reusable assets, nine research pressure points, and the adjacent dLLM disposition are complete. No complete research idea, method, or experiment was generated."
+
+idea_seeding:
+  status: completed
+  phase_completed: IDEA_SEEDED
+  next_phase: PRIOR_ART_ATTACK_DIRECT
+  candidate_count: 10
+  source_pressure_point_count: 9
+  candidate_families:
+    empirical_failure_law: 3
+    state_action_feedback_recovery: 4
+    training_or_internal_representation: 2
+    dllm_mechanism_intersection: 1
+  risk_distribution:
+    low: 3
+    medium: 4
+    high: 3
+  pressure_point_coverage:
+    SELECTIVE_EVIDENCE_ACQUISITION: 1
+    REPRODUCIBLE_EVIDENCE_BEFORE_STATE: 2
+    DERIVED_STATE_FIDELITY: 3
+    MEMORY_FALSE_RETENTION_VS_DELETION: 1
+    DIAGNOSIS_TO_ACTION_VALIDITY: 2
+    ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING: 5
+    CHECKABLE_ACCEPTANCE_VS_INTENT: 4
+    CONFIDENCE_PROGRESS_VS_CORRECTNESS: 5
+    ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER: 2
+  narrowed_after_targeted_search:
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  preliminary_attention_order:
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    - IDEA_ORACLE_CONCURRENCE_TRAP
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  outputs:
+    cards_path: "ideas/IDEA_*.yaml"
+    summary_path: "ideas/idea-seeding-summary.yaml"
+    prior_art_ledgers_path: "ideas/prior-art/"
+  phase_boundary: "Ten falsifiable candidate seeds are recorded with no confirmed novelty, selected final direction, implementation, training, or formal experiment. Direct competitor attack is the next phase."

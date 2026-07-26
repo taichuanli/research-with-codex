@@ -1,0 +1,324 @@
+schema_version: 1
+phase: IDEA_SEEDING
+status: completed
+completed_phase: IDEA_SEEDED
+next_phase: PRIOR_ART_ATTACK_DIRECT
+entry_gate:
+  allowed: true
+  evidence:
+    claim_type: direct_evidence
+    source_locator: "state/checkpoint.yaml before IDEA_SEEDING; config/research_scope.yaml / cross_paper_synthesis"
+    statement: "The entry state was CROSS_PAPER_SYNTHESIZED with IDEA_SEEDING as the next phase, 42 completed paper cards, a 42-row unified matrix, nine pressure points, and no blockers or pending human decisions."
+inputs:
+  - "AGENTS.md"
+  - "config/research_scope.yaml"
+  - "state/checkpoint.yaml"
+  - "cards/*.yaml (42 cards)"
+  - "synthesis/unified-mechanism-matrix.csv"
+  - "synthesis/deep-reading-complete-synthesis.md"
+  - "synthesis/cross-paper-synthesis.md"
+  - "synthesis/dllm-adjacent-watchlist.md"
+candidate_count: 10
+portfolio:
+  empirical_failure_laws:
+    count: 3
+    idea_ids:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+  state_action_feedback_recovery:
+    count: 4
+    idea_ids:
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+  training_or_internal_representation:
+    count: 2
+    idea_ids:
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+  dllm_mechanism_intersection:
+    count: 1
+    idea_ids:
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  risk_distribution:
+    low:
+      count: 3
+      idea_ids:
+        - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+        - IDEA_ORACLE_CONCURRENCE_TRAP
+        - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    medium:
+      count: 4
+      idea_ids:
+        - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+        - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+        - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+        - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    high:
+      count: 3
+      idea_ids:
+        - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+        - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+        - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+candidates:
+  - idea_id: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    risk_tier: low
+    pressure_points: [REPRODUCIBLE_EVIDENCE_BEFORE_STATE, DIAGNOSIS_TO_ACTION_VALIDITY]
+    one_sentence_hypothesis:
+      statement: "For fixed tasks and agents, the same observable loop signature will arise from multiple failure-chain stages, and staged oracle substitution at evidence acquisition, state construction, action choice, and validation will predict rescue better than error count or trace taxonomy alone."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_ORACLE_CONCURRENCE_TRAP
+    risk_tier: low
+    pressure_points: [CHECKABLE_ACCEPTANCE_VS_INTENT, CONFIDENCE_PROGRESS_VS_CORRECTNESS]
+    one_sentence_hypothesis:
+      statement: "For agent-produced patches, specifications, or plans, the number of agreeing validators will be less predictive of intended correctness than the behavioral independence of those validators, and highly correlated agreement will contain a measurable confident-false-acceptance region."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_ORACLE_CONCURRENCE_TRAP.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    risk_tier: low
+    pressure_points: [CONFIDENCE_PROGRESS_VS_CORRECTNESS, ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING]
+    one_sentence_hypothesis:
+      statement: "Signals calibrated to terminal success or task difficulty will be systematically miscalibrated for next-action advantage and recoverability margin, while relabeling the same checkpoint with counterfactual action outcomes will improve decision calibration across agents and repositories."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    risk_tier: medium
+    pressure_points: [SELECTIVE_EVIDENCE_ACQUISITION, REPRODUCIBLE_EVIDENCE_BEFORE_STATE, CONFIDENCE_PROGRESS_VS_CORRECTNESS]
+    one_sentence_hypothesis:
+      statement: "Under a fixed interaction budget, a controller that requests a tool or test only when paired counterfactual estimates predict both a change in the best next action and reliable evidence will outperform fixed-access, relevance-only, and uncertainty-only routing across at least two agent settings."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    risk_tier: medium
+    pressure_points: [DERIVED_STATE_FIDELITY, MEMORY_FALSE_RETENTION_VS_DELETION]
+    one_sentence_hypothesis:
+      statement: "At a matched context budget, a memory policy supervised by paired remove, corrupt, and restore interventions will reduce both distraction-induced action errors and deletion-induced regressions relative to relevance, attention, summarization, and recency policies."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    risk_tier: medium
+    pressure_points: [DERIVED_STATE_FIDELITY, DIAGNOSIS_TO_ACTION_VALIDITY, CHECKABLE_ACCEPTANCE_VS_INTENT]
+    one_sentence_hypothesis:
+      statement: "A diagnosis is action-valid when paraphrases preserving causal facts preserve the repair-action distribution and controlled causal substitutions change it; gating actions on this invariance will improve intended repairs over free-form diagnoses and token-matched context controls."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    risk_tier: medium
+    pressure_points: [ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING, CHECKABLE_ACCEPTANCE_VS_INTENT, CONFIDENCE_PROGRESS_VS_CORRECTNESS]
+    one_sentence_hypothesis:
+      statement: "At equal interaction cost, a controller that increases validation, reduces action batch size, and creates rollback checkpoints as estimated reversibility decreases will cause fewer unrecoverable regressions than confidence-only, passed-test-count, or fixed-granularity controllers."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    risk_tier: high
+    pressure_points: [ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER, ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING]
+    one_sentence_hypothesis:
+      statement: "For single-agent externally stateful tool decisions, local credit measured by exact environment checkpoint restoration and retained only when its sign agrees across scaffolds will transfer better than subtree endpoint frequency, whole-trajectory preference, or single-scaffold sibling-rollout credit."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    risk_tier: high
+    pressure_points: [CONFIDENCE_PROGRESS_VS_CORRECTNESS, ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER, ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING]
+    one_sentence_hypothesis:
+      statement: "Open-weight LLM activations at agent decision checkpoints contain an action-conditional recoverability direction distinct from terminal correctness, and causal activation intervention along that direction will change inspect, rollback, or stop choices in the predicted direction."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION.yaml / falsifiable_hypothesis"
+  - idea_id: IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    risk_tier: high
+    pressure_points: [DERIVED_STATE_FIDELITY, ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING, CHECKABLE_ACCEPTANCE_VS_INTENT]
+    one_sentence_hypothesis:
+      statement: "For localized executable failures, injecting test or analyzer feedback between denoising blocks and selectively remasking implicated committed regions will reduce regressions and constraint violations relative to compute-matched autoregressive editing and diffusion repair without external feedback."
+      claim_type: agent_inference
+      source_locator: "ideas/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml / falsifiable_hypothesis"
+ranking_contract:
+  statement: "Scores use a five-point ordinal scale where 5 is strongest; no weighted sum or composite total is used, and the attention order below is a qualitative phase-seeding judgment rather than a final selection."
+  claim_type: agent_inference
+  source_locator: "requested IDEA_SEEDING evaluation dimensions"
+criterion_rankings:
+  potential_contribution:
+    score_5:
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    score_4:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  falsifiability:
+    score_5:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    score_4:
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+  difference_clarity:
+    score_4:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    score_3:
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    score_2:
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+  pilot_feasibility:
+    score_5:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    score_4:
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    score_3:
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    score_2:
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  robustness_to_model_or_benchmark_change:
+    score_5:
+      - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      - IDEA_ORACLE_CONCURRENCE_TRAP
+      - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+      - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+      - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    score_4:
+      - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+      - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+      - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    score_3:
+      - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    score_2:
+      - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+attention_order:
+  - rank: 1
+    idea_id: IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    reason:
+      statement: "It attacks the clearest missing prospective link in the four-stage chain with paired causal evidence, although dense tool-selection prior art must be attacked first."
+      claim_type: agent_inference
+      source_locator: "P1; limited Toolformer/CMTF search"
+  - rank: 2
+    idea_id: IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    reason:
+      statement: "Convergent positive and negative evidence supports a two-sided memory failure, and the remove-corrupt-restore pilot directly tests the mediator."
+      claim_type: agent_inference
+      source_locator: "P3-P4; ExpeRepair, AttnCompress, and EvidenT cards"
+  - rank: 3
+    idea_id: IDEA_ORACLE_CONCURRENCE_TRAP
+    reason:
+      statement: "It addresses the general intent-validation gate with strong empirical anchors and a model-independent mechanism, but intent truth is costly and sometimes indeterminate."
+      claim_type: agent_inference
+      source_locator: "P7-P8; PatchDiff and To Run cards"
+  - rank: 4
+    idea_id: IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    reason:
+      statement: "It is a low-cost prerequisite that can clarify whether existing confidence signals target the wrong quantity before larger controller or representation work."
+      claim_type: agent_inference
+      source_locator: "P6-P8; signal-cluster synthesis"
+  - rank: 5
+    idea_id: IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    reason:
+      statement: "It offers the broadest transferable action-control mechanism, with the main burden being a credible transactional sandbox and systems prior art."
+      claim_type: agent_inference
+      source_locator: "P6-P8; TraceCoder, AdaDec, Atropos, and formal-agent boundaries"
+  - rank: 6
+    idea_id: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+  - rank: 7
+    idea_id: IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+  - rank: 8
+    idea_id: IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+  - rank: 9
+    idea_id: IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+  - rank: 10
+    idea_id: IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+obvious_overlaps_and_early_elimination:
+  - idea_id: IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    finding:
+      statement: "Generic when-to-call and tool-selection claims overlap Toolformer, CMTF, SkillGraph, and related work; retain only observation value through action mediation and reliability."
+      claim_type: agent_inference
+      source_locator: "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+    required_action: narrow_or_reject
+  - idea_id: IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    finding:
+      statement: "CRAFT directly covers generic counterfactual sibling credit and C3 overlaps exact restoration; this seed is an early rejection candidate unless external-state and cross-scaffold coverage remain open."
+      claim_type: agent_inference
+      source_locator: "ideas/prior-art/IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT.yaml"
+    required_action: attack_first
+  - idea_id: IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+    finding:
+      statement: "Generic diffusion code repair is directly covered by arXiv:2508.11110 and diffusion infilling is advancing quickly; only external-feedback-selected remasking survives seeding."
+      claim_type: agent_inference
+      source_locator: "ideas/prior-art/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+    required_action: attack_first
+  - idea_ids: [IDEA_STAGEWISE_FAILURE_ATTRIBUTION, IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE]
+    finding:
+      statement: "These are adjacent but not duplicates: one attributes failures across all four stages, while the other tests diagnosis as a state-to-action mediator; merge them if direct prior art or pilot design cannot preserve that boundary."
+      claim_type: agent_inference
+      source_locator: "the two idea cards / research_object and intervention_layer"
+    required_action: compare_then_merge_or_separate
+  - idea_ids: [IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION, IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION]
+    finding:
+      statement: "The representation seed is downstream of the empirical target-definition seed and should be killed without a stable action-recoverability construct."
+      claim_type: agent_inference
+      source_locator: "the two idea cards / decision"
+    required_action: dependency_gate
+dllm_disposition:
+  candidate_count: 1
+  mechanism_basis:
+    statement: "The candidate uses real dLLM mechanisms: block/token commitment, arbitrary-location infilling, and remasking; its claimed open link is external test or analyzer feedback causing targeted revision."
+    claim_type: agent_inference
+    source_locator: "synthesis/dllm-adjacent-watchlist.md / CROSS_PAPER_SYNTHESIS disposition"
+  boundary:
+    statement: "It does not claim dLLM superiority, generic recovery from denoising, or transfer from masked tokens to irreversible external actions."
+    claim_type: agent_inference
+    source_locator: "dLLM watchlist / non-transfer verdict"
+major_uncertainties:
+  - statement: "Direct prior art outside the 42-paper corpus may already cover value-of-information acquisition, reversibility-aware control, causal memory attribution, and rationale-to-action invariance."
+    claim_type: agent_inference
+    source_locator: "IDEA_SEEDING limited-search boundary"
+  - statement: "Counterfactual action and stage labels depend on deterministic checkpoint restoration and a fixed continuation policy."
+    claim_type: agent_inference
+    source_locator: "P2 and P9; idea kill tests"
+  - statement: "Independent intended-correctness and causal-diagnosis labels may remain inconclusive for alternative valid solutions."
+    claim_type: agent_inference
+    source_locator: "P5 and P7; PatchDiff uncertainty"
+  - statement: "Cross-model, cross-scaffold, cross-language, and temporal robustness are ranking criteria but have not been experimentally established in IDEA_SEEDING."
+    claim_type: agent_inference
+    source_locator: "phase boundary and P9"
+self_check:
+  candidate_count_in_range: true
+  every_candidate_has_required_fields: true
+  every_candidate_maps_to_pressure_points: true
+  low_cost_empirical_count: 3
+  state_action_feedback_recovery_count: 4
+  training_or_internal_count: 2
+  dllm_count: 1
+  excluded_scope_present: false
+  novelty_confirmed: false
+  implementation_training_or_formal_experiment_started: false
+validation:
+  statement: "Fresh local validation parsed all phase YAML, matched ten cards to ten ledgers and all nine pressure points, reconciled risk, portfolio, hypothesis, mapping, and five-dimension ranking records, passed all 18 repository tests, and found no non-ASCII text, trailing whitespace, or tracked diff whitespace errors."
+  claim_type: direct_evidence
+  source_locator: "local Ruby YAML/schema/claim/ranking/ASCII audit; node --test scripts/*.test.js; git diff --check, executed 2026-07-25"
+phase_boundary:
+  statement: "These ten records are falsifiable seeds for attack and narrowing. No final novelty, selected direction, implementation, training run, or formal experiment is claimed or begun."
+  claim_type: agent_inference
+  source_locator: "IDEA_SEEDING request and idea-card statuses"

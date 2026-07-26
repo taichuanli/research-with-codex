@@ -1,0 +1,129 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL"
+title: "Reversibility-aware commitment, validation, and rollback control"
+status: prior_art_pending
+risk_tier: medium
+candidate_family: action_commitment_and_recovery_control
+source_pressure_points:
+  - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    relation: "Makes commitment granularity and rollback depend on action reversibility."
+  - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+    relation: "Escalates validation when local acceptance is weak relative to the action's recovery cost."
+  - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    relation: "Uses confidence only after calibrating it to action-specific regression and rescue cost."
+falsifiable_hypothesis:
+  statement: "At equal interaction cost, a controller that increases validation, reduces action batch size, and creates rollback checkpoints as estimated reversibility decreases will cause fewer unrecoverable regressions than confidence-only, passed-test-count, or fixed-granularity controllers."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P6-P8"
+cross_paper_tension:
+  - statement: "TraceCoder benefits from rollback and strict passed-test improvement, but TestPrune shows that selected tests can induce unsafe early stopping and local test gains need not reflect intent."
+    claim_type: agent_inference
+    source_locator: "TraceCoder card / ablations; TestPrune card / failure_modes"
+    supporting_paper_ids:
+      - ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-
+      - FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues
+  - statement: "AdaDec controls token commitment, Atropos controls termination or model switching, and formal agents backtrack checked branches, but their action types and reversibility assumptions are not compared."
+    claim_type: agent_inference
+    source_locator: "AdaDec, Atropos, AutoRocq, and Event-B cards / technical_mechanisms and failure_modes"
+    supporting_paper_ids:
+      - FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c
+      - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+      - FSE2026_agentic-verification-of-software-systems
+      - FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair
+closest_existing_work:
+  - paper_id: ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-
+    relationship: "Restores the best passed-test state but assumes passed-test count is monotone quality and does not model action recovery cost."
+    claim_type: agent_inference
+    source_locator: "card / assumptions and limitations"
+  - paper_id: ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+    relationship: "Triggers stop or hotswap from a partial-state predictor but does not change validation depth or checkpoint granularity by reversibility."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms and evidence_gaps"
+  - paper_id: FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c
+    relationship: "Adapts token commitment but tokens are internally reversible and the mechanism is not tested on externally state-changing actions."
+    claim_type: agent_inference
+    source_locator: "card / within_cluster_difference and evidence_gaps"
+tentative_novelty_delta:
+  statement: "The tentative delta is a common control variable linking heterogeneous action granularity, validation depth, checkpointing, and rollback to empirically measured reversibility and recovery cost."
+  claim_type: agent_inference
+  source_locator: "P6 unanswered question and closest-work boundaries"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Single-agent actions ranging from read-only queries and local edits to destructive or externally committed operations."
+  claim_type: agent_inference
+  source_locator: "P6 distinction between reversible and externally state-changing errors"
+intervention_layer:
+  statement: "Action batching, pre-commit validation, checkpoint creation, rollback, and stopping."
+  claim_type: agent_inference
+  source_locator: "P6"
+core_mechanism:
+  statement: "Estimate reversal success and recovery cost for each action class, then choose a commit frontier: low-cost reversible actions can batch, while low-reversibility actions require finer steps, orthogonal validation, and restorable checkpoints."
+  claim_type: agent_inference
+  source_locator: "P6 evidence needed and P7 proxy boundary"
+minimum_kill_validation:
+  design: "Build a sandbox with matched tasks containing read, edit, test, file-state, and externally committed action classes; vary reversibility independently of semantic difficulty and compare four controllers under equal total budget."
+  kill_criterion: "Kill if reversibility has no interaction with optimal granularity/validation, if a confidence-only baseline matches outcomes, or if checkpoint overhead erases regression gains."
+  claim_type: agent_inference
+  source_locator: "hypothesis and P6 evidence needed"
+result_interpretation:
+  positive:
+    statement: "A positive result would provide a transferable action-control law and a concrete recovery policy for general agents."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would favor domain-specific commit rules or confidence-only control."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Benefits confined to synthetic irreversible actions would not support deployment claims and would require a narrower systems result."
+    claim_type: agent_inference
+    source_locator: "external-validity requirement"
+requirements:
+  data:
+    statement: "Tasks with action logs, restorable states, broader outcome checks, and controlled irreversible variants; code-repair and one non-code tool environment are preferred."
+    claim_type: agent_inference
+    source_locator: "general-agent and robustness requirements"
+  models:
+    statement: "Two fixed agents with logged confidence or a common external predictor; no full training is required for the controller pilot."
+    claim_type: agent_inference
+    source_locator: "minimum validation"
+  trajectories:
+    statement: "Approximately 500-1,500 end-to-end trajectories across action classes and controller variants."
+    claim_type: agent_inference
+    source_locator: "pilot factorial design"
+  tools:
+    statement: "Transactional sandbox, checkpoint/restore, action-effect diffing, multiple validators, and budget accounting."
+    claim_type: agent_inference
+    source_locator: "core mechanism"
+  estimated_cost:
+    statement: "Medium: roughly USD 3,000-10,000 plus four to six engineer-weeks because the action sandbox is the main burden."
+    claim_type: agent_inference
+    source_locator: "requirements and trajectory estimate"
+general_agent_significance:
+  statement: "Reversibility and recovery cost are properties of agent-environment actions, so the mechanism can transfer across coding, operations, browsing, and formal workflows even when confidence signals change."
+  claim_type: agent_inference
+  source_locator: "P6 and unified matrix action heterogeneity"
+maximum_risk:
+  statement: "Action reversibility may be inseparable from task difficulty, latency, and permission boundaries in real environments."
+  claim_type: agent_inference
+  source_locator: "P6 matched-outcome requirement"
+likely_rejection_reason:
+  statement: "Reviewers may view checkpointing as standard transaction engineering unless the study isolates a new cross-domain interaction among reversibility, granularity, validation, and stopping."
+  claim_type: agent_inference
+  source_locator: "tentative novelty delta"
+initial_assessment:
+  potential_contribution: {score: 5, rationale: "Offers a common mechanism across token, tool, edit, proof, and stop decisions.", claim_type: agent_inference, source_locator: "P6"}
+  falsifiability: {score: 4, rationale: "The interaction is testable, though controlled irreversibility is difficult to construct.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "No reviewed work jointly models reversibility, granularity, and validation.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 3, rationale: "A transactional multi-action sandbox requires nontrivial engineering.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 5, rationale: "Reversibility is an environment-action property rather than a model-specific score.", claim_type: agent_inference, source_locator: "general_agent_significance"}
+uncertainties:
+  - statement: "Transaction, saga, safe-RL, and decision-theoretic prior art outside LLM agents may already cover much of the control law."
+    claim_type: agent_inference
+    source_locator: "IDEA_SEEDING limited-search boundary"
+prior_art_ledger: "ideas/prior-art/IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL.yaml"
+decision:
+  statement: "Retain as a medium-risk seed; require cross-domain prior-art attack before method elaboration."
+  claim_type: agent_inference
+  source_locator: "initial_assessment and uncertainties"

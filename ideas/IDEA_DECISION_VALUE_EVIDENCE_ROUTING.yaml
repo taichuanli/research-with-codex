@@ -1,0 +1,132 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_DECISION_VALUE_EVIDENCE_ROUTING"
+title: "Prospective evidence routing by decision value"
+status: narrowed
+risk_tier: medium
+candidate_family: feedback_selection_and_action_control
+source_pressure_points:
+  - pressure_point_id: SELECTIVE_EVIDENCE_ACQUISITION
+    relation: "Chooses whether and which observation to acquire before paying for or acting on it."
+  - pressure_point_id: REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+    relation: "Discounts evidence whose acquisition or replay reliability is low."
+  - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    relation: "Targets expected change in the best action rather than task-level uncertainty alone."
+falsifiable_hypothesis:
+  statement: "Under a fixed interaction budget, a controller that requests a tool or test only when paired counterfactual estimates predict both a change in the best next action and reliable evidence will outperform fixed-access, relevance-only, and uncertainty-only routing across at least two agent settings."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P1, P2, and P8"
+cross_paper_tension:
+  - statement: "Scoped runtime state and selected iterations improve some agents, but unrestricted execution helps 29 and hurts 24 paired cases and selected tests can cause premature stopping."
+    claim_type: direct_evidence
+    source_locator: "ADI card / main_results; To Run card / main_results; TestPrune card / failure_modes"
+    supporting_paper_ids:
+      - FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis
+      - ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-
+      - FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues
+  - statement: "Clotho prioritizes risky inputs and Atropos predicts failing trajectories, but neither estimates whether a particular observation will alter the correct next action."
+    claim_type: agent_inference
+    source_locator: "Clotho card / conclusion_evidence; Atropos card / evidence_gaps"
+    supporting_paper_ids:
+      - FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu
+      - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+closest_existing_work:
+  - paper_id: ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-
+    relationship: "Provides the cleanest access intervention but does not learn a prospective per-state selection policy."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+  - paper_id: FSE2026_can-old-tests-do-new-tricks-for-resolving-swe-issues
+    relationship: "Selects tests by issue/location relevance and exposes regressions, but does not estimate counterfactual action change before selection."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms and failure_modes"
+  - external_id: "arXiv:2606.06284v1"
+    relationship: "Causal Minimal Tool Filtering exposes a minimal precondition-effect tool frontier; it overlaps generic causal tool selection but does not value the information returned by a call."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2606.06284v1 / abstract, checked 2026-07-25"
+  - external_id: "arXiv:2302.04761"
+    relationship: "Toolformer learns when and how to call APIs from self-supervised token-loss signals; the proposed seed must not claim generic when-to-call novelty."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2302.04761 / abstract, checked 2026-07-25"
+tentative_novelty_delta:
+  statement: "After targeted-search narrowing, the delta is specifically prospective value of an observation measured through downstream action change and acquisition reliability, not tool retrieval, ordering, relevance, or generic call timing."
+  claim_type: agent_inference
+  source_locator: "P1 evidence needed; CMTF and Toolformer abstract boundaries"
+  novelty_status: narrowed_pending_direct_prior_art_attack
+research_object:
+  statement: "Single-agent states with optional tests, executions, analyzers, or structured external queries whose outcomes can change a subsequent action."
+  claim_type: agent_inference
+  source_locator: "P1 and matrix feedback channels"
+intervention_layer:
+  statement: "Evidence acquisition immediately before state update and action selection."
+  claim_type: agent_inference
+  source_locator: "four-stage chain / Stage 1"
+core_mechanism:
+  statement: "Learn or estimate a decision-value score from paired rollouts with and without an observation: probability of changing the best action times expected outcome advantage, discounted by acquisition/replay reliability and cost."
+  claim_type: agent_inference
+  source_locator: "P1 evidence requirement and P2 reproducibility boundary"
+minimum_kill_validation:
+  design: "Create paired access labels at 100-200 checkpoints for two evidence families, fit a small router, and compare against always, never, random, relevance, entropy, and CMTF-style frontier baselines under identical action and cost budgets."
+  kill_criterion: "Kill if paired labels are not repeatable, if action-change does not mediate outcome, or if the router cannot beat a simple fixed policy out of repository and model."
+  claim_type: agent_inference
+  source_locator: "P1 evidence needed and To Run limitations"
+result_interpretation:
+  positive:
+    statement: "A positive result would establish decision value as a controllable mechanism behind non-monotonic feedback and justify broader routing policies."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would favor simpler fixed or state-contract filters and reject learned value-of-observation routing."
+    claim_type: agent_inference
+    source_locator: "kill criterion and CMTF overlap"
+  ambiguous:
+    statement: "Benefits limited to one evidence family would narrow the method to that family and weaken the general-agent claim."
+    claim_type: agent_inference
+    source_locator: "cross-channel heterogeneity in unified matrix"
+requirements:
+  data:
+    statement: "Checkpointed tasks with optional execution/test/analyzer calls and independently validated outcomes."
+    claim_type: agent_inference
+    source_locator: "To Run, TestPrune, and ADI assets"
+  models:
+    statement: "Two fixed agent backbones plus a lightweight calibrated router; no foundation-model training is required for the pilot."
+    claim_type: agent_inference
+    source_locator: "minimum validation"
+  trajectories:
+    statement: "About 1,000-2,500 paired or branched checkpoint rollouts for the first pilot."
+    claim_type: agent_inference
+    source_locator: "100-200 checkpoints times evidence/action variants"
+  tools:
+    statement: "Checkpoint/restore, tool-result withholding, reliability injection, action logging, and hidden outcome validation."
+    claim_type: agent_inference
+    source_locator: "P1-P2 evidence needed"
+  estimated_cost:
+    statement: "Medium: approximately USD 2,000-8,000 plus two to four engineer-weeks, depending on replay cost and proprietary backbones."
+    claim_type: agent_inference
+    source_locator: "trajectory estimate and To Run trace scale"
+general_agent_significance:
+  statement: "Evidence acquisition is the first decision in any partially observable tool agent; measuring whether information changes a useful action is more portable than naming a particular tool."
+  claim_type: agent_inference
+  source_locator: "four-stage chain"
+maximum_risk:
+  statement: "The counterfactual best action is rollout-policy dependent, and the router may learn repository or tool identity rather than information value."
+  claim_type: agent_inference
+  source_locator: "P1 transfer requirement and SEAlign scaffold-transfer warning"
+likely_rejection_reason:
+  statement: "Direct prior art may already cover value-of-information tool policies, or reviewers may see the mechanism as an expensive call-count optimizer if action mediation is not demonstrated."
+  claim_type: agent_inference
+  source_locator: "targeted-search overlap and scope exclusions"
+initial_assessment:
+  potential_contribution: {score: 5, rationale: "Targets the weakest first link in the mechanism chain.", claim_type: agent_inference, source_locator: "P1"}
+  falsifiability: {score: 5, rationale: "Paired access, action mediation, and fixed-budget baselines provide direct kill tests.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 3, rationale: "The action-value delta is clear, but generic tool selection has dense prior art.", claim_type: agent_inference, source_locator: "targeted-search works"}
+  pilot_feasibility: {score: 4, rationale: "Released execution traces exist, but paired labels require reruns.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 4, rationale: "The score is interface-level, but learned estimates may shift with tools and policy.", claim_type: agent_inference, source_locator: "maximum_risk"}
+uncertainties:
+  - statement: "Direct work on value-of-information and adaptive tool invocation outside the scoped corpus is the primary prior-art uncertainty."
+    claim_type: agent_inference
+    source_locator: "limited arXiv/OpenAlex search on 2026-07-25"
+prior_art_ledger: "ideas/prior-art/IDEA_DECISION_VALUE_EVIDENCE_ROUTING.yaml"
+decision:
+  statement: "Retain only in narrowed form; generic tool-selection claims are already disallowed by obvious overlap."
+  claim_type: agent_inference
+  source_locator: "targeted-search closest work and tentative_novelty_delta"

@@ -1,0 +1,37 @@
+schema_version: 1
+idea_id: "IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT"
+review_status: inconclusive
+search_log:
+  - searched_at: "2026-07-25"
+    scope: "Limited IDEA_SEEDING check only; not a systematic prior-art attack."
+    query: "arXiv search for counterfactual agent credit assignment and sibling rollouts"
+    source_locator: "https://export.arxiv.org/api/query?search_query=all:%22counterfactual%22%20AND%20all:%22agent%22%20AND%20all:%22credit%20assignment%22"
+    result: "Direct generic counterfactual-credit work was found, forcing the seed to external-state restoration and cross-scaffold sign consistency."
+    claim_type: agent_inference
+works:
+  - paper_id: "ARXIV_2606_29476"
+    citation: "CRAFT: Counterfactual Credit Assignment from Free Sibling Rollouts for Self-Distilled Agentic Reinforcement Learning. arXiv:2606.29476v1."
+    relation: direct_coverage
+    assessment: "Directly covers the broad counterfactual sibling-rollout credit concept for agentic reinforcement learning."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2606.29476v1 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2603_06859"
+    citation: "Exact Is Easier: Credit Assignment for Cooperative LLM Agents. arXiv:2603.06859v2."
+    relation: partial_overlap
+    assessment: "Uses exact text-history restoration and alternative actions for per-decision credit in cooperative LLM agents; external single-agent environment state and scaffold invariance remain to be checked."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2603.06859v2 / abstract"
+    required_action: narrow
+  - paper_id: "ARXIV_2607_16999"
+    citation: "Counterfactual Shapley Credit Assignment. arXiv:2607.16999v1."
+    relation: neighboring
+    assessment: "Provides causal Shapley credit for general reinforcement learning and increases the burden for any generic causal-credit claim."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2607.16999v1 / abstract"
+    required_action: compare
+decision:
+  outcome: narrow
+  rationale: "Counterfactual credit is not retained as the novelty claim; only exact externally stateful restoration, cross-scaffold sign stability, and independent semantic validation remain."
+  claim_type: agent_inference
+  source_locator: "limited search above; idea card / tentative_novelty_delta"

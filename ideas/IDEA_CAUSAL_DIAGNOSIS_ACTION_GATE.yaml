@@ -1,0 +1,128 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE"
+title: "Causal diagnosis-to-action invariance gate"
+status: prior_art_pending
+risk_tier: medium
+candidate_family: diagnosis_and_recovery_control
+source_pressure_points:
+  - pressure_point_id: DERIVED_STATE_FIDELITY
+    relation: "Treats a diagnosis as a derived state whose causal facts can be perturbed."
+  - pressure_point_id: DIAGNOSIS_TO_ACTION_VALIDITY
+    relation: "Requires a diagnosis to select actions that repair the intended fault."
+  - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+    relation: "Evaluates resulting actions with broader behavior rather than test pass alone."
+falsifiable_hypothesis:
+  statement: "A diagnosis is action-valid when paraphrases preserving causal facts preserve the repair-action distribution and controlled causal substitutions change it; gating actions on this invariance will improve intended repairs over free-form diagnoses and token-matched context controls."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P3, P5, and P7"
+cross_paper_tension:
+  - statement: "DeepK and ReinFix improve repairs using root-cause or strategy text, but neither independently labels whether the diagnosis is true or mediates the chosen action."
+    claim_type: agent_inference
+    source_locator: "DeepK card / conclusion_evidence; ReinFix card / conclusion_evidence"
+    supporting_paper_ids:
+      - FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb
+      - ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based
+  - statement: "Runtime state improves repair, while Watson shows that plausible reconstructed reasoning can diverge for identical answers."
+    claim_type: agent_inference
+    source_locator: "ADI and RustForger cards / conclusion_evidence; Watson card / evaluation.main_results"
+    supporting_paper_ids:
+      - FSE2026_empowering-autonomous-debugging-agents-with-efficient-dynamic-analysis
+      - ICSE2026_evaluating-and-improving-automated-repository-level-rust-issue-resolutio
+      - ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe
+closest_existing_work:
+  - paper_id: ICSE2026_repair-ingredients-are-all-you-need-improving-large-language-model-based
+    relationship: "Uses inferred root cause as a retrieval key and ablates context sources, but assumes rather than tests root-cause fidelity."
+    claim_type: agent_inference
+    source_locator: "card / assumptions and evidence_gaps"
+  - paper_id: FSE2026_debugging-engine-enhanced-by-prior-knowledge-can-we-teach-llm-how-to-deb
+    relationship: "Validates knowledge records by source-instance endpoint repair, not by diagnosis truth or counterfactual action mediation."
+    claim_type: agent_inference
+    source_locator: "card / assumptions and conclusion_evidence"
+  - paper_id: ISSTA2026_causalrepair-bridging-the-causality-gap-in-large-language-model-based-au
+    relationship: "Uses dependency slices as causal context but lacks root-cause labels and slice ablations in accessible evidence."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+tentative_novelty_delta:
+  statement: "The tentative delta is an invariance/equivariance test linking explicit causal facts to action distributions and broader behavioral outcomes, not a new explanation prompt or retrieval format."
+  claim_type: agent_inference
+  source_locator: "P5 evidence needed and closest-work boundaries"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Single-agent debugging and repair decisions for failures with independently inspectable causal mechanisms."
+  claim_type: agent_inference
+  source_locator: "P5 and debugging-cluster assets"
+intervention_layer:
+  statement: "Derived diagnosis between evidence/localization and the repair action."
+  claim_type: agent_inference
+  source_locator: "four-stage chain / Stages 2-3"
+core_mechanism:
+  statement: "Generate fact-preserving paraphrases plus correct, incomplete, and wrong causal substitutions; measure action invariance/equivariance, reject unstable diagnoses, and request evidence or defer action when the gate fails."
+  claim_type: agent_inference
+  source_locator: "P3 corruption/restoration and P5 substitution requirements"
+minimum_kill_validation:
+  design: "Use 40-60 seeded and real bugs with causal annotations; hold code, location, and token budget fixed while substituting diagnoses, then compare selected edits and broader behavioral validation."
+  kill_criterion: "Kill if fact-preserving variants change actions as much as causal substitutions, if gate scores do not predict intended repair, or if direct repair with the same evidence performs equally well."
+  claim_type: agent_inference
+  source_locator: "P5 evidence needed"
+result_interpretation:
+  positive:
+    statement: "A positive result would validate diagnosis as a causal mediator and justify state-to-action gates beyond free-form rationales."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would imply that explicit diagnoses are epiphenomenal or too unstable and should not be a control interface."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Reliable mediation only on seeded bugs would restrict the result to controlled causal mechanisms and weaken repository claims."
+    claim_type: agent_inference
+    source_locator: "ground-truth risk"
+requirements:
+  data:
+    statement: "Seeded bugs with known causal changes plus a smaller real-bug set with independent cause/action adjudication and alternative valid fixes."
+    claim_type: agent_inference
+    source_locator: "P5 evidence needed"
+  models:
+    statement: "Two repair-capable models under the same scaffold; no training is required for the kill test."
+    claim_type: agent_inference
+    source_locator: "matched substitution design"
+  trajectories:
+    statement: "Approximately 500-1,200 diagnosis/action runs across paraphrase and causal variants."
+    claim_type: agent_inference
+    source_locator: "40-60 tasks and intervention variants"
+  tools:
+    statement: "Runtime tracing or slicing, controlled diagnosis editor, patch executor, hidden/metamorphic tests, and action-difference analysis."
+    claim_type: agent_inference
+    source_locator: "ADI, CausalRepair, and PatchDiff assets"
+  estimated_cost:
+    statement: "Medium: roughly USD 1,500-6,000 plus substantial causal annotation effort."
+    claim_type: agent_inference
+    source_locator: "trajectory and adjudication requirements"
+general_agent_significance:
+  statement: "Agents routinely compress evidence into beliefs before acting; testing whether causal changes, rather than wording, govern actions applies to diagnosis, planning, proof search, and operations."
+  claim_type: agent_inference
+  source_locator: "derived-state and diagnosis pressure points"
+maximum_risk:
+  statement: "Ground-truth diagnoses are rarely unique, so the intervention may enforce one explanatory vocabulary rather than causal action validity."
+  claim_type: agent_inference
+  source_locator: "Watson non-unique reasoning and PatchDiff alternative-validity boundary"
+likely_rejection_reason:
+  statement: "The work may be dismissed as rationale consistency or prompt perturbation unless action mediation and independent behavior, not text similarity, are the primary outcomes."
+  claim_type: agent_inference
+  source_locator: "scope exclusion and novelty delta"
+initial_assessment:
+  potential_contribution: {score: 4, rationale: "Connects an often-claimed diagnosis to a concrete action mediator.", claim_type: agent_inference, source_locator: "P5"}
+  falsifiability: {score: 5, rationale: "Correct, incomplete, wrong, and paraphrased diagnoses form sharp interventions.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 3, rationale: "The causal-action focus is clear, but rationale-faithfulness literature may overlap heavily.", claim_type: agent_inference, source_locator: "maximum_risk"}
+  pilot_feasibility: {score: 4, rationale: "Small controlled bug sets can kill the idea before scaling.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 4, rationale: "The mediator is general, but diagnosis vocabularies and action spaces vary.", claim_type: agent_inference, source_locator: "general_agent_significance"}
+uncertainties:
+  - statement: "Whether an action-valid diagnosis must be human-readable or can be a structured causal state remains open."
+    claim_type: agent_inference
+    source_locator: "P3 representation-fidelity boundary"
+prior_art_ledger: "ideas/prior-art/IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE.yaml"
+decision:
+  statement: "Retain as a medium-risk seed; reject if direct prior art already couples rationale interventions to executable action mediation."
+  claim_type: agent_inference
+  source_locator: "initial_assessment and uncertainties"

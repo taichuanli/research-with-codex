@@ -1,0 +1,129 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION"
+title: "Separating endpoint confidence from next-action value and recoverability"
+status: prior_art_pending
+risk_tier: low
+candidate_family: empirical_failure_law
+source_pressure_points:
+  - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    relation: "Directly separates task-level prediction from the utility and recoverability of a concrete next action."
+  - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    relation: "Defines recoverability as the outcome margin available after an action or delayed correction."
+falsifiable_hypothesis:
+  statement: "Signals calibrated to terminal success or task difficulty will be systematically miscalibrated for next-action advantage and recoverability margin, while relabeling the same checkpoint with counterfactual action outcomes will improve decision calibration across agents and repositories."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / P6 and P8; Outcome, progress, and uncertainty signals"
+cross_paper_tension:
+  - statement: "LAT, Clotho, and Code-MUE rank completed candidates or inputs, whereas only AdaDec and Atropos directly consume their signals to change actions."
+    claim_type: agent_inference
+    source_locator: "synthesis/deep-reading-complete-synthesis.md / Seven mechanism clusters / 5"
+    supporting_paper_ids:
+      - ICSE2026_on-llms-internal-representation-of-code-correctness
+      - FSE2026_clotho-measuring-task-specific-pre-generation-test-adequacy-for-llm-inpu
+      - ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+      - FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c
+      - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+  - statement: "High semantic consensus can be unanimously wrong, reconstructed reasoning can diverge for the same answer, and early trajectory graphs are weakest when a decision is most needed."
+    claim_type: agent_inference
+    source_locator: "Code-MUE failure_modes; Watson evaluation.main_results; Atropos failure_modes"
+    supporting_paper_ids:
+      - ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+      - ASE2025_watson-a-cognitive-observability-framework-for-the-reasoning-of-llm-powe
+      - ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+closest_existing_work:
+  - paper_id: ISSTA2026_atropos-improving-cost-benefit-trade-off-of-llm-based-agents-under-self-
+    relationship: "Predicts endpoint failure from partial graphs and intervenes, but does not label the advantage or recoverability of individual alternative actions."
+    claim_type: agent_inference
+    source_locator: "card / technical_mechanisms and evidence_gaps"
+  - paper_id: FSE2026_adadec-a-uncertainty-guided-lookahead-decoding-framework-for-llm-based-c
+    relationship: "Uses token entropy to trigger lookahead but has no action-recoverability target and sometimes loses to beam search."
+    claim_type: agent_inference
+    source_locator: "card / evaluation.main_results and evidence_gaps"
+  - paper_id: ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+    relationship: "Provides strong outcome-risk ranking and explicit overconfident errors without online action calibration."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and failure_modes"
+tentative_novelty_delta:
+  statement: "The tentative delta is a three-target calibration study on identical checkpoints: endpoint likelihood, best-next-action advantage, and post-action recoverability; novelty is not established."
+  claim_type: agent_inference
+  source_locator: "P8 unanswered question and closest-work boundaries"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Decision checkpoints in single-agent repository, debugging, or structured tool trajectories."
+  claim_type: agent_inference
+  source_locator: "Atropos, To Run, TraceCoder, and AutoRocq reusable assets"
+intervention_layer:
+  statement: "Progress/confidence measurement immediately before tool, edit, stop, or rollback actions."
+  claim_type: agent_inference
+  source_locator: "P6 and P8"
+core_mechanism:
+  statement: "Restore a checkpoint, sample controlled alternative actions, measure their independent outcomes and remaining rescue budget, and compare existing confidence signals under the three distinct labels."
+  claim_type: agent_inference
+  source_locator: "P8 evidence needed; Atropos post-prediction intervention"
+minimum_kill_validation:
+  design: "Collect 200-300 checkpoints from two agents, replay two to four plausible actions plus a later rescue attempt, and evaluate whether terminal confidence, action advantage, and recoverability have distinct calibration curves out of repository."
+  kill_criterion: "Kill the direction if the three targets collapse empirically, if counterfactual labels are too unstable, or if terminal confidence predicts action advantage and rescue margin as well as separately trained estimators."
+  claim_type: agent_inference
+  source_locator: "hypothesis and P8 evidence requirement"
+result_interpretation:
+  positive:
+    statement: "A positive result would identify a general measurement error behind confidence-based stopping and supply targets for later controllers or representation work."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would justify reusing task-level confidence for action control and kill follow-on action-recoverability mechanisms."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Separation on only irreversible edits or only one agent would narrow the claim to those action classes."
+    claim_type: agent_inference
+    source_locator: "P6 reversibility boundary and Atropos agent-specific labels"
+requirements:
+  data:
+    statement: "Checkpointed trajectories with independently validated terminal outcomes and at least two feasible alternative actions per state."
+    claim_type: agent_inference
+    source_locator: "P8 evidence needed"
+  models:
+    statement: "Two agent backbones, including one open-weight model if internal scores are compared; no fine-tuning is required."
+    claim_type: agent_inference
+    source_locator: "cross-model calibration requirement"
+  trajectories:
+    statement: "Approximately 800-1,500 branch replays from 200-300 checkpoints."
+    claim_type: agent_inference
+    source_locator: "minimum validation design"
+  tools:
+    statement: "Environment checkpoint/restore, action proposal logging, test or task validators, and calibration analysis."
+    claim_type: agent_inference
+    source_locator: "P8 evidence needed"
+  estimated_cost:
+    statement: "Low to moderate: roughly USD 1,000-5,000 and one to three engineer-weeks, dominated by counterfactual replays."
+    claim_type: agent_inference
+    source_locator: "trajectory estimate and released harnesses"
+general_agent_significance:
+  statement: "Choosing a useful next action and knowing whether a bad action remains recoverable are different from predicting eventual task success in any sequential agent."
+  claim_type: agent_inference
+  source_locator: "P6-P8 synthesis"
+maximum_risk:
+  statement: "Counterfactual outcomes can depend on future policy choices, so an apparent action label may encode the rollout policy rather than intrinsic action value."
+  claim_type: agent_inference
+  source_locator: "SEAlign endpoint-derived credit assumption; Atropos agent-specific label limitation"
+likely_rejection_reason:
+  statement: "Without a clear interventional target, reviewers may view the three-way decomposition as relabeling standard value and advantage functions."
+  claim_type: agent_inference
+  source_locator: "tentative novelty delta"
+initial_assessment:
+  potential_contribution: {score: 4, rationale: "Clarifies a widely reused but conflated signal target.", claim_type: agent_inference, source_locator: "P8"}
+  falsifiability: {score: 5, rationale: "The three calibration targets can directly collapse or separate.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "Distinct from endpoint prediction and online stopping alone.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 4, rationale: "Needs replay but no training or new benchmark construction.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 5, rationale: "Targets are defined over sequential decisions rather than a benchmark-specific label.", claim_type: agent_inference, source_locator: "general_agent_significance"}
+uncertainties:
+  - statement: "Recoverability needs a fixed, defensible rescue policy and budget; otherwise comparisons are not identified."
+    claim_type: agent_inference
+    source_locator: "counterfactual rollout risk"
+prior_art_ledger: "ideas/prior-art/IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION.yaml"
+decision:
+  statement: "Retain as a low-cost seed and prerequisite check for the internal-representation candidate."
+  claim_type: agent_inference
+  source_locator: "initial_assessment, uncertainties, and minimum_kill_validation"

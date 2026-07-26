@@ -1,0 +1,129 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR"
+title: "External-feedback-driven selective remasking for diffusion code repair"
+status: narrowed
+risk_tier: high
+candidate_family: dllm_mechanism_intersection
+source_pressure_points:
+  - pressure_point_id: DERIVED_STATE_FIDELITY
+    relation: "Requires feedback localization to identify which committed code state is unfaithful."
+  - pressure_point_id: ACTION_TIMING_GRANULARITY_ROLLBACK_STOPPING
+    relation: "Uses denoising blocks as explicit validation and recommit boundaries."
+  - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+    relation: "Measures untouched-region preservation and broader behavior, not only a passing local test."
+falsifiable_hypothesis:
+  statement: "For localized executable failures, injecting test or analyzer feedback between denoising blocks and selectively remasking implicated committed regions will reduce regressions and constraint violations relative to compute-matched autoregressive editing and diffusion repair without external feedback."
+  claim_type: agent_inference
+  source_locator: "synthesis/dllm-adjacent-watchlist.md / CROSS_PAPER_SYNTHESIS disposition; P3, P6, and P7"
+cross_paper_tension:
+  - statement: "Block Diffusion and Fast-dLLM expose real commitment-granularity controls, Dream demonstrates infilling, and DiffuCoder measures code generation order, but none feeds test or tool failure into denoising revision."
+    claim_type: agent_inference
+    source_locator: "synthesis/dllm-adjacent-watchlist.md / Cross-paper verdict on the five dLLM axes"
+    supporting_paper_ids: []
+  - statement: "TraceCoder and EvidenT improve through external feedback and revision, while the watchlist explicitly warns that denoising without observed failure is not recovery."
+    claim_type: agent_inference
+    source_locator: "TraceCoder and EvidenT cards / conclusion_evidence; dLLM watchlist / Iterative revision verdict"
+    supporting_paper_ids:
+      - ICSE2026_tracecoder-a-trace-driven-multi-agent-framework-for-automated-debugging-
+      - ISSTA2026_evident-an-evidence-preserving-framework-for-iterative-system-level-pack
+closest_existing_work:
+  - external_id: "arXiv:2508.11110v1"
+    relationship: "Diffusion is a Code Repair Operator and Generator directly covers generic diffusion last-mile repair by adding noise and resuming denoising; generic diffusion-repair novelty is therefore unavailable."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2508.11110v1 / abstract, checked 2026-07-25"
+  - external_id: "arXiv:2602.01326v1"
+    relationship: "DreamOn directly advances variable-length diffusion code infilling, narrowing any claim based only on arbitrary-location or length-flexible editing."
+    claim_type: agent_inference
+    source_locator: "https://arxiv.org/abs/2602.01326v1 / abstract, checked 2026-07-25"
+  - external_id: "arXiv:2503.09573v3"
+    relationship: "Block Diffusion supplies block commitment boundaries but freezes completed blocks and does not incorporate external feedback."
+    claim_type: direct_evidence
+    source_locator: "synthesis/dllm-adjacent-watchlist.md / Block Diffusion full reading"
+  - external_id: "arXiv:2506.20639v2"
+    relationship: "DiffuCoder supplies code-native order and diffusion RL evidence but trains on completed-code rewards rather than feedback-driven revision."
+    claim_type: direct_evidence
+    source_locator: "synthesis/dllm-adjacent-watchlist.md / DiffuCoder full reading"
+tentative_novelty_delta:
+  statement: "After targeted-search narrowing, the only retained delta is external executable feedback causally selecting already committed regions to remask and revalidate while measuring preservation; diffusion repair or infilling alone is already covered."
+  claim_type: agent_inference
+  source_locator: "arXiv:2508.11110v1 and arXiv:2602.01326v1 boundaries; watchlist non-transfer verdict"
+  novelty_status: narrowed_high_risk_pending_direct_prior_art_attack
+research_object:
+  statement: "Pretrained masked/block diffusion code models used inside a bounded single-agent repair loop."
+  claim_type: agent_inference
+  source_locator: "watchlist retained intersections"
+intervention_layer:
+  statement: "Code-token commitment and revision between external test/analyzer observations."
+  claim_type: agent_inference
+  source_locator: "P6 and dLLM commitment-granularity intersection"
+core_mechanism:
+  statement: "At a block boundary, execute or analyze the current program, localize implicated regions, selectively remask those and dependency-adjacent tokens, preserve untouched regions as constraints, denoise again, and stop only after orthogonal validation."
+  claim_type: agent_inference
+  source_locator: "dLLM watchlist pending questions; TraceCoder external-feedback loop"
+minimum_kill_validation:
+  design: "Use 30-50 short executable repair tasks with localized failures and a pretrained code dLLM; compare no-feedback diffusion repair, random remasking, feedback-localized remasking, standard AR infill/edit, and AR self-refinement under matched generated tokens and test calls."
+  kill_criterion: "Kill if the model cannot revise committed regions, if localized remasking is no better than random/no-feedback diffusion, or if a compute-matched AR editor matches correctness and preservation."
+  claim_type: agent_inference
+  source_locator: "watchlist pending verification and no-AR-superiority boundary"
+result_interpretation:
+  positive:
+    statement: "A positive result would establish a real external-feedback/revision mechanism for dLLMs, not a general dLLM or agent superiority claim."
+    claim_type: agent_inference
+    source_locator: "hypothesis and watchlist boundary"
+  negative:
+    statement: "A negative result would reject the dLLM direction and favor ordinary infilling or explicit rollback controllers."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "Gains only on synthetic short functions would remain a model-specific editing result and would not justify repository-agent claims."
+    claim_type: agent_inference
+    source_locator: "watchlist repository-transfer absence"
+requirements:
+  data:
+    statement: "Small executable bugs with localization, untouched-region constraints, hidden tests, and both single-region and dependency-spanning edits."
+    claim_type: agent_inference
+    source_locator: "P3/P7 validation requirements"
+  models:
+    statement: "One accessible pretrained code dLLM with infilling or remasking support and one matched-capability AR code model; no large-scale model training for the kill test."
+    claim_type: agent_inference
+    source_locator: "watchlist matched-AR requirement"
+  trajectories:
+    statement: "Approximately 300-800 feedback/denoising trajectories across five conditions."
+    claim_type: agent_inference
+    source_locator: "30-50 tasks and condition count"
+  tools:
+    statement: "dLLM sampler with remasking hooks, execution sandbox, fault localization, dependency analysis, preservation checker, and matched-budget accounting."
+    claim_type: agent_inference
+    source_locator: "core mechanism"
+  estimated_cost:
+    statement: "High: roughly USD 2,000-10,000 and 4-12 A100-equivalent GPU-days, with substantial sampler integration risk."
+    claim_type: agent_inference
+    source_locator: "model and trajectory requirements"
+general_agent_significance:
+  statement: "The defensible general lesson would concern feedback-controlled revision of reversible internal commitments; it would not transfer automatically to irreversible external tool actions."
+  claim_type: agent_inference
+  source_locator: "watchlist non-transfer boundary"
+maximum_risk:
+  statement: "The apparent mechanism may reduce to ordinary masked infilling or localized repair, and current dLLMs may be too weak or inflexible for fair agent-level comparison."
+  claim_type: agent_inference
+  source_locator: "direct diffusion-repair overlap and watchlist AR comparisons"
+likely_rejection_reason:
+  statement: "The likely rejection is direct overlap with diffusion repair/infilling or an unmatched AR baseline that makes any gain attributable to model/training differences."
+  claim_type: agent_inference
+  source_locator: "targeted-search overlap and watchlist evidence standard"
+initial_assessment:
+  potential_contribution: {score: 4, rationale: "Would create the missing external-feedback intersection if it works.", claim_type: agent_inference, source_locator: "dLLM watchlist pending question"}
+  falsifiability: {score: 5, rationale: "No-feedback, random-remask, and matched-AR controls can kill the claim quickly.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 3, rationale: "External feedback is distinct, but generic diffusion repair and infilling are already covered.", claim_type: agent_inference, source_locator: "closest_existing_work"}
+  pilot_feasibility: {score: 2, rationale: "Sampler hooks, GPU inference, and fair AR matching are difficult.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 2, rationale: "The mechanism depends on specific dLLM commitment and remasking interfaces.", claim_type: agent_inference, source_locator: "maximum_risk"}
+uncertainties:
+  - statement: "Whether any available code dLLM exposes stable committed-region remasking without retraining is unresolved."
+    claim_type: agent_inference
+    source_locator: "watchlist method descriptions and targeted search"
+prior_art_ledger: "ideas/prior-art/IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR.yaml"
+decision:
+  statement: "Retain as the sole dLLM high-risk seed; reject unless direct attack confirms the external-feedback delta."
+  claim_type: agent_inference
+  source_locator: "targeted-search closest work and tentative_novelty_delta"

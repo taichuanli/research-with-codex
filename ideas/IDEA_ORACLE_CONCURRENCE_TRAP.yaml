@@ -1,0 +1,130 @@
+schema_version: 1
+phase: IDEA_SEEDING
+idea_id: "IDEA_ORACLE_CONCURRENCE_TRAP"
+title: "Correlated-oracle concurrence as false assurance"
+status: prior_art_pending
+risk_tier: low
+candidate_family: empirical_failure_law
+source_pressure_points:
+  - pressure_point_id: CHECKABLE_ACCEPTANCE_VS_INTENT
+    relation: "Tests why multiple checkable acceptances can still miss intended semantics."
+  - pressure_point_id: CONFIDENCE_PROGRESS_VS_CORRECTNESS
+    relation: "Treats proxy agreement as a confidence signal whose calibration depends on independence."
+falsifiable_hypothesis:
+  statement: "For agent-produced patches, specifications, or plans, the number of agreeing validators will be less predictive of intended correctness than the behavioral independence of those validators, and highly correlated agreement will contain a measurable confident-false-acceptance region."
+  claim_type: agent_inference
+  source_locator: "synthesis/cross-paper-synthesis.md / Cross-paper contradictions 2-3; Research pressure points / P7-P8"
+cross_paper_tension:
+  - statement: "Developer tests expose 7.8% of plausible patches as incorrect, PatchDiff flags 29.6% as behaviorally divergent, and most audited divergences remain uncertain rather than automatically wrong."
+    claim_type: direct_evidence
+    source_locator: "cards/ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud.yaml / evaluation.main_results and failure_modes"
+    supporting_paper_ids:
+      - ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud
+  - statement: "Agent-selected validation passes in 81-100% of Fail-to-Fail cases, while formal checks validate encodings rather than whether those encodings capture intent."
+    claim_type: agent_inference
+    source_locator: "cards/ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-.yaml / evaluation.main_results; cross-paper synthesis / intent validation"
+    supporting_paper_ids:
+      - ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-
+      - FSE2026_agentic-verification-of-software-systems
+      - FSE2026_event-b-agent-towards-llm-agent-for-formal-model-synthesis-and-repair
+  - statement: "Behavioral consensus can be nearly unanimous and still wrong, so agreement itself is not semantic calibration."
+    claim_type: direct_evidence
+    source_locator: "cards/ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic.yaml / failure_modes"
+    supporting_paper_ids:
+      - ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+closest_existing_work:
+  - paper_id: ICSE2026_are-solved-issues-in-swe-bench-really-solved-correctly-an-empirical-stud
+    relationship: "Measures false acceptance and residual ambiguity, but does not model dependence among multiple validators."
+    claim_type: agent_inference
+    source_locator: "card / conclusion_evidence and evidence_gaps"
+  - paper_id: ISSTA2026_code-mue-measuring-code-llm-uncertainty-through-execution-based-semantic
+    relationship: "Measures behavioral consensus and documents confident error, but does not combine heterogeneous oracle dependence with intent labels."
+    claim_type: agent_inference
+    source_locator: "card / failure_modes and evidence_gaps"
+  - paper_id: ISSTA2026_to-run-or-not-to-run-analyzing-the-cost-effectiveness-of-code-execution-
+    relationship: "Exposes disagreement between agent-selected and official tests without estimating validator independence."
+    claim_type: agent_inference
+    source_locator: "card / evaluation.main_results and evidence_gaps"
+tentative_novelty_delta:
+  statement: "The tentative delta is an empirical dependence law for oracle concurrence, including alternative-valid outputs, rather than simply adding more tests or another checker; direct coverage remains pending."
+  claim_type: agent_inference
+  source_locator: "P7 evidence needed and closest-work boundaries"
+  novelty_status: pending_direct_prior_art_attack
+research_object:
+  statement: "Agent-generated artifacts with several executable or checkable validators and an independently broadened intent reference."
+  claim_type: agent_inference
+  source_locator: "PatchDiff, To Run, and formal-work assets"
+intervention_layer:
+  statement: "Acceptance and stopping, after an artifact exists but before the agent treats it as complete."
+  claim_type: agent_inference
+  source_locator: "cross-paper synthesis / Stage 4 intent validation"
+core_mechanism:
+  statement: "Estimate overlap in behavioral properties checked by each oracle, compare count-only with dependence-aware concurrence, and deliberately add redundant versus orthogonal checks under matched budgets."
+  claim_type: agent_inference
+  source_locator: "P7 evidence needed; Code-MUE semantic-agreement boundary"
+minimum_kill_validation:
+  design: "On 60-100 candidate artifacts spanning at least code repair and one structured generation domain, run existing, generated, metamorphic, differential, and formal/build checks; use broader hidden properties and explicit inconclusive labels as the reference."
+  kill_criterion: "Kill the direction if simple validator count is already calibrated, if independence estimates add no out-of-sample value, or if intent labels are too indeterminate to distinguish the hypotheses."
+  claim_type: agent_inference
+  source_locator: "PatchDiff uncertainty boundary and P7 evidence needed"
+result_interpretation:
+  positive:
+    statement: "A positive result would show that oracle diversity, not volume, governs false assurance and would motivate dependence-aware stopping controls."
+    claim_type: agent_inference
+    source_locator: "hypothesis"
+  negative:
+    statement: "A negative result would support simpler ensemble-count or stronger-single-oracle strategies."
+    claim_type: agent_inference
+    source_locator: "kill criterion"
+  ambiguous:
+    statement: "A domain-specific effect would narrow the claim to validator families whose checked properties can be enumerated."
+    claim_type: agent_inference
+    source_locator: "formal-encoding and PatchDiff scope boundaries"
+requirements:
+  data:
+    statement: "Released plausible patches and generated tests plus a smaller set of specifications or proofs with broader property suites and alternative-valid outputs."
+    claim_type: agent_inference
+    source_locator: "PatchDiff and formal-work reusable artifacts"
+  models:
+    statement: "One fixed artifact generator is sufficient; the pilot tests validators rather than model quality."
+    claim_type: agent_inference
+    source_locator: "matched intervention design"
+  trajectories:
+    statement: "Completed artifacts and their validation traces; no full agent retraining is required."
+    claim_type: agent_inference
+    source_locator: "intervention layer"
+  tools:
+    statement: "Test runners, differential/property generators, formal or static checkers, coverage mapping, and an adjudication protocol that preserves inconclusive cases."
+    claim_type: agent_inference
+    source_locator: "P7 evidence needed"
+  estimated_cost:
+    statement: "Low to moderate: roughly USD 1,000-4,000 plus 40-100 expert artifact-review hours; no human-subject user study is required."
+    claim_type: agent_inference
+    source_locator: "60-100 artifacts and PatchDiff-style audit workload"
+general_agent_significance:
+  statement: "Agents in code, proof, data, and operations commonly stop when several proxy checks agree; the dependence problem persists whenever those checks inherit the same incomplete specification."
+  claim_type: agent_inference
+  source_locator: "cross-paper contradiction 2 and formal/state cards"
+maximum_risk:
+  statement: "Independent intent truth may remain unavailable, turning the main outcome into another proxy."
+  claim_type: agent_inference
+  source_locator: "PatchDiff / 51 of 77 audited suspicious cases uncertain"
+likely_rejection_reason:
+  statement: "Reviewers may classify the work as benchmark auditing unless the validator-dependence mechanism transfers across artifact types and changes a stopping decision."
+  claim_type: agent_inference
+  source_locator: "scope exclusion and general-agent claim"
+initial_assessment:
+  potential_contribution: {score: 5, rationale: "Addresses the final intent gate shared by tests, builds, and formal checks.", claim_type: agent_inference, source_locator: "P7"}
+  falsifiability: {score: 4, rationale: "Dependence-aware and count-only predictors can be compared, but intent truth can remain inconclusive.", claim_type: agent_inference, source_locator: "minimum_kill_validation"}
+  difference_clarity: {score: 4, rationale: "Focuses on oracle dependence rather than stronger testing alone.", claim_type: agent_inference, source_locator: "tentative_novelty_delta"}
+  pilot_feasibility: {score: 4, rationale: "Most inputs and validators are released; semantic adjudication is the main cost.", claim_type: agent_inference, source_locator: "requirements"}
+  robustness_to_model_or_benchmark_change: {score: 5, rationale: "Validator correlation is defined independently of generator identity.", claim_type: agent_inference, source_locator: "general_agent_significance"}
+uncertainties:
+  - statement: "The correct operational measure of validator independence is unresolved and must not be learned from the same hidden tests used as outcome labels."
+    claim_type: agent_inference
+    source_locator: "construct-validity risk"
+prior_art_ledger: "ideas/prior-art/IDEA_ORACLE_CONCURRENCE_TRAP.yaml"
+decision:
+  statement: "Retain as a low-cost seed; require direct attack on ensemble-oracle and test-diversity literature."
+  claim_type: agent_inference
+  source_locator: "initial_assessment and uncertainties"
