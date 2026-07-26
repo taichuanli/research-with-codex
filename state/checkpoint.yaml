@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: PRIOR_ART_CROSS_FIELD_ATTACKED
+current_phase: DIRECTIONS_NARROWED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -32,6 +32,9 @@ phase_catalog:
   - PRIOR_ART_ATTACK_CROSS_FIELD
   - PRIOR_ART_CROSS_FIELD_ATTACKED
   - DIRECTION_NARROWING
+  - DIRECTIONS_NARROWED
+  - DIRECTION_NARROWING_FAILED
+  - INDEPENDENT_DIRECTION_AUDIT
   - PILOT_DESIGN
 completed_items:
   - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
@@ -85,6 +88,9 @@ completed_items:
   - "PRIOR_ART_ATTACK_CROSS_FIELD: decomposed the four direct-stage carry-forward deltas into adjacent-field problems and mechanisms, inspected 15 closest full-text works across causal inference, RL, planning, control, active sensing, feature acquisition, model explanation, and NLP, and recorded body-level definitions, assumptions, algorithms, and evaluations."
   - "PRIOR_ART_ATTACK_CROSS_FIELD: issued exactly one decision per candidate: NARROW for stagewise failure attribution and counterfactual evidence memory audit, and KILL for actionable recoverability calibration and decision-value evidence routing because only application transfer remained."
   - "PRIOR_ART_ATTACK_CROSS_FIELD: saved four schema-3 ledgers and reports/prior-art-cross-field-attack-report.md, retained two pilot-killable code-specific boundaries for direction narrowing, and did not revive a candidate, generate an idea, select a final direction, or begin an experiment."
+  - "DIRECTION_NARROWING: compared stagewise failure attribution, counterfactual evidence memory audit, and a unified code-agent causal trajectory auditing umbrella using symmetric research-question, novelty, contribution, executable-structure, rejection, transfer, and positive/negative-result criteria."
+  - "DIRECTION_NARROWING: retained one finalist, FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES, only as conditional new causal evidence and a possible new phenomenon; killed the standalone memory audit as application transfer after targeted belief-update, truth-maintenance, attribution, corruption, and provenance checks; and rejected the merge for lacking one estimand."
+  - "DIRECTION_NARROWING: saved directions/direction-narrowing-comparison.md, directions/novelty-boundary.md, and directions/minimum-kill-pilot.md with hard continue/kill thresholds; no pilot, implementation, task download, model call, training, or formal experiment was started."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1238,5 +1244,81 @@ prior_art_cross_field_attack:
     source_locator: "Confidence, uncertainty, and phase boundary"
     statement: "PRIOR_ART_ATTACK_CROSS_FIELD is complete; no killed candidate was revived, no new idea or final direction was selected, and no pilot, implementation, training, or formal experiment was designed or run."
   human_decisions_pending: []
-next_phase: DIRECTION_NARROWING
-last_updated: "2026-07-26T05:33:02Z"
+direction_narrowing:
+  status: completed
+  phase_completed: DIRECTIONS_NARROWED
+  next_phase: INDEPENDENT_DIRECTION_AUDIT
+  compared_direction_count: 3
+  evidence:
+    claim_type: direct_evidence
+    source: "directions/direction-narrowing-comparison.md; directions/novelty-boundary.md; directions/minimum-kill-pilot.md; ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml; ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+    source_locator: "three direction sections; Targeted verification record and claim boundaries; complete minimum kill protocol"
+    statement: "The phase artifacts compare all three requested direction forms, record body-located targeted checks for interchange intervention, dynamic mediation, actual causality, necessity/sufficiency, belief revision, truth maintenance, memory corruption, and memory provenance, and specify a checkpointed kill pilot with interventions, controls, oracles, metrics, statistical units, engineering blockers, and hard gates."
+  decisions:
+    STAGEWISE_FAILURE_ATTRIBUTION_STANDALONE:
+      outcome: FINALIST_NARROW
+      finalist_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+      contribution_class: new_causal_evidence
+      conditional_secondary_class: new_phenomenon
+    COUNTERFACTUAL_EVIDENCE_MEMORY_AUDIT_STANDALONE:
+      outcome: KILL
+      contribution_class: only_application_transfer
+    UNIFIED_CODE_AGENT_CAUSAL_TRAJECTORY_AUDITING:
+      outcome: REJECT_MERGE
+      contribution_class: no_additional_delta
+  finalist_count: 1
+  finalist:
+    direction_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+    source_candidate: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    exact_contribution:
+      claim_type: agent_inference
+      source: "directions/direction-narrowing-comparison.md"
+      source_locator: "Stagewise failure attribution as a standalone paper / Closest work and exact novelty delta; Contribution type; Verdict"
+      statement: "The retained contribution is empirical causal evidence that observationally matched coding-agent loops have reproducible, heterogeneous rescue profiles over independently controlled evidence, derived-state, executable-action, and validation interfaces, with the phenomenon replicated beyond one scaffold and model family."
+    novelty_boundary:
+      claim_type: agent_inference
+      source: "directions/novelty-boundary.md"
+      source_locator: "Stagewise finalist: allowed claims and prohibited claims"
+      statement: "No new causal estimator, mediation definition, interchange intervention, actual-cause definition, failure taxonomy, recovery-window concept, generic agent law, or user-intent oracle is retained; novelty is conditional on positive causal and transfer evidence."
+    minimum_pilot:
+      claim_type: agent_inference
+      source: "directions/minimum-kill-pilot.md"
+      source_locator: "Data and trajectory source through Hard continue or kill thresholds"
+      statement: "The kill pilot screens 20 tasks across two independently implemented scaffolds and two model families, targets 30-40 restorable checkpoints, branches evidence, state, action, and validation oracle/control substitutions, treats checkpoints as statistical units, and requires every replay, isolation, causal-signal, heterogeneity, transfer, baseline, and oracle-specificity gate to pass."
+  eliminated:
+    - direction_id: COUNTERFACTUAL_EVIDENCE_MEMORY_AUDIT_STANDALONE
+      conclusion:
+        claim_type: agent_inference
+        source: "directions/direction-narrowing-comparison.md; directions/novelty-boundary.md"
+        source_locator: "Counterfactual evidence memory audit as a standalone paper; Memory direction: terminal boundary for this phase"
+        statement: "Removal and necessity/sufficiency attribution, time-indexed belief update, dependency-aware truth maintenance, persistent-memory corruption audit, provenance lineage, downstream action gating, and recovery leave version-grounded code memory as a substitutable application protocol rather than a standalone top-venue contribution."
+    - direction_id: UNIFIED_CODE_AGENT_CAUSAL_TRAJECTORY_AUDITING
+      conclusion:
+        claim_type: agent_inference
+        source: "directions/direction-narrowing-comparison.md"
+        source_locator: "Unified code-agent causal trajectory auditing"
+        statement: "The umbrella shares replay infrastructure but conjoins independent interface-rescue and temporal item-validity hypotheses, so it has no single estimand or additional novelty delta."
+  conclusion:
+    claim_type: agent_inference
+    source: "directions/direction-narrowing-comparison.md"
+    source_locator: "Final direction portfolio"
+    statement: "Exactly one conditional finalist should enter INDEPENDENT_DIRECTION_AUDIT; the memory direction and merge are eliminated, and no experiment should begin in this phase."
+  outputs:
+    - "directions/direction-narrowing-comparison.md"
+    - "directions/novelty-boundary.md"
+    - "directions/minimum-kill-pilot.md"
+    - "ideas/prior-art/IDEA_STAGEWISE_FAILURE_ATTRIBUTION.yaml"
+    - "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-26"
+    source_locator: "Ruby YAML/recursive-claim/phase/portfolio/output audit; Markdown claim-label and required-field audit; targeted HTTP and Crossref checks; node --test scripts/*.test.js; ASCII/final-newline/trailing-whitespace audit; git diff --check"
+    statement: "Four phase-relevant YAML files parsed and all statement records had allowed claim types and locators; scope, checkpoint, both targeted ledgers, five output paths, three direction decisions, and the single finalist agreed; all three Markdown artifacts contained the required labeled decision and pilot fields; seven unique targeted-ledger URLs and 15 of 16 novelty-boundary URLs returned 2xx or 3xx, while the remaining ACM DOI resolved to a bot-blocked 403 landing page but its Crossref record returned 200; all 18 repository tests passed; and all seven phase files were ASCII with final newlines and no trailing whitespace while tracked diffs had no whitespace errors."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "directions/direction-narrowing-comparison.md; directions/minimum-kill-pilot.md"
+    source_locator: "Final direction portfolio; Phase boundary"
+    statement: "DIRECTION_NARROWING is complete with one conditional finalist. No independent direction audit, pilot execution, implementation, task download, model call, training, formal experiment, commit, or push is included."
+  human_decisions_pending: []
+next_phase: INDEPENDENT_DIRECTION_AUDIT
+last_updated: "2026-07-26T07:01:00Z"

@@ -331,3 +331,41 @@ cross_field_attack:
         claim_type: agent_inference
         source_locator: "AGENTS.md / Evidence and Claims"
     carry_forward_to_direction_narrowing: true
+direction_narrowing_targeted_verification:
+  checked_at: "2026-07-26"
+  works:
+    - paper_id: "ARXIV_2605_04624"
+      citation: "Hu et al. AuditRepairBench: A Paired-Execution Trace Corpus for Evaluator-Channel Ranking Instability in Agent Repair. arXiv:2605.04624v1, 2026."
+      stable_url: "https://arxiv.org/abs/2605.04624v1"
+      relation: partial_overlap
+      body_evidence:
+        statement: "The study holds task, candidate set, tool outputs, and final evaluator fixed while blocking evaluator-derived selector inputs; it validates 80 source-level channel-surgery cases and explicitly disclaims latent-mechanism certification and strong prospective validity."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 1, 3, 6, and 13"
+      decision_effect:
+        statement: "Paired code-agent channel surgery is already a direct SE protocol, so the finalist must demonstrate four-interface rescue-profile heterogeneity rather than claim paired intervention or evaluator-path blocking as new."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; cross_field_attack.decision.exact_delta"
+    - paper_id: "ICML2023_DYNAMIC_MEDIATION_RL"
+      citation: "Ge et al. A Reinforcement Learning Framework for Dynamic Mediation Analysis. ICML 2023; arXiv:2301.13348v2."
+      stable_url: "https://arxiv.org/abs/2301.13348v2"
+      relation: cross_field_method_coverage
+      body_evidence:
+        statement: "The paper defines a mediated MDP and decomposes policy effects into immediate direct, immediate mediation, delayed direct, and delayed mediation effects, with identification assumptions and multiply robust estimators."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 3-6"
+      decision_effect:
+        statement: "Sequential mediators and delayed effects are mature; no new mediation formulation remains in the stagewise direction."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; cross_field_attack.maturity"
+  disposition:
+    outcome: FINALIST_NARROW
+    finalist_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+    exact_delta:
+      statement: "Retain only empirical causal evidence that observationally matched coding-agent loops have reproducible, heterogeneous rescue profiles over independently controlled evidence, derived-state, executable-action, and validation interfaces, with replication beyond one scaffold and model family."
+      claim_type: agent_inference
+      source_locator: "directions/direction-narrowing-comparison.md / Stagewise failure attribution as a standalone paper"
+    prohibited_claim:
+      statement: "Do not claim a new causal estimator, mediation definition, interchange intervention, actual-cause definition, paired channel-surgery protocol, failure taxonomy, or recovery-window concept."
+      claim_type: agent_inference
+      source_locator: "directions/novelty-boundary.md / Stagewise finalist: prohibited claims"

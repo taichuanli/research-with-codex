@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T01:18:20-04:00"
+last_reviewed_at: "2026-07-26T03:01:00-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: PRIOR_ART_CROSS_FIELD_ATTACKED
-  next_phase: DIRECTION_NARROWING
+  current_phase: DIRECTIONS_NARROWED
+  next_phase: INDEPENDENT_DIRECTION_AUDIT
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -276,3 +276,32 @@ prior_art_cross_field_attack:
       - "ideas/prior-art/IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY.yaml"
     audit_report_path: "reports/prior-art-cross-field-attack-report.md"
   phase_boundary: "Cross-field mechanisms and protocols were attacked for only the four direct-stage carry-forward candidates. Two application transfers were killed and two candidates were narrowed to code-specific causal-evidence or applicability-boundary claims; no direction was selected, no new idea was generated, and no experiment was designed or run."
+
+direction_narrowing:
+  status: completed
+  phase_completed: DIRECTIONS_NARROWED
+  next_phase: INDEPENDENT_DIRECTION_AUDIT
+  compared_direction_count: 3
+  decisions:
+    STAGEWISE_FAILURE_ATTRIBUTION_STANDALONE: FINALIST_NARROW
+    COUNTERFACTUAL_EVIDENCE_MEMORY_AUDIT_STANDALONE: KILL
+    UNIFIED_CODE_AGENT_CAUSAL_TRAJECTORY_AUDITING: REJECT_MERGE
+  finalist_count: 1
+  finalists:
+    - direction_id: FINALIST_STAGEWISE_CAUSAL_RESCUE_PROFILES
+      source_candidate: IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+      contribution_class: new_causal_evidence
+      conditional_secondary_class: new_phenomenon
+      exact_contribution: "Empirical causal evidence that observationally matched coding-agent loops have reproducible, heterogeneous rescue profiles over independently controlled evidence, derived-state, executable-action, and validation interfaces, with the phenomenon replicated beyond one scaffold and model family."
+      novelty_boundary: "No new causal estimator, mediation definition, interchange intervention, actual-cause definition, failure taxonomy, recovery-window concept, generic agent law, or user-intent oracle is claimed."
+      minimum_pilot_path: "directions/minimum-kill-pilot.md"
+  eliminated:
+    - direction_id: COUNTERFACTUAL_EVIDENCE_MEMORY_AUDIT_STANDALONE
+      reason: "Targeted belief-update, truth-maintenance, removal-attribution, memory-corruption, provenance, action-gating, and recovery checks leave only application transfer; versioned code state alone is substitutable by other transactional agent environments."
+    - direction_id: UNIFIED_CODE_AGENT_CAUSAL_TRAJECTORY_AUDITING
+      reason: "The umbrella conjoins two independent hypotheses and gains shared instrumentation rather than a common estimand or novelty delta."
+  outputs:
+    comparison_path: "directions/direction-narrowing-comparison.md"
+    novelty_boundary_path: "directions/novelty-boundary.md"
+    minimum_pilot_path: "directions/minimum-kill-pilot.md"
+  phase_boundary: "Direction comparison, targeted novelty-boundary checks, and a kill-first pilot design are complete. One conditional finalist advances to independent direction audit; no pilot, implementation, task download, model call, training, or formal experiment was started."

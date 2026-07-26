@@ -332,3 +332,73 @@ cross_field_attack:
         claim_type: agent_inference
         source_locator: "synthesis/cross-paper-synthesis.md / P7"
     carry_forward_to_direction_narrowing: true
+direction_narrowing_targeted_verification:
+  checked_at: "2026-07-26"
+  works:
+    - paper_id: "UAI2021_LENS_NECESSITY_SUFFICIENCY"
+      citation: "Watson et al. Local Explanations via Necessity and Sufficiency: Unifying Theory and Practice. UAI 2021; Minds and Machines 2022. DOI:10.1007/s11023-022-09598-7."
+      stable_url: "https://doi.org/10.1007/s11023-022-09598-7"
+      relation: cross_field_method_coverage
+      body_evidence:
+        statement: "Sections 2-4 define logical, probabilistic, and causal necessity and sufficiency, feature-subset factors, minimal sufficient factors, and connections to Shapley values and counterfactual explanations."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 2-4"
+      decision_effect:
+        statement: "Per-item necessity and sufficiency cannot support a new generic memory-attribution method."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; cross_field_attack.maturity"
+    - paper_id: "SHAPIRO1998_BELIEF_REVISION_TMS"
+      citation: "Shapiro. Belief Revision and Truth Maintenance Systems: An Overview and a Proposal. CSE Technical Report 98-10, 1998."
+      stable_url: "https://www.cse.buffalo.edu/~shapiro/Papers/br-overview.pdf"
+      relation: cross_field_problem_and_mechanism_coverage
+      body_evidence:
+        statement: "The report covers multiple and changing sources, contradiction, culprit and dependent deletion, justification graphs, alternative justifications, assumption contexts, expansion, contraction, and revision."
+        claim_type: direct_evidence
+        source_locator: "report Sections 1, 3, 6, and 8"
+      decision_effect:
+        statement: "Dependency-aware provenance, retraction, alternative support, and changed-world facts are mature truth-maintenance and belief-revision concepts."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+    - paper_id: "SEP2021_BELIEF_UPDATE"
+      citation: "Hansson. Logic of Belief Revision. Stanford Encyclopedia of Philosophy, substantive revision 2021; Section 6.1 summarizes Katsuno and Mendelzon 1992."
+      stable_url: "https://plato.stanford.edu/entries/logic-belief-revision/#Upda"
+      relation: cross_field_problem_coverage
+      body_evidence:
+        statement: "Section 6.1 distinguishes revision after receiving information about one world state from update after the world changes and describes time-indexed propositions for update."
+        claim_type: direct_evidence
+        source_locator: "Section 6.1, Update"
+      decision_effect:
+        statement: "Repository-snapshot-specific truth instantiates a known temporal belief-update distinction unless program semantics yields a qualitatively different effect."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; candidate version-grounded delta"
+    - paper_id: "ARXIV_2606_04329"
+      citation: "Dash et al. From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents. arXiv:2606.04329v2; AIWILD at ICML 2026."
+      stable_url: "https://arxiv.org/abs/2606.04329v2"
+      relation: direct_coverage
+      body_evidence:
+        statement: "The study identifies four memory-write channels, nine vulnerabilities, and six attack classes, then uses MPBench to measure malicious persistent writes and later action influence on OpenClaw and HERMES."
+        claim_type: direct_evidence
+        source_locator: "paper Abstract and Sections 2-4"
+      decision_effect:
+        statement: "Persistent-memory corruption auditing across agent systems and downstream actions is direct coverage, not merely a security analogy."
+        claim_type: agent_inference
+        source_locator: "body_evidence above"
+    - paper_id: "ARXIV_2605_14421"
+      citation: "Ouyang and Hou. MemLineage: Lineage-Guided Enforcement for LLM Agent Memory. arXiv:2605.14421v1, 2026."
+      stable_url: "https://arxiv.org/abs/2605.14421v1"
+      relation: direct_coverage
+      body_evidence:
+        statement: "MemLineage combines signed provenance, Merkle-log deletion tombstones, derivation lineage, trust propagation, verifier-aware retrieval, sensitive-action gating, and strip or authority-repair recovery, with deterministic and AgentDojo evaluations."
+        claim_type: direct_evidence
+        source_locator: "paper Sections 3.3-3.7, 6, 7, and 8"
+      decision_effect:
+        statement: "Provenance plus derived-memory attribution plus downstream action gating and recovery are already combined, leaving repository versioning and hidden tests as a substitutable application protocol."
+        claim_type: agent_inference
+        source_locator: "body_evidence above; cross_field_attack.transfer_assessment"
+  disposition:
+    outcome: KILL
+    residual_contribution_class: only_application_transfer
+    rationale:
+      statement: "Removal and necessity/sufficiency attribution, time-indexed belief update, dependency-aware truth maintenance, persistent-memory corruption audit, provenance lineage, downstream action gating, and recovery leave no standalone top-venue delta for the code-memory audit."
+      claim_type: agent_inference
+      source_locator: "directions/direction-narrowing-comparison.md / Counterfactual evidence memory audit as a standalone paper"
