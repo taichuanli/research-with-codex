@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T12:03:11-04:00"
+last_reviewed_at: "2026-07-26T23:34:42-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: PRESSURE_POINTS_REFRAMED
-  next_phase: IDEA_SEEDING_ROUND_2
+  current_phase: HUMAN_FEEDBACK_SYNTHESIZED
+  next_phase: ACTION_SUPPORT_FOUNDATION_AUDIT
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -429,3 +429,88 @@ pressure_point_reframing:
     retrospective_path: "reports/pressure-point-failure-retrospective.md"
     problem_families_path: "directions/pressure-point-reframing.md"
   phase_boundary: "The failure retrospective, anti-pattern list, pressure-point decomposition, and five question families are recorded. No idea card, complete idea, method, pilot design, implementation, model call, training, experiment, commit, or push was produced, and pilot_authorized remains false."
+
+human_idea_review_prep:
+  status: completed
+  phase_completed: HUMAN_REVIEW_READY
+  next_phase: WAITING_HUMAN_REVIEW
+  pilot_authorized: false
+  dossier_count: 5
+  outputs:
+    - "human-review/dossiers/PF1-evidence-provenance-and-replay-validity.md"
+    - "human-review/dossiers/PF2-derived-state-truth-at-active-revision.md"
+    - "human-review/dossiers/PF3-information-sufficiency-for-later-actions.md"
+    - "human-review/dossiers/PF4-wrong-but-self-consistent-acceptance.md"
+    - "human-review/dossiers/PF5-endpoint-trained-process-fidelity.md"
+    - "human-review/overview.md"
+    - "human-review/problem-family-comparison.md"
+    - "human-review/researcher-feedback-form.md"
+  phase_boundary: "Human review is ready. No idea card, large-scale literature search, method, pilot design, implementation, model call, training, experiment, commit, or push is part of this phase; human disposition is required before any later idea-seeding phase."
+
+human_feedback_synthesis:
+  status: completed
+  phase_completed: HUMAN_FEEDBACK_SYNTHESIZED
+  next_phase: ACTION_SUPPORT_FOUNDATION_AUDIT
+  pilot_authorized: false
+  decision_source: "human-review/researcher-feedback-form.md"
+  synthesis_path: "human-review/human-feedback-synthesis.md"
+  dispositions:
+    PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY:
+      outcome: MERGE
+      downstream_role: CROSS_CUTTING_EVIDENCE_ADMISSION_PROTOCOL
+    PF2_DERIVED_STATE_TRUTH_AT_ACTIVE_REVISION:
+      outcome: MERGE_TO_PF3
+      downstream_role: INDEPENDENT_TRUTH_STATUS_MEASUREMENT_DIMENSION
+      truth_states:
+        - false
+        - unsupported
+        - stale
+        - true
+    PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS:
+      outcome: RETAIN_AND_REWRITE
+      rewritten_focus: TRUE_BUT_ACTION_INCOMPLETE_STATE
+      idea_generation_allowed: false
+    PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE:
+      outcome: RETAIN_PENDING_AUDIT
+      rewritten_focus: AGENT_INDUCED_VALIDATION_SURFACE_DRIFT
+      idea_generation_allowed: false
+    PF5_ENDPOINT_TRAINED_PROCESS_FIDELITY_ACROSS_SCAFFOLD_ENCODINGS:
+      outcome: CLOSE
+      reason: "Repository-transition equivalence is unstable and direct prior art is dense, so the current formulation cannot support an independent direction."
+  prerequisite_audits:
+    - audit_id: ACTION_SUPPORT_FOUNDATION_AUDIT
+      status: next
+      gate: "Audit whether existing truth, attribution, replay, and trajectory-sufficiency methods can establish a reliable action-support relation."
+    - audit_id: VALIDATION_SURFACE_COVERAGE_AUDIT
+      status: pending
+      gate: "Audit whether reward hacking, test/evaluator tampering, false acceptance, and held-out behavior literature already substantially covers agent-induced validation-surface drift."
+    - audit_id: DLLM_COMMITMENT_QUALIFICATION_AUDIT
+      status: pending
+      gate: "Audit whether existing code dLLMs jointly demonstrate non-left-to-right generation, meaningful revision, and program-structure-related commitment behavior."
+  human_new_seed:
+    seed_id: DLLM_PROGRAM_SEMANTIC_COMMITMENT_SUFFICIENCY
+    disposition: HUMAN_NEW_SEED
+    status: QUALIFICATION_REQUIRED
+    qualification_is_conjunctive: true
+    qualification_conditions:
+      - NON_LEFT_TO_RIGHT_GENERATION
+      - MEANINGFUL_REVISION
+      - PROGRAM_STRUCTURE_RELATED_COMMITMENT
+    idea_generation_allowed: false
+  first_round_repackaging_prohibited:
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_ORACLE_CONCURRENCE_TRAP
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  outputs:
+    - "human-review/researcher-feedback-form.md"
+    - "human-review/human-feedback-synthesis.md"
+    - "config/research_scope.yaml"
+    - "state/checkpoint.yaml"
+  phase_boundary: "Human judgments are synthesized without a new idea card, literature search, method, pilot, experiment, training, skill change, commit, or push. All retained objects remain gated by prerequisite audits, and pilot_authorized remains false."

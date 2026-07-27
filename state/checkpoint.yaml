@@ -1,5 +1,6 @@
 schema_version: 1
-current_phase: PRESSURE_POINTS_REFRAMED
+current_phase: HUMAN_FEEDBACK_SYNTHESIZED
+pilot_authorized: false
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -43,6 +44,14 @@ phase_catalog:
   - DIRECTION_REAUDIT_FAILED
   - PRESSURE_POINT_REFRAMING
   - PRESSURE_POINTS_REFRAMED
+  - HUMAN_IDEA_REVIEW_PREP
+  - HUMAN_REVIEW_READY
+  - WAITING_HUMAN_REVIEW
+  - HUMAN_FEEDBACK_SYNTHESIS
+  - HUMAN_FEEDBACK_SYNTHESIZED
+  - ACTION_SUPPORT_FOUNDATION_AUDIT
+  - VALIDATION_SURFACE_COVERAGE_AUDIT
+  - DLLM_COMMITMENT_QUALIFICATION_AUDIT
   - IDEA_SEEDING_ROUND_2
   - PILOT_DESIGN
 completed_items:
@@ -109,6 +118,9 @@ completed_items:
   - "PRESSURE_POINT_REFRAMING: reviewed all ten idea cards and prior-art ledgers, both prior-art attacks, direction narrowing and revision, both independent audits, and the cross-paper synthesis, then recorded the common failure causes and twelve anti-patterns for later seeding."
   - "PRESSURE_POINT_REFRAMING: separated mature generic coverage from executable code structure for four retained pressure points, closed their generic recoverability, VOI, memory-audit, stagewise-assistance, and credit-assignment restatements, and retained five bounded problem families."
   - "PRESSURE_POINT_REFRAMING: prioritized evidence provenance, future-action state sufficiency, and endogenous executable acceptance for IDEA_SEEDING_ROUND_2; no idea card, method, pilot, experiment, training, commit, or push was produced, and pilot_authorized remains false."
+  - "HUMAN_IDEA_REVIEW_PREP: created five standalone PF1-PF5 human review dossiers, a two-page overview, a cross-family comparison table, and a researcher feedback form; no idea card, method, pilot, experiment, training, commit, or push was produced."
+  - "HUMAN_FEEDBACK_SYNTHESIS: recorded the complete human disposition of PF1-PF5, including PF1 as a cross-cutting admission protocol, PF2 as an independent truth-status dimension within PF3, PF3 and PF4 as audit-gated rewrites, and PF5 as closed."
+  - "HUMAN_FEEDBACK_SYNTHESIS: registered the qualification-gated dLLM program-semantic commitment sufficiency seed, preserved all ten first-round no-repackaging boundaries, authorized no idea or pilot, and queued three prerequisite audits."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1814,5 +1826,160 @@ pressure_point_reframing:
     source_locator: "Retrospective conclusion; Phase boundary"
     statement: "PRESSURE_POINT_REFRAMING is complete. IDEA_SEEDING_ROUND_2 may use the five question families, but no idea card, complete idea, method, pilot design, implementation, model call, training, experiment, commit, or push is part of this phase, and pilot_authorized remains false."
   human_decisions_pending: []
-next_phase: IDEA_SEEDING_ROUND_2
-last_updated: "2026-07-26T16:03:11Z"
+human_idea_review_prep:
+  status: completed
+  phase_completed: HUMAN_REVIEW_READY
+  next_phase: WAITING_HUMAN_REVIEW
+  pilot_authorized: false
+  dossier_count: 5
+  evidence_basis:
+    claim_type: direct_evidence
+    source: "synthesis/cross-paper-synthesis.md; ideas/IDEA_*.yaml; ideas/prior-art/IDEA_*.yaml; reports/pressure-point-failure-retrospective.md; directions/independent-direction-audit-decision-package.md; directions/independent-direction-reaudit-decision-package.md; directions/pressure-point-reframing.md"
+    source_locator: "cross-paper chain and pressure points P2/P3/P7/P9; all ten first-round seeds and ledgers; failure retrospective; both direction-review packages; PF1-PF5 definitions"
+    statement: "The five dossiers and companion artifacts summarize the existing evidence, direct threats, eliminated frames, conditional contribution forms, counterexamples, risks, and human decisions without adding a candidate idea or method."
+  outputs:
+    - "human-review/dossiers/PF1-evidence-provenance-and-replay-validity.md"
+    - "human-review/dossiers/PF2-derived-state-truth-at-active-revision.md"
+    - "human-review/dossiers/PF3-information-sufficiency-for-later-actions.md"
+    - "human-review/dossiers/PF4-wrong-but-self-consistent-acceptance.md"
+    - "human-review/dossiers/PF5-endpoint-trained-process-fidelity.md"
+    - "human-review/overview.md"
+    - "human-review/problem-family-comparison.md"
+    - "human-review/researcher-feedback-form.md"
+  review_boundary:
+    claim_type: agent_inference
+    source: "AGENTS.md; requested HUMAN_IDEA_REVIEW_PREP boundary"
+    source_locator: "Evidence and Claims; Operational Boundaries; user phase request"
+    statement: "Human review is required before any new idea-seeding phase; no large-scale literature search, idea card, method, pilot design, implementation, model call, training, experiment, commit, or push is authorized."
+  validation:
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-27T02:26:33Z"
+    source_locator: "pending YAML/Markdown/label/output audits and final git status"
+    statement: "The handoff will be accepted only after all five dossiers, companion artifacts, state fields, pilot flag, and Git worktree are checked."
+  human_decisions_pending: []
+  human_decisions_resolved_by: HUMAN_FEEDBACK_SYNTHESIZED
+  phase_boundary:
+    claim_type: agent_inference
+    source: "human-review/overview.md; human-review/researcher-feedback-form.md"
+    source_locator: "用途与边界; 跨族共同审查问题; 跨族反馈"
+    statement: "HUMAN_IDEA_REVIEW_PREP ends with a review-ready package and waits for human judgments; it does not rank, select, or authorize a research direction."
+human_feedback_synthesis:
+  status: completed
+  phase_completed: HUMAN_FEEDBACK_SYNTHESIZED
+  next_phase: ACTION_SUPPORT_FOUNDATION_AUDIT
+  pilot_authorized: false
+  evidence_basis:
+    claim_type: direct_evidence
+    source: "human-review/researcher-feedback-form.md; human-review/human-feedback-synthesis.md"
+    source_locator: "PF1-PF5 decisions; HUMAN_NEW_SEED; cross-family feedback; final dispositions; prerequisite audits; first-round no-repackaging boundary"
+    statement: "The human record supplies a disposition for each of PF1-PF5, a conjunctively qualified dLLM seed, three prerequisite audits, auxiliary roles for PF1/PF2, and explicit first-round no-repackaging constraints."
+  dispositions:
+    PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY:
+      outcome: MERGE
+      independent_direction: false
+      auxiliary_role:
+        claim_type: direct_evidence
+        source: "human-review/researcher-feedback-form.md"
+        source_locator: "PF1"
+        statement: "Evidence provenance, revision alignment, and replay validity remain a cross-cutting admission protocol for later research."
+    PF2_DERIVED_STATE_TRUTH_AT_ACTIVE_REVISION:
+      outcome: MERGE_TO_PF3
+      independent_direction: false
+      auxiliary_role:
+        claim_type: direct_evidence
+        source: "human-review/researcher-feedback-form.md"
+        source_locator: "PF2"
+        statement: "Truth status remains an independent measurement dimension within PF3, distinguishing false, unsupported, stale, and true state."
+    PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS:
+      outcome: RETAIN_AND_REWRITE
+      rewritten_focus: TRUE_BUT_ACTION_INCOMPLETE_STATE
+      idea_generation_allowed: false
+      gate:
+        claim_type: direct_evidence
+        source: "human-review/researcher-feedback-form.md"
+        source_locator: "PF3"
+        statement: "Before any idea is generated, existing truth, attribution, replay, and trajectory-sufficiency methods must be audited for their ability to establish a reliable action-support relation."
+    PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE:
+      outcome: RETAIN_PENDING_AUDIT
+      rewritten_focus: AGENT_INDUCED_VALIDATION_SURFACE_DRIFT
+      idea_generation_allowed: false
+      gate:
+        claim_type: direct_evidence
+        source: "human-review/researcher-feedback-form.md"
+        source_locator: "PF4"
+        statement: "Reward hacking, test/evaluator tampering, false acceptance, and held-out behavior literature must be audited before deciding whether the rewritten problem retains an uncovered residual."
+    PF5_ENDPOINT_TRAINED_PROCESS_FIDELITY_ACROSS_SCAFFOLD_ENCODINGS:
+      outcome: CLOSE
+      independent_direction: false
+      reason:
+        claim_type: direct_evidence
+        source: "human-review/researcher-feedback-form.md"
+        source_locator: "PF5"
+        statement: "Repository-transition equivalence is unstable and direct prior art is dense, so the current formulation is insufficient for an independent direction."
+  prerequisite_audits:
+    - audit_id: ACTION_SUPPORT_FOUNDATION_AUDIT
+      status: next
+      target: PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS
+      claim_type: direct_evidence
+      source: "human-review/human-feedback-synthesis.md"
+      source_locator: "进入后续研究前的三个前提审计 / 1"
+      statement: "Audit truth, attribution, replay, and trajectory-sufficiency foundations for a reliable action-support relation."
+    - audit_id: VALIDATION_SURFACE_COVERAGE_AUDIT
+      status: pending
+      target: PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE
+      claim_type: direct_evidence
+      source: "human-review/human-feedback-synthesis.md"
+      source_locator: "进入后续研究前的三个前提审计 / 2"
+      statement: "Audit direct coverage by reward hacking, test/evaluator tampering, false acceptance, and held-out behavior literature."
+    - audit_id: DLLM_COMMITMENT_QUALIFICATION_AUDIT
+      status: pending
+      target: DLLM_PROGRAM_SEMANTIC_COMMITMENT_SUFFICIENCY
+      claim_type: direct_evidence
+      source: "human-review/human-feedback-synthesis.md"
+      source_locator: "进入后续研究前的三个前提审计 / 3"
+      statement: "Audit whether existing code dLLMs jointly exhibit non-left-to-right generation, meaningful revision, and program-structure-related commitment behavior."
+  human_new_seed:
+    seed_id: DLLM_PROGRAM_SEMANTIC_COMMITMENT_SUFFICIENCY
+    disposition: HUMAN_NEW_SEED
+    status: QUALIFICATION_REQUIRED
+    qualification_is_conjunctive: true
+    qualification_conditions:
+      - NON_LEFT_TO_RIGHT_GENERATION
+      - MEANINGFUL_REVISION
+      - PROGRAM_STRUCTURE_RELATED_COMMITMENT
+    idea_generation_allowed: false
+    qualification_boundary:
+      claim_type: direct_evidence
+      source: "human-review/researcher-feedback-form.md"
+      source_locator: "HUMAN_NEW_SEED"
+      statement: "The seed remains eligible only if all three conditions are established in existing code dLLMs; a failed or unsupported condition prevents idea generation."
+  first_round_repackaging_prohibited:
+    - IDEA_STAGEWISE_FAILURE_ATTRIBUTION
+    - IDEA_ORACLE_CONCURRENCE_TRAP
+    - IDEA_ACTIONABLE_RECOVERABILITY_CALIBRATION
+    - IDEA_DECISION_VALUE_EVIDENCE_ROUTING
+    - IDEA_COUNTERFACTUAL_EVIDENCE_MEMORY
+    - IDEA_CAUSAL_DIAGNOSIS_ACTION_GATE
+    - IDEA_REVERSIBILITY_AWARE_COMMIT_CONTROL
+    - IDEA_SCAFFOLD_INVARIANT_COUNTERFACTUAL_CREDIT
+    - IDEA_CAUSAL_RECOVERABILITY_REPRESENTATION
+    - IDEA_FEEDBACK_DRIVEN_DIFFUSION_REPAIR
+  outputs:
+    - "human-review/researcher-feedback-form.md"
+    - "human-review/human-feedback-synthesis.md"
+    - "config/research_scope.yaml"
+    - "state/checkpoint.yaml"
+  validation:
+    status: passed
+    claim_type: direct_evidence
+    source: "fresh local verification executed 2026-07-27T03:34:42Z"
+    source_locator: "Ruby YAML/state/Markdown/claim/output audit; node --test scripts/*.test.js; git diff --check; ideas/skills change-boundary audit; final git status --short --untracked-files=all"
+    statement: "Both YAML files parse; scope and checkpoint agree on five dispositions, three prerequisite audits, three conjunctive dLLM qualifications, empty human-decision queues, and pilot authorization false; both human-review outputs pass decision, label, boundary, whitespace, and newline checks; all 18 repository tests pass; no idea or skill file is changed; tracked diffs have no whitespace errors; and final Git status is inspected without commit or push."
+  phase_boundary:
+    claim_type: agent_inference
+    source: "human-review/human-feedback-synthesis.md"
+    source_locator: "阶段边界与记录依据; 阶段结论"
+    statement: "HUMAN_FEEDBACK_SYNTHESIS records human judgments only; no idea card, literature search, method, pilot, experiment, training, skill change, commit, or push is included, and all retained objects remain audit-gated."
+  human_decisions_pending: []
+next_phase: ACTION_SUPPORT_FOUNDATION_AUDIT
+last_updated: "2026-07-27T03:34:42Z"
