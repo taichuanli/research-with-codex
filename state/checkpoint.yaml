@@ -1,5 +1,5 @@
 schema_version: 1
-current_phase: DIRECTION_REAUDIT_FAILED
+current_phase: PRESSURE_POINTS_REFRAMED
 phase_catalog:
   - WORKSPACE_INITIALIZED
   - CORPUS_BUILD_ICSE2026
@@ -41,6 +41,9 @@ phase_catalog:
   - INDEPENDENT_DIRECTION_REAUDIT
   - DIRECTION_REAUDIT_PASSED
   - DIRECTION_REAUDIT_FAILED
+  - PRESSURE_POINT_REFRAMING
+  - PRESSURE_POINTS_REFRAMED
+  - IDEA_SEEDING_ROUND_2
   - PILOT_DESIGN
 completed_items:
   - "Created the durable directory structure for corpus, cards, synthesis, ideas, directions, configuration, reports, scripts, and state."
@@ -103,6 +106,9 @@ completed_items:
   - "DIRECTION_REVISION: retained only a conditional code-agent applicability-boundary contribution, replaced the old full pilot with a feasibility-only kill boundary, recommended READY_FOR_REAUDIT, and did not authorize or begin pilot design, implementation, task download, model calls, training, or experiments."
   - "INDEPENDENT_DIRECTION_REAUDIT: ruled RETURN_TO_IDEA_SEEDING because the narrowed contribution no longer exceeds controlled assistance benchmarking, E/S/A/V remain scaffold-specific semantic roles rather than stable comparable carriers, and the feasibility-only boundary cannot support the core scientific claim."
   - "INDEPENDENT_DIRECTION_REAUDIT: kept pilot_authorized false, retained four existing research pressure points for later divergence, saved the independent report and decision package, and did not generate an idea, begin pilot design, implement, call models, train, experiment, commit, or push."
+  - "PRESSURE_POINT_REFRAMING: reviewed all ten idea cards and prior-art ledgers, both prior-art attacks, direction narrowing and revision, both independent audits, and the cross-paper synthesis, then recorded the common failure causes and twelve anti-patterns for later seeding."
+  - "PRESSURE_POINT_REFRAMING: separated mature generic coverage from executable code structure for four retained pressure points, closed their generic recoverability, VOI, memory-audit, stagewise-assistance, and credit-assignment restatements, and retained five bounded problem families."
+  - "PRESSURE_POINT_REFRAMING: prioritized evidence provenance, future-action state sufficiency, and endogenous executable acceptance for IDEA_SEEDING_ROUND_2; no idea card, method, pilot, experiment, training, commit, or push was produced, and pilot_authorized remains false."
 blockers: []
 human_decisions_pending: []
 corpus_audit:
@@ -1695,5 +1701,118 @@ independent_direction_reaudit:
     source_locator: "Final reviewer conclusion; Phase boundary"
     statement: "INDEPENDENT_DIRECTION_REAUDIT is complete with RETURN_TO_IDEA_SEEDING. No new idea was generated and pilot authorization remains false."
   human_decisions_pending: []
-next_phase: IDEA_SEEDING
-last_updated: "2026-07-26T14:52:16Z"
+pressure_point_reframing:
+  status: completed
+  phase_completed: PRESSURE_POINTS_REFRAMED
+  next_phase: IDEA_SEEDING_ROUND_2
+  pilot_authorized: false
+  evidence_basis:
+    claim_type: direct_evidence
+    source: "ideas/IDEA_*.yaml; ideas/prior-art/IDEA_*.yaml; reports/prior-art-direct-attack-report.md; reports/prior-art-cross-field-attack-report.md; directions/direction-narrowing-comparison.md; directions/direction-revision.md; reports/independent-direction-audit-report.md; reports/independent-direction-reaudit-report.md; synthesis/cross-paper-synthesis.md"
+    source_locator: "all ten seed records and completed ledgers; both attack decisions; narrowing and finalist revision; both independent review decisions; research pressure points P2, P3, P7, and P9"
+    statement: "All artifacts requested for PRESSURE_POINT_REFRAMING were inspected before the retrospective and problem-family records were produced."
+  common_failure:
+    claim_type: agent_inference
+    source: "reports/pressure-point-failure-retrospective.md"
+    source_locator: "Common causes of failure; Finalist failure chain"
+    statement: "The first portfolio repeatedly promoted mature imported concepts or exact combinations before establishing a code-specific observable phenomenon; policy-dependent labels, incomplete intent, unstable scaffold constructs, and feasibility-only support removed the remaining finalist claim after narrowing."
+  anti_pattern_count: 12
+  pressure_point_dispositions:
+    REPRODUCIBLE_EVIDENCE_BEFORE_STATE:
+      outcome: RETAIN
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Re-verification / REPRODUCIBLE_EVIDENCE_BEFORE_STATE"
+      statement: "Retain only validity, exact replay, use-time semantics, and provenance of evidence actually consumed by a code agent; close VOI routing and generic tool robustness restatements."
+    DERIVED_STATE_FIDELITY:
+      outcome: RETAIN_SPLIT
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Re-verification / DERIVED_STATE_FIDELITY"
+      statement: "Separate version-aligned truth from preservation of information necessary for later executable actions; do not revive per-item memory control or rationale gating."
+    CHECKABLE_ACCEPTANCE_VS_INTENT:
+      outcome: CLOSE_GENERIC_RETAIN_CODE_SPECIFIC_RESIDUAL
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Re-verification / CHECKABLE_ACCEPTANCE_VS_INTENT"
+      statement: "Close generic oracle, test-adequacy, and validator-diversity formulations; retain only candidate-validator co-change that can make a wrong repository state executably self-consistent."
+    ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER:
+      outcome: CLOSE_GENERIC_RETAIN_CODE_SPECIFIC_RESIDUAL
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Re-verification / ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER"
+      statement: "Close generic counterfactual credit, cross-scaffold sign filtering, and universal transfer; retain only whether endpoint labels attach to executable repository transitions or scaffold encodings."
+  problem_family_count: 5
+  problem_families:
+    - family_id: PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY
+      source_pressure_points: [REPRODUCIBLE_EVIDENCE_BEFORE_STATE]
+      contribution_fit: empirical_finding
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "PF1"
+      statement: "Ask whether consumed evidence is reproducible, provenance-complete, revision-aligned, and semantically valid before any state judgment."
+    - family_id: PF2_DERIVED_STATE_TRUTH_AT_ACTIVE_REVISION
+      source_pressure_points: [DERIVED_STATE_FIDELITY]
+      contribution_fit: empirical_finding_then_measurement_method
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "PF2"
+      statement: "Ask which explicit intermediate claims are true, false, unsupported, or stale at the program revision where the agent uses them."
+    - family_id: PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS
+      source_pressure_points: [DERIVED_STATE_FIDELITY]
+      contribution_fit: empirical_or_cross_domain_mechanism
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "PF3"
+      statement: "Ask whether a true intermediate state still omits program relations necessary for a later executable action."
+    - family_id: PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE
+      source_pressure_points: [CHECKABLE_ACCEPTANCE_VS_INTENT]
+      contribution_fit: empirical_or_cross_domain_mechanism
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "PF4"
+      statement: "Ask when candidate and validator co-change or share assumptions so that an intent-invalid patch becomes executably self-consistent."
+    - family_id: PF5_ENDPOINT_TRAINED_PROCESS_FIDELITY_ACROSS_SCAFFOLD_ENCODINGS
+      source_pressure_points: [ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER]
+      contribution_fit: empirical_or_cross_domain_mechanism_before_training
+      claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "PF5"
+      statement: "Ask whether endpoint-derived supervision tracks executable repository transitions or scaffold-specific transcript and action encodings."
+  preferred_for_round_2:
+    - PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY
+    - PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS
+    - PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE
+  closed_frames:
+    - ACTIONABLE_RECOVERABILITY_OR_REACHABILITY
+    - DECISION_THEORETIC_VOI_ROUTING
+    - PER_ITEM_MEMORY_ATTRIBUTION_OR_CONTROL
+    - E_S_A_V_STAGEWISE_ASSISTANCE
+    - GENERIC_COUNTERFACTUAL_CREDIT_ASSIGNMENT
+    - GENERIC_INTENT_ORACLE_OR_VALIDATOR_DIVERSITY
+  principal_evidence_risks:
+    - claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Main evidence risks"
+      statement: "Recent preprints have immature citation and replication records, eight corpus papers have bounded manuscript access, and no reframed family yet has direct frequency or effect evidence."
+    - claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Main evidence risks"
+      statement: "Intent adjudication, replay stability, non-unique state truth, action-dependent sufficiency, and selection toward transparent repositories can make key outcomes inconclusive."
+    - claim_type: agent_inference
+      source: "directions/pressure-point-reframing.md"
+      source_locator: "Status and interpretation rule; Main evidence risks"
+      statement: "Any family that does not retain an executable program-semantic relation must be closed as application transfer; versioning or provenance alone is insufficient."
+  outputs:
+    - "reports/pressure-point-failure-retrospective.md"
+    - "directions/pressure-point-reframing.md"
+    - "config/research_scope.yaml"
+    - "state/checkpoint.yaml"
+  phase_boundary:
+    claim_type: agent_inference
+    source: "reports/pressure-point-failure-retrospective.md; directions/pressure-point-reframing.md"
+    source_locator: "Retrospective conclusion; Phase boundary"
+    statement: "PRESSURE_POINT_REFRAMING is complete. IDEA_SEEDING_ROUND_2 may use the five question families, but no idea card, complete idea, method, pilot design, implementation, model call, training, experiment, commit, or push is part of this phase, and pilot_authorized remains false."
+  human_decisions_pending: []
+next_phase: IDEA_SEEDING_ROUND_2
+last_updated: "2026-07-26T16:03:11Z"

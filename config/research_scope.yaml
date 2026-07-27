@@ -1,5 +1,5 @@
 schema_version: 1
-last_reviewed_at: "2026-07-26T10:52:02-04:00"
+last_reviewed_at: "2026-07-26T12:03:11-04:00"
 
 scope:
   venues:
@@ -100,8 +100,8 @@ deep_reading_selection:
 
 deep_reading_progress:
   status: completed
-  current_phase: DIRECTION_REAUDIT_FAILED
-  next_phase: IDEA_SEEDING
+  current_phase: PRESSURE_POINTS_REFRAMED
+  next_phase: IDEA_SEEDING_ROUND_2
   completed_count: 42
   mechanism_cluster_count: 7
   papers_per_cluster: 6
@@ -398,3 +398,34 @@ independent_direction_reaudit:
     report_path: "reports/independent-direction-reaudit-report.md"
     decision_package_path: "directions/independent-direction-reaudit-decision-package.md"
   phase_boundary: "INDEPENDENT_DIRECTION_REAUDIT returned the revised direction to IDEA_SEEDING, kept pilot authorization false, generated no new idea, and did not begin pilot design, implementation, model calls, training, experiments, commit, or push."
+
+pressure_point_reframing:
+  status: completed
+  phase_completed: PRESSURE_POINTS_REFRAMED
+  next_phase: IDEA_SEEDING_ROUND_2
+  pilot_authorized: false
+  input_pressure_points:
+    - REPRODUCIBLE_EVIDENCE_BEFORE_STATE
+    - DERIVED_STATE_FIDELITY
+    - CHECKABLE_ACCEPTANCE_VS_INTENT
+    - ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER
+  problem_family_count: 5
+  dispositions:
+    REPRODUCIBLE_EVIDENCE_BEFORE_STATE: RETAIN
+    DERIVED_STATE_FIDELITY: RETAIN_SPLIT
+    CHECKABLE_ACCEPTANCE_VS_INTENT: CLOSE_GENERIC_RETAIN_CODE_SPECIFIC_RESIDUAL
+    ENDPOINT_CREDIT_PROCESS_FIDELITY_TRANSFER: CLOSE_GENERIC_RETAIN_CODE_SPECIFIC_RESIDUAL
+  problem_families:
+    - PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY
+    - PF2_DERIVED_STATE_TRUTH_AT_ACTIVE_REVISION
+    - PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS
+    - PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE
+    - PF5_ENDPOINT_TRAINED_PROCESS_FIDELITY_ACROSS_SCAFFOLD_ENCODINGS
+  preferred_for_round_2:
+    - PF1_EVIDENCE_PROVENANCE_AND_REPLAY_VALIDITY
+    - PF3_INFORMATION_SUFFICIENCY_FOR_LATER_EXECUTABLE_ACTIONS
+    - PF4_WRONG_BUT_SELF_CONSISTENT_EXECUTABLE_ACCEPTANCE
+  outputs:
+    retrospective_path: "reports/pressure-point-failure-retrospective.md"
+    problem_families_path: "directions/pressure-point-reframing.md"
+  phase_boundary: "The failure retrospective, anti-pattern list, pressure-point decomposition, and five question families are recorded. No idea card, complete idea, method, pilot design, implementation, model call, training, experiment, commit, or push was produced, and pilot_authorized remains false."
